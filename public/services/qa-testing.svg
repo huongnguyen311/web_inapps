@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <rect width="400" height="300" fill="#ffffff"/>
+
+  <!-- test runner frame -->
+  <rect x="24" y="38" width="352" height="234" rx="12" stroke="#e5e7eb" stroke-width="1.5"/>
+  <rect x="24" y="38" width="352" height="32" rx="12" fill="#f9fafb"/>
+  <rect x="24" y="56" width="352" height="14" fill="#f9fafb"/>
+  <!-- dots -->
+  <circle cx="42" cy="54" r="4" fill="#f3f4f6"/>
+  <circle cx="54" cy="54" r="4" fill="#f3f4f6"/>
+  <circle cx="66" cy="54" r="4" fill="#f3f4f6"/>
+  <text x="88" y="58" font-family="'Menlo',monospace" font-size="9" font-weight="600" fill="#9ca3af">test run · 42 specs</text>
+  <!-- passed badge -->
+  <rect x="316" y="44" width="50" height="18" rx="9" fill="#ef5023"/>
+  <text x="341" y="57" text-anchor="middle" font-family="'Inter',sans-serif" font-size="8" font-weight="700" fill="white">PASSED</text>
+
+  <!-- test results list -->
+  <!-- pass -->
+  <line x1="36" y1="88" x2="364" y2="88" stroke="#f9fafb" stroke-width="1"/>
+  <circle cx="46" cy="82" r="6" fill="#ef5023"/>
+  <polyline points="42,82 45,86 51,78" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <text x="60" y="86" font-family="'Menlo',monospace" font-size="8.5" fill="#111111">✓ renders correctly</text>
+  <text x="340" y="86" text-anchor="end" font-family="'Menlo',monospace" font-size="8" fill="#9ca3af">12ms</text>
+
+  <line x1="36" y1="108" x2="364" y2="108" stroke="#f9fafb" stroke-width="1"/>
+  <circle cx="46" cy="102" r="6" fill="#ef5023"/>
+  <polyline points="42,102 45,106 51,98" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <text x="60" y="106" font-family="'Menlo',monospace" font-size="8.5" fill="#111111">✓ handles edge cases</text>
+  <text x="340" y="106" text-anchor="end" font-family="'Menlo',monospace" font-size="8" fill="#9ca3af">8ms</text>
+
+  <line x1="36" y1="128" x2="364" y2="128" stroke="#f9fafb" stroke-width="1"/>
+  <circle cx="46" cy="122" r="6" fill="#ef5023"/>
+  <polyline points="42,122 45,126 51,118" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <text x="60" y="126" font-family="'Menlo',monospace" font-size="8.5" fill="#111111">✓ API returns 200</text>
+  <text x="340" y="126" text-anchor="end" font-family="'Menlo',monospace" font-size="8" fill="#9ca3af">34ms</text>
+
+  <line x1="36" y1="148" x2="364" y2="148" stroke="#f9fafb" stroke-width="1"/>
+  <circle cx="46" cy="142" r="6" fill="#ef5023"/>
+  <polyline points="42,142 45,146 51,138" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <text x="60" y="146" font-family="'Menlo',monospace" font-size="8.5" fill="#111111">✓ auth flow secure</text>
+  <text x="340" y="146" text-anchor="end" font-family="'Menlo',monospace" font-size="8" fill="#9ca3af">5ms</text>
+
+  <line x1="36" y1="168" x2="364" y2="168" stroke="#f9fafb" stroke-width="1"/>
+  <circle cx="46" cy="162" r="6" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="60" y="166" font-family="'Menlo',monospace" font-size="8.5" fill="#9ca3af">○ E2E checkout flow</text>
+  <text x="340" y="166" text-anchor="end" font-family="'Menlo',monospace" font-size="8" fill="#9ca3af">—</text>
+
+  <line x1="36" y1="188" x2="364" y2="188" stroke="#f9fafb" stroke-width="1"/>
+  <circle cx="46" cy="182" r="6" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="60" y="186" font-family="'Menlo',monospace" font-size="8.5" fill="#9ca3af">○ load test 10k users</text>
+  <text x="340" y="186" text-anchor="end" font-family="'Menlo',monospace" font-size="8" fill="#9ca3af">—</text>
+
+  <!-- summary bar -->
+  <line x1="24" y1="204" x2="376" y2="204" stroke="#e5e7eb" stroke-width="1"/>
+  <rect x="36" y="216" width="200" height="6" rx="3" fill="#f3f4f6"/>
+  <rect x="36" y="216" width="160" height="6" rx="3" fill="#ef5023"/>
+  <text x="36"  y="242" font-family="'Inter',sans-serif" font-size="8" fill="#9ca3af">42 passed</text>
+  <text x="100" y="242" font-family="'Inter',sans-serif" font-size="8" fill="#9ca3af">0 failed</text>
+  <text x="152" y="242" font-family="'Inter',sans-serif" font-size="8" fill="#9ca3af">0 regressions</text>
+  <rect x="272" y="210" width="80" height="28" rx="8" fill="#ef5023"/>
+  <text x="312" y="222" text-anchor="middle" font-family="'Inter',sans-serif" font-size="8" font-weight="700" fill="white">Zero</text>
+  <text x="312" y="232" text-anchor="middle" font-family="'Inter',sans-serif" font-size="8" font-weight="700" fill="white">Regressions</text>
+
+</svg>

@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* ── Brand colors ── */
+  --color-brand:         #ef5023;
+  --color-brand-light:   #ff7340;
+  --color-brand-lighter: #ff8c6b;
+
+  /* ── Background scale ── */
+  --color-bg-dark:      #0d0d0d;
+  --color-bg-dark-2:    #1a1a1a;
+  --color-bg-dark-3:    #0a0a0a;
+  --color-bg-off-white: #fafafa;
+
+  /* ── Text scale ── */
+  --color-text-primary: #0a0a0a;
+  --color-text-muted:   #444444;
+  --color-text-subtle:  #888888;
+  --color-text-faint:   #aaaaaa;
+
+  /* ── Border scale ── */
+  --color-border:       #e8e8e8;
+  --color-border-light: #eeeeee;
+}
+
+body {
+  color: #ffffff;
+}
+
+@keyframes menuFadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes awards-marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-awards-marquee { animation: awards-marquee 30s linear infinite; }
+.animate-awards-marquee:hover { animation-play-state: paused; }
+
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee { animation: marquee 35s linear infinite; }
+.animate-marquee:hover { animation-play-state: paused; }
+
+@keyframes awardPopIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.award-card { transition: opacity 0.2s ease; }
+.award-card:hover { opacity: 0.85; }

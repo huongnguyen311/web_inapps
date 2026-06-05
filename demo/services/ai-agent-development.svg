@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <rect width="400" height="300" fill="#ffffff"/>
+
+  <!-- ── ORBIT RINGS ── -->
+  <circle cx="200" cy="150" r="108" stroke="#e5e7eb" stroke-width="1"/>
+  <circle cx="200" cy="150" r="72"  stroke="#e5e7eb" stroke-width="1"/>
+  <circle cx="200" cy="150" r="36"  stroke="#e5e7eb" stroke-width="1.5"/>
+
+  <!-- ── CORE (only filled element) ── -->
+  <circle cx="200" cy="150" r="20" fill="#ef5023"/>
+  <path d="M200,142 L202.4,148.6 L209,151 L202.4,153.4 L200,160 L197.6,153.4 L191,151 L197.6,148.6 Z"
+        fill="white"/>
+
+  <!-- ── NODE: THINK — top ── -->
+  <circle cx="200" cy="42" r="16" stroke="#111111" stroke-width="1.5"/>
+  <circle cx="200" cy="38" r="6"  stroke="#111111" stroke-width="1.2"/>
+  <line   x1="197" y1="44" x2="203" y2="44" stroke="#111111" stroke-width="1.2" stroke-linecap="round"/>
+  <line   x1="200" y1="58" x2="200" y2="114" stroke="#e5e7eb" stroke-width="1"/>
+  <text   x="200" y="28" text-anchor="middle" font-family="'Inter',sans-serif" font-size="9" font-weight="600" fill="#111111">Think</text>
+
+  <!-- ── NODE: ACT — right ── -->
+  <circle cx="308" cy="150" r="16" fill="#ef5023"/>
+  <polygon points="301,143 301,157 314,150" fill="white"/>
+  <line   x1="292" y1="150" x2="264" y2="150" stroke="#e5e7eb" stroke-width="1"/>
+  <text   x="334" y="154" font-family="'Inter',sans-serif" font-size="9" font-weight="600" fill="#111111">Act</text>
+
+  <!-- ── NODE: LEARN — bottom ── -->
+  <circle cx="200" cy="258" r="16" stroke="#111111" stroke-width="1.5"/>
+  <path d="M194,254 Q194,247 200,247 Q206,247 206,254" stroke="#111111" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+  <polyline points="203,244 207,249 211,244" stroke="#111111" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <line   x1="200" y1="242" x2="200" y2="186" stroke="#e5e7eb" stroke-width="1"/>
+  <text   x="200" y="285" text-anchor="middle" font-family="'Inter',sans-serif" font-size="9" font-weight="600" fill="#111111">Learn</text>
+
+  <!-- ── NODE: PLAN — left ── -->
+  <circle cx="92"  cy="150" r="16" stroke="#111111" stroke-width="1.5"/>
+  <line x1="85" y1="144" x2="99" y2="144" stroke="#111111" stroke-width="1.3" stroke-linecap="round"/>
+  <line x1="85" y1="150" x2="99" y2="150" stroke="#111111" stroke-width="1.3" stroke-linecap="round" opacity="0.5"/>
+  <line x1="85" y1="156" x2="93" y2="156" stroke="#111111" stroke-width="1.3" stroke-linecap="round" opacity="0.3"/>
+  <line   x1="108" y1="150" x2="136" y2="150" stroke="#e5e7eb" stroke-width="1"/>
+  <text   x="66"  y="154" text-anchor="end" font-family="'Inter',sans-serif" font-size="9" font-weight="600" fill="#111111">Plan</text>
+
+  <!-- orbit dots -->
+  <circle cx="200" cy="78"  r="3" fill="#e5e7eb"/>
+  <circle cx="272" cy="114" r="3" fill="#e5e7eb"/>
+  <circle cx="272" cy="186" r="3" fill="#e5e7eb"/>
+  <circle cx="128" cy="114" r="3" fill="#e5e7eb"/>
+  <circle cx="128" cy="186" r="3" fill="#e5e7eb"/>
+  <circle cx="200" cy="222" r="3" fill="#e5e7eb"/>
+
+</svg>

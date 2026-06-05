@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <rect width="400" height="300" fill="#ffffff"/>
+
+  <!-- ── LEFT: NEURAL NET ── -->
+  <!-- input nodes -->
+  <circle cx="56" cy="100" r="10" stroke="#e5e7eb" stroke-width="1.5"/>
+  <circle cx="56" cy="136" r="10" stroke="#e5e7eb" stroke-width="1.5"/>
+  <circle cx="56" cy="172" r="10" stroke="#e5e7eb" stroke-width="1.5"/>
+  <circle cx="56" cy="208" r="10" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="56" y="226" text-anchor="middle" font-family="'Inter',sans-serif" font-size="7.5" fill="#9ca3af">input</text>
+
+  <!-- hidden nodes -->
+  <circle cx="128" cy="112" r="10" stroke="#9ca3af" stroke-width="1.5"/>
+  <circle cx="128" cy="148" r="10" stroke="#9ca3af" stroke-width="1.5"/>
+  <circle cx="128" cy="184" r="10" stroke="#9ca3af" stroke-width="1.5"/>
+  <text x="128" y="208" text-anchor="middle" font-family="'Inter',sans-serif" font-size="7.5" fill="#9ca3af">hidden</text>
+
+  <!-- output node (highlighted) -->
+  <circle cx="200" cy="154" r="16" fill="#ef5023"/>
+  <path d="M200,147 L202.2,153 L208,155 L202.2,157 L200,163 L197.8,157 L192,155 L197.8,153 Z" fill="white"/>
+  <text x="200" y="180" text-anchor="middle" font-family="'Inter',sans-serif" font-size="7.5" fill="#9ca3af">output</text>
+
+  <!-- connections — faint -->
+  <line x1="66" y1="100" x2="118" y2="115" stroke="#f3f4f6" stroke-width="1.5"/>
+  <line x1="66" y1="100" x2="118" y2="151" stroke="#f3f4f6" stroke-width="1.5"/>
+  <line x1="66" y1="136" x2="118" y2="115" stroke="#f3f4f6" stroke-width="1.5"/>
+  <line x1="66" y1="136" x2="118" y2="151" stroke="#f3f4f6" stroke-width="1.5"/>
+  <line x1="66" y1="172" x2="118" y2="151" stroke="#f3f4f6" stroke-width="1.5"/>
+  <line x1="66" y1="172" x2="118" y2="187" stroke="#f3f4f6" stroke-width="1.5"/>
+  <line x1="66" y1="208" x2="118" y2="187" stroke="#f3f4f6" stroke-width="1.5"/>
+  <!-- connections to output — slightly visible -->
+  <line x1="138" y1="115" x2="184" y2="150" stroke="#e5e7eb" stroke-width="1.5"/>
+  <line x1="138" y1="151" x2="184" y2="154" stroke="#e5e7eb" stroke-width="2"/>
+  <line x1="138" y1="187" x2="184" y2="158" stroke="#e5e7eb" stroke-width="1.5"/>
+
+  <!-- fine-tune label -->
+  <rect x="24" y="232" width="96" height="22" rx="11" stroke="#ef5023" stroke-width="1.5"/>
+  <text x="72" y="247" text-anchor="middle" font-family="'Inter',sans-serif" font-size="8" font-weight="600" fill="#ef5023">Fine-tuned</text>
+
+  <!-- ── DIVIDER ── -->
+  <line x1="236" y1="40" x2="236" y2="268" stroke="#f3f4f6" stroke-width="1.5"/>
+
+  <!-- ── RIGHT: LOSS CURVE ── -->
+  <text x="258" y="60" font-family="'Inter',sans-serif" font-size="9" font-weight="600" fill="#9ca3af">Training Loss</text>
+
+  <!-- axes -->
+  <line x1="252" y1="68" x2="252" y2="168" stroke="#f3f4f6" stroke-width="1"/>
+  <line x1="252" y1="168" x2="382" y2="168" stroke="#f3f4f6" stroke-width="1"/>
+
+  <!-- area under curve -->
+  <path d="M260,155 278,138 298,124 318,114 338,108 358,104 378,102 378,168 260,168 Z"
+        fill="#ef5023" opacity="0.06"/>
+  <!-- curve -->
+  <polyline points="260,155 278,138 298,124 318,114 338,108 358,104 378,102"
+    stroke="#ef5023" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- dots -->
+  <circle cx="278" cy="138" r="3" fill="#ef5023"/>
+  <circle cx="318" cy="114" r="3" fill="#ef5023"/>
+  <circle cx="358" cy="104" r="3" fill="#ef5023"/>
+  <circle cx="378" cy="102" r="4" fill="white" stroke="#ef5023" stroke-width="2"/>
+
+  <!-- ── METRICS ── -->
+  <line x1="252" y1="196" x2="384" y2="196" stroke="#f3f4f6" stroke-width="1"/>
+
+  <!-- accuracy -->
+  <text x="258" y="222" font-family="'Inter',sans-serif" font-size="9" font-weight="500" fill="#9ca3af">Accuracy</text>
+  <text x="258" y="252" font-family="'Inter',sans-serif" font-size="32" font-weight="800" fill="#111111">94%</text>
+  <text x="258" y="268" font-family="'Inter',sans-serif" font-size="8" fill="#9ca3af">↑ 12% vs baseline</text>
+
+  <!-- inference -->
+  <text x="332" y="222" font-family="'Inter',sans-serif" font-size="9" font-weight="500" fill="#9ca3af">Latency</text>
+  <text x="332" y="252" font-family="'Inter',sans-serif" font-size="32" font-weight="800" fill="#ef5023">8ms</text>
+  <text x="332" y="268" font-family="'Inter',sans-serif" font-size="8" fill="#9ca3af">p99 · live</text>
+
+</svg>

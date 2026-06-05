@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <rect width="400" height="300" fill="#ffffff"/>
+
+  <!-- globe outline -->
+  <circle cx="200" cy="152" r="96" stroke="#f3f4f6" stroke-width="1.5"/>
+  <circle cx="200" cy="152" r="96" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="4 6"/>
+  <!-- latitude lines -->
+  <ellipse cx="200" cy="152" rx="96" ry="32" stroke="#f3f4f6" stroke-width="1"/>
+  <ellipse cx="200" cy="152" rx="96" ry="64" stroke="#f3f4f6" stroke-width="1"/>
+  <!-- longitude lines -->
+  <line x1="200" y1="56" x2="200" y2="248" stroke="#f3f4f6" stroke-width="1"/>
+  <line x1="104" y1="152" x2="296" y2="152" stroke="#f3f4f6" stroke-width="1"/>
+
+  <!-- team nodes on globe -->
+  <!-- Vietnam (center/origin) -->
+  <circle cx="200" cy="152" r="14" fill="#ef5023"/>
+  <circle cx="200" cy="148" r="4" fill="white" opacity="0.9"/>
+  <path d="M193,158 Q193,153 200,153 Q207,153 207,158" fill="white" opacity="0.7"/>
+  <text x="200" y="178" text-anchor="middle" font-family="'Inter',sans-serif" font-size="7.5" font-weight="700" fill="#ef5023">Vietnam</text>
+
+  <!-- US node -->
+  <circle cx="120" cy="128" r="10" fill="#111111"/>
+  <circle cx="120" cy="125" r="3.5" fill="white" opacity="0.9"/>
+  <path d="M115,132 Q115,128 120,128 Q125,128 125,132" fill="white" opacity="0.7"/>
+  <text x="120" y="113" text-anchor="middle" font-family="'Inter',sans-serif" font-size="7.5" font-weight="600" fill="#111111">US</text>
+  <!-- connector -->
+  <line x1="130" y1="132" x2="188" y2="148" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="3,3"/>
+
+  <!-- EU node -->
+  <circle cx="172" cy="96" r="10" fill="#111111"/>
+  <circle cx="172" cy="93" r="3.5" fill="white" opacity="0.9"/>
+  <path d="M167,100 Q167,96 172,96 Q177,96 177,100" fill="white" opacity="0.7"/>
+  <text x="172" y="81" text-anchor="middle" font-family="'Inter',sans-serif" font-size="7.5" font-weight="600" fill="#111111">EU</text>
+  <line x1="176" y1="104" x2="194" y2="142" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="3,3"/>
+
+  <!-- AU node -->
+  <circle cx="268" cy="186" r="10" fill="#111111"/>
+  <circle cx="268" cy="183" r="3.5" fill="white" opacity="0.9"/>
+  <path d="M263,190 Q263,186 268,186 Q273,186 273,190" fill="white" opacity="0.7"/>
+  <text x="268" y="171" text-anchor="middle" font-family="'Inter',sans-serif" font-size="7.5" font-weight="600" fill="#111111">AU</text>
+  <line x1="260" y1="180" x2="212" y2="158" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="3,3"/>
+
+  <!-- UK node -->
+  <circle cx="152" cy="116" r="8" stroke="#e5e7eb" stroke-width="1.5"/>
+  <line x1="158" y1="120" x2="192" y2="146" stroke="#f3f4f6" stroke-width="1"/>
+
+  <!-- SG node -->
+  <circle cx="256" cy="160" r="8" stroke="#e5e7eb" stroke-width="1.5"/>
+  <line x1="250" y1="158" x2="214" y2="155" stroke="#f3f4f6" stroke-width="1"/>
+
+  <!-- stats strip -->
+  <line x1="24" y1="262" x2="376" y2="262" stroke="#f3f4f6" stroke-width="1"/>
+  <text x="88"  y="284" text-anchor="middle" font-family="'Inter',sans-serif" font-size="20" font-weight="800" fill="#ef5023">30+</text>
+  <text x="88"  y="296" text-anchor="middle" font-family="'Inter',sans-serif" font-size="7.5" fill="#9ca3af">countries</text>
+  <line x1="188" y1="264" x2="188" y2="298" stroke="#f3f4f6" stroke-width="1"/>
+  <text x="240" y="284" text-anchor="middle" font-family="'Inter',sans-serif" font-size="20" font-weight="800" fill="#111111">100%</text>
+  <text x="240" y="296" text-anchor="middle" font-family="'Inter',sans-serif" font-size="7.5" fill="#9ca3af">dedicated</text>
+  <line x1="300" y1="264" x2="300" y2="298" stroke="#f3f4f6" stroke-width="1"/>
+  <text x="344" y="284" text-anchor="middle" font-family="'Inter',sans-serif" font-size="20" font-weight="800" fill="#111111">24/7</text>
+  <text x="344" y="296" text-anchor="middle" font-family="'Inter',sans-serif" font-size="7.5" fill="#9ca3af">overlap hrs</text>
+
+</svg>

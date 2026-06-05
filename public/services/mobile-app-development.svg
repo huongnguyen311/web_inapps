@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <rect width="400" height="300" fill="#ffffff"/>
+
+  <!-- phone 1 (back, iOS) -->
+  <rect x="96" y="48" width="90" height="180" rx="18" stroke="#e5e7eb" stroke-width="1.5"/>
+  <rect x="104" y="64" width="74" height="148" rx="6" fill="#f9fafb"/>
+  <rect x="126" y="54" width="30" height="5" rx="2.5" fill="#e5e7eb"/>
+  <!-- screen content -->
+  <rect x="112" y="76" width="58" height="36" rx="6" fill="#ef5023" opacity="0.1" stroke="#ef5023" stroke-width="1"/>
+  <circle cx="141" cy="94" r="10" fill="#ef5023" opacity="0.2"/>
+  <path d="M141,88 L143,93 L148,94 L143,95 L141,100 L139,95 L134,94 L139,93 Z" stroke="#ef5023" stroke-width="1.2" stroke-linejoin="round"/>
+  <rect x="112" y="120" width="58" height="6" rx="3" fill="#e5e7eb"/>
+  <rect x="112" y="130" width="42" height="6" rx="3" fill="#e5e7eb"/>
+  <rect x="112" y="148" width="26" height="14" rx="7" fill="#ef5023"/>
+  <rect x="118" y="153" width="14" height="4" rx="2" fill="white" opacity="0.9"/>
+  <!-- bottom bar -->
+  <line x1="112" y1="184" x2="170" y2="184" stroke="#e5e7eb" stroke-width="1"/>
+  <circle cx="127" cy="194" r="5" fill="#e5e7eb"/>
+  <circle cx="141" cy="194" r="5" fill="#ef5023"/>
+  <circle cx="155" cy="194" r="5" fill="#e5e7eb"/>
+
+  <!-- phone 2 (front, Android) -->
+  <rect x="214" y="36" width="90" height="196" rx="18" stroke="#111111" stroke-width="1.5"/>
+  <rect x="222" y="54" width="74" height="162" rx="6" fill="#f9fafb"/>
+  <circle cx="259" cy="45" r="4" fill="#e5e7eb"/>
+  <!-- screen content -->
+  <rect x="230" y="64" width="66" height="6" rx="3" fill="#111111" opacity="0.8"/>
+  <rect x="230" y="76" width="66" height="44" rx="6" fill="#ef5023"/>
+  <!-- icon grid -->
+  <circle cx="242" cy="96" r="7" fill="white" opacity="0.3"/>
+  <circle cx="259" cy="96" r="7" fill="white" opacity="0.3"/>
+  <circle cx="276" cy="96" r="7" fill="white" opacity="0.3"/>
+  <rect x="230" y="128" width="30" height="30" rx="8" stroke="#e5e7eb" stroke-width="1.5"/>
+  <rect x="266" y="128" width="30" height="30" rx="8" stroke="#e5e7eb" stroke-width="1.5"/>
+  <rect x="230" y="165" width="66" height="6" rx="3" fill="#e5e7eb"/>
+  <rect x="230" y="175" width="50" height="6" rx="3" fill="#e5e7eb"/>
+  <!-- home indicator -->
+  <rect x="244" y="220" width="30" height="4" rx="2" fill="#111111" opacity="0.15"/>
+
+  <!-- platform badges -->
+  <rect x="24" y="220" width="54" height="22" rx="11" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="51" y="235" text-anchor="middle" font-family="'Inter',sans-serif" font-size="8.5" font-weight="600" fill="#6b7280">iOS</text>
+  <rect x="84" y="220" width="70" height="22" rx="11" fill="#ef5023"/>
+  <text x="119" y="235" text-anchor="middle" font-family="'Inter',sans-serif" font-size="8.5" font-weight="700" fill="white">Android</text>
+
+</svg>

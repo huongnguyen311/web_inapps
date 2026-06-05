@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <rect width="400" height="300" fill="#ffffff"/>
+
+  <!-- sidebar -->
+  <rect x="24" y="38" width="72" height="234" rx="10" stroke="#e5e7eb" stroke-width="1.5"/>
+  <rect x="36" y="56" width="48" height="8" rx="4" fill="#ef5023"/>
+  <rect x="36" y="72" width="48" height="6" rx="3" fill="#e5e7eb"/>
+  <rect x="36" y="84" width="48" height="6" rx="3" fill="#e5e7eb"/>
+  <rect x="36" y="96" width="48" height="6" rx="3" fill="#f3f4f6"/>
+  <rect x="36" y="108" width="48" height="6" rx="3" fill="#f3f4f6"/>
+  <!-- sidebar icons -->
+  <circle cx="44" cy="135" r="5" fill="#e5e7eb"/>
+  <circle cx="44" cy="152" r="5" fill="#e5e7eb"/>
+  <circle cx="44" cy="169" r="5" fill="#ef5023"/>
+  <circle cx="44" cy="186" r="5" fill="#e5e7eb"/>
+  <!-- user avatar bottom -->
+  <circle cx="60" cy="248" r="10" stroke="#e5e7eb" stroke-width="1.5"/>
+  <circle cx="60" cy="245" r="4" fill="#e5e7eb"/>
+  <path d="M52,256 Q52,251 60,251 Q68,251 68,256" fill="#e5e7eb"/>
+
+  <!-- main content -->
+  <rect x="108" y="38" width="268" height="234" rx="10" stroke="#e5e7eb" stroke-width="1.5"/>
+  <!-- top bar -->
+  <line x1="108" y1="66" x2="376" y2="66" stroke="#f3f4f6" stroke-width="1"/>
+  <rect x="120" y="50" width="80" height="10" rx="5" fill="#f3f4f6"/>
+  <rect x="332" y="48" width="36" height="14" rx="7" fill="#ef5023"/>
+
+  <!-- stat cards -->
+  <rect x="120" y="80" width="72" height="52" rx="8" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="156" y="108" text-anchor="middle" font-family="'Inter',sans-serif" font-size="18" font-weight="800" fill="#111111">2.4k</text>
+  <rect x="132" y="116" width="48" height="5" rx="2.5" fill="#f3f4f6"/>
+
+  <rect x="204" y="80" width="72" height="52" rx="8" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="240" y="108" text-anchor="middle" font-family="'Inter',sans-serif" font-size="18" font-weight="800" fill="#111111">$48k</text>
+  <rect x="216" y="116" width="48" height="5" rx="2.5" fill="#f3f4f6"/>
+
+  <rect x="288" y="80" width="72" height="52" rx="8" fill="#ef5023"/>
+  <text x="324" y="108" text-anchor="middle" font-family="'Inter',sans-serif" font-size="18" font-weight="800" fill="white">99%</text>
+  <rect x="300" y="116" width="48" height="5" rx="2.5" fill="white" opacity="0.3"/>
+
+  <!-- chart area -->
+  <rect x="120" y="146" width="240" height="80" rx="8" stroke="#e5e7eb" stroke-width="1.5"/>
+  <polyline points="132,210 154,196 176,200 198,184 220,188 242,172 264,176 280,162 300,158 344,152"
+    stroke="#ef5023" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M132,210 154,196 176,200 198,184 220,188 242,172 264,176 280,162 300,158 344,152 344,220 132,220 Z"
+    fill="#ef5023" opacity="0.05"/>
+  <!-- billing pill -->
+  <rect x="120" y="238" width="72" height="20" rx="10" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="156" y="252" text-anchor="middle" font-family="'Inter',sans-serif" font-size="8" font-weight="600" fill="#6b7280">Billing</text>
+  <rect x="202" y="238" width="60" height="20" rx="10" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="232" y="252" text-anchor="middle" font-family="'Inter',sans-serif" font-size="8" font-weight="600" fill="#6b7280">Auth</text>
+  <rect x="272" y="238" width="88" height="20" rx="10" fill="#ef5023"/>
+  <text x="316" y="252" text-anchor="middle" font-family="'Inter',sans-serif" font-size="8" font-weight="700" fill="white">Multi-tenant</text>
+
+</svg>
