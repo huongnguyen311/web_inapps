@@ -139,6 +139,8 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileSubmenu, setMobileSubmenu] = useState<string | null>(null);
 
   // When forceDark is true, logo & nav always use the "scrolled" (dark) appearance
   const dark = forceDark || scrolled;
@@ -148,6 +150,16 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+      setMobileSubmenu(null);
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileOpen]);
 
   const openMenu = useCallback((name: string) => {
     if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
@@ -172,32 +184,46 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
       }}
     >
       {/* Nav bar row */}
-      <div className="px-[40px] py-[18px]">
-      <div className="grid grid-cols-[1fr_auto_1fr] items-center max-w-[1320px] mx-auto">
+      <div className="px-[16px] md:px-[40px] py-[14px] md:py-[18px]">
+      <div className="flex items-center justify-between md:grid md:grid-cols-[1fr_auto_1fr] max-w-[1320px] mx-auto">
         {/* Logo */}
         <div className="flex items-center">
           <Link href="/" style={{ textDecoration: "none" }}>
-            <div className="relative h-[52px]" style={{ width: "auto" }}>
+            <div className="relative h-[40px] md:h-[52px]" style={{ width: "auto" }}>
               <img
                 src="/logo_white.svg"
                 alt="InApps.net"
-                className="h-[52px] w-auto absolute top-0 left-0 transition-opacity duration-500"
+                className="h-[40px] md:h-[52px] w-auto absolute top-0 left-0 transition-opacity duration-500"
                 style={{ opacity: dark ? 0 : 1 }}
               />
               <img
                 src="/Media/inapps-logo_black.svg"
                 alt="InApps.net"
-                className="h-[52px] w-auto absolute top-0 left-0 transition-opacity duration-500"
+                className="h-[40px] md:h-[52px] w-auto absolute top-0 left-0 transition-opacity duration-500"
                 style={{ opacity: dark ? 1 : 0 }}
               />
               {/* invisible placeholder to maintain width */}
-              <img src="/logo_white.svg" alt="" className="h-[52px] w-auto invisible" aria-hidden="true" />
+              <img src="/logo_white.svg" alt="" className="h-[40px] md:h-[52px] w-auto invisible" aria-hidden="true" />
             </div>
           </Link>
         </div>
 
-        {/* Nav links */}
-        <nav className="flex gap-1 items-center">
+        {/* Mobile hamburger */}
+        <button
+          className="md:hidden flex items-center justify-center w-[44px] h-[44px] rounded-lg"
+          onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label="Toggle menu"
+          style={{ background: "transparent", border: "none", cursor: "pointer" }}
+        >
+          {mobileOpen ? (
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={dark ? "#111" : "#fff"} strokeWidth="2" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          ) : (
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={dark ? "#111" : "#fff"} strokeWidth="2" strokeLinecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          )}
+        </button>
+
+        {/* Nav links - hidden on mobile */}
+        <nav className="hidden md:flex gap-1 items-center">
           {/* Services - has mega menu */}
           <div
             className="relative"
@@ -576,8 +602,8 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
           </div>
         </nav>
 
-        {/* CTA */}
-        <div className="flex justify-end">
+        {/* CTA - hidden on mobile */}
+        <div className="hidden md:flex justify-end">
           <Link
             href="/contact"
             className="bg-[#ef5023] text-white text-[15px] font-bold px-6 h-[44px] rounded-lg hover:bg-[#e63d1f] transition-colors inline-flex items-center"
@@ -588,6 +614,126 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
         </div>
       </div>
       </div>
+
+      {/* ── Mobile Drawer ── */}
+      {mobileOpen && (
+        <div className="md:hidden fixed inset-0 z-40" style={{ top: 0 }}>
+          {/* Backdrop */}
+          <div className="absolute inset-0 bg-black/50" onClick={() => setMobileOpen(false)} />
+          {/* Drawer */}
+          <div
+            className="absolute top-0 right-0 h-full w-[85%] max-w-[360px] flex flex-col overflow-y-auto"
+            style={{ background: "#fff", boxShadow: "-4px 0 24px rgba(0,0,0,0.15)" }}
+          >
+            {/* Close */}
+            <div className="flex items-center justify-between px-[20px] py-[16px]" style={{ borderBottom: "1px solid #eee" }}>
+              <span style={{ fontSize: 15, fontWeight: 700, color: "#111" }}>Menu</span>
+              <button onClick={() => setMobileOpen(false)} style={{ background: "none", border: "none", cursor: "pointer", padding: 4 }}>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </button>
+            </div>
+
+            {/* Nav Items */}
+            <div className="flex flex-col py-[8px]">
+              {/* Services */}
+              <div>
+                <button
+                  onClick={() => setMobileSubmenu(mobileSubmenu === "services" ? null : "services")}
+                  className="w-full flex items-center justify-between px-[20px] py-[14px] text-left"
+                  style={{ background: "none", border: "none", cursor: "pointer", fontSize: 16, fontWeight: 600, color: pathname.startsWith("/services") ? "#ef5023" : "#111" }}
+                >
+                  Services
+                  <svg width="14" height="14" viewBox="0 0 12 12" fill="none" style={{ transition: "transform 0.2s", transform: mobileSubmenu === "services" ? "rotate(180deg)" : "rotate(0deg)" }}><path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                </button>
+                {mobileSubmenu === "services" && (
+                  <div className="flex flex-col pb-[8px]" style={{ background: "#fafafa" }}>
+                    {[
+                      { title: "Dedicated Development Team", href: "/services/dedicated-development-team" },
+                      { title: "Staff Augmentation", href: "/services/staff-augmentation" },
+                      { title: "Project-Based", href: "/services/project-based-dev" },
+                      { title: "Managed Services", href: "/services/managed-services" },
+                      { title: "AI Agent Development", href: "/services/ai-agent-development" },
+                      { title: "Agentic Workflow Automation", href: "/services/agentic-workflow-automation" },
+                      { title: "Generative AI Integration", href: "/services/generative-ai-integration" },
+                      { title: "Custom Software Development", href: "/services/custom-software-development" },
+                      { title: "Cloud & DevOps", href: "/services/cloud-devops" },
+                      { title: "QA & Testing", href: "/services/qa-testing" },
+                      { title: "UI/UX Design", href: "/services/ui-ux-design" },
+                    ].map((item) => (
+                      <Link key={item.href} href={item.href} onClick={() => setMobileOpen(false)} className="px-[32px] py-[10px] text-[14px]" style={{ color: "#555", textDecoration: "none" }}>
+                        {item.title}
+                      </Link>
+                    ))}
+                    <Link href="/services" onClick={() => setMobileOpen(false)} className="px-[32px] py-[10px] text-[13px] font-semibold" style={{ color: "#ef5023", textDecoration: "none" }}>
+                      View All Services →
+                    </Link>
+                  </div>
+                )}
+              </div>
+
+              {/* Industries */}
+              <div>
+                <button
+                  onClick={() => setMobileSubmenu(mobileSubmenu === "industries" ? null : "industries")}
+                  className="w-full flex items-center justify-between px-[20px] py-[14px] text-left"
+                  style={{ background: "none", border: "none", cursor: "pointer", fontSize: 16, fontWeight: 600, color: pathname.startsWith("/industries") ? "#ef5023" : "#111" }}
+                >
+                  Industries
+                  <svg width="14" height="14" viewBox="0 0 12 12" fill="none" style={{ transition: "transform 0.2s", transform: mobileSubmenu === "industries" ? "rotate(180deg)" : "rotate(0deg)" }}><path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                </button>
+                {mobileSubmenu === "industries" && (
+                  <div className="flex flex-col pb-[8px]" style={{ background: "#fafafa" }}>
+                    {[
+                      { title: "Fintech & Banking", href: "/industries/fintech" },
+                      { title: "Healthcare & MedTech", href: "/industries/healthcare" },
+                      { title: "E-commerce & Retail", href: "/industries/e-commerce" },
+                      { title: "Logistics & Supply Chain", href: "/industries/logistics" },
+                      { title: "SaaS & Enterprise", href: "/industries/saas" },
+                    ].map((item) => (
+                      <Link key={item.href} href={item.href} onClick={() => setMobileOpen(false)} className="px-[32px] py-[10px] text-[14px]" style={{ color: "#555", textDecoration: "none" }}>
+                        {item.title}
+                      </Link>
+                    ))}
+                    <Link href="/industries" onClick={() => setMobileOpen(false)} className="px-[32px] py-[10px] text-[13px] font-semibold" style={{ color: "#ef5023", textDecoration: "none" }}>
+                      View All Industries →
+                    </Link>
+                  </div>
+                )}
+              </div>
+
+              {/* Plain links */}
+              {[
+                { title: "Case Studies", href: "/case-study" },
+                { title: "Technology", href: "/technology" },
+                { title: "Blog", href: "/blog" },
+                { title: "Company", href: "/about" },
+              ].map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="px-[20px] py-[14px] text-[16px] font-semibold"
+                  style={{ color: pathname.startsWith(item.href) ? "#ef5023" : "#111", textDecoration: "none" }}
+                >
+                  {item.title}
+                </Link>
+              ))}
+            </div>
+
+            {/* Mobile CTA */}
+            <div className="mt-auto px-[20px] py-[20px]" style={{ borderTop: "1px solid #eee" }}>
+              <Link
+                href="/contact"
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center justify-center w-full h-[48px] rounded-[10px] text-[15px] font-bold"
+                style={{ background: "#ef5023", color: "#fff", textDecoration: "none", boxShadow: "0 6px 20px rgba(239,80,35,0.3)" }}
+              >
+                Talk to Us
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

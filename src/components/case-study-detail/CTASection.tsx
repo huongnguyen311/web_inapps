@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function CTASection() {
   return (
-    <section className="relative px-[40px] py-[70px]">
+    <section className="relative px-[16px] md:px-[40px] py-[48px] md:py-[70px]">
 
       <div className="relative max-w-[700px] mx-auto flex flex-col items-center text-center gap-[24px]" style={{ zIndex: 1 }}>
 

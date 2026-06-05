@@ -22,7 +22,7 @@ export default function ServiceBuyerProblems({ problems, heading, subtitle, eyeb
   const eyebrowText = eyebrow ?? DEFAULT_EYEBROW;
 
   return (
-    <section className="px-[40px] py-[70px]" style={{ background: "#ffffff", borderTop: "1px solid #e8e8e8" }}>
+    <section className="px-[16px] md:px-[40px] py-[48px] md:py-[70px]" style={{ background: "#ffffff", borderTop: "1px solid #e8e8e8" }}>
       <div className="max-w-[1320px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-[56px] items-start">
 

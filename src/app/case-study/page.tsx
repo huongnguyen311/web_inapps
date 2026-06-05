@@ -95,8 +95,8 @@ export default function CaseStudyListPage() {
 
         {/* ── S1: Hero Banner (original) ── */}
         <section
-          className="relative px-[40px] overflow-hidden flex flex-col items-start gap-[28px]"
-          style={{ minHeight: "850px", paddingTop: "228px", paddingBottom: "100px" }}
+          className="relative px-[16px] md:px-[40px] overflow-hidden flex flex-col items-start gap-[28px]"
+          style={{ minHeight: "clamp(550px, 70vh, 850px)", paddingTop: "clamp(120px, 20vw, 228px)", paddingBottom: "100px" }}
         >
           {/* Banner background */}
           <div className="absolute inset-0">
@@ -158,7 +158,7 @@ export default function CaseStudyListPage() {
         />
 
         {/* ── Grid ── */}
-        <div id="case-study-grid" className="px-[40px]" style={{ paddingTop: "70px", paddingBottom: "70px" }}>
+        <div id="case-study-grid" className="px-[16px] md:px-[40px]" style={{ paddingTop: "70px", paddingBottom: "70px" }}>
         <div className="cs-main max-w-[1320px] mx-auto">
 
           <div className="flex flex-col gap-[10px] mb-[40px]">
@@ -180,11 +180,9 @@ export default function CaseStudyListPage() {
               `}</style>
               <Link
                 href={`/case-study/${latest.slug}`}
-                className="cs-latest-card"
+                className="cs-latest-card grid grid-cols-1 md:grid-cols-[3fr_2fr]"
                 style={{
                   textDecoration: "none",
-                  display: "grid",
-                  gridTemplateColumns: "3fr 2fr",
                   minHeight: 400,
                   borderRadius: 20,
                   border: "1.5px solid #ebebeb",
@@ -252,12 +250,7 @@ export default function CaseStudyListPage() {
             </p>
           ) : (
             <>
-              <div className="cs-grid" style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(3, 1fr)",
-                gap: 28,
-                marginBottom: 60,
-              }}>
+              <div className="cs-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[28px] mb-[60px]">
                 {paginated.map((cs) => (
                   <CaseStudyCard key={cs.slug} cs={cs} />
                 ))}
@@ -274,7 +267,7 @@ export default function CaseStudyListPage() {
         </div>
 
         {/* ── Common Questions ── */}
-        <section className="px-[40px]" style={{ paddingTop: "70px", paddingBottom: "70px", background: "#fafafa", borderTop: "1px solid #e8e8e8" }}>
+        <section className="px-[16px] md:px-[40px]" style={{ paddingTop: "70px", paddingBottom: "70px", background: "#fafafa", borderTop: "1px solid #e8e8e8" }}>
           <style>{`
             @keyframes faqFadeCs { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
             .animate-faq-fade-cs { animation: faqFadeCs 0.25s ease forwards; }
@@ -289,7 +282,7 @@ export default function CaseStudyListPage() {
               </div>
             </div>
 
-            <div className="grid gap-[24px]" style={{ gridTemplateColumns: "1fr 1.2fr" }}>
+            <div className="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-[24px]">
               <div className="flex flex-col gap-[4px]">
                 {faqItems.map(({ label, question }, i) => (
                   <button

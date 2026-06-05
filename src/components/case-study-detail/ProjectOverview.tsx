@@ -5,7 +5,7 @@ type Props = Pick<CaseStudyDetail, "overviewImage" | "background" | "businessCon
 
 export default function ProjectOverview({ overviewImage, background, businessContext, projectGoals, title, category }: Props) {
   return (
-    <section className="px-[40px] py-[70px]" style={{ background: "#f7f7f8" }}>
+    <section className="px-[16px] md:px-[40px] py-[48px] md:py-[70px]" style={{ background: "#f7f7f8" }}>
       <div className="max-w-[1320px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-[64px] items-start">
         {/* Left — text */}
         <div className="flex flex-col gap-[28px]">

@@ -11,7 +11,7 @@ export default function AboutPage() {
       <main className="flex-1 flex flex-col">
 
         {/* ── S1: Hero ── */}
-        <section className="relative px-[40px] overflow-hidden flex flex-col items-start gap-[28px]" style={{ minHeight: "850px", paddingTop: "228px", paddingBottom: "100px" }}>
+        <section className="relative px-[16px] md:px-[40px] overflow-hidden flex flex-col items-start gap-[28px] min-h-[600px] md:min-h-[850px] pt-[140px] md:pt-[228px]" style={{ paddingBottom: "100px" }}>
           {/* Banner background — case-study style */}
           <div className="absolute inset-0">
             <img
@@ -66,7 +66,7 @@ export default function AboutPage() {
         <ServiceTrustedLogos />
 
         {/* ── S3: Our Story ── */}
-        <section className="px-[40px] overflow-hidden" style={{ background: "#fff" }}>
+        <section className="px-[16px] md:px-[40px] overflow-hidden" style={{ background: "#fff" }}>
           <div className="max-w-[1320px] mx-auto py-[70px]">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-[48px]">
 
@@ -155,7 +155,7 @@ export default function AboutPage() {
         </section>
 
         {/* ── CEO ── */}
-        <section style={{ background: "#0a0a0a", borderTop: "1px solid #222", backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='100'%3E%3Cpath d='M0 90 L20 75 L40 80 L60 55 L80 60 L100 35 L120 40 L140 20 L160 10' fill='none' stroke='%23181818' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M0 100 L20 88 L40 92 L60 70 L80 74 L100 52 L120 56 L140 38 L160 28' fill='none' stroke='%23141414' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`, backgroundSize: "160px 100px" }}>
+        <section className="px-[16px] md:px-[40px]" style={{ background: "#0a0a0a", borderTop: "1px solid #222", backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='100'%3E%3Cpath d='M0 90 L20 75 L40 80 L60 55 L80 60 L100 35 L120 40 L140 20 L160 10' fill='none' stroke='%23181818' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M0 100 L20 88 L40 92 L60 70 L80 74 L100 52 L120 56 L140 38 L160 28' fill='none' stroke='%23141414' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`, backgroundSize: "160px 100px" }}>
             <div className="max-w-[1320px] mx-auto py-[70px]">
               <div className="grid grid-cols-1 lg:grid-cols-[3fr_400px] gap-[1px] items-center">
 
@@ -225,7 +225,7 @@ export default function AboutPage() {
         </section>
 
         {/* ── Journey: 2-col timeline + image ── */}
-        <section className="px-[40px] overflow-hidden" style={{ background: "#fff", borderTop: "1px solid #eee", borderBottom: "1px solid #eee", backgroundImage: "radial-gradient(ellipse 100% 90% at 50% 50%, rgba(239,80,35,0.12) 0%, transparent 70%), radial-gradient(ellipse 70% 60% at 50% 50%, rgba(255,200,150,0.09) 0%, transparent 65%)" }}>
+        <section className="px-[16px] md:px-[40px] overflow-hidden" style={{ background: "#fff", borderTop: "1px solid #eee", borderBottom: "1px solid #eee", backgroundImage: "radial-gradient(ellipse 100% 90% at 50% 50%, rgba(239,80,35,0.12) 0%, transparent 70%), radial-gradient(ellipse 70% 60% at 50% 50%, rgba(255,200,150,0.09) 0%, transparent 65%)" }}>
             <div className="max-w-[1320px] mx-auto py-[70px]">
               <div className="grid grid-cols-1 lg:grid-cols-[62%_38%] gap-[48px] items-stretch">
 
@@ -376,7 +376,7 @@ export default function AboutPage() {
           .mv-card-mission .mv-icon-anim { animation-delay: 0.3s; }
           .mv-card-vision  .mv-icon-anim { animation-delay: 0.45s; }
         `}</style>
-        <section className="relative px-[40px] overflow-hidden" style={{ background: "#fafafa", borderBottom: "1px solid #eee" }}>
+        <section className="relative px-[16px] md:px-[40px] overflow-hidden" style={{ background: "#fafafa", borderBottom: "1px solid #eee" }}>
 
           {/* Background mesh */}
           <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0 }}>
@@ -413,7 +413,7 @@ export default function AboutPage() {
                 <p className="relative text-[15px] leading-[1.9]" style={{ color: "#666" }}>
                   Five principles guide everything we do , from how we write code to how we treat our clients.
                 </p>
-                <div className="grid grid-cols-5 gap-[8px]" style={{ paddingLeft: "0", paddingRight: "0" }}>
+                <div className="grid grid-cols-3 md:grid-cols-5 gap-[8px]" style={{ paddingLeft: "0", paddingRight: "0" }}>
                   {[
                     { label: "Integrity",
                       icon: <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
@@ -509,7 +509,7 @@ export default function AboutPage() {
 
         {/* ── S5: Core Values ── */}
         <section className="relative overflow-hidden py-[70px]" style={{ background: "#0d0d0d" }}>
-          <div className="max-w-[1320px] mx-auto px-[40px]">
+          <div className="max-w-[1320px] mx-auto px-[16px] md:px-[40px]">
             <div className="grid grid-cols-1 lg:grid-cols-[3fr_3fr]" style={{ minHeight: "600px" }}>
 
               {/* Left: office photo full-height with overlay + heading */}
@@ -595,7 +595,7 @@ export default function AboutPage() {
         </section>
 
         {/* ── S4: Team ── */}
-        <section className="relative px-[40px] py-[70px] overflow-hidden" style={{ background: "#f5f4f0" }}>
+        <section className="relative px-[16px] md:px-[40px] py-[70px] overflow-hidden" style={{ background: "#f5f4f0" }}>
 
           {/* Tech scatter icons */}
           <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -732,7 +732,7 @@ export default function AboutPage() {
         </section>
 
         {/* ── S6: Final CTA ── */}
-        <section className="relative px-[40px] py-[70px] overflow-hidden" style={{ background: "#0d0d0d" }}>
+        <section className="relative px-[16px] md:px-[40px] py-[70px] overflow-hidden" style={{ background: "#0d0d0d" }}>
           {/* Constellation background */}
           <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 0 }} viewBox="0 0 1200 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
             <g stroke="rgba(255,255,255,0.08)" strokeWidth="0.8" fill="none">

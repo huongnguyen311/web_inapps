@@ -50,7 +50,7 @@ const COLS = [
 
 export default function ServiceWhatYouGet({ items }: any) {
   return (
-    <section className="relative px-[40px] py-[70px] overflow-hidden" style={{ background: "#080808", borderTop: "1px solid #1a1a1a" }}>
+    <section className="relative px-[16px] md:px-[40px] py-[48px] md:py-[70px] overflow-hidden" style={{ background: "#080808", borderTop: "1px solid #1a1a1a" }}>
 
       {/* circuit grid lines */}
       <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ opacity: 0.10 }} preserveAspectRatio="xMidYMid slice">

@@ -144,7 +144,7 @@ function TechLogo({ tech }: { tech: Tech }) {
 
 export default function TechnologyCategories() {
   return (
-    <section className="px-[40px] py-[56px]" style={{ background: "#fafafa", borderTop: "1px solid #eee", position: "relative", overflow: "hidden" }}>
+    <section className="px-[16px] md:px-[40px] py-[40px] md:py-[56px]" style={{ background: "#fafafa", borderTop: "1px solid #eee", position: "relative", overflow: "hidden" }}>
 
       {/* ── Ambient light blobs ── */}
       <div aria-hidden="true" style={{ position: "absolute", top: "-80px", left: "15%", width: "500px", height: "500px", borderRadius: "50%", background: "radial-gradient(circle, rgba(239,80,35,0.10) 0%, transparent 70%)", pointerEvents: "none", zIndex: 0, filter: "blur(40px)" }} />

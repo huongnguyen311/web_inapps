@@ -66,7 +66,7 @@ function getIcon(label: string) {
 export default function ServiceTechStack({ groups }: Props) {
   return (
     <section
-      className="px-[40px] py-[70px]"
+      className="px-[16px] md:px-[40px] py-[48px] md:py-[70px]"
       style={{ background: "#0a0a0a", borderTop: "1px solid #1a1a1a" }}
     >
       <div className="max-w-[1320px] mx-auto flex flex-col gap-[48px]">

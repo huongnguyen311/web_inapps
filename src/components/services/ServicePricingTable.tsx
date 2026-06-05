@@ -7,12 +7,12 @@ interface Props {
 
 export default function ServicePricingTable({ tiers }: Props) {
   return (
-    <section className="px-[40px] py-[70px]" style={{ background: "#111111", borderBottom: "1px solid #1f1f1f" }}>
+    <section className="px-[16px] md:px-[40px] py-[48px] md:py-[70px]" style={{ background: "#111111", borderBottom: "1px solid #1f1f1f" }}>
       <div className="max-w-[1200px] mx-auto">
         <h2 className="font-black text-white text-[32px] leading-[1.15] tracking-[-0.8px] mb-[8px]">Choose your engagement</h2>
         <p className="text-[15px] text-[#888] mb-[48px]">No fixed prices - we scope every engagement to your specific needs.</p>
 
-        <div className="grid grid-cols-3 gap-[16px] items-end">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-[16px] items-end">
           {tiers.map((tier) => (
             <Link
               key={tier.name}

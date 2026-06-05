@@ -7,7 +7,7 @@ export default function ResultsSection({ metrics, successStory, keyOutcomes }: P
   const displayOutcomes = keyOutcomes.slice(0, 4);
 
   return (
-    <section className="relative px-[40px] py-[70px]">
+    <section className="relative px-[16px] md:px-[40px] py-[48px] md:py-[70px]">
       <div className="max-w-[1320px] mx-auto relative" style={{ zIndex: 1 }}>
 
         {/* Header */}
@@ -23,15 +23,13 @@ export default function ResultsSection({ metrics, successStory, keyOutcomes }: P
 
         {/* Stat Cards — compact 36px */}
         <div
-          className="grid mb-[48px]"
+          className="grid grid-cols-2 mb-[48px] rounded-[16px] overflow-hidden"
           style={{
-            gridTemplateColumns: `repeat(${metrics.length}, 1fr)`,
             gap: 1,
             background: "rgba(255,255,255,0.06)",
-            borderRadius: 16,
-            overflow: "hidden",
           }}
         >
+
           {metrics.map((m, i) => (
             <div key={i} style={{ background: "#111", padding: "24px 16px", textAlign: "center" }}>
               <div

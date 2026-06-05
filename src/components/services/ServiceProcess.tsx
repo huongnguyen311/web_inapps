@@ -84,7 +84,7 @@ export default function ServiceProcess({ steps }: Props) {
   }, []);
 
   return (
-    <section className="px-[40px] py-[70px]" style={{ background: "#ffffff", borderTop: "1px solid #e8e8e8" }}>
+    <section className="px-[16px] md:px-[40px] py-[48px] md:py-[70px]" style={{ background: "#ffffff", borderTop: "1px solid #e8e8e8" }}>
       <div className="max-w-[1320px] mx-auto flex flex-col gap-[48px]">
 
         {/* header */}

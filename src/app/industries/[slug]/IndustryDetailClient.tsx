@@ -70,8 +70,7 @@ export default function IndustryDetailClient({ industry }: { industry: IndustryD
 
         {/* ── S1: Hero ── */}
         <section
-          className="relative px-[40px] overflow-hidden flex flex-col items-start gap-[28px]"
-          style={{ minHeight: "850px", paddingTop: "228px", paddingBottom: "100px" }}
+          className="relative px-[16px] md:px-[40px] overflow-hidden flex flex-col items-start gap-[28px] min-h-[600px] md:min-h-[850px] pt-[140px] md:pt-[228px] pb-[60px] md:pb-[100px]"
         >
           {/* Banner background */}
           <div className="absolute inset-0">
@@ -127,7 +126,7 @@ export default function IndustryDetailClient({ industry }: { industry: IndustryD
         <ServiceTrustedLogos />
 
         {/* ── S3: Where AI Projects Fail ── */}
-        <section className="relative px-[40px] py-[70px] overflow-hidden" style={{ background: "#f4f4f4", borderTop: "1px solid #e8e8e8" }}>
+        <section className="relative px-[16px] md:px-[40px] py-[48px] md:py-[70px] overflow-hidden" style={{ background: "#f4f4f4", borderTop: "1px solid #e8e8e8" }}>
 
           {/* Large faded text — top right accent */}
           <span
@@ -256,7 +255,7 @@ export default function IndustryDetailClient({ industry }: { industry: IndustryD
         </section>
 
         {/* ── S4: Buyer Problem Triggers ── */}
-        <section className="px-[40px] py-[70px]" style={{ background: "#0d0d0d" }}>
+        <section className="px-[16px] md:px-[40px] py-[48px] md:py-[70px]" style={{ background: "#0d0d0d" }}>
           <div className="max-w-[1320px] mx-auto grid grid-cols-1 md:grid-cols-[360px_1fr] gap-[80px] items-center">
 
             {/* Left — title + description */}
@@ -342,7 +341,7 @@ export default function IndustryDetailClient({ industry }: { industry: IndustryD
           ];
           const panel = TABS[activeTab];
           return (
-            <section className="px-[40px] py-[70px]" style={{ background: "#f4f4f4" }}>
+            <section className="px-[16px] md:px-[40px] py-[48px] md:py-[70px]" style={{ background: "#f4f4f4" }}>
               <div
                 className="max-w-[1320px] mx-auto grid grid-cols-1 md:grid-cols-[280px_1fr] gap-0"
                 style={{
@@ -415,7 +414,7 @@ export default function IndustryDetailClient({ industry }: { industry: IndustryD
 
                 {/* Right — content panel */}
                 <div
-                  className="flex flex-col gap-[32px] px-[40px] py-[40px]"
+                  className="flex flex-col gap-[32px] px-[16px] md:px-[40px] py-[40px]"
                   style={{ background: `linear-gradient(160deg, ${panel.color}08 0%, #ffffff 40%)` }}
                 >
 
@@ -478,7 +477,7 @@ export default function IndustryDetailClient({ industry }: { industry: IndustryD
         })()}
 
         {/* ── S6: POC to Production Process ── */}
-        <section className="relative px-[40px] py-[70px] overflow-hidden" style={{ background: "#0d0d0d" }}>
+        <section className="relative px-[16px] md:px-[40px] py-[48px] md:py-[70px] overflow-hidden" style={{ background: "#0d0d0d" }}>
 
           {/* Decorative: dot grid */}
           <div className="absolute inset-0 pointer-events-none" style={{
@@ -645,7 +644,7 @@ export default function IndustryDetailClient({ industry }: { industry: IndustryD
         </section>
 
         {/* ── S7: Models & Frameworks ── */}
-        <section className="relative px-[40px] py-[70px] overflow-hidden" style={{ background: "#f4f4f4", borderTop: "1px solid #e8e8e8" }}>
+        <section className="relative px-[16px] md:px-[40px] py-[48px] md:py-[70px] overflow-hidden" style={{ background: "#f4f4f4", borderTop: "1px solid #e8e8e8" }}>
 
           {/* Circuit board lines — horizontal + vertical SVG */}
           <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg" style={{ opacity: 0.32 }}>
@@ -811,7 +810,7 @@ export default function IndustryDetailClient({ industry }: { industry: IndustryD
             </svg>
           );
           return (
-            <section className="relative px-[40px] py-[70px] overflow-hidden" style={{ background: "#0d0d0d", borderTop: "1px solid #1a1a1a" }}>
+            <section className="relative px-[16px] md:px-[40px] py-[48px] md:py-[70px] overflow-hidden" style={{ background: "#0d0d0d", borderTop: "1px solid #1a1a1a" }}>
 
               {/* Topographic contour lines */}
               <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg" style={{ opacity: 0.13 }}>
@@ -904,7 +903,7 @@ export default function IndustryDetailClient({ industry }: { industry: IndustryD
         })()}
 
         {/* ── S10: FAQ ── */}
-        <section className="px-[40px] py-[70px]" style={{ background: "#fafafa", borderTop: "1px solid #e8e8e8" }}>
+        <section className="px-[16px] md:px-[40px] py-[48px] md:py-[70px]" style={{ background: "#fafafa", borderTop: "1px solid #e8e8e8" }}>
           <div className="max-w-[1320px] mx-auto flex flex-col gap-[48px]">
 
             <div className="flex items-end justify-between">
@@ -961,7 +960,7 @@ export default function IndustryDetailClient({ industry }: { industry: IndustryD
         </section>
 
         {/* ── S11: Assessment CTA ── */}
-        <section className="px-[40px] py-[70px]" style={{ background: "#0d0d0d" }}>
+        <section className="px-[16px] md:px-[40px] py-[48px] md:py-[70px]" style={{ background: "#0d0d0d" }}>
           <div className="max-w-[680px] mx-auto flex flex-col gap-[40px]">
 
             {/* Headline */}

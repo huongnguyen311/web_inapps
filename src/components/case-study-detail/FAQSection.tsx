@@ -34,7 +34,7 @@ export default function FAQSection() {
   const [faqIndex, setFaqIndex] = useState(0);
 
   return (
-    <section className="px-[40px] py-[70px]" style={{ background: "#fafafa", borderTop: "1px solid #e8e8e8" }}>
+    <section className="px-[16px] md:px-[40px] py-[48px] md:py-[70px]" style={{ background: "#fafafa", borderTop: "1px solid #e8e8e8" }}>
       <style>{`
         @keyframes faqFade {
           from { opacity: 0; transform: translateY(8px); }
@@ -58,7 +58,7 @@ export default function FAQSection() {
         </div>
 
         {/* two-column layout: left = question list, right = answer */}
-        <div className="grid gap-[24px]" style={{ gridTemplateColumns: "1fr 1.2fr" }}>
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-[24px]">
 
           {/* left - stacked question rows */}
           <div className="flex flex-col gap-[4px]">

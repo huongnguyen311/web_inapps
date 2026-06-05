@@ -10,8 +10,7 @@ interface Props {
 export default function ServiceHero({ service }: Props) {
   return (
     <section
-      className="relative px-[40px] overflow-hidden flex flex-col items-start gap-[28px]"
-      style={{ minHeight: "850px", paddingTop: "228px", paddingBottom: "100px" }}
+      className="relative px-[16px] md:px-[40px] overflow-hidden flex flex-col items-start gap-[28px] min-h-[600px] md:min-h-[850px] pt-[140px] md:pt-[228px] pb-[60px] md:pb-[100px]"
     >
       {/* Banner background */}
       <div className="absolute inset-0">
@@ -29,7 +28,7 @@ export default function ServiceHero({ service }: Props) {
 
       <div className="relative w-full max-w-[1320px] mx-auto">
       <div className="relative flex flex-col items-start gap-[24px] max-w-[860px]">
-        <h1 className={`font-black text-white tracking-[-2px] text-[40px] leading-[48px] sm:text-[52px] sm:leading-[60px] md:text-[68px] md:leading-[76px]${service.slug !== "ai-agent-development" && service.slug !== "custom-software-development" ? " whitespace-nowrap" : ""}`}>
+        <h1 className={`font-black text-white tracking-[-2px] text-[40px] leading-[48px] sm:text-[52px] sm:leading-[60px] md:text-[68px] md:leading-[76px]${service.slug !== "ai-agent-development" && service.slug !== "custom-software-development" ? " md:whitespace-nowrap" : ""}`}>
           {service.name}
         </h1>
         <p className="text-[#ffffff] text-[20px] leading-[32px] font-normal">

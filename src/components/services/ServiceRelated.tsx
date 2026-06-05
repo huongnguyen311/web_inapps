@@ -16,12 +16,12 @@ export default function ServiceRelated({ slugs, currentSlug }: Props) {
   if (related.length === 0) return null;
 
   return (
-    <section className="px-[40px] py-[70px]" style={{ background: "#fafafa", borderBottom: "1px solid #eee" }}>
+    <section className="px-[16px] md:px-[40px] py-[48px] md:py-[70px]" style={{ background: "#fafafa", borderBottom: "1px solid #eee" }}>
       <div className="max-w-[1200px] mx-auto">
         <p className="text-[11px] font-bold tracking-[2px] uppercase text-[#ef5023] mb-[8px]">RELATED SERVICES</p>
         <h2 className="font-black text-[#111] text-[28px] leading-[1.15] tracking-[-0.6px] mb-[32px]">You might also need</h2>
 
-        <div className="grid grid-cols-3 gap-[16px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[16px]">
           {related.map((svc) => (
             <Link
               key={svc.slug}

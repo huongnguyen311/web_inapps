@@ -27,9 +27,9 @@ export default function TalentPage() {
       <main className="flex-1 pt-[73px]">
 
         {/* Hero Section */}
-        <section className="max-w-[1280px] mx-auto px-[80px] py-[96px] flex flex-col gap-[96px]">
+        <section className="max-w-[1280px] mx-auto px-[20px] lg:px-[80px] py-[48px] lg:py-[96px] flex flex-col gap-[48px] lg:gap-[96px]">
           {/* Hero Grid */}
-          <div className="grid grid-cols-2 gap-x-[48px] gap-y-[48px] items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-[48px] gap-y-[48px] items-center">
             {/* Left: Heading + CTA */}
             <div className="flex flex-col gap-[32px]">
               <div className="flex flex-col gap-[16px]">
@@ -42,7 +42,7 @@ export default function TalentPage() {
                 </div>
 
                 {/* Heading */}
-                <h1 className="font-black text-[60px] tracking-[-1.5px] text-[#0f172a] leading-[60px]">
+                <h1 className="font-black text-[36px] lg:text-[60px] tracking-[-1.5px] text-[#0f172a] leading-[40px] lg:leading-[60px]">
                   Work with the{" "}
                   <span className="text-[#ff4929]">Top</span>
                   <br />
@@ -52,7 +52,7 @@ export default function TalentPage() {
                 </h1>
 
                 {/* Description */}
-                <p className="text-[#475569] text-[20px] leading-[28px] max-w-[576px]">
+                <p className="text-[#475569] text-[16px] lg:text-[20px] leading-[24px] lg:leading-[28px] max-w-[576px]">
                   We rigorously vet our developers through four layers of
                   assessment to ensure you get the highest quality engineering
                   and professional expertise for your mission-critical projects.
@@ -60,7 +60,7 @@ export default function TalentPage() {
               </div>
 
               {/* Buttons */}
-              <div className="flex gap-[16px]">
+              <div className="flex flex-col sm:flex-row gap-[16px]">
                 <button className="relative bg-[#ff4929] text-white font-bold text-[16px] h-[56px] min-w-[160px] px-[35px] rounded-[8px] shadow-[0px_20px_25px_-5px_rgba(255,73,41,0.25),0px_8px_10px_-6px_rgba(255,73,41,0.25)]">
                   Get Started
                 </button>
@@ -99,7 +99,7 @@ export default function TalentPage() {
           </div>
 
           {/* Stats Cards */}
-          <div className="grid grid-cols-3 gap-[24px]">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-[24px]">
             {/* Stat 1 */}
             <div className="bg-white border border-[rgba(255,73,41,0.1)] rounded-[16px] shadow-[0px_1px_1px_rgba(0,0,0,0.05)] p-[33px] flex flex-col gap-[12px]">
               <img alt="" className="h-[28.5px] object-contain object-left" src={imgStatIcon1} />
@@ -133,11 +133,11 @@ export default function TalentPage() {
         </section>
 
         {/* Recruitment Process Section */}
-        <section className="bg-[rgba(255,73,41,0.05)] px-[80px] py-[80px] w-full">
+        <section className="bg-[rgba(255,73,41,0.05)] px-[20px] lg:px-[80px] py-[48px] lg:py-[80px] w-full">
           <div className="max-w-[1280px] mx-auto flex flex-col gap-[64px]">
             {/* Section header */}
             <div className="flex flex-col gap-[16px] items-center text-center">
-              <h2 className="font-black text-[#0f172a] text-[36px] tracking-[-0.9px] leading-[40px]">
+              <h2 className="font-black text-[#0f172a] text-[28px] lg:text-[36px] tracking-[-0.9px] leading-[32px] lg:leading-[40px]">
                 Our Rigorous Recruitment Process
               </h2>
               <p className="text-[#475569] text-[18px] leading-[28px] max-w-[672px]">
@@ -146,13 +146,15 @@ export default function TalentPage() {
             </div>
 
             {/* Timeline Steps */}
-            <div className="relative flex items-start justify-between gap-[0]">
-              {/* Horizontal connecting line */}
-              <div className="absolute bg-[rgba(255,73,41,0.2)] h-[2px] left-0 right-0 top-[48px]" />
+            <div className="relative flex flex-col lg:flex-row items-start lg:justify-between gap-[32px] lg:gap-[0]">
+              {/* Horizontal connecting line (desktop only) */}
+              <div className="hidden lg:block absolute bg-[rgba(255,73,41,0.2)] h-[2px] left-0 right-0 top-[48px]" />
+              {/* Vertical connecting line (mobile only) */}
+              <div className="lg:hidden absolute bg-[rgba(255,73,41,0.2)] w-[2px] top-0 bottom-0 left-[48px]" />
 
               {/* Step 1 */}
-              <div className="flex flex-1 flex-col items-start min-w-0">
-                <div className="flex flex-col h-[120px] items-start pb-[24px]">
+              <div className="flex flex-row lg:flex-col lg:flex-1 items-start min-w-0 gap-[16px] lg:gap-0">
+                <div className="flex flex-col lg:h-[120px] items-start lg:pb-[24px] shrink-0">
                   <div className="relative bg-white border-4 border-[#ff4929] rounded-[16px] w-[96px] h-[96px] flex items-center justify-center shadow-[0px_20px_25px_-5px_rgba(0,0,0,0.1),0px_8px_10px_-6px_rgba(0,0,0,0.1)]">
                     <img alt="" className="w-[27px] h-[27px] object-contain" src={imgStep1} />
                   </div>
@@ -167,8 +169,8 @@ export default function TalentPage() {
               </div>
 
               {/* Step 2 */}
-              <div className="flex flex-1 flex-col items-start min-w-0">
-                <div className="flex flex-col h-[120px] items-start pb-[24px]">
+              <div className="flex flex-row lg:flex-col lg:flex-1 items-start min-w-0 gap-[16px] lg:gap-0">
+                <div className="flex flex-col lg:h-[120px] items-start lg:pb-[24px] shrink-0">
                   <div className="relative bg-white border-4 border-[#ff4929] rounded-[16px] w-[96px] h-[96px] flex items-center justify-center shadow-[0px_20px_25px_-5px_rgba(0,0,0,0.1),0px_8px_10px_-6px_rgba(0,0,0,0.1)]">
                     <img alt="" className="w-[30px] h-[24px] object-contain" src={imgStep2} />
                   </div>
@@ -183,8 +185,8 @@ export default function TalentPage() {
               </div>
 
               {/* Step 3 */}
-              <div className="flex flex-1 flex-col items-start min-w-0">
-                <div className="flex flex-col h-[120px] items-start pb-[24px]">
+              <div className="flex flex-row lg:flex-col lg:flex-1 items-start min-w-0 gap-[16px] lg:gap-0">
+                <div className="flex flex-col lg:h-[120px] items-start lg:pb-[24px] shrink-0">
                   <div className="relative bg-white border-4 border-[#ff4929] rounded-[16px] w-[96px] h-[96px] flex items-center justify-center shadow-[0px_20px_25px_-5px_rgba(0,0,0,0.1),0px_8px_10px_-6px_rgba(0,0,0,0.1)]">
                     <img alt="" className="w-[30px] h-[30px] object-contain" src={imgStep3} />
                   </div>
@@ -199,8 +201,8 @@ export default function TalentPage() {
               </div>
 
               {/* Step 4 - active/highlighted */}
-              <div className="flex flex-1 flex-col items-start min-w-0">
-                <div className="flex flex-col h-[120px] items-start pb-[24px]">
+              <div className="flex flex-row lg:flex-col lg:flex-1 items-start min-w-0 gap-[16px] lg:gap-0">
+                <div className="flex flex-col lg:h-[120px] items-start lg:pb-[24px] shrink-0">
                   <div className="relative bg-[#ff4929] rounded-[16px] w-[96px] h-[96px] flex items-center justify-center shadow-[0px_20px_25px_-5px_rgba(255,73,41,0.4),0px_8px_10px_-6px_rgba(255,73,41,0.4)]">
                     <img alt="" className="w-[30.07px] h-[30.106px] object-contain" src={imgStep4} />
                   </div>
@@ -218,8 +220,8 @@ export default function TalentPage() {
         </section>
 
         {/* Culture Section */}
-        <section className="max-w-[1280px] mx-auto px-[80px] py-[96px] w-full">
-          <div className="grid grid-cols-2 gap-x-[64px] items-center">
+        <section className="max-w-[1280px] mx-auto px-[20px] lg:px-[80px] py-[48px] lg:py-[96px] w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-[64px] gap-y-[48px] items-center">
             {/* Left: Photo Grid */}
             <div className="grid grid-cols-2 gap-[16px]">
               {/* Left column - offset down */}
@@ -248,7 +250,7 @@ export default function TalentPage() {
                 <p className="font-bold text-[#ef5023] text-[11px] tracking-[2px] uppercase">
                   CULTURE FIRST
                 </p>
-                <h2 className="font-black text-[#0f172a] text-[48px] leading-[48px]">
+                <h2 className="font-black text-[#0f172a] text-[32px] lg:text-[48px] leading-[36px] lg:leading-[48px]">
                   Engineering Minds,
                   <br />
                   Human Hearts
@@ -283,15 +285,15 @@ export default function TalentPage() {
         </section>
 
         {/* Dark CTA Section */}
-        <section className="bg-[#0f172a] px-[256px] py-[80px] w-full">
+        <section className="bg-[#0f172a] px-[20px] lg:px-[256px] py-[48px] lg:py-[80px] w-full">
           <div className="max-w-[768px] mx-auto flex flex-col gap-[32px] items-center text-center">
-            <h2 className="font-black text-white text-[48px] tracking-[-1.2px] leading-[48px]">
+            <h2 className="font-black text-white text-[32px] lg:text-[48px] tracking-[-1.2px] leading-[36px] lg:leading-[48px]">
               Ready to scale your team?
             </h2>
             <p className="text-[#94a3b8] text-[18px] leading-[28px]">
               Stop settling for mediocre. Hire vetted talent that delivers clean, scalable, and high-performance code.
             </p>
-            <div className="flex gap-[16px] pt-[16px]">
+            <div className="flex flex-col sm:flex-row gap-[16px] pt-[16px]">
               <button className="bg-[#ff4929] text-white font-bold text-[18px] px-[40px] py-[20px] rounded-[12px]">
                 Schedule a Call
               </button>

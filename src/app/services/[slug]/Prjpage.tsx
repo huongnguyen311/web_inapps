@@ -55,7 +55,7 @@ const PAIN_CARDS = [
 
 function PrjBusinessPainSection() {
   return (
-    <section className="px-[40px] py-[70px]" style={{ background: "#fff", borderTop: "1px solid #f0f0f0", borderBottom: "1px solid #f0f0f0" }}>
+    <section className="px-[16px] md:px-[40px] py-[48px] md:py-[70px]" style={{ background: "#fff", borderTop: "1px solid #f0f0f0", borderBottom: "1px solid #f0f0f0" }}>
       <div className="max-w-[1320px] mx-auto flex flex-col gap-[52px]">
         {/* Heading — centered */}
         <div className="flex flex-col gap-[10px]">
@@ -114,7 +114,7 @@ function PrjOverviewSection({ service }: { service: ServiceData }) {
   if (!serviceOverview.enabled) return null;
 
   return (
-    <section className="px-[40px] py-[80px]" style={{ background: "#f7f7f7" }}>
+    <section className="px-[16px] md:px-[40px] py-[48px] md:py-[80px]" style={{ background: "#f7f7f7" }}>
       <div className="max-w-[1320px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-[64px] items-center">
         {/* Text */}
         <div className="flex flex-col gap-[28px]">
@@ -160,7 +160,7 @@ function PrjWhatYouGetSection({ service }: { service: ServiceData }) {
   if (!whatYouGet.enabled) return null;
 
   return (
-    <section className="px-[40px] py-[80px]" style={{ background: "#0a0a0a" }}>
+    <section className="px-[16px] md:px-[40px] py-[48px] md:py-[80px]" style={{ background: "#0a0a0a" }}>
       <div className="max-w-[1320px] mx-auto flex flex-col gap-[48px]">
         <div className="flex flex-col gap-[8px]">
           <p className="text-[#ef5023] text-[11px] font-bold tracking-[2px] uppercase">What&apos;s Included</p>
@@ -194,7 +194,7 @@ function PrjProcessSection({ service }: { service: ServiceData }) {
   if (!process.enabled) return null;
 
   return (
-    <section className="px-[40px] py-[80px]" style={{ background: "#f7f7f7" }}>
+    <section className="px-[16px] md:px-[40px] py-[48px] md:py-[80px]" style={{ background: "#f7f7f7" }}>
       <div className="max-w-[1320px] mx-auto flex flex-col gap-[48px]">
         <div className="flex flex-col gap-[8px]">
           <p className="text-[#ef5023] text-[11px] font-bold tracking-[2px] uppercase">How We Work</p>
@@ -238,7 +238,7 @@ function PrjCaseStudySection({ service }: { service: ServiceData }) {
   if (!caseStudy.enabled || caseStudy.items.length === 0) return null;
 
   return (
-    <section className="px-[40px] py-[80px]" style={{ background: "#0a0a0a" }}>
+    <section className="px-[16px] md:px-[40px] py-[48px] md:py-[80px]" style={{ background: "#0a0a0a" }}>
       <div className="max-w-[1320px] mx-auto flex flex-col gap-[48px]">
         <div className="flex flex-col gap-[8px]">
           <p className="text-[#ef5023] text-[11px] font-bold tracking-[2px] uppercase">Case Studies</p>
@@ -369,7 +369,7 @@ const TECH_STACKS = [
 
 function PrjTechStackSection() {
   return (
-    <section className="relative px-[40px] py-[70px] overflow-hidden" style={{ background: "#0a0a0a", borderTop: "1px solid #1a1a1a" }}>
+    <section className="relative px-[16px] md:px-[40px] py-[48px] md:py-[70px] overflow-hidden" style={{ background: "#0a0a0a", borderTop: "1px solid #1a1a1a" }}>
       {/* Radial gradient glow */}
       <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 60% 70% at 50% 50%, rgba(239,80,35,0.14) 0%, transparent 70%)" }} />
       <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 80% at 10% 100%, rgba(239,80,35,0.14) 0%, transparent 60%)" }} />
@@ -466,7 +466,7 @@ function PrjCaseStudiesSection() {
   const active = PRJ_CASE_STUDIES[activeIdx];
 
   return (
-    <section className="relative px-[40px] py-[70px]" style={{ background: "#ffffff", borderTop: "1px solid #e8e8e8" }}>
+    <section className="relative px-[16px] md:px-[40px] py-[48px] md:py-[70px]" style={{ background: "#ffffff", borderTop: "1px solid #e8e8e8" }}>
       <div className="max-w-[1320px] mx-auto flex flex-col gap-[24px]">
 
         {/* header */}
@@ -502,9 +502,9 @@ function PrjCaseStudiesSection() {
         </div>
 
         {/* card */}
-        <div className="rounded-[20px] overflow-hidden grid grid-cols-2" style={{ background: "#f5f5f5", border: "1px solid #e8e8e8", minHeight: "460px" }}>
+        <div className="rounded-[20px] overflow-hidden grid grid-cols-1 md:grid-cols-2" style={{ background: "#f5f5f5", border: "1px solid #e8e8e8", minHeight: "460px" }}>
           {/* left */}
-          <div className="relative flex flex-col justify-between gap-[28px] px-[40px] py-[40px]" style={{ background: "#1a1a1a" }}>
+          <div className="relative flex flex-col justify-between gap-[28px] px-[16px] md:px-[40px] py-[40px]" style={{ background: "#1a1a1a" }}>
             <div className="absolute inset-0 pointer-events-none"
               style={{ backgroundImage: "radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
             <div className="relative flex flex-col gap-[20px]">
@@ -573,7 +573,7 @@ function PrjCommonQuestions() {
   const [faqIndex, setFaqIndex] = useState(0);
 
   return (
-    <section className="px-[40px] py-[70px]" style={{ background: "#f5f5f5", borderTop: "1px solid #e8e8e8" }}>
+    <section className="px-[16px] md:px-[40px] py-[48px] md:py-[70px]" style={{ background: "#f5f5f5", borderTop: "1px solid #e8e8e8" }}>
       <div className="max-w-[1320px] mx-auto flex flex-col gap-[48px]">
 
         <div className="flex flex-col gap-[10px]">
@@ -583,7 +583,7 @@ function PrjCommonQuestions() {
           </h2>
         </div>
 
-        <div className="grid gap-[24px]" style={{ gridTemplateColumns: "1fr 1.2fr" }}>
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-[24px]">
           {/* left — question list */}
           <div className="flex flex-col gap-[4px]">
             {PRJ_FAQ.map(({ label, question }, i) => (
@@ -630,7 +630,7 @@ export default function PrjPageClient({ service }: Props) {
         <ServiceTrustedLogos />
         <PrjBusinessPainSection />
         {/* Delivery pillars */}
-        <section className="relative px-[40px] py-[70px] overflow-hidden" style={{ background: "#0a0a0a", borderTop: "1px solid #1a1a1a" }}>
+        <section className="relative px-[16px] md:px-[40px] py-[48px] md:py-[70px] overflow-hidden" style={{ background: "#0a0a0a", borderTop: "1px solid #1a1a1a" }}>
           {/* Pattern background */}
           <div
             className="absolute inset-0 pointer-events-none"

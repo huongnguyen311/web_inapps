@@ -91,7 +91,7 @@ export default function ServicesPage() {
       <Header />
       <main className="flex-1 flex flex-col">
         {/* Hero Section */}
-        <section className="relative px-[40px] overflow-hidden flex flex-col items-start gap-[28px]" style={{ minHeight: "850px", paddingTop: "228px", paddingBottom: "100px" }}>
+        <section className="relative px-[16px] md:px-[40px] overflow-hidden flex flex-col items-start gap-[28px] min-h-[560px] md:min-h-[850px] pt-[140px] md:pt-[228px] pb-[60px] md:pb-[100px]">
           {/* Banner background */}
           <div className="absolute inset-0">
             <img
@@ -109,7 +109,7 @@ export default function ServicesPage() {
           <div className="relative w-full max-w-[1320px] mx-auto">
           <div className="relative flex flex-col items-start gap-[24px] max-w-[860px]">
             {/* Heading */}
-            <h1 className="font-black text-white text-[40px] leading-[48px] sm:text-[52px] sm:leading-[60px] md:text-[68px] md:leading-[76px] tracking-[-2px] whitespace-nowrap">
+            <h1 className="font-black text-white text-[40px] leading-[48px] sm:text-[52px] sm:leading-[60px] md:text-[68px] md:leading-[76px] tracking-[-2px] md:whitespace-nowrap">
               AI-Powered <span className="text-[#ef5023]">Software</span> Solutions
               <br />for Growing Businesses
             </h1>
@@ -143,6 +143,14 @@ export default function ServicesPage() {
         <ServiceTrustedLogos />
 
         {/* ── All Service Sections ── */}
+        <style>{`
+          .service-cards-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+          @media (min-width: 640px) { .service-cards-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; } }
+          @media (min-width: 1024px) { .service-cards-grid { grid-template-columns: repeat(4, 1fr); gap: 24px; } }
+          .service-cards-scroll { display: flex; flex-direction: row; gap: 16px; }
+          @media (min-width: 640px) { .service-cards-scroll { gap: 20px; } }
+          @media (min-width: 1024px) { .service-cards-scroll { gap: 24px; } }
+        `}</style>
         <section>
 
           {/* shared card renderer */}
@@ -176,11 +184,11 @@ export default function ServicesPage() {
 
               {/* ── Banner ── */}
               <div
-                className="px-[40px] py-[32px]"
+                className="px-[16px] md:px-[40px] py-[32px]"
                 style={{ background: spec.dark ? "#f0f0f0" : "#f7f7f7", borderBottom: "1px solid #e8e8e8" }}
               >
                 <div className="max-w-[1320px] mx-auto flex items-center justify-between">
-                  <div className="flex items-center gap-[24px]">
+                  <div className="flex items-center gap-[16px] md:gap-[24px] min-w-0">
                     {/* Number pill */}
                     <div
                       className="shrink-0 flex items-center justify-center rounded-[8px]"
@@ -189,12 +197,12 @@ export default function ServicesPage() {
                       <span className="font-black text-[13px] tabular-nums" style={{ color: "#ffffff", letterSpacing: "0.5px" }}>{spec.num}</span>
                     </div>
                     {/* Titles */}
-                    <div className="flex flex-col gap-[3px]">
-                      <span className="font-black text-[24px] leading-[1.1] tracking-[-0.6px]" style={{ color: "#111111" }}>{spec.title}</span>
-                      <span className="text-[14px] leading-[1.5]" style={{ color: "#6b7280" }}>{spec.sub}</span>
+                    <div className="flex flex-col gap-[3px] min-w-0">
+                      <span className="font-black text-[20px] md:text-[24px] leading-[1.1] tracking-[-0.6px]" style={{ color: "#111111" }}>{spec.title}</span>
+                      <span className="text-[13px] md:text-[14px] leading-[1.5]" style={{ color: "#6b7280" }}>{spec.sub}</span>
                     </div>
                   </div>
-                  <div className="flex items-center gap-[8px]">
+                  <div className="hidden md:flex items-center gap-[8px]">
                     <span className="font-semibold text-[11px] tracking-[1.2px] uppercase" style={{ color: "#9ca3af" }}>{spec.count}</span>
                     <div className="w-[5px] h-[5px] rounded-full shrink-0" style={{ background: "#ef5023" }} />
                   </div>
@@ -202,16 +210,16 @@ export default function ServicesPage() {
               </div>
 
               {/* ── Cards ── */}
-              <div className="px-[40px] py-[32px]" style={{ background: spec.bg }}>
+              <div className="px-[16px] md:px-[40px] py-[32px]" style={{ background: spec.bg }}>
                 <div className="max-w-[1320px] mx-auto">
                 <div
                   ref={spec.items.length > 4 ? aiScrollRef : undefined}
-                  className="overflow-x-auto pb-[8px]"
-                  style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+                  className={spec.items.length > 4 ? "overflow-x-auto pb-[8px]" : ""}
+                  style={spec.items.length > 4 ? { scrollbarWidth: "none", msOverflowStyle: "none" } : undefined}
                 >
                 <div
-                  className="flex flex-row gap-[24px]"
-                  style={{ width: "100%", flexWrap: spec.items.length > 4 ? "nowrap" : "wrap" }}
+                  className={spec.items.length > 4 ? "service-cards-scroll" : "service-cards-grid"}
+                  style={spec.items.length > 4 ? { width: "max-content" } : undefined}
                 >
                   {spec.items.map(({ service, tag, highlight }) => (
                     <Link
@@ -223,7 +231,7 @@ export default function ServicesPage() {
                         background: spec.cardBg,
                         border: highlight ? "1.5px solid #ef5023" : `1px solid ${spec.cardBorder}`,
                         transition: "transform 0.2s, border-color 0.15s",
-                        flex: "0 0 calc(25% - 18px)",
+                        ...(spec.items.length > 4 ? { flex: "0 0 280px" } : {}),
                       }}
                     >
                       {/* Illustration */}
@@ -299,7 +307,7 @@ export default function ServicesPage() {
         </section>
 
         {/* ── Common Questions ── */}
-        <section className="px-[40px] py-[80px]" style={{ background: "#fafafa", borderTop: "1px solid #e8e8e8" }}>
+        <section className="px-[16px] md:px-[40px] py-[48px] md:py-[80px]" style={{ background: "#fafafa", borderTop: "1px solid #e8e8e8" }}>
           <style>{`
             @keyframes faqFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
             .animate-faq-fade { animation: faqFade 0.25s ease forwards; }
@@ -317,7 +325,7 @@ export default function ServicesPage() {
             </div>
 
             {/* two-column layout */}
-            <div className="grid gap-[24px]" style={{ gridTemplateColumns: "1fr 1.2fr" }}>
+            <div className="grid gap-[24px] grid-cols-1 md:grid-cols-[1fr_1.2fr]">
 
               {/* left - question list */}
               <div className="flex flex-col gap-[4px]">
@@ -361,10 +369,10 @@ export default function ServicesPage() {
         </section>
 
         {/* ── Bottom CTA strip ── */}
-        <section className="px-[40px] py-[64px]" style={{ background: "#0d0d0d" }}>
+        <section className="px-[16px] md:px-[40px] py-[40px] md:py-[64px]" style={{ background: "#0d0d0d" }}>
           <div className="max-w-[1320px] mx-auto">
             <div
-              className="relative flex items-center justify-between gap-[48px] px-[56px] py-[44px] rounded-[20px] overflow-hidden"
+              className="relative flex flex-col md:flex-row items-center justify-between gap-[24px] md:gap-[48px] px-[24px] md:px-[56px] py-[32px] md:py-[44px] rounded-[20px] overflow-hidden"
               style={{
                 background: "linear-gradient(110deg, #1a1a1a 0%, #141414 100%)",
                 border: "1px solid rgba(239,80,35,0.18)",
@@ -374,7 +382,7 @@ export default function ServicesPage() {
               <div className="absolute left-[-60px] top-1/2 -translate-y-1/2 w-[240px] h-[240px] rounded-full pointer-events-none blur-[80px]" style={{ background: "rgba(239,80,35,0.12)" }} />
 
               {/* Text */}
-              <div className="relative flex flex-col gap-[8px] min-w-0">
+              <div className="relative flex flex-col gap-[8px] min-w-0 text-center md:text-left">
                 <h2 className="font-black text-[26px] leading-[1.15] tracking-[-0.6px]" style={{ color: "#ffffff" }}>
                   Not sure which service fits your situation?
                 </h2>

@@ -69,7 +69,8 @@ export default function ContactForm() {
     <>
       <section
         id="contact-form"
-        style={{ background: "#fff", padding: "80px 40px", paddingTop: "200px", position: "relative", overflow: "hidden" }}
+        className="px-[16px] md:px-[40px] pt-[120px] md:pt-[200px] pb-[48px] md:pb-[80px]"
+        style={{ background: "#fff", position: "relative", overflow: "hidden" }}
       >
         {/* Glow top-left */}
         <div style={{
@@ -94,14 +95,7 @@ export default function ContactForm() {
           pointerEvents: "none",
         }} />
         <div
-          style={{
-            maxWidth: "1320px",
-            margin: "0 auto",
-            display: "grid",
-            gridTemplateColumns: "1fr 1.3fr",
-            gap: "40px",
-            alignItems: "stretch",
-          }}
+          className="max-w-[1320px] mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-[24px] lg:gap-[40px] items-stretch"
         >
           {/* ── Left: Dark Info Panel ── */}
           <div
@@ -351,13 +345,8 @@ export default function ContactForm() {
 
             {/* ── Our Achievements ── */}
             <div
-              style={{
-                borderTop: "1px solid #f0f0f0",
-                paddingTop: "24px",
-                display: "grid",
-                gridTemplateColumns: "repeat(4, 1fr)",
-                gap: "8px",
-              }}
+              className="grid grid-cols-2 md:grid-cols-4 gap-[8px] pt-[24px]"
+              style={{ borderTop: "1px solid #f0f0f0" }}
             >
               {[
                 { num: "750+", label: "Projects delivered" },
@@ -381,7 +370,7 @@ export default function ContactForm() {
       </section>
 
       {/* ── Recognition ── */}
-      <section style={{ background: "#fff", padding: "80px 40px", position: "relative", overflow: "hidden" }}>
+      <section className="px-[16px] md:px-[40px] py-[48px] md:py-[80px]" style={{ background: "#fff", position: "relative", overflow: "hidden" }}>
         {/* Wave background pattern */}
         <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%", pointerEvents: "none" }} preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
           <path d="M0,60 C200,20 400,100 600,60 S1000,20 1400,60 S1800,100 2000,60" fill="none" stroke="#ef5023" strokeWidth="1.5" opacity="0.18"/>

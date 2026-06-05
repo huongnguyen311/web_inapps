@@ -24,7 +24,7 @@ export default function ProcessSection({ teamStructure, teamImage }: Props) {
   return (
     <section
       ref={sectionRef}
-      className="relative px-[40px] py-[70px] overflow-hidden"
+      className="relative px-[16px] md:px-[40px] py-[48px] md:py-[70px] overflow-hidden"
       style={{ background: "#ffffff" }}
     >
       {/* Subtle background glow */}

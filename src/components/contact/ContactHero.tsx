@@ -2,8 +2,7 @@
 export default function ContactHero() {
   return (
     <section
-      className="relative px-[40px] overflow-hidden flex flex-col items-start gap-[28px]"
-      style={{ minHeight: "850px", paddingTop: "228px", paddingBottom: "100px" }}
+      className="relative px-[16px] md:px-[40px] overflow-hidden flex flex-col items-start gap-[28px] min-h-[600px] md:min-h-[850px] pt-[140px] md:pt-[228px] pb-[60px] md:pb-[100px]"
     >
       {/* Banner background */}
       <div className="absolute inset-0">

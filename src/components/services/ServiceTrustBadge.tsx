@@ -1,7 +1,7 @@
 export default function ServiceTrustBadge({ background = "#ffffff" }: { background?: string }) {
   return (
-    <section className="px-[40px] py-[32px]" style={{ background }}>
-      <div className="max-w-[1320px] mx-auto grid grid-cols-5 gap-[14px]">
+    <section className="px-[16px] md:px-[40px] py-[32px]" style={{ background }}>
+      <div className="max-w-[1320px] mx-auto grid grid-cols-2 md:grid-cols-5 gap-[14px]">
 
         {/* Rating card */}
         <div

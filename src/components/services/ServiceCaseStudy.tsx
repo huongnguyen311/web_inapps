@@ -51,7 +51,7 @@ export default function ServiceCaseStudy({ data }: Props) {
   if (!cs) return null;
 
   return (
-    <section className="relative px-[40px] py-[70px] overflow-hidden" style={{ background: "#ffffff", borderTop: "1px solid #e8e8e8" }}>
+    <section className="relative px-[16px] md:px-[40px] py-[48px] md:py-[70px] overflow-hidden" style={{ background: "#ffffff", borderTop: "1px solid #e8e8e8" }}>
 
       {/* circuit board pattern */}
       <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ opacity: 0.07 }} preserveAspectRatio="xMidYMid slice">
@@ -130,7 +130,7 @@ export default function ServiceCaseStudy({ data }: Props) {
       <div className="relative max-w-[1200px] mx-auto rounded-[20px] overflow-hidden grid grid-cols-1 md:grid-cols-2" style={{ background: "#f5f5f5", border: "1px solid #e8e8e8", minHeight: "460px" }}>
 
         {/* LEFT - dark text card */}
-        <div className="relative flex flex-col justify-between gap-[28px] px-[40px] py-[40px] rounded-l-[20px]" style={{ background: "#1a1a1a" }}>
+        <div className="relative flex flex-col justify-between gap-[28px] px-[16px] md:px-[40px] py-[40px] rounded-l-[20px]" style={{ background: "#1a1a1a" }}>
           {/* dot pattern */}
           <div className="absolute inset-0 pointer-events-none rounded-l-[20px]"
             style={{ backgroundImage: "radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px)", backgroundSize: "20px 20px" }} />

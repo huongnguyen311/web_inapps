@@ -240,9 +240,9 @@ export default function Footer() {
       </svg>
 
       {/* Top - main content */}
-      <div className="relative z-10 px-[40px] pt-[64px] pb-[48px]">
+      <div className="relative z-10 px-[20px] md:px-[40px] pt-[48px] md:pt-[64px] pb-[36px] md:pb-[48px]">
         <div className="max-w-[1320px] mx-auto">
-          <div className="flex items-start justify-between gap-[48px]">
+          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-[36px] lg:gap-[48px]">
 
             {/* Brand + tagline */}
             <div className="flex flex-col gap-[24px] max-w-[320px]">
@@ -266,7 +266,7 @@ export default function Footer() {
             </div>
 
             {/* Links */}
-            <div className="flex gap-[48px] flex-wrap">
+            <div className="grid grid-cols-2 md:flex gap-[28px] md:gap-[48px] md:flex-wrap">
               {Object.entries(footerLinks).map(([heading, links]) => (
                 <div key={heading} className="flex flex-col gap-[14px]">
                   <span className="text-white text-[11px] font-bold tracking-[2px] uppercase">{heading}</span>
@@ -290,8 +290,8 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="relative z-10 border-t border-[#1a1a1a]">
-        <div className="px-[40px] py-[20px]">
-          <div className="max-w-[1320px] mx-auto flex items-center justify-between">
+        <div className="px-[20px] md:px-[40px] py-[20px]">
+          <div className="max-w-[1320px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-[8px]">
             <span className="text-[#666] text-[13px]">© 2025 InApps Technology. All rights reserved.</span>
             <div className="flex items-center gap-[4px]">
               <span className="text-[#666] text-[13px]">Ranked</span>

@@ -7,7 +7,7 @@ interface Props {
 
 export default function ServiceOverview({ data, eyebrow }: Props) {
   return (
-    <section className="relative px-[40px] py-[70px] overflow-hidden" style={{ background: "#0a0a0a", borderTop: "1px solid #1a1a1a", borderBottom: "1px solid #1a1a1a" }}>
+    <section className="relative px-[16px] md:px-[40px] py-[48px] md:py-[70px] overflow-hidden" style={{ background: "#0a0a0a", borderTop: "1px solid #1a1a1a", borderBottom: "1px solid #1a1a1a" }}>
 
       {/* corner blends */}
       <div className="absolute inset-0 pointer-events-none" style={{
@@ -59,10 +59,9 @@ export default function ServiceOverview({ data, eyebrow }: Props) {
 
           {data.stats && data.stats.length > 0 && (
             <div
-              className="grid pt-[24px]"
+              className="grid grid-cols-2 pt-[24px]"
               style={{
                 borderTop: "1px solid rgba(239,80,35,0.4)",
-                gridTemplateColumns: `repeat(${data.stats.length}, 1fr)`,
                 gap: data.stats.length >= 5 ? "12px" : "24px",
               }}
             >

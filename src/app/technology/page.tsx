@@ -49,8 +49,7 @@ export default function TechnologyPage() {
 
         {/* ── S1: Hero ── */}
         <section
-          className="relative px-[40px] overflow-hidden flex flex-col items-start gap-[28px]"
-          style={{ minHeight: "850px", paddingTop: "228px", paddingBottom: "100px" }}
+          className="relative px-[16px] md:px-[40px] overflow-hidden flex flex-col items-start gap-[28px] min-h-[600px] md:min-h-[850px] pt-[140px] md:pt-[228px] pb-[60px] md:pb-[100px]"
         >
           <div className="absolute inset-0">
             <img
@@ -103,7 +102,7 @@ export default function TechnologyPage() {
         <TechnologyCategories />
 
 {/* ── S5: FAQ ── */}
-        <section className="px-[40px] py-[56px]" style={{ background: "#fafafa", borderTop: "1px solid #e8e8e8" }}>
+        <section className="px-[16px] md:px-[40px] py-[40px] md:py-[56px]" style={{ background: "#fafafa", borderTop: "1px solid #e8e8e8" }}>
           <div className="max-w-[1320px] mx-auto flex flex-col gap-[48px]">
             <div className="flex flex-col gap-[10px]">
               <p className="text-[11px] font-bold tracking-[2px] uppercase" style={{ color: "#ef5023" }}>COMMON QUESTIONS</p>
@@ -152,7 +151,7 @@ export default function TechnologyPage() {
         </section>
 
         {/* ── S7: Final CTA ── */}
-        <section className="relative px-[40px] py-[48px] overflow-hidden" style={{ background: "#0d0d0d" }}>
+        <section className="relative px-[16px] md:px-[40px] py-[36px] md:py-[48px] overflow-hidden" style={{ background: "#0d0d0d" }}>
           <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 0 }} viewBox="0 0 1200 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
             <g stroke="rgba(255,255,255,0.08)" strokeWidth="0.8" fill="none">
               <line x1="80"  y1="20"  x2="200" y2="60"/>

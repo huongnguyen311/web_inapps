@@ -132,7 +132,7 @@ export default function ServiceAIIntegrations() {
 
   return (
     <section
-      className="relative px-[40px] py-[70px] overflow-hidden"
+      className="relative px-[16px] md:px-[40px] py-[48px] md:py-[70px] overflow-hidden"
       style={{ background: "#0d0d0d", borderTop: "1px solid #1a1a1a" }}
     >
       {/* background image */}

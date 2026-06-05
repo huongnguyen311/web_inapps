@@ -7,7 +7,7 @@ interface Props {
 
 export default function ServiceTestimonials({ items }: Props) {
   return (
-    <section className="relative px-[40px] py-[70px] overflow-hidden" style={{ background: "#0a0a0a" }}>
+    <section className="relative px-[16px] md:px-[40px] py-[48px] md:py-[70px] overflow-hidden" style={{ background: "#0a0a0a" }}>
       {/* background gradient */}
       <div className="absolute inset-0 pointer-events-none" style={{
         background: "linear-gradient(to right, #ef5023 0%, #0a0a0a 60%)",
@@ -33,7 +33,7 @@ export default function ServiceTestimonials({ items }: Props) {
           </Link>
         </div>
 
-        <div className={`grid gap-[16px] ${items.length === 1 ? "grid-cols-1 max-w-[600px]" : "grid-cols-2"}`}>
+        <div className={`grid gap-[16px] ${items.length === 1 ? "grid-cols-1 max-w-[600px]" : "grid-cols-1 md:grid-cols-2"}`}>
           {items.map((item, i) => (
             <div
               key={i}

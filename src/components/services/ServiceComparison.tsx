@@ -42,7 +42,7 @@ const COLS = "1fr 1fr 1fr 1fr";
 
 export default function ServiceComparison({ rows, competitorLabel = "Other Vendors" }: Props) {
   return (
-    <section className="px-[40px] py-[70px]" style={{ background: "#ffffff", borderTop: "1px solid #e8e8e8" }}>
+    <section className="px-[16px] md:px-[40px] py-[48px] md:py-[70px]" style={{ background: "#ffffff", borderTop: "1px solid #e8e8e8" }}>
       <div className="max-w-[1320px] mx-auto">
 
         {/* section header */}
@@ -54,7 +54,7 @@ export default function ServiceComparison({ rows, competitorLabel = "Other Vendo
         </div>
 
         {/* table */}
-        <div className="rounded-[16px] overflow-hidden" style={{ border: "1px solid #e8e8e8", boxShadow: "0 8px 40px rgba(0,0,0,0.10), 0 2px 8px rgba(239,80,35,0.06)" }}>
+        <div className="rounded-[16px] overflow-x-auto" style={{ border: "1px solid #e8e8e8", boxShadow: "0 8px 40px rgba(0,0,0,0.10), 0 2px 8px rgba(239,80,35,0.06)" }}>
 
           {/* column headers */}
           <div className="grid" style={{ gridTemplateColumns: COLS }}>

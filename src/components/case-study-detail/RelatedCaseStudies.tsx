@@ -6,7 +6,7 @@ type Props = Pick<CaseStudyDetail, "relatedCases">;
 
 export default function RelatedCaseStudies({ relatedCases }: Props) {
   return (
-    <section className="px-[40px] py-[70px]" style={{ background: "#fafafa" }}>
+    <section className="px-[16px] md:px-[40px] py-[48px] md:py-[70px]" style={{ background: "#fafafa" }}>
       <div className="max-w-[1320px] mx-auto">
         <div className="flex items-end justify-between mb-[48px]">
           <div>

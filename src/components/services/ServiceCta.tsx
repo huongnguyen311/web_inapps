@@ -6,7 +6,7 @@ interface Props {
 
 export default function ServiceCta({ serviceName }: Props) {
   return (
-    <section className="relative px-[40px] py-[48px] overflow-hidden" style={{ background: "#0d0d0d" }}>
+    <section className="relative px-[16px] md:px-[40px] py-[48px] overflow-hidden" style={{ background: "#0d0d0d" }}>
       {/* constellation background */}
       <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 0 }} viewBox="0 0 1200 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
         <g stroke="rgba(255,255,255,0.08)" strokeWidth="0.8" fill="none">

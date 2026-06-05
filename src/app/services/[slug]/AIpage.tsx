@@ -16,8 +16,8 @@ interface Props {
 function AIHeroSection({ cs }: { cs: CaseStudy }) {
   return (
     <section
-      className="relative px-[40px] overflow-hidden flex items-center"
-      style={{ minHeight: "850px", paddingTop: "228px", paddingBottom: "100px", background: "#0d0d0d" }}
+      className="relative px-[16px] md:px-[40px] overflow-hidden flex items-center min-h-[600px] md:min-h-[850px] pt-[140px] md:pt-[228px] pb-[60px] md:pb-[100px]"
+      style={{ background: "#0d0d0d" }}
     >
       {/* Hero image background */}
       <div className="absolute inset-0">
@@ -75,7 +75,7 @@ function AIHeroSection({ cs }: { cs: CaseStudy }) {
 
 function AIOverviewSection() {
   return (
-    <section className="px-[40px] py-[72px]" style={{ background: "#f7f7f7", borderBottom: "1px solid #eee" }}>
+    <section className="px-[16px] md:px-[40px] py-[72px]" style={{ background: "#f7f7f7", borderBottom: "1px solid #eee" }}>
       <div className="max-w-[1320px] mx-auto flex flex-col gap-[48px]">
         <div className="flex flex-col gap-[10px]">
           <p className="text-[#ef5023] text-[11px] font-bold tracking-[2.5px] uppercase">Project Overview</p>
@@ -130,7 +130,7 @@ function AIResultsSection() {
   ];
 
   return (
-    <section className="px-[40px] py-[72px]" style={{ background: "#0a0a0a", borderTop: "1px solid #1a1a1a" }}>
+    <section className="px-[16px] md:px-[40px] py-[72px]" style={{ background: "#0a0a0a", borderTop: "1px solid #1a1a1a" }}>
       <div className="max-w-[1320px] mx-auto flex flex-col gap-[48px]">
         <div className="flex flex-col gap-[10px]">
           <p className="text-[#ef5023] text-[11px] font-bold tracking-[2.5px] uppercase">Results</p>
@@ -165,7 +165,7 @@ function AIAgentArchitectureSection() {
   ];
 
   return (
-    <section className="px-[40px] py-[72px]" style={{ background: "#f7f7f7", borderBottom: "1px solid #eee" }}>
+    <section className="px-[16px] md:px-[40px] py-[72px]" style={{ background: "#f7f7f7", borderBottom: "1px solid #eee" }}>
       <div className="max-w-[1320px] mx-auto flex flex-col gap-[48px]">
         <div className="flex flex-col gap-[10px]">
           <p className="text-[#ef5023] text-[11px] font-bold tracking-[2.5px] uppercase">Architecture</p>
@@ -214,7 +214,7 @@ function AIAgentArchitectureSection() {
 
 function AICTASection() {
   return (
-    <section className="px-[40px] py-[80px]" style={{ background: "#0d0d0d", borderTop: "1px solid #1a1a1a" }}>
+    <section className="px-[16px] md:px-[40px] py-[48px] md:py-[80px]" style={{ background: "#0d0d0d", borderTop: "1px solid #1a1a1a" }}>
       <div className="max-w-[760px] mx-auto flex flex-col items-center gap-[24px] text-center">
         <p className="text-[#ef5023] text-[11px] font-bold tracking-[2.5px] uppercase">Ready to automate?</p>
         <h2 className="font-black text-white text-[36px] leading-[44px] tracking-[-1.5px]">

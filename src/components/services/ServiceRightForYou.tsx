@@ -48,7 +48,7 @@ const cards = [
 export default function ServiceRightForYou({ checklist, variant }: Props) {
   const isAI = variant === "ai";
   return (
-    <section className="relative px-[40px] py-[70px] overflow-hidden" style={{ background: isAI ? "#f4f4f4" : "#ffffff", borderTop: "1px solid #e8e8e8" }}>
+    <section className="relative px-[16px] md:px-[40px] py-[48px] md:py-[70px] overflow-hidden" style={{ background: isAI ? "#f4f4f4" : "#ffffff", borderTop: "1px solid #e8e8e8" }}>
 
       {/* corner blends */}
       <div className="absolute inset-0 pointer-events-none" style={{

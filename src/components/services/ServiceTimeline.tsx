@@ -186,7 +186,7 @@ export default function ServiceTimeline({
   return (
     <section
       ref={sectionRef}
-      className="px-[40px] py-[70px]"
+      className="px-[16px] md:px-[40px] py-[48px] md:py-[70px]"
       style={{ background: "#f5f5f5", borderTop: "1px solid #e8e8e8" }}
     >
       <div className="max-w-[1320px] mx-auto flex flex-col gap-[48px]">

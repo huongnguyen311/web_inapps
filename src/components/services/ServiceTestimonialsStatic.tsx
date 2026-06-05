@@ -23,7 +23,7 @@ const TESTIMONIALS = [
 
 export default function ServiceTestimonialsStatic() {
   return (
-    <section className="relative px-[40px] py-[70px] overflow-hidden" style={{ background: "#080808" }}>
+    <section className="relative px-[16px] md:px-[40px] py-[48px] md:py-[70px] overflow-hidden" style={{ background: "#080808" }}>
 
       {/* subtle grid */}
       <div className="absolute inset-0 pointer-events-none" style={{
@@ -53,7 +53,7 @@ export default function ServiceTestimonialsStatic() {
         </div>
 
         {/* static grid */}
-        <div className="grid grid-cols-3 gap-[16px]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-[16px]">
           {TESTIMONIALS.map(({ quote, name, role, avatar }) => (
             <div
               key={`${name}-${role}`}

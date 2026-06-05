@@ -10,7 +10,7 @@ export default function ServiceTrustedLogos() {
         }
         .sl-animate-marquee { animation: sl-marquee 70s linear infinite; }
       `}</style>
-      <div className="max-w-[1320px] mx-auto px-[40px] flex flex-col gap-[24px]">
+      <div className="max-w-[1320px] mx-auto px-[16px] md:px-[40px] flex flex-col gap-[24px]">
 
         {/* heading */}
         <div className="flex flex-col items-center gap-[6px]">

@@ -5,7 +5,7 @@ type Props = Pick<CaseStudyDetail, "challenges">;
 
 export default function ChallengesSection({ challenges }: Props) {
   return (
-    <section className="px-[40px] py-[70px] relative overflow-hidden" style={{ background: "#0d0d0d" }}>
+    <section className="px-[16px] md:px-[40px] py-[48px] md:py-[70px] relative overflow-hidden" style={{ background: "#0d0d0d" }}>
 
       {/* Grid lines texture */}
       <div

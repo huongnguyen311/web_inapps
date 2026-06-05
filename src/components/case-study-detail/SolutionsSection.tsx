@@ -14,7 +14,7 @@ const icons = [
 
 export default function SolutionsSection({ solutions }: Props) {
   return (
-    <section className="relative px-[40px] py-[70px] overflow-hidden" style={{ background: "#fafafa" }}>
+    <section className="relative px-[16px] md:px-[40px] py-[48px] md:py-[70px] overflow-hidden" style={{ background: "#fafafa" }}>
 
       {/* Abstract background */}
       <div className="absolute pointer-events-none" style={{

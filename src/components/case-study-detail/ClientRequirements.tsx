@@ -5,7 +5,7 @@ type Props = Pick<CaseStudyDetail, "requirementGroups">;
 
 export default function ClientRequirements({ requirementGroups }: Props) {
   return (
-    <section className="relative px-[40px] py-[70px] overflow-hidden" style={{ background: "#ffffff" }}>
+    <section className="relative px-[16px] md:px-[40px] py-[48px] md:py-[70px] overflow-hidden" style={{ background: "#ffffff" }}>
 
       {/* Dot grid */}
       <div

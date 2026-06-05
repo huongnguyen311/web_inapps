@@ -11,7 +11,7 @@ export default function TechnologySection({ techCategories }: Props) {
 
   return (
     <section
-      className="px-[40px] py-[70px] relative overflow-hidden"
+      className="px-[16px] md:px-[40px] py-[48px] md:py-[70px] relative overflow-hidden"
       style={{ background: "#f8f6f5" }}
     >
       {/* Watermark */}
