@@ -38,8 +38,8 @@ function NeutralCell({ value }: { value: string | boolean }) {
   return <span className="text-[13px] text-[#666] leading-[1.5]">{value as string}</span>;
 }
 
-const COLS = "1fr 1fr 1fr 1fr";
-const TABLE_MIN_W = "640px";
+const COLS = "minmax(140px, 1.4fr) repeat(3, minmax(100px, 1fr))";
+const TABLE_MIN_W = "520px";
 
 export default function ServiceComparison({ rows, competitorLabel = "Other Vendors" }: Props) {
   return (
@@ -55,7 +55,7 @@ export default function ServiceComparison({ rows, competitorLabel = "Other Vendo
         </div>
 
         {/* table */}
-        <div className="rounded-[16px] overflow-x-auto" style={{ border: "1px solid #e8e8e8", boxShadow: "0 8px 40px rgba(0,0,0,0.10), 0 2px 8px rgba(239,80,35,0.06)" }}>
+        <div className="rounded-[16px] overflow-x-auto" style={{ border: "1px solid #e8e8e8", boxShadow: "0 8px 40px rgba(0,0,0,0.10), 0 2px 8px rgba(239,80,35,0.06)", WebkitOverflowScrolling: "touch", scrollbarWidth: "none" } as React.CSSProperties}>
           <div style={{ minWidth: TABLE_MIN_W }}>
 
           {/* column headers */}

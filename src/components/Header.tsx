@@ -175,6 +175,7 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
   }, []);
 
   return (
+    <>
     <header
       className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${dark ? "backdrop-blur-md" : ""}`}
       style={{
@@ -615,125 +616,238 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
       </div>
       </div>
 
-      {/* ── Mobile Drawer ── */}
-      {mobileOpen && (
-        <div className="md:hidden fixed inset-0 z-[60]" style={{ top: 0 }}>
-          {/* Backdrop */}
-          <div className="absolute inset-0 bg-black/50" onClick={() => setMobileOpen(false)} />
-          {/* Drawer */}
-          <div
-            className="absolute top-0 right-0 h-full w-[85%] max-w-[360px] flex flex-col overflow-y-auto"
-            style={{ background: "#fff", boxShadow: "-4px 0 24px rgba(0,0,0,0.15)" }}
-          >
-            {/* Close */}
-            <div className="flex items-center justify-between px-[20px] py-[16px]" style={{ borderBottom: "1px solid #eee" }}>
-              <span style={{ fontSize: 15, fontWeight: 700, color: "#111" }}>Menu</span>
-              <button onClick={() => setMobileOpen(false)} style={{ background: "none", border: "none", cursor: "pointer", padding: 4 }}>
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-              </button>
-            </div>
+    </header>
 
-            {/* Nav Items */}
-            <div className="flex flex-col py-[8px]">
-              {/* Services */}
-              <div>
-                <button
-                  onClick={() => setMobileSubmenu(mobileSubmenu === "services" ? null : "services")}
-                  className="w-full flex items-center justify-between px-[20px] py-[14px] text-left"
-                  style={{ background: "none", border: "none", cursor: "pointer", fontSize: 16, fontWeight: 600, color: pathname.startsWith("/services") ? "#ef5023" : "#111" }}
+      {/* ── Mobile Drawer ── (outside header to avoid backdrop-filter containing block) */}
+      <div
+        className="md:hidden fixed inset-0 z-[60]"
+        style={{
+          top: 0,
+          fontFamily: "'Inter', sans-serif",
+          visibility: mobileOpen ? "visible" : "hidden",
+          pointerEvents: mobileOpen ? "auto" : "none",
+        }}
+      >
+        {/* Backdrop */}
+        <div
+          className="absolute inset-0"
+          onClick={() => setMobileOpen(false)}
+          style={{
+            background: "rgba(0,0,0,0.5)",
+            opacity: mobileOpen ? 1 : 0,
+            transition: "opacity 0.25s ease",
+          }}
+        />
+        {/* Drawer */}
+        <div
+          className="absolute top-0 right-0 h-full w-[85%] max-w-[360px] flex flex-col overflow-y-auto"
+          style={{
+            background: "#fff",
+            boxShadow: "-4px 0 24px rgba(0,0,0,0.15)",
+            transform: mobileOpen ? "translateX(0)" : "translateX(100%)",
+            transition: "transform 0.25s ease",
+          }}
+        >
+          {/* Close */}
+          <div className="flex items-center justify-between px-[20px] py-[16px]" style={{ borderBottom: "1px solid #eee" }}>
+            <span style={{ fontSize: 15, fontWeight: 700, color: "#111" }}>Menu</span>
+            <button onClick={() => setMobileOpen(false)} style={{ background: "none", border: "none", cursor: "pointer", padding: 4 }}>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </div>
+
+          {/* Nav Items */}
+          <div className="flex flex-col py-[8px]">
+            {/* Services */}
+            <div>
+              <div className="flex items-center px-[20px]" style={{ gap: 0 }}>
+                <a
+                  href="/services"
+                  onClick={(e) => { e.stopPropagation(); setMobileOpen(false); }}
+                  style={{ flex: 1, display: "block", padding: "14px 0", fontSize: 16, fontWeight: 600, color: pathname.startsWith("/services") ? "#ef5023" : "#111", textDecoration: "none" }}
                 >
                   Services
-                  <svg width="14" height="14" viewBox="0 0 12 12" fill="none" style={{ transition: "transform 0.2s", transform: mobileSubmenu === "services" ? "rotate(180deg)" : "rotate(0deg)" }}><path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                </button>
-                {mobileSubmenu === "services" && (
-                  <div className="flex flex-col pb-[8px]" style={{ background: "#fafafa" }}>
-                    {[
-                      { title: "Dedicated Development Team", href: "/services/dedicated-development-team" },
-                      { title: "Staff Augmentation", href: "/services/staff-augmentation" },
-                      { title: "Project-Based", href: "/services/project-based-dev" },
-                      { title: "Managed Services", href: "/services/managed-services" },
-                      { title: "AI Agent Development", href: "/services/ai-agent-development" },
-                      { title: "Agentic Workflow Automation", href: "/services/agentic-workflow-automation" },
-                      { title: "Generative AI Integration", href: "/services/generative-ai-integration" },
-                      { title: "Custom Software Development", href: "/services/custom-software-development" },
-                      { title: "Cloud & DevOps", href: "/services/cloud-devops" },
-                      { title: "QA & Testing", href: "/services/qa-testing" },
-                      { title: "UI/UX Design", href: "/services/ui-ux-design" },
-                    ].map((item) => (
-                      <Link key={item.href} href={item.href} onClick={() => setMobileOpen(false)} className="px-[32px] py-[10px] text-[14px]" style={{ color: "#555", textDecoration: "none" }}>
-                        {item.title}
-                      </Link>
-                    ))}
-                    <Link href="/services" onClick={() => setMobileOpen(false)} className="px-[32px] py-[10px] text-[13px] font-semibold" style={{ color: "#ef5023", textDecoration: "none" }}>
-                      View All Services →
-                    </Link>
-                  </div>
-                )}
-              </div>
-
-              {/* Industries */}
-              <div>
+                </a>
                 <button
-                  onClick={() => setMobileSubmenu(mobileSubmenu === "industries" ? null : "industries")}
-                  className="w-full flex items-center justify-between px-[20px] py-[14px] text-left"
-                  style={{ background: "none", border: "none", cursor: "pointer", fontSize: 16, fontWeight: 600, color: pathname.startsWith("/industries") ? "#ef5023" : "#111" }}
+                  onClick={(e) => { e.stopPropagation(); setMobileSubmenu(mobileSubmenu === "services" ? null : "services"); }}
+                  style={{ background: "none", border: "none", cursor: "pointer", padding: "14px 4px 14px 12px", display: "flex", alignItems: "center" }}
+                  aria-label="Toggle Services submenu"
+                >
+                  <svg width="14" height="14" viewBox="0 0 12 12" fill="none" style={{ transition: "transform 0.2s", transform: mobileSubmenu === "services" ? "rotate(180deg)" : "rotate(0deg)" }}><path d="M2 4l4 4 4-4" stroke="#111" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                </button>
+              </div>
+              {mobileSubmenu === "services" && (
+                <div className="flex flex-col pb-[8px]" style={{ background: "#fafafa" }}>
+                  {[
+                    { title: "Dedicated Development Team", href: "/services/dedicated-development-team" },
+                    { title: "Staff Augmentation", href: "/services/staff-augmentation" },
+                    { title: "Project-Based", href: "/services/project-based-dev" },
+                    { title: "Managed Services", href: "/services/managed-services" },
+                    { title: "AI Agent Development", href: "/services/ai-agent-development" },
+                    { title: "Agentic Workflow Automation", href: "/services/agentic-workflow-automation" },
+                    { title: "Generative AI Integration", href: "/services/generative-ai-integration" },
+                    { title: "Custom Software Development", href: "/services/custom-software-development" },
+                    { title: "Cloud & DevOps", href: "/services/cloud-devops" },
+                    { title: "QA & Testing", href: "/services/qa-testing" },
+                    { title: "UI/UX Design", href: "/services/ui-ux-design" },
+                  ].map((item) => (
+                    <a key={item.href} href={item.href} onClick={() => setMobileOpen(false)} className="px-[32px] py-[10px] text-[14px]" style={{ color: "#555", textDecoration: "none" }}>
+                      {item.title}
+                    </a>
+                  ))}
+                  <a href="/services" onClick={() => setMobileOpen(false)} className="px-[32px] py-[10px] text-[13px] font-semibold" style={{ color: "#ef5023", textDecoration: "none" }}>
+                    View All Services →
+                  </a>
+                </div>
+              )}
+            </div>
+
+            {/* Industries */}
+            <div>
+              <div className="flex items-center px-[20px]" style={{ gap: 0 }}>
+                <a
+                  href="/industries"
+                  onClick={(e) => { e.stopPropagation(); setMobileOpen(false); }}
+                  style={{ flex: 1, display: "block", padding: "14px 0", fontSize: 16, fontWeight: 600, color: pathname.startsWith("/industries") ? "#ef5023" : "#111", textDecoration: "none" }}
                 >
                   Industries
-                  <svg width="14" height="14" viewBox="0 0 12 12" fill="none" style={{ transition: "transform 0.2s", transform: mobileSubmenu === "industries" ? "rotate(180deg)" : "rotate(0deg)" }}><path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                </button>
-                {mobileSubmenu === "industries" && (
-                  <div className="flex flex-col pb-[8px]" style={{ background: "#fafafa" }}>
-                    {[
-                      { title: "Fintech & Banking", href: "/industries/fintech" },
-                      { title: "Healthcare & MedTech", href: "/industries/healthcare" },
-                      { title: "E-commerce & Retail", href: "/industries/e-commerce" },
-                      { title: "Logistics & Supply Chain", href: "/industries/logistics" },
-                      { title: "SaaS & Enterprise", href: "/industries/saas" },
-                    ].map((item) => (
-                      <Link key={item.href} href={item.href} onClick={() => setMobileOpen(false)} className="px-[32px] py-[10px] text-[14px]" style={{ color: "#555", textDecoration: "none" }}>
-                        {item.title}
-                      </Link>
-                    ))}
-                    <Link href="/industries" onClick={() => setMobileOpen(false)} className="px-[32px] py-[10px] text-[13px] font-semibold" style={{ color: "#ef5023", textDecoration: "none" }}>
-                      View All Industries →
-                    </Link>
-                  </div>
-                )}
-              </div>
-
-              {/* Plain links */}
-              {[
-                { title: "Case Studies", href: "/case-study" },
-                { title: "Technology", href: "/technology" },
-                { title: "Blog", href: "/blog" },
-                { title: "Company", href: "/about" },
-              ].map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="px-[20px] py-[14px] text-[16px] font-semibold"
-                  style={{ color: pathname.startsWith(item.href) ? "#ef5023" : "#111", textDecoration: "none" }}
+                </a>
+                <button
+                  onClick={(e) => { e.stopPropagation(); setMobileSubmenu(mobileSubmenu === "industries" ? null : "industries"); }}
+                  style={{ background: "none", border: "none", cursor: "pointer", padding: "14px 4px 14px 12px", display: "flex", alignItems: "center" }}
+                  aria-label="Toggle Industries submenu"
                 >
-                  {item.title}
-                </Link>
-              ))}
+                  <svg width="14" height="14" viewBox="0 0 12 12" fill="none" style={{ transition: "transform 0.2s", transform: mobileSubmenu === "industries" ? "rotate(180deg)" : "rotate(0deg)" }}><path d="M2 4l4 4 4-4" stroke="#111" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                </button>
+              </div>
+              {mobileSubmenu === "industries" && (
+                <div className="flex flex-col pb-[8px]" style={{ background: "#fafafa" }}>
+                  {[
+                    { title: "Fintech & Banking", href: "/industries/fintech" },
+                    { title: "Healthcare & MedTech", href: "/industries/healthcare" },
+                    { title: "E-commerce & Retail", href: "/industries/e-commerce" },
+                    { title: "Logistics & Supply Chain", href: "/industries/logistics" },
+                    { title: "SaaS & Enterprise", href: "/industries/saas" },
+                  ].map((item) => (
+                    <a key={item.href} href={item.href} onClick={() => setMobileOpen(false)} className="px-[32px] py-[10px] text-[14px]" style={{ color: "#555", textDecoration: "none" }}>
+                      {item.title}
+                    </a>
+                  ))}
+                  <a href="/industries" onClick={() => setMobileOpen(false)} className="px-[32px] py-[10px] text-[13px] font-semibold" style={{ color: "#ef5023", textDecoration: "none" }}>
+                    View All Industries →
+                  </a>
+                </div>
+              )}
             </div>
 
-            {/* Mobile CTA */}
-            <div className="mt-auto px-[20px] py-[20px]" style={{ borderTop: "1px solid #eee" }}>
-              <Link
-                href="/contact"
-                onClick={() => setMobileOpen(false)}
-                className="flex items-center justify-center w-full h-[48px] rounded-[10px] text-[15px] font-bold"
-                style={{ background: "#ef5023", color: "#fff", textDecoration: "none", boxShadow: "0 6px 20px rgba(239,80,35,0.3)" }}
-              >
-                Talk to Us
-              </Link>
+            {/* Case Studies */}
+            <a
+              href="/case-study"
+              onClick={() => setMobileOpen(false)}
+              className="px-[20px] py-[14px] text-[16px] font-semibold"
+              style={{ color: pathname.startsWith("/case-study") ? "#ef5023" : "#111", textDecoration: "none" }}
+            >
+              Case Studies
+            </a>
+
+            {/* Technology */}
+            <div>
+              <div className="flex items-center px-[20px]" style={{ gap: 0 }}>
+                <a
+                  href="/technology"
+                  onClick={(e) => { e.stopPropagation(); setMobileOpen(false); }}
+                  style={{ flex: 1, display: "block", padding: "14px 0", fontSize: 16, fontWeight: 600, color: pathname.startsWith("/technology") ? "#ef5023" : "#111", textDecoration: "none" }}
+                >
+                  Technology
+                </a>
+                <button
+                  onClick={(e) => { e.stopPropagation(); setMobileSubmenu(mobileSubmenu === "technology" ? null : "technology"); }}
+                  style={{ background: "none", border: "none", cursor: "pointer", padding: "14px 4px 14px 12px", display: "flex", alignItems: "center" }}
+                  aria-label="Toggle Technology submenu"
+                >
+                  <svg width="14" height="14" viewBox="0 0 12 12" fill="none" style={{ transition: "transform 0.2s", transform: mobileSubmenu === "technology" ? "rotate(180deg)" : "rotate(0deg)" }}><path d="M2 4l4 4 4-4" stroke="#111" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                </button>
+              </div>
+              {mobileSubmenu === "technology" && (
+                <div className="flex flex-col pb-[8px]" style={{ background: "#fafafa" }}>
+                  {[
+                    { group: "Frontend", tags: ["React", "Next.js", "Vue.js", "TypeScript", "Tailwind CSS"] },
+                    { group: "Backend", tags: ["Node.js", "Python", "Go", "Java", "PHP", ".NET"] },
+                    { group: "Cloud & DevOps", tags: ["AWS", "GCP", "Azure", "Docker", "Kubernetes"] },
+                    { group: "AI & ML", tags: ["LLM", "OpenAI", "LangChain", "AI Agents"] },
+                    { group: "Mobile", tags: ["React Native", "Flutter", "Swift", "Kotlin"] },
+                  ].map(({ group, tags }) => (
+                    <div key={group} className="px-[32px] py-[6px]">
+                      <div style={{ fontSize: 12, color: "#888", marginBottom: 4 }}>{group}</div>
+                      <div style={{ fontSize: 13, color: "#555" }}>{tags.join(", ")}</div>
+                    </div>
+                  ))}
+                  <a href="/technology" onClick={() => setMobileOpen(false)} className="px-[32px] py-[10px] text-[13px] font-semibold" style={{ color: "#ef5023", textDecoration: "none" }}>
+                    View All Technologies →
+                  </a>
+                </div>
+              )}
+            </div>
+
+            {/* Blog */}
+            <a
+              href="/blog"
+              onClick={() => setMobileOpen(false)}
+              className="px-[20px] py-[14px] text-[16px] font-semibold"
+              style={{ color: pathname.startsWith("/blog") ? "#ef5023" : "#111", textDecoration: "none" }}
+            >
+              Blog
+            </a>
+
+            {/* Company */}
+            <div>
+              <div className="flex items-center px-[20px]" style={{ gap: 0 }}>
+                <a
+                  href="/about"
+                  onClick={(e) => { e.stopPropagation(); setMobileOpen(false); }}
+                  style={{ flex: 1, display: "block", padding: "14px 0", fontSize: 16, fontWeight: 600, color: pathname.startsWith("/about") ? "#ef5023" : "#111", textDecoration: "none" }}
+                >
+                  Company
+                </a>
+                <button
+                  onClick={(e) => { e.stopPropagation(); setMobileSubmenu(mobileSubmenu === "company" ? null : "company"); }}
+                  style={{ background: "none", border: "none", cursor: "pointer", padding: "14px 4px 14px 12px", display: "flex", alignItems: "center" }}
+                  aria-label="Toggle Company submenu"
+                >
+                  <svg width="14" height="14" viewBox="0 0 12 12" fill="none" style={{ transition: "transform 0.2s", transform: mobileSubmenu === "company" ? "rotate(180deg)" : "rotate(0deg)" }}><path d="M2 4l4 4 4-4" stroke="#111" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                </button>
+              </div>
+              {mobileSubmenu === "company" && (
+                <div className="flex flex-col pb-[8px]" style={{ background: "#fafafa" }}>
+                  {[
+                    { title: "Our Story", href: "/about" },
+                    { title: "Leadership Team", href: "/about#leadership" },
+                    { title: "Life at InApps", href: "/about#culture" },
+                    { title: "Careers", href: "/about#careers" },
+                    { title: "Press & Awards", href: "/about#awards" },
+                  ].map((item) => (
+                    <a key={item.href} href={item.href} onClick={() => setMobileOpen(false)} className="px-[32px] py-[10px] text-[14px]" style={{ color: "#555", textDecoration: "none" }}>
+                      {item.title}
+                    </a>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
+
+          {/* Mobile CTA */}
+          <div className="mt-auto px-[20px] py-[20px]" style={{ borderTop: "1px solid #eee" }}>
+            <a
+              href="/contact"
+              onClick={() => setMobileOpen(false)}
+              className="flex items-center justify-center w-full h-[48px] rounded-[10px] text-[15px] font-bold"
+              style={{ background: "#ef5023", color: "#fff", textDecoration: "none", boxShadow: "0 6px 20px rgba(239,80,35,0.3)" }}
+            >
+              Talk to Us
+            </a>
+          </div>
         </div>
-      )}
-    </header>
+      </div>
+    </>
   );
 }

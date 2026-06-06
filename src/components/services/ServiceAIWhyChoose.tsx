@@ -81,10 +81,10 @@ export default function ServiceAIWhyChoose() {
         <div className="flex flex-col gap-[10px]">
           <p className="text-[11px] font-bold tracking-[2px] uppercase text-[#ef5023]">WHY CHOOSE US</p>
           <div className="flex items-center gap-[24px]">
-            <h2 className="font-black text-[#0a0a0a] text-[36px] leading-[44px] tracking-[-1.5px] flex-shrink-0">
+            <h2 className="font-black text-[#0a0a0a] text-[28px] leading-[36px] md:text-[36px] md:leading-[44px] tracking-[-1.5px]">
               Why Choose <span className="text-[#ef5023]">InApps</span> Technology?
             </h2>
-            <div className="flex-1 h-[1px]" style={{ background: "linear-gradient(to right, #e8e8e8, transparent)" }} />
+            <div className="hidden md:block flex-1 h-[1px]" style={{ background: "linear-gradient(to right, #e8e8e8, transparent)" }} />
           </div>
         </div>
 

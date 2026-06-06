@@ -29,6 +29,13 @@ body {
   color: #ffffff;
 }
 
+/* Prevent horizontal overflow on mobile */
+@media (max-width: 767px) {
+  html, body {
+    overflow-x: hidden;
+  }
+}
+
 @keyframes menuFadeIn {
   from { opacity: 0; transform: translateY(-4px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -54,3 +61,6 @@ body {
 }
 .award-card { transition: opacity 0.2s ease; }
 .award-card:hover { opacity: 0.85; }
+
+/* Hide scrollbar for horizontal-scroll tab bars on mobile */
+.overflow-x-auto::-webkit-scrollbar { display: none; }

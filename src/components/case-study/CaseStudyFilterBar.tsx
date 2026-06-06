@@ -95,9 +95,12 @@ export default function CaseStudyFilterBar({
           display: "flex",
           gap: 0,
           overflowX: "auto",
+          overflowY: "hidden",
           scrollbarWidth: "none",
           msOverflowStyle: "none",
           marginBottom: -1,
+          touchAction: "pan-x pinch-zoom",
+          WebkitOverflowScrolling: "touch",
         } as React.CSSProperties}>
           {items.map((item) => {
             const isActive = item === activeFilter;

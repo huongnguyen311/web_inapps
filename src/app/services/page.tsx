@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -36,7 +36,6 @@ const faqItems = [
 
 export default function ServicesPage() {
   const [faqIndex, setFaqIndex] = useState(0);
-  const aiScrollRef = useRef<HTMLDivElement>(null);
 
   const specializations = [
     {
@@ -144,12 +143,18 @@ export default function ServicesPage() {
 
         {/* ── All Service Sections ── */}
         <style>{`
-          .service-cards-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
-          @media (min-width: 640px) { .service-cards-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; } }
+          .service-cards-grid {
+            display: flex; flex-direction: row; gap: 16px;
+          }
+          @media (min-width: 640px) { .service-cards-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; } }
           @media (min-width: 1024px) { .service-cards-grid { grid-template-columns: repeat(4, 1fr); gap: 24px; } }
-          .service-cards-scroll { display: flex; flex-direction: row; gap: 16px; }
-          @media (min-width: 640px) { .service-cards-scroll { gap: 20px; } }
-          @media (min-width: 1024px) { .service-cards-scroll { gap: 24px; } }
+          .service-scroll-mobile { overflow-x: visible; }
+          @media (max-width: 639px) {
+            .service-scroll-mobile { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; padding-bottom: 8px; }
+            .service-scroll-mobile::-webkit-scrollbar { display: none; }
+            .service-scroll-mobile .service-cards-grid { width: max-content; padding-right: 16px; }
+            .service-scroll-mobile .service-cards-grid > * { flex: 0 0 280px; max-width: 280px; }
+          }
         `}</style>
         <section>
 
@@ -213,14 +218,10 @@ export default function ServicesPage() {
               <div className="px-[16px] md:px-[40px] py-[32px]" style={{ background: spec.bg }}>
                 <div className="max-w-[1320px] mx-auto">
                 <div
-                  ref={spec.items.length > 4 ? aiScrollRef : undefined}
-                  className={spec.items.length > 4 ? "overflow-x-auto pb-[8px]" : ""}
-                  style={spec.items.length > 4 ? { scrollbarWidth: "none", msOverflowStyle: "none" } : undefined}
+                  className="service-scroll-mobile"
                 >
-                <div
-                  className={spec.items.length > 4 ? "service-cards-scroll" : "service-cards-grid"}
-                  style={spec.items.length > 4 ? { width: "max-content" } : undefined}
-                >
+                <div className="service-cards-grid">
+
                   {spec.items.map(({ service, tag, highlight }) => (
                     <Link
                       key={service.slug}
@@ -231,7 +232,6 @@ export default function ServicesPage() {
                         background: spec.cardBg,
                         border: highlight ? "1.5px solid #ef5023" : `1px solid ${spec.cardBorder}`,
                         transition: "transform 0.2s, border-color 0.15s",
-                        ...(spec.items.length > 4 ? { flex: "0 0 280px" } : {}),
                       }}
                     >
                       {/* Illustration */}
@@ -262,42 +262,6 @@ export default function ServicesPage() {
                   ))}
                 </div>
                 </div>
-                {spec.items.length > 4 && (
-                  <div className="flex items-center justify-center gap-[8px] pt-[24px]">
-                    <button
-                      onClick={() => {
-                        const el = aiScrollRef.current;
-                        if (!el) return;
-                        el.scrollTo({ left: Math.max(el.scrollLeft - (280 + 24), 0), behavior: "smooth" });
-                      }}
-                      style={{
-                        width: "44px", height: "44px", borderRadius: "50%",
-                        background: "transparent",
-                        border: "1.5px solid rgba(239,80,35,0.35)",
-                        cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
-                        transition: "all 0.15s",
-                      }}
-                    >
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="#ef5023" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                    </button>
-                    <button
-                      onClick={() => {
-                        const el = aiScrollRef.current;
-                        if (!el) return;
-                        el.scrollTo({ left: el.scrollLeft + (280 + 24), behavior: "smooth" });
-                      }}
-                      style={{
-                        width: "44px", height: "44px", borderRadius: "50%",
-                        background: "transparent",
-                        border: "1.5px solid rgba(239,80,35,0.35)",
-                        cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
-                        transition: "all 0.15s",
-                      }}
-                    >
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="#ef5023" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                    </button>
-                  </div>
-                )}
                 </div>
               </div>
 

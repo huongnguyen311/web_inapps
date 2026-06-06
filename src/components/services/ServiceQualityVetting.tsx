@@ -92,10 +92,10 @@ export default function ServiceQualityVetting({ stages, metrics }: Props) {
 
                 {/* content */}
                 <div className="flex flex-col gap-[3px]">
-                  <div className="flex items-center gap-[10px]">
+                  <div className="flex items-start md:items-center gap-[10px]">
                     <h4 className="font-bold text-white text-[14px] leading-[1.4]">{item.stage}</h4>
                     <span
-                      className="text-[10px] font-bold px-[7px] py-[2px] rounded-full"
+                      className="text-[10px] font-bold px-[7px] py-[2px] rounded-full flex-shrink-0 mt-[2px] md:mt-0"
                       style={{ background: "rgba(239,80,35,0.12)", color: "#ef5023" }}
                     >
                       Stage {i + 1}

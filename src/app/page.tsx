@@ -347,10 +347,10 @@ export default function Home() {
 
         {/* ── WHY OUTSOURCE TO VIETNAM ─────────────────────────────────────── */}
         <section className="relative overflow-hidden bg-[#fafafa] border-t border-[#e8e8e8] px-[16px] md:px-[40px] py-[48px] md:py-[70px]">
-          <div className="max-w-[1320px] mx-auto rounded-[24px] overflow-hidden grid grid-cols-1 lg:grid-cols-[1fr_1.2fr]" style={{ minHeight: "580px" }}>
+          <div className="max-w-[1320px] mx-auto rounded-[24px] overflow-visible lg:overflow-hidden grid grid-cols-1 lg:grid-cols-[1fr_1.2fr]" style={{ minHeight: "580px" }}>
 
             {/* left - content panel */}
-            <div className="relative flex flex-col justify-center gap-[24px] px-[0px] py-[32px] overflow-hidden">
+            <div className="relative flex flex-col justify-center gap-[24px] px-[0px] py-[32px] md:overflow-hidden">
 
               {/* eyebrow */}
               <div className="flex items-center">
@@ -1096,12 +1096,12 @@ export default function Home() {
           </div>
 
           {/* model filter tabs */}
-          <div className="max-w-[1200px] mx-auto flex gap-[0px] mb-[24px] justify-center border-b border-[#e8e8e8]">
+          <div className="max-w-[1200px] mx-auto flex gap-[0px] mb-[24px] md:justify-center border-b border-[#e8e8e8] overflow-x-auto md:overflow-x-visible overscroll-x-contain" style={{ WebkitOverflowScrolling: "touch", scrollbarWidth: "none", touchAction: "pan-x pinch-zoom", overflowY: "hidden" }}>
             {CASE_TABS.map((tab, ti) => (
               <button
                 key={tab}
                 onClick={() => { if (caseTimerRef.current) clearInterval(caseTimerRef.current); setCaseTabIndex(ti); caseTimerRef.current = setInterval(() => { if (!caseTimerPaused.current) setCaseTabIndex(i => (i + 1) % CASE_TABS.length); }, 6000); }}
-                className="text-[13px] px-[20px] py-[10px] transition-all duration-200 relative whitespace-nowrap"
+                className="text-[13px] px-[16px] md:px-[20px] py-[12px] md:py-[10px] transition-all duration-200 relative whitespace-nowrap flex-shrink-0"
                 style={{
                   background: "transparent",
                   color: caseModel === tab ? "#ef5023" : "#555",
@@ -1169,7 +1169,7 @@ export default function Home() {
             </div>
 
             {/* RIGHT - image */}
-            <div className="relative overflow-hidden group" style={{ background: "#f0f0f0" }}>
+            <div className="relative overflow-hidden group min-h-[240px] md:min-h-0" style={{ background: "#f0f0f0" }}>
               <img
                 src={activeCaseStudy.image}
                 alt={activeCaseStudy.title}

@@ -95,12 +95,12 @@ export default function ServiceCaseStudy({ data }: Props) {
       </div>
 
       {/* model filter tabs */}
-      <div className="relative max-w-[1200px] mx-auto flex mb-[24px] justify-center border-b border-[#e8e8e8] overflow-x-auto">
+      <div className="relative max-w-[1200px] mx-auto flex mb-[24px] md:justify-center border-b border-[#e8e8e8] overflow-x-auto overscroll-x-contain" style={{ scrollbarWidth: "none", WebkitOverflowScrolling: "touch", touchAction: "pan-x pinch-zoom", overflowY: "hidden" } as React.CSSProperties}>
         {TABS.map((tab, ti) => (
           <button
             key={tab}
             onClick={() => handleTabChange(ti)}
-            className="relative text-[13px] px-[20px] py-[10px] transition-all duration-200 whitespace-nowrap overflow-hidden"
+            className="relative text-[13px] px-[16px] md:px-[20px] py-[12px] md:py-[10px] transition-all duration-200 whitespace-nowrap flex-shrink-0"
             style={{
               background: "transparent",
               color: activeModel === tab ? "#ef5023" : "#888",
