@@ -231,7 +231,7 @@ export default function AboutPage() {
 
                 {/* Left: timeline */}
                 <div
-                  className="timeline-scroll relative flex flex-col rounded-[20px] p-[40px]"
+                  className="timeline-scroll relative flex flex-col rounded-[20px] p-[20px] md:p-[40px]"
                   style={{
                     background: "#fff",
                     border: "1px solid #e8e8e8",

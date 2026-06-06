@@ -66,7 +66,7 @@ export default function ServiceAIOverview({ data }: Props) {
           {/* Left: headline + body */}
           <div className="flex flex-col gap-[24px] flex-1">
             <p className="text-[#ef5023] text-[11px] font-bold tracking-[2px] uppercase">SERVICE OVERVIEW</p>
-            <h2 className="font-black text-[#0a0a0a] text-[42px] leading-[50px] tracking-[-2px]">
+            <h2 className="font-black text-[#0a0a0a] text-[28px] leading-[36px] md:text-[42px] md:leading-[50px] tracking-[-2px]">
               {data.title}
             </h2>
             <div style={{ width: "40px", height: "3px", background: "#ef5023", borderRadius: "2px" }} />

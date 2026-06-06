@@ -218,7 +218,7 @@ export default function IndustriesPage() {
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-[24px]">
               <div className="flex flex-col gap-[10px]">
                 <p className="text-[11px] font-bold tracking-[2px] uppercase" style={{ color: "#ef5023" }}>WHAT WE BUILD</p>
-                <h2 className="font-black text-[#0a0a0a] text-[42px] leading-[50px] tracking-[-1.5px]">
+                <h2 className="font-black text-[#0a0a0a] text-[28px] leading-[36px] md:text-[42px] md:leading-[50px] tracking-[-1.5px]">
                   Our <span style={{ color: "#ef5023" }}>Industries</span>
                 </h2>
                 <p className="text-[16px] leading-[1.75]" style={{ color: "#666", maxWidth: "520px" }}>

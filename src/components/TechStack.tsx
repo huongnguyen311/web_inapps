@@ -100,13 +100,13 @@ export default function TechStack() {
   }
 
   return (
-    <section className="bg-[#0f172a] py-[80px] px-[80px] w-full">
+    <section className="bg-[#0f172a] py-[48px] md:py-[80px] px-[16px] md:px-[80px] w-full">
       <div className="max-w-[1280px] mx-auto flex flex-col gap-[48px]">
 
         {/* Heading */}
         <div className="flex flex-col gap-[12px]">
           <h2
-            className="font-black text-white text-[40px] leading-[48px] tracking-[-1px]"
+            className="font-black text-white text-[28px] leading-[36px] md:text-[40px] md:leading-[48px] tracking-[-1px]"
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
             Our{" "}
@@ -148,7 +148,7 @@ export default function TechStack() {
             <div
               key={name}
               className="bg-white border border-[#292524] rounded-[8px] flex items-center justify-center"
-              style={{ padding: "32px 18px", minWidth: 151 }}
+              style={{ padding: "32px 18px", minWidth: 120 }}
             >
               <LogoSVG name={name} />
             </div>

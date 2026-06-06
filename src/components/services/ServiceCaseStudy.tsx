@@ -95,7 +95,7 @@ export default function ServiceCaseStudy({ data }: Props) {
       </div>
 
       {/* model filter tabs */}
-      <div className="relative max-w-[1200px] mx-auto flex mb-[24px] justify-center border-b border-[#e8e8e8]">
+      <div className="relative max-w-[1200px] mx-auto flex mb-[24px] justify-center border-b border-[#e8e8e8] overflow-x-auto">
         {TABS.map((tab, ti) => (
           <button
             key={tab}
@@ -180,7 +180,7 @@ export default function ServiceCaseStudy({ data }: Props) {
         </div>
 
         {/* RIGHT - image */}
-        <div className="relative overflow-hidden group" style={{ background: "#f0f0f0" }}>
+        <div className="relative overflow-hidden group min-h-[240px] md:min-h-0" style={{ background: "#f0f0f0" }}>
           <img
             src={cs.image ?? "/Media/Image/prd 1.jpg"}
             alt={cs.title}

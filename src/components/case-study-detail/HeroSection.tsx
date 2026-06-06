@@ -14,11 +14,13 @@ export default function HeroSection({ heroImage, title, subtitle }: Props) {
         <img
           src={heroImage}
           alt=""
-          className="absolute right-0 top-0 h-full"
+          className="absolute right-0 top-0 h-full hidden md:block"
           style={{ width: "65%", objectFit: "cover", objectPosition: "right center" }}
         />
+        {/* Solid bg on mobile, gradient overlay on desktop */}
+        <div className="absolute inset-0 bg-[#0d0d0d] md:bg-transparent" />
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 hidden md:block"
           style={{ background: "linear-gradient(to right, #0d0d0d 35%, #0d0d0d 45%, rgba(13,13,13,0.7) 60%, transparent 100%)" }}
         />
       </div>
@@ -37,12 +39,12 @@ export default function HeroSection({ heroImage, title, subtitle }: Props) {
           </h1>
 
           {/* subtext */}
-          <p className="text-[20px] leading-[32px]" style={{ color: "#ffffff", maxWidth: "620px" }}>
+          <p className="text-[16px] leading-[26px] sm:text-[20px] sm:leading-[32px]" style={{ color: "#ffffff", maxWidth: "620px" }}>
             {subtitle}
           </p>
 
           {/* buttons */}
-          <div className="flex gap-[12px] items-center pt-[4px]">
+          <div className="flex flex-wrap gap-[12px] items-center pt-[4px]">
             <Link
               href="/contact"
               className="bg-[#ef5023] hover:bg-[#d94010] text-white font-bold text-[16px] px-[28px] h-[55px] rounded-[10px] inline-flex items-center transition-colors"

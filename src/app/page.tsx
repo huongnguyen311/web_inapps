@@ -304,7 +304,7 @@ export default function Home() {
             </div>
 
             {/* review trust bar */}
-            <div className="flex items-center justify-center gap-0 pt-[4px] pb-[8px]" style={{ borderTop: "1px solid #f0f0f0" }}>
+            <div className="flex flex-wrap items-center justify-center gap-0 pt-[4px] pb-[8px]" style={{ borderTop: "1px solid #f0f0f0" }}>
               {/* Clutch */}
               <div className="flex items-center gap-[8px] px-[28px] py-[12px]">
                 <div className="flex items-center gap-[3px]">
@@ -515,7 +515,7 @@ export default function Home() {
             {/* header */}
             <div className="flex flex-col gap-[12px] max-w-[640px]">
               <p className="text-[#ef5023] text-[11px] font-bold tracking-[2px] uppercase">HOW WE WORK</p>
-              <h2 className="font-black text-white text-[36px] leading-[44px] tracking-[-1.5px] whitespace-nowrap">
+              <h2 className="font-black text-white text-[24px] leading-[32px] md:text-[36px] md:leading-[44px] tracking-[-1.5px] md:whitespace-nowrap">
                 Engineering teams tailored to your product, not products adapted to fit a team.
               </h2>
             </div>
@@ -610,7 +610,7 @@ export default function Home() {
             {/* header */}
             <div className="flex flex-col gap-[16px] max-w-[700px]">
               <p className="text-[#ef5023] text-[11px] font-bold tracking-[2px] uppercase">AI IN PRACTICE</p>
-              <h2 className="font-black text-[#0a0a0a] text-[36px] leading-[44px] tracking-[-1.5px] whitespace-nowrap">
+              <h2 className="font-black text-[#0a0a0a] text-[24px] leading-[32px] md:text-[36px] md:leading-[44px] tracking-[-1.5px] md:whitespace-nowrap">
                 What "AI-native" actually means in practice
               </h2>
               <p className="text-[16px] leading-[1.75]" style={{ color: "rgba(0,0,0,0.55)" }}>
@@ -619,7 +619,7 @@ export default function Home() {
             </div>
 
             {/* timeline */}
-            <div className="relative flex gap-0 mt-[24px] items-stretch">
+            <div className="relative flex flex-col md:flex-row gap-[16px] md:gap-0 mt-[24px] items-stretch">
 
               {[
                 {
@@ -1203,10 +1203,10 @@ export default function Home() {
             {/* header */}
             <div className="flex flex-col gap-[12px]">
               <p className="text-[#ef5023] text-[11px] font-bold tracking-[2px] uppercase">ENGAGEMENT MODELS</p>
-              <h2 className="font-black text-[#0a0a0a] text-[36px] leading-[44px] tracking-[-1.5px] whitespace-nowrap">
+              <h2 className="font-black text-[#0a0a0a] text-[24px] leading-[32px] md:text-[36px] md:leading-[44px] tracking-[-1.5px] md:whitespace-nowrap">
                 Choose how you want to work with us
               </h2>
-              <p className="text-[#666] text-[16px] leading-[1.7] whitespace-nowrap">
+              <p className="text-[#666] text-[16px] leading-[1.7] md:whitespace-nowrap">
                 All models include dedicated engineers, full transparency, and no hidden fees.
               </p>
             </div>

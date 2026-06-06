@@ -285,7 +285,7 @@ export default function TalentPage() {
         </section>
 
         {/* Dark CTA Section */}
-        <section className="bg-[#0f172a] px-[20px] lg:px-[256px] py-[48px] lg:py-[80px] w-full">
+        <section className="bg-[#0f172a] px-[20px] md:px-[80px] lg:px-[256px] py-[48px] lg:py-[80px] w-full">
           <div className="max-w-[768px] mx-auto flex flex-col gap-[32px] items-center text-center">
             <h2 className="font-black text-white text-[32px] lg:text-[48px] tracking-[-1.2px] leading-[36px] lg:leading-[48px]">
               Ready to scale your team?

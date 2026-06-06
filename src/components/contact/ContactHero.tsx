@@ -29,7 +29,7 @@ export default function ContactHero() {
           </p>
 
           {/* CTAs */}
-          <div className="flex items-center gap-[12px] pt-[4px]">
+          <div className="flex flex-wrap items-center gap-[12px] pt-[4px]">
             <a
               href="#contact-form"
               className="bg-[#ef5023] hover:bg-[#d94010] text-white font-bold text-[16px] px-[28px] h-[55px] rounded-[10px] inline-flex items-center transition-colors"

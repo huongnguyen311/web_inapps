@@ -52,7 +52,7 @@ export default function ServiceOverview({ data, eyebrow }: Props) {
           {eyebrow && (
             <p className="text-[#ef5023] text-[11px] font-bold tracking-[2px] uppercase mb-[10px]">{eyebrow}</p>
           )}
-          <h2 className="font-black text-white text-[36px] leading-[44px] tracking-[-1.5px] mb-[20px]">{data.title}</h2>
+          <h2 className="font-black text-white text-[28px] leading-[36px] md:text-[36px] md:leading-[44px] tracking-[-1.5px] mb-[20px]">{data.title}</h2>
           <div className="text-[15px] text-[#bbb] leading-[1.75] mb-[32px]" style={{ whiteSpace: "pre-line" }}>
             {data.body}
           </div>

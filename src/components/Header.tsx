@@ -617,7 +617,7 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
 
       {/* ── Mobile Drawer ── */}
       {mobileOpen && (
-        <div className="md:hidden fixed inset-0 z-40" style={{ top: 0 }}>
+        <div className="md:hidden fixed inset-0 z-[60]" style={{ top: 0 }}>
           {/* Backdrop */}
           <div className="absolute inset-0 bg-black/50" onClick={() => setMobileOpen(false)} />
           {/* Drawer */}

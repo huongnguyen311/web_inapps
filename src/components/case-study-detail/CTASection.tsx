@@ -11,7 +11,7 @@ export default function CTASection() {
           Work With Us
         </p>
 
-        <h2 className="font-black text-white text-[40px] leading-[48px] tracking-[-1.5px]">
+        <h2 className="font-black text-white text-[28px] leading-[36px] md:text-[40px] md:leading-[48px] tracking-[-1.5px]">
           Ready to build something that matters?
         </h2>
 
@@ -19,7 +19,7 @@ export default function CTASection() {
           Tell us your challenge and we'll connect you with the InApps team that has solved it before.
         </p>
 
-        <div className="flex items-center gap-[12px] pt-[8px]">
+        <div className="flex flex-wrap items-center gap-[12px] pt-[8px]">
           <Link
             href="/contact"
             className="inline-flex items-center gap-[8px] px-[32px] h-[52px] rounded-[10px] font-bold text-[14px]"

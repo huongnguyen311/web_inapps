@@ -48,7 +48,7 @@ export default function ClientRequirements({ requirementGroups }: Props) {
           <p className="text-[11px] font-bold tracking-[2px] uppercase mb-[12px]" style={{ color: "#ef5023" }}>
             What They Needed
           </p>
-          <h2 className="font-black text-[#0a0a0a] text-[36px] leading-[44px] tracking-[-1.5px] mb-[16px]">
+          <h2 className="font-black text-[#0a0a0a] text-[28px] leading-[36px] md:text-[36px] md:leading-[44px] tracking-[-1.5px] mb-[16px]">
             Client Requirements
           </h2>
           <p className="text-[15px] leading-[1.7]" style={{ color: "#666", maxWidth: "640px" }}>
@@ -62,11 +62,10 @@ export default function ClientRequirements({ requirementGroups }: Props) {
           ).map(({ item, group, i }, idx) => (
             <div
               key={`${group.title}-${i}`}
-              className="flex items-start gap-[14px] px-[20px] py-[14px]"
+              className={`flex items-start gap-[14px] px-[20px] py-[14px] ${idx % 2 === 0 ? "sm:border-r sm:border-r-[#ebebeb]" : ""}`}
               style={{
                 background: Math.floor(idx / 2) % 2 === 0 ? "#f7f7f8" : "#ffffff",
                 borderBottom: "1px solid #ebebeb",
-                borderRight: idx % 2 === 0 ? "1px solid #ebebeb" : "none",
               }}
             >
               <span

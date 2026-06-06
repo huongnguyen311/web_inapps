@@ -73,8 +73,7 @@ function PrjBusinessPainSection() {
             <img
               src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80"
               alt="Business challenges"
-              className="w-full object-cover"
-              style={{ height: "540px" }}
+              className="w-full object-cover h-[300px] md:h-[540px]"
             />
           </div>
 

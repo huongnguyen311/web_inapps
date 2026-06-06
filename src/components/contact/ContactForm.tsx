@@ -99,10 +99,10 @@ export default function ContactForm() {
         >
           {/* ── Left: Dark Info Panel ── */}
           <div
+            className="px-[20px] py-[28px] lg:px-[44px] lg:pt-[40px] lg:pb-[32px]"
             style={{
               background: "#0d0d0d",
               borderRadius: "20px",
-              padding: "40px 44px 32px",
               display: "flex",
               flexDirection: "column",
               color: "#fff",
@@ -202,10 +202,10 @@ export default function ContactForm() {
 
           {/* ── Right: White Form ── */}
           <div
+            className="p-[20px] lg:p-[40px]"
             style={{
               background: "#fff",
               borderRadius: "20px",
-              padding: "40px",
               display: "flex",
               flexDirection: "column",
               gap: "20px",

@@ -31,9 +31,9 @@ export default function CaseStudyFilterBar({
       borderBottom: "1px solid #ebebeb",
       position: "sticky",
       top: 68,
-      zIndex: 90,
+      zIndex: 40,
     }}>
-      <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 40px" }}>
+      <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 16px" }} className="md:!px-[40px]">
 
         {/* ── Tab switcher — pill style ── */}
         <div style={{

@@ -39,7 +39,7 @@ export default function SolutionsSection({ solutions }: Props) {
               <p className="text-[11px] font-bold tracking-[2px] uppercase mb-[10px]" style={{ color: "#ef5023" }}>
                 How We Solved It
               </p>
-              <h2 className="font-black text-[#0a0a0a] text-[36px] leading-[44px] tracking-[-1.5px] mb-[14px]">
+              <h2 className="font-black text-[#0a0a0a] text-[28px] leading-[36px] md:text-[36px] md:leading-[44px] tracking-[-1.5px] mb-[14px]">
                 Our Solutions
               </h2>
               <p className="text-[14px] leading-[1.8]" style={{ color: "#888" }}>
@@ -48,7 +48,7 @@ export default function SolutionsSection({ solutions }: Props) {
             </div>
 
             {/* Image with decorative surround */}
-            <div className="relative" style={{ height: "360px", marginRight: "20px" }}>
+            <div className="relative h-[260px] md:h-[360px]" style={{ marginRight: "20px" }}>
 
               {/* Border frame — offset bottom-right */}
               <div className="absolute rounded-[16px]" style={{
@@ -85,7 +85,7 @@ export default function SolutionsSection({ solutions }: Props) {
           </div>
 
           {/* Col 2: solution rows — first item inline with description */}
-          <div style={{ paddingTop: "79px" }}>
+          <div className="pt-0 lg:pt-[79px]">
             {/* First solution sits at top, no top border */}
             {solutions.slice(0, 1).map((s, i) => (
               <div

@@ -65,7 +65,7 @@ export default function ProcessSection({ teamStructure, teamImage }: Props) {
             </p>
 
             <h2
-              className="font-black text-[36px] leading-[44px] tracking-[-1.5px] mb-[14px]"
+              className="font-black text-[28px] leading-[36px] md:text-[36px] md:leading-[44px] tracking-[-1.5px] mb-[14px]"
               style={{
                 color: "#0a0a0a",
                 opacity: visible ? 1 : 0,
@@ -167,7 +167,7 @@ export default function ProcessSection({ teamStructure, teamImage }: Props) {
 
           {/* Right: accordion */}
           <div
-            className="flex flex-col rounded-[16px] px-[28px]"
+            className="flex flex-col rounded-[16px] px-[16px] sm:px-[28px]"
             style={{
               paddingTop: 40,
               paddingBottom: 40,

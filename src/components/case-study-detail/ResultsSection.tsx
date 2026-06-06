@@ -33,8 +33,8 @@ export default function ResultsSection({ metrics, successStory, keyOutcomes }: P
           {metrics.map((m, i) => (
             <div key={i} style={{ background: "#111", padding: "24px 16px", textAlign: "center" }}>
               <div
-                className="font-black leading-none mb-[10px]"
-                style={{ fontSize: 36, color: "#FF4929", letterSpacing: "-1px" }}
+                className="font-black leading-none mb-[10px] text-[24px] sm:text-[36px]"
+                style={{ color: "#FF4929", letterSpacing: "-1px" }}
               >
                 {m.value}
               </div>
@@ -52,11 +52,11 @@ export default function ResultsSection({ metrics, successStory, keyOutcomes }: P
 
           {/* Quote */}
           <div
+            className="p-[20px] lg:p-[36px]"
             style={{
               background: "transparent",
               border: "1px solid rgba(255,255,255,0.06)",
               borderRadius: 16,
-              padding: "36px",
               boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
             }}
           >

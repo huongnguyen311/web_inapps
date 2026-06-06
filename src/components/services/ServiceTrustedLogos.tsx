@@ -39,7 +39,7 @@ export default function ServiceTrustedLogos() {
         </div>
 
         {/* review trust bar */}
-        <div className="flex items-center justify-center gap-0 pt-[4px] pb-[8px]" style={{ borderTop: "1px solid #f0f0f0" }}>
+        <div className="flex flex-wrap items-center justify-center gap-0 pt-[4px] pb-[8px]" style={{ borderTop: "1px solid #f0f0f0" }}>
           {/* Clutch */}
           <div className="flex items-center gap-[8px] px-[28px] py-[12px]">
             <div className="flex items-center gap-[3px]">

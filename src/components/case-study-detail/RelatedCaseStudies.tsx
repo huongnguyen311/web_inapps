@@ -26,7 +26,7 @@ export default function RelatedCaseStudies({ relatedCases }: Props) {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-[24px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[24px]">
           {relatedCases.map((c) => (
             <Link
               key={c.slug}

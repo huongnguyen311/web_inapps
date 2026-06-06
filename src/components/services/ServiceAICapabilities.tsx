@@ -146,7 +146,7 @@ export default function ServiceAICapabilities() {
           </div>
 
           {/* right — content panel */}
-          <div className="flex-1 p-[48px] flex flex-col gap-[32px]" style={{ background: "#181818" }}>
+          <div className="flex-1 p-[24px] md:p-[48px] flex flex-col gap-[32px]" style={{ background: "#181818" }}>
 
             {/* description */}
             <p className="text-white/70 text-[15px] leading-[1.85]">{tab.desc}</p>

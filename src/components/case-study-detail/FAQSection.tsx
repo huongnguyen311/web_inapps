@@ -51,7 +51,7 @@ export default function FAQSection() {
             <div className="flex items-center">
               <p className="text-[11px] font-bold tracking-[2px] uppercase" style={{ color: "#ef5023" }}>Common Questions</p>
             </div>
-            <h2 className="font-black text-[#0a0a0a] text-[36px] leading-[44px] tracking-[-1.5px]">
+            <h2 className="font-black text-[#0a0a0a] text-[28px] leading-[36px] md:text-[36px] md:leading-[44px] tracking-[-1.5px]">
               Everything you need <span className="text-[#ef5023]">to know</span>
             </h2>
           </div>
@@ -90,7 +90,7 @@ export default function FAQSection() {
           </div>
 
           {/* right - answer panel */}
-          <div key={faqIndex} className="rounded-[16px] p-[36px] flex flex-col gap-[20px] animate-faq-fade" style={{ background: "#fff", border: "1px solid #e8e8e8", boxShadow: "0 8px 32px rgba(0,0,0,0.08)" }}>
+          <div key={faqIndex} className="rounded-[16px] p-[20px] md:p-[36px] flex flex-col gap-[20px] animate-faq-fade" style={{ background: "#fff", border: "1px solid #e8e8e8", boxShadow: "0 8px 32px rgba(0,0,0,0.08)" }}>
             <div className="flex flex-col gap-[8px]">
               <span className="text-[11px] font-bold uppercase tracking-[2px] text-[#ef5023]">{faqCategories[faqIndex].label}</span>
               <h3 className="font-black text-[#0a0a0a] text-[24px] leading-[1.35] tracking-[-0.4px]">

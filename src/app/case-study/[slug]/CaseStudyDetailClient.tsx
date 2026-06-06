@@ -118,17 +118,20 @@ export default function CaseStudyDetailClient({ cs }: { cs: CaseStudy }) {
               .peek-header {
                 max-width: 1320px;
                 margin: 0 auto 28px;
-                padding: 0 40px;
+                padding: 0 16px;
                 display: flex;
                 align-items: flex-end;
                 justify-content: space-between;
+              }
+              @media (min-width: 768px) {
+                .peek-header { padding: 0 40px; }
               }
               .peek-viewport {
                 position: relative;
                 overflow: hidden;
                 max-width: 860px;
                 margin: 0 auto;
-                padding: 0 80px;
+                padding: 0 24px;
               }
               .peek-track {
                 display: flex;
@@ -188,6 +191,9 @@ export default function CaseStudyDetailClient({ cs }: { cs: CaseStudy }) {
               .peek-dot.active {
                 background: #ef5023;
                 transform: scale(1.3);
+              }
+              @media (min-width: 768px) {
+                .peek-viewport { padding: 0 80px; }
               }
             `}</style>
 

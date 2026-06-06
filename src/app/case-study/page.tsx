@@ -96,18 +96,22 @@ export default function CaseStudyListPage() {
         {/* ── S1: Hero Banner (original) ── */}
         <section
           className="relative px-[16px] md:px-[40px] overflow-hidden flex flex-col items-start gap-[28px]"
-          style={{ minHeight: "clamp(550px, 70vh, 850px)", paddingTop: "clamp(120px, 20vw, 228px)", paddingBottom: "100px" }}
+          style={{ minHeight: "clamp(420px, 60vh, 850px)", paddingTop: "clamp(100px, 18vw, 228px)", paddingBottom: "clamp(48px, 8vw, 100px)" }}
         >
           {/* Banner background */}
           <div className="absolute inset-0">
             <img
               src="/Media/Image/case 5.png"
               alt=""
-              className="absolute right-0 top-0 h-full"
+              className="absolute right-0 top-0 h-full hidden md:block"
               style={{ width: "65%", objectFit: "cover", objectPosition: "right center" }}
             />
+            {/* Solid bg on mobile, gradient overlay on desktop */}
             <div
-              className="absolute inset-0"
+              className="absolute inset-0 bg-[#0d0d0d] md:bg-transparent"
+            />
+            <div
+              className="absolute inset-0 hidden md:block"
               style={{ background: "linear-gradient(to right, #0d0d0d 35%, #0d0d0d 45%, rgba(13,13,13,0.7) 60%, transparent 100%)" }}
             />
           </div>
@@ -119,7 +123,7 @@ export default function CaseStudyListPage() {
               <span style={{ color: "#ef5023" }}>Outcomes, Not Promises</span>
             </h1>
 
-            <p className="text-[#ffffff] text-[20px] leading-[32px]">
+            <p className="text-[#ffffff] text-[16px] leading-[26px] sm:text-[20px] sm:leading-[32px]">
               Senior engineers. Verified client metrics. {caseStudies.length} engagements across fintech, healthcare, logistics, and e-commerce. For startups and Fortune 500 alike.
             </p>
 
@@ -163,7 +167,7 @@ export default function CaseStudyListPage() {
 
           <div className="flex flex-col gap-[10px] mb-[40px]">
             <p className="text-[#ef5023] text-[11px] font-bold tracking-[2px] uppercase">OUR PORTFOLIO</p>
-            <h2 className="font-black text-[#0a0a0a] text-[38px] leading-[46px] tracking-[-1.5px]">
+            <h2 className="font-black text-[#0a0a0a] text-[28px] leading-[36px] sm:text-[38px] sm:leading-[46px] tracking-[-1.5px]">
               Proven results across <span className="text-[#ef5023]">every industry</span>
             </h2>
           </div>
@@ -209,7 +213,7 @@ export default function CaseStudyListPage() {
                 </div>
 
                 {/* Body */}
-                <div style={{ padding: "44px 44px 44px 36px", display: "flex", flexDirection: "column", justifyContent: "center", position: "relative", overflow: "hidden" }}>
+                <div className="p-[20px] sm:p-[36px] md:p-[44px] md:pl-[36px]" style={{ display: "flex", flexDirection: "column", justifyContent: "center", position: "relative", overflow: "hidden" }}>
                   {/* Category pill */}
                   <div style={{
                     display: "inline-flex", alignSelf: "flex-start",
@@ -276,7 +280,7 @@ export default function CaseStudyListPage() {
             <div className="flex items-end justify-between">
               <div className="flex flex-col gap-[10px]">
                 <p className="text-[#ef5023] text-[11px] font-bold tracking-[2px] uppercase">COMMON QUESTIONS</p>
-                <h2 className="font-black text-[#0a0a0a] text-[38px] leading-[46px] tracking-[-1.5px]">
+                <h2 className="font-black text-[#0a0a0a] text-[28px] leading-[36px] sm:text-[38px] sm:leading-[46px] tracking-[-1.5px]">
                   Everything you need <span className="text-[#ef5023]">to know</span>
                 </h2>
               </div>
@@ -306,7 +310,7 @@ export default function CaseStudyListPage() {
                 ))}
               </div>
 
-              <div key={faqIndex} className="rounded-[16px] p-[36px] flex flex-col gap-[20px] animate-faq-fade-cs" style={{ background: "#fff", border: "1px solid #e8e8e8", boxShadow: "0 8px 32px rgba(0,0,0,0.08)" }}>
+              <div key={faqIndex} className="rounded-[16px] p-[20px] md:p-[36px] flex flex-col gap-[20px] animate-faq-fade-cs" style={{ background: "#fff", border: "1px solid #e8e8e8", boxShadow: "0 8px 32px rgba(0,0,0,0.08)" }}>
                 <div className="flex flex-col gap-[8px]">
                   <span className="text-[11px] font-bold uppercase tracking-[2px] text-[#ef5023]">{faqItems[faqIndex].label}</span>
                   <h3 className="font-black text-[#0a0a0a] text-[20px] leading-[1.35] tracking-[-0.4px]">

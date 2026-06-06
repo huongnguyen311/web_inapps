@@ -13,7 +13,7 @@ export default function ProcessSectionC({ teamStructure }: Props) {
 
           {/* Left: red panel */}
           <div
-            className="relative flex flex-col justify-between px-[60px] py-[72px] overflow-hidden"
+            className="relative flex flex-col justify-between px-[24px] py-[48px] lg:px-[60px] lg:py-[72px] overflow-hidden"
             style={{ background: "#FF4929" }}
           >
             {/* Decorative circle */}
@@ -77,7 +77,7 @@ export default function ProcessSectionC({ teamStructure }: Props) {
 
           {/* Right: white role list */}
           <div
-            className="flex flex-col justify-center px-[60px] py-[72px]"
+            className="flex flex-col justify-center px-[24px] py-[48px] lg:px-[60px] lg:py-[72px]"
             style={{ background: "#ffffff" }}
           >
             <div className="flex flex-col gap-[0px]">

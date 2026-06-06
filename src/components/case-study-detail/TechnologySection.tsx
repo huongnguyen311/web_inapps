@@ -61,7 +61,7 @@ export default function TechnologySection({ techCategories }: Props) {
         <div className="mb-[32px]" style={{ borderBottom: "1px solid rgba(0,0,0,0.07)" }} />
 
         {/* tech list — auto columns, fixed width per column */}
-        <div className="grid gap-x-[80px] gap-y-[40px]" style={{ gridTemplateColumns: "repeat(auto-fill, 160px)" }}>
+        <div className="grid gap-x-[32px] md:gap-x-[80px] gap-y-[40px]" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(130px, 160px))" }}>
           {techCategories.map((cat, ci) => (
             <div
               key={ci}

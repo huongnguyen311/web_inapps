@@ -39,6 +39,7 @@ function NeutralCell({ value }: { value: string | boolean }) {
 }
 
 const COLS = "1fr 1fr 1fr 1fr";
+const TABLE_MIN_W = "640px";
 
 export default function ServiceComparison({ rows, competitorLabel = "Other Vendors" }: Props) {
   return (
@@ -55,6 +56,7 @@ export default function ServiceComparison({ rows, competitorLabel = "Other Vendo
 
         {/* table */}
         <div className="rounded-[16px] overflow-x-auto" style={{ border: "1px solid #e8e8e8", boxShadow: "0 8px 40px rgba(0,0,0,0.10), 0 2px 8px rgba(239,80,35,0.06)" }}>
+          <div style={{ minWidth: TABLE_MIN_W }}>
 
           {/* column headers */}
           <div className="grid" style={{ gridTemplateColumns: COLS }}>
@@ -141,6 +143,7 @@ export default function ServiceComparison({ rows, competitorLabel = "Other Vendo
               </div>
             );
           })}
+        </div>
         </div>
       </div>
     </section>

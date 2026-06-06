@@ -27,7 +27,7 @@ export default function TeamSlider() {
         .peek-viewport {
           position: relative;
           overflow: hidden;
-          padding: 0 120px;
+          padding: 0 24px;
           max-width: 960px;
           margin: 0 auto;
         }
@@ -89,6 +89,9 @@ export default function TeamSlider() {
         .ts-dot.ts-active {
           background: #ef5023;
           transform: scale(1.3);
+        }
+        @media (min-width: 768px) {
+          .peek-viewport { padding: 0 120px; }
         }
       `}</style>
 

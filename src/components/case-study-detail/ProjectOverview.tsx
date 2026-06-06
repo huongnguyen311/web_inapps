@@ -12,7 +12,7 @@ export default function ProjectOverview({ overviewImage, background, businessCon
           <p className="text-[11px] font-bold tracking-[2px] uppercase mb-[-16px]" style={{ color: "#ef5023" }}>
             Project Overview
           </p>
-          <h2 className="font-black text-[#0a0a0a] text-[36px] leading-[44px] tracking-[-1.5px]">
+          <h2 className="font-black text-[#0a0a0a] text-[28px] leading-[36px] md:text-[36px] md:leading-[44px] tracking-[-1.5px]">
             {title}
           </h2>
 
@@ -31,7 +31,7 @@ export default function ProjectOverview({ overviewImage, background, businessCon
         </div>
 
         {/* Right — image */}
-        <div className="relative sticky top-[100px]">
+        <div className="relative md:sticky md:top-[100px]">
           {/* Decorative orange blob behind */}
           <div
             className="absolute"

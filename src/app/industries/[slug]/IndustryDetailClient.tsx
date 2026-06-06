@@ -256,7 +256,7 @@ export default function IndustryDetailClient({ industry }: { industry: IndustryD
 
         {/* ── S4: Buyer Problem Triggers ── */}
         <section className="px-[16px] md:px-[40px] py-[48px] md:py-[70px]" style={{ background: "#0d0d0d" }}>
-          <div className="max-w-[1320px] mx-auto grid grid-cols-1 md:grid-cols-[360px_1fr] gap-[80px] items-center">
+          <div className="max-w-[1320px] mx-auto grid grid-cols-1 md:grid-cols-[360px_1fr] gap-[32px] md:gap-[80px] items-center">
 
             {/* Left — title + description */}
             <div className="flex flex-col gap-[16px]">
