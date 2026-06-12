@@ -38,7 +38,7 @@ export default function ContactHero() {
               Schedule a Call
             </a>
             <a
-              href="/about"
+              href="/company"
               className="font-semibold text-[16px] px-[28px] h-[55px] rounded-[10px] border border-white/30 hover:border-white/60 transition-colors inline-flex items-center text-white"
               style={{ textDecoration: "none" }}
             >

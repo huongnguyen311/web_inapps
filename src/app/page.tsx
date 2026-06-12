@@ -201,7 +201,7 @@ export default function Home() {
       <main className="flex-1 flex flex-col">
 
         {/* ── 1. HERO ──────────────────────────────────────────────────────── */}
-        <section className="relative px-[16px] md:px-[40px] overflow-hidden flex flex-col items-start gap-[28px] min-h-[600px] md:min-h-[850px] pt-[140px] md:pt-[228px] pb-[60px] md:pb-[100px]">
+        <section className="relative px-[40px] overflow-hidden flex flex-col items-start gap-[28px]" style={{ minHeight: "850px", paddingTop: "228px", paddingBottom: "100px" }}>
           {/* banner background */}
           <div className="absolute inset-0">
             <img src="/banner.png" alt="" className="w-full h-full object-cover" style={{ filter: "blur(3px)", transform: "scale(1.04)" }} />
@@ -212,30 +212,30 @@ export default function Home() {
           <div className="relative flex flex-col items-start gap-[24px] max-w-[860px]">
             {/* headline */}
             <h1 className="font-black text-white tracking-[-2px]">
-              <div className="text-[32px] leading-[40px] sm:text-[52px] sm:leading-[60px] md:text-[68px] md:leading-[76px] md:whitespace-nowrap">Dedicated Engineering Teams,</div>
-              <div className="text-[32px] leading-[40px] sm:text-[52px] sm:leading-[60px] md:text-[68px] md:leading-[76px] md:whitespace-nowrap"><span className="text-[#ef5023]">AI-Native by Default.</span></div>
+              <div className="text-[40px] leading-[48px] sm:text-[52px] sm:leading-[60px] md:text-[68px] md:leading-[76px] whitespace-nowrap">Dedicated Engineering Teams,</div>
+              <div className="text-[40px] leading-[48px] sm:text-[52px] sm:leading-[60px] md:text-[68px] md:leading-[76px] whitespace-nowrap"><span className="text-[#ef5023]">AI-Native by Default.</span></div>
             </h1>
 
             {/* subtext */}
-            <p className="text-[#ffffff] text-[16px] md:text-[20px] leading-[28px] md:leading-[32px] font-normal">
-              Senior engineers, fully dedicated to your product, not shared across projects.{" "}
-              We build and manage your offshore team in Vietnam, embed AI tooling in every sprint,{" "}
-              and have you shipping in 4–6 weeks.{" "}
+            <p className="text-[#ffffff] text-[20px] leading-[32px] font-normal">
+              Senior engineers, fully dedicated to your product, not shared across projects.<br />
+              We build and manage your offshore team in Vietnam, embed AI tooling in every sprint,<br />
+              and have you shipping in 4–6 weeks.<br />
               No vendor PM layer. No revolving door of contractors.
             </p>
 
             {/* buttons */}
-            <div className="flex flex-col sm:flex-row gap-[12px] items-start sm:items-center pt-[4px]">
+            <div className="flex gap-[12px] items-center pt-[4px]">
               <Link
                 href="/contact"
-                className="bg-[#ef5023] hover:bg-[#d94010] text-white font-bold text-[14px] md:text-[16px] px-[24px] md:px-[28px] h-[48px] md:h-[55px] rounded-[10px] inline-flex items-center transition-colors"
+                className="bg-[#ef5023] hover:bg-[#d94010] text-white font-bold text-[16px] px-[28px] h-[55px] rounded-[10px] inline-flex items-center transition-colors"
                 style={{ boxShadow: "0 8px 32px rgba(239,80,35,0.35)", textDecoration: "none" }}
               >
                 Book a Free Call
               </Link>
               <Link
                 href="/case-study"
-                className="bg-transparent text-white font-semibold text-[14px] md:text-[16px] px-[24px] md:px-[28px] h-[48px] md:h-[55px] rounded-[10px] border border-white/30 hover:border-white/60 transition-colors inline-flex items-center"
+                className="bg-transparent text-white font-semibold text-[16px] px-[28px] h-[55px] rounded-[10px] border border-white/30 hover:border-white/60 transition-colors inline-flex items-center"
                 style={{ textDecoration: "none" }}
               >
                 View Our Work →
@@ -279,7 +279,7 @@ export default function Home() {
 
         {/* ── 2. CLIENT LOGOS MARQUEE + RATINGS ────────────────────────────── */}
         <section className="bg-[#f5f5f5] pt-[48px] pb-[24px] overflow-hidden border-b border-[#e0e0e0]">
-          <div className="max-w-[1320px] mx-auto px-[16px] md:px-[40px] flex flex-col gap-[24px]">
+          <div className="max-w-[1320px] mx-auto px-[40px] flex flex-col gap-[24px]">
             <div className="flex flex-col items-center gap-[6px]">
               <p className="text-center text-[#0a0a0a] text-[15px] font-semibold">
                 Trusted by engineering teams across{" "}
@@ -304,7 +304,7 @@ export default function Home() {
             </div>
 
             {/* review trust bar */}
-            <div className="flex flex-wrap items-center justify-center gap-0 pt-[4px] pb-[8px]" style={{ borderTop: "1px solid #f0f0f0" }}>
+            <div className="flex items-center justify-center gap-0 pt-[4px] pb-[8px]" style={{ borderTop: "1px solid #f0f0f0" }}>
               {/* Clutch */}
               <div className="flex items-center gap-[8px] px-[28px] py-[12px]">
                 <div className="flex items-center gap-[3px]">
@@ -346,11 +346,11 @@ export default function Home() {
         </section>
 
         {/* ── WHY OUTSOURCE TO VIETNAM ─────────────────────────────────────── */}
-        <section className="relative overflow-hidden bg-[#fafafa] border-t border-[#e8e8e8] px-[16px] md:px-[40px] py-[48px] md:py-[70px]">
-          <div className="max-w-[1320px] mx-auto rounded-[24px] overflow-visible lg:overflow-hidden grid grid-cols-1 lg:grid-cols-[1fr_1.2fr]" style={{ minHeight: "580px" }}>
+        <section className="relative overflow-hidden bg-[#fafafa] border-t border-[#e8e8e8] px-[40px] py-[70px]">
+          <div className="max-w-[1320px] mx-auto rounded-[24px] overflow-hidden" style={{ display: "grid", gridTemplateColumns: "1fr 1.2fr", minHeight: "580px" }}>
 
             {/* left - content panel */}
-            <div className="relative flex flex-col justify-center gap-[24px] px-[0px] py-[32px] md:overflow-hidden">
+            <div className="relative flex flex-col justify-center gap-[24px] px-[0px] py-[32px] overflow-hidden">
 
               {/* eyebrow */}
               <div className="flex items-center">
@@ -402,7 +402,7 @@ export default function Home() {
             </div>
 
             {/* right - photo collage (same style as Why Choose Us) */}
-            <div className="grid grid-cols-2 gap-[12px] py-[32px] px-[16px] lg:pl-[63px] lg:pr-[28px] mt-[0px] lg:mt-[35px]">
+            <div className="grid grid-cols-2 gap-[12px] py-[32px] pl-[63px] pr-[28px] mt-[35px]">
 
               {/* col 1 - square image + orange stat card (offset down) */}
               <div className="flex flex-col gap-[12px] pb-[28px]">
@@ -454,8 +454,8 @@ export default function Home() {
         </section>
 
         {/* ── STATS ────────────────────────────────────────────────────────── */}
-        <section className="px-[16px] md:px-[40px] py-[24px] md:py-[32px]" style={{ background: "#ffffff" }}>
-          <div className="max-w-[1320px] mx-auto grid grid-cols-2 md:grid-cols-5 gap-[14px]">
+        <section className="px-[40px] py-[32px]" style={{ background: "#ffffff" }}>
+          <div className="max-w-[1320px] mx-auto grid grid-cols-5 gap-[14px]">
             {/* Rating card — special render */}
             <div
               className="flex flex-col gap-[8px] rounded-[12px] px-[20px] py-[20px] items-center text-center"
@@ -499,7 +499,7 @@ export default function Home() {
 
 
         {/* ── HOW WE'RE DIFFERENT ─────────────────────────────────────────── */}
-        <section className="relative px-[16px] md:px-[40px] py-[48px] md:py-[70px] overflow-hidden" style={{ background: "#080808", borderTop: "1px solid #1a1a1a" }}>
+        <section className="relative px-[40px] py-[70px] overflow-hidden" style={{ background: "#080808", borderTop: "1px solid #1a1a1a" }}>
 
           {/* p1 pattern top-right */}
           <div className="absolute pointer-events-none" style={{ top: 0, right: 0, width: "307px", height: "307px", opacity: 0.3, zIndex: 0 }}>
@@ -515,13 +515,13 @@ export default function Home() {
             {/* header */}
             <div className="flex flex-col gap-[12px] max-w-[640px]">
               <p className="text-[#ef5023] text-[11px] font-bold tracking-[2px] uppercase">HOW WE WORK</p>
-              <h2 className="font-black text-white text-[24px] leading-[32px] md:text-[36px] md:leading-[44px] tracking-[-1.5px] md:whitespace-nowrap">
+              <h2 className="font-black text-white text-[36px] leading-[44px] tracking-[-1.5px] whitespace-nowrap">
                 Engineering teams tailored to your product, not products adapted to fit a team.
               </h2>
             </div>
 
             {/* cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[16px]">
+            <div className="grid grid-cols-3 gap-[16px]">
               {[
                 {
                   tag: "DEDICATED",
@@ -565,7 +565,7 @@ export default function Home() {
         </section>
 
         {/* ── AI-NATIVE IN PRACTICE ───────────────────────────────────────── */}
-        <section className="relative px-[16px] md:px-[40px] py-[48px] md:py-[70px] overflow-hidden" style={{ background: "#ffffff", borderTop: "1px solid #e8e8e8" }}>
+        <section className="relative px-[40px] py-[70px] overflow-hidden" style={{ background: "#ffffff", borderTop: "1px solid #e8e8e8" }}>
 
           {/* dot grid pattern */}
           <div className="absolute inset-0 pointer-events-none" style={{
@@ -610,7 +610,7 @@ export default function Home() {
             {/* header */}
             <div className="flex flex-col gap-[16px] max-w-[700px]">
               <p className="text-[#ef5023] text-[11px] font-bold tracking-[2px] uppercase">AI IN PRACTICE</p>
-              <h2 className="font-black text-[#0a0a0a] text-[24px] leading-[32px] md:text-[36px] md:leading-[44px] tracking-[-1.5px] md:whitespace-nowrap">
+              <h2 className="font-black text-[#0a0a0a] text-[36px] leading-[44px] tracking-[-1.5px] whitespace-nowrap">
                 What "AI-native" actually means in practice
               </h2>
               <p className="text-[16px] leading-[1.75]" style={{ color: "rgba(0,0,0,0.55)" }}>
@@ -619,7 +619,7 @@ export default function Home() {
             </div>
 
             {/* timeline */}
-            <div className="relative flex flex-col md:flex-row gap-[16px] md:gap-0 mt-[24px] items-stretch">
+            <div className="relative flex gap-0 mt-[24px] items-stretch">
 
               {[
                 {
@@ -686,7 +686,7 @@ export default function Home() {
         </section>
 
         {/* ── WHAT WE BUILD ───────────────────────────────────────────────── */}
-        <section className="relative px-[16px] md:px-[40px] py-[48px] md:py-[70px] overflow-hidden" style={{ borderTop: "1px solid #1a1a1a" }}>
+        <section className="relative px-[40px] py-[70px] overflow-hidden" style={{ borderTop: "1px solid #1a1a1a" }}>
           {/* real photo background */}
           <div className="absolute inset-0" style={{ zIndex: 0 }}>
             <img src="/Media/Image/case%204.png" alt="" className="w-full h-full object-cover" style={{ objectPosition: "center 50px" }} />
@@ -713,7 +713,7 @@ export default function Home() {
             </div>
 
             {/* uniform grid — add/remove items freely */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-[12px]">
+            <div className="grid grid-cols-3 gap-[12px]">
               {[
                 {
                   title: "Custom Software Development",
@@ -916,7 +916,7 @@ export default function Home() {
           const techTabs = Object.keys(techCategories);
           const activeItems = techCategories[activeTechTab] ?? [];
           return (
-        <section className="px-[16px] md:px-[40px] py-[48px] md:py-[70px] relative overflow-hidden" style={{ background: "#0a0a0a", borderTop: "1px solid #1a1a1a" }}>
+        <section className="px-[40px] py-[70px] relative overflow-hidden" style={{ background: "#0a0a0a", borderTop: "1px solid #1a1a1a" }}>
           {/* circuit board pattern top-left */}
           <svg className="absolute pointer-events-none" style={{ top: 0, left: 0, width: "283px", height: "283px", opacity: 0.9, zIndex: 0, transform: "scaleX(-1) scaleY(-1)" }} viewBox="0 0 354 354" fill="none" xmlns="http://www.w3.org/2000/svg">
             {/* grid base lines */}
@@ -1081,7 +1081,7 @@ export default function Home() {
         {(() => {
           const activeCaseStudy = caseStudies.find(c => c.model === caseModel) ?? caseStudies[0];
           return (
-        <section className="relative px-[16px] md:px-[40px] py-[48px] md:py-[70px]" style={{ background: "#ffffff", borderTop: "1px solid #e8e8e8" }} onMouseEnter={pauseCaseTimer} onMouseLeave={resumeCaseTimer}>
+        <section className="relative px-[40px] py-[70px]" style={{ background: "#ffffff", borderTop: "1px solid #e8e8e8" }} onMouseEnter={pauseCaseTimer} onMouseLeave={resumeCaseTimer}>
 
           {/* section header */}
           <div className="max-w-[1320px] mx-auto flex items-end justify-between mb-[24px]">
@@ -1096,12 +1096,12 @@ export default function Home() {
           </div>
 
           {/* model filter tabs */}
-          <div className="max-w-[1200px] mx-auto flex gap-[0px] mb-[24px] md:justify-center border-b border-[#e8e8e8] overflow-x-auto md:overflow-x-visible overscroll-x-contain" style={{ WebkitOverflowScrolling: "touch", scrollbarWidth: "none", touchAction: "pan-x pinch-zoom", overflowY: "hidden" }}>
+          <div className="max-w-[1200px] mx-auto flex gap-[0px] mb-[24px] justify-center border-b border-[#e8e8e8]">
             {CASE_TABS.map((tab, ti) => (
               <button
                 key={tab}
                 onClick={() => { if (caseTimerRef.current) clearInterval(caseTimerRef.current); setCaseTabIndex(ti); caseTimerRef.current = setInterval(() => { if (!caseTimerPaused.current) setCaseTabIndex(i => (i + 1) % CASE_TABS.length); }, 6000); }}
-                className="text-[13px] px-[16px] md:px-[20px] py-[12px] md:py-[10px] transition-all duration-200 relative whitespace-nowrap flex-shrink-0"
+                className="text-[13px] px-[20px] py-[10px] transition-all duration-200 relative whitespace-nowrap"
                 style={{
                   background: "transparent",
                   color: caseModel === tab ? "#ef5023" : "#555",
@@ -1117,10 +1117,10 @@ export default function Home() {
           </div>
 
           {/* card */}
-          <div className="max-w-[1200px] mx-auto rounded-[20px] overflow-hidden grid grid-cols-1 md:grid-cols-2" style={{ background: "#f5f5f5", border: "1px solid #e8e8e8", minHeight: "460px" }}>
+          <div className="max-w-[1200px] mx-auto rounded-[20px] overflow-hidden grid grid-cols-2" style={{ background: "#f5f5f5", border: "1px solid #e8e8e8", minHeight: "460px" }}>
 
             {/* LEFT - dark text card */}
-            <div className="relative flex flex-col justify-between gap-[28px] px-[20px] md:px-[40px] py-[28px] md:py-[40px] md:rounded-l-[20px]" style={{ background: "#1a1a1a" }}>
+            <div className="relative flex flex-col justify-between gap-[28px] px-[40px] py-[40px] rounded-l-[20px]" style={{ background: "#1a1a1a" }}>
               {/* dot pattern */}
               <div className="absolute inset-0 pointer-events-none rounded-l-[20px]"
                 style={{ backgroundImage: "radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
@@ -1169,7 +1169,7 @@ export default function Home() {
             </div>
 
             {/* RIGHT - image */}
-            <div className="relative overflow-hidden group min-h-[240px] md:min-h-0" style={{ background: "#f0f0f0" }}>
+            <div className="relative overflow-hidden group" style={{ background: "#f0f0f0" }}>
               <img
                 src={activeCaseStudy.image}
                 alt={activeCaseStudy.title}
@@ -1197,22 +1197,22 @@ export default function Home() {
 
 
         {/* ── ENGAGEMENT MODELS ───────────────────────────────────────────── */}
-        <section className="px-[16px] md:px-[40px] py-[48px] md:py-[70px]" style={{ background: "#fafafa", borderTop: "1px solid #e8e8e8" }}>
+        <section className="px-[40px] py-[70px]" style={{ background: "#fafafa", borderTop: "1px solid #e8e8e8" }}>
           <div className="max-w-[1320px] mx-auto flex flex-col gap-[48px]">
 
             {/* header */}
             <div className="flex flex-col gap-[12px]">
               <p className="text-[#ef5023] text-[11px] font-bold tracking-[2px] uppercase">ENGAGEMENT MODELS</p>
-              <h2 className="font-black text-[#0a0a0a] text-[24px] leading-[32px] md:text-[36px] md:leading-[44px] tracking-[-1.5px] md:whitespace-nowrap">
+              <h2 className="font-black text-[#0a0a0a] text-[36px] leading-[44px] tracking-[-1.5px] whitespace-nowrap">
                 Choose how you want to work with us
               </h2>
-              <p className="text-[#666] text-[16px] leading-[1.7] md:whitespace-nowrap">
+              <p className="text-[#666] text-[16px] leading-[1.7] whitespace-nowrap">
                 All models include dedicated engineers, full transparency, and no hidden fees.
               </p>
             </div>
 
             {/* 4-column grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[16px] items-stretch">
+            <div className="grid grid-cols-4 gap-[16px] items-stretch">
 
               {/* DEDICATED TEAM — highlighted */}
               {[
@@ -1337,7 +1337,7 @@ export default function Home() {
         </section>
 
         {/* ── 10. TESTIMONIALS ─────────────────────────────────────────────── */}
-        <section className="relative px-[16px] md:px-[40px] py-[48px] md:py-[70px] overflow-hidden" style={{ background: "#080808" }}>
+        <section className="relative px-[40px] py-[70px] overflow-hidden" style={{ background: "#080808" }}>
 
           {/* subtle grid */}
           <div className="absolute inset-0 pointer-events-none" style={{
@@ -1366,7 +1366,7 @@ export default function Home() {
             </div>
 
             {/* static grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-[16px]">
+            <div className="grid grid-cols-3 gap-[16px]">
               {testimonials.map(({ quote, name, role, avatar }) => (
                 <div
                   key={`${name}-${role}`}
@@ -1396,7 +1396,7 @@ export default function Home() {
         </section>
 
         {/* ── ONBOARDING ──────────────────────────────────────────────────── */}
-        <section className="relative px-[16px] md:px-[40px] py-[48px] md:py-[70px] overflow-hidden" style={{ background: "#080808" }}>
+        <section className="relative px-[40px] py-[70px] overflow-hidden" style={{ background: "#080808" }}>
           {/* top-center orange glow */}
           <div className="absolute pointer-events-none" style={{ left: "50%", top: "-60px", transform: "translateX(-50%)", width: "700px", height: "400px", borderRadius: "50%", background: "radial-gradient(circle, rgba(239,80,35,0.09) 0%, transparent 65%)", zIndex: 0 }} />
           <div className="relative max-w-[1320px] mx-auto flex flex-col gap-[64px]" style={{ zIndex: 1 }}>
@@ -1415,10 +1415,10 @@ export default function Home() {
             {/* steps */}
             <div className="relative">
               {/* continuous connector line — absolute, behind circles */}
-              <div className="hidden md:block absolute left-[calc(16.667%)] right-[calc(16.667%)] h-[2px] pointer-events-none"
+              <div className="absolute left-[calc(16.667%)] right-[calc(16.667%)] h-[2px] pointer-events-none"
                 style={{ top: "48px", background: "linear-gradient(90deg, #ef5023 0%, rgba(239,80,35,0.4) 50%, #ef5023 100%)" }} />
 
-              <div className="grid grid-cols-1 md:grid-cols-3">
+              <div className="grid grid-cols-3">
                 {[
                   {
                     step: "01",
@@ -1445,7 +1445,7 @@ export default function Home() {
                     deliverable: "Code in production",
                   },
                 ].map(({ step, timeline, title, desc, bullets, deliverable }, idx) => (
-                  <div key={step} className="flex flex-col items-center px-[12px] md:px-[40px]">
+                  <div key={step} className="flex flex-col items-center px-[40px]">
 
                     {/* timeline label */}
                     <p className="text-[11px] font-black tracking-[2px] uppercase mb-[10px]" style={{ color: "#ef5023" }}>{timeline}</p>
@@ -1524,7 +1524,7 @@ export default function Home() {
         </section>
 
         {/* ── FAQ / OBJECTION HANDLING ────────────────────────────────────── */}
-<section className="px-[16px] md:px-[40px] py-[48px] md:py-[70px]" style={{ background: "#fafafa", borderTop: "1px solid #e8e8e8" }}>
+<section className="px-[40px] py-[70px]" style={{ background: "#fafafa", borderTop: "1px solid #e8e8e8" }}>
   <div className="max-w-[1320px] mx-auto flex flex-col gap-[48px]">
 
     {/* header */}
@@ -1540,7 +1540,7 @@ export default function Home() {
     </div>
 
     {/* two-column layout: left = question list, right = answer */}
-    <div className="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-[24px]">
+    <div className="grid gap-[24px]" style={{ gridTemplateColumns: "1fr 1.2fr" }}>
 
       {/* left - stacked question rows */}
       <div className="flex flex-col gap-[4px]">
@@ -1590,7 +1590,7 @@ export default function Home() {
 </section>
 
         {/* ── AWARDS ───────────────────────────────────────────────────────── */}
-        <section className="relative px-[16px] md:px-[40px] py-[48px] md:py-[70px] overflow-hidden bg-[#0a0a0a]" style={{ borderTop: "1px solid #1a1a1a" }}>
+        <section className="relative px-[40px] py-[70px] overflow-hidden bg-[#0a0a0a]" style={{ borderTop: "1px solid #1a1a1a" }}>
           {/* constellation background */}
           <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 1 }} viewBox="0 0 1000 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
             <g stroke="rgba(255,255,255,0.08)" strokeWidth="0.8" fill="none">
@@ -1724,7 +1724,7 @@ export default function Home() {
         </section>
 
         {/* ── 11. CTA ──────────────────────────────────────────────────────── */}
-        <section className="px-[16px] md:px-[40px] py-[48px] md:py-[70px]" style={{ background: "#0a0a0a", borderTop: "1px solid #1a1a1a" }}>
+        <section className="px-[40px] py-[70px]" style={{ background: "#0a0a0a", borderTop: "1px solid #1a1a1a" }}>
           <div className="max-w-[1320px] mx-auto">
             <div className="relative rounded-[20px] overflow-hidden px-[56px] py-[44px] flex flex-col items-center text-center gap-[24px]"
               style={{ background: "#ef5023", boxShadow: "0 10px 30px -8px rgba(239,80,35,0.25), 0 4px 12px -4px rgba(239,80,35,0.15)" }}>

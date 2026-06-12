@@ -550,11 +550,11 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
             <button
               className="flex items-center gap-[5px] text-[17px] font-semibold px-3 py-2 rounded-lg transition-colors whitespace-nowrap"
               style={{ color: activeMenu === "about" ? "#ef5023" : (dark ? "#111" : "#ffffff"), background: activeMenu === "about" ? "rgba(239,80,35,0.08)" : "transparent" }}
-              onClick={() => router.push("/about")}
+              onClick={() => router.push("/company")}
             >
               <span style={{ position: "relative" }}>
                 Company
-                {pathname.startsWith("/about") && <span style={{ position: "absolute", bottom: -6, left: 0, right: 0, height: 2, background: "#ef5023", borderRadius: 2 }} />}
+                {pathname.startsWith("/company") && <span style={{ position: "absolute", bottom: -6, left: 0, right: 0, height: 2, background: "#ef5023", borderRadius: 2 }} />}
               </span>
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style={{ transition: "transform 0.2s", transform: activeMenu === "about" ? "rotate(180deg)" : "rotate(0deg)", flexShrink: 0 }}><path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </button>
@@ -566,7 +566,7 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
                   position: "absolute",
                   top: "calc(100% + 8px)",
                   right: 0,
-                  width: "400px",
+                  width: "420px",
                   background: "#ffffff",
                   border: "1px solid #d0d0d0",
                   borderRadius: "16px",
@@ -581,11 +581,12 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
                     ⬡ COMPANY
                   </div>
                   {[
-                    { num: "📖", title: "Our Story", desc: "10+ years building software for the world", href: "/about" },
-                    { num: "👤", title: "Leadership Team", desc: "Meet the people behind InApps", href: "/about#leadership" },
-                    { num: "🌱", title: "Life at InApps", desc: "Culture, values, and how we work", href: "/about#culture" },
-                    { num: "💼", title: "Careers", desc: "Join our growing team of 150+ engineers", href: "/about#careers" },
-                    { num: "🏆", title: "Press & Awards", desc: "#1 Vietnam · Top 5 SEA on Clutch", href: "/about#awards" },
+                    { num: "🏢", title: "About Us", desc: "People, expertise, and values", href: "/company/about" },
+                    { num: "⭐", title: "Client Stories", desc: "Real results from global clients", href: "/company/client-stories" },
+                    { num: "🏆", title: "Press & Awards", desc: "Recognition from industry leaders", href: "/company#awards" },
+                    { num: "🚀", title: "Solution Accelerators", desc: "Launch faster with proven foundations", href: "/company#accelerators" },
+                    { num: "🤝", title: "Partner with InApps", desc: "Partnerships built for growth", href: "/company/partner" },
+                    { num: "💼", title: "Careers", desc: "Build products for global markets", href: "/careers" },
                   ].map((item) => (
                     <AboutMenuItem key={item.num} num={item.num} title={item.title} desc={item.desc} href={item.href} />
                   ))}
@@ -594,7 +595,7 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
                 {/* Footer bar */}
                 <div style={{ borderTop: "1px solid #f0f0f0", background: "#fafafa", padding: "10px 24px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                   <span style={{ fontSize: 12, color: "#888" }}>#1 Vietnam · Top 5 SEA on Clutch</span>
-                  <Link href="/about" style={{ fontSize: 12, fontWeight: 600, color: "#555", textDecoration: "none" }}>
+                  <Link href="/company" style={{ fontSize: 12, fontWeight: 600, color: "#555", textDecoration: "none" }}>
                     About us →
                   </Link>
                 </div>
@@ -803,9 +804,9 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
             <div>
               <div className="flex items-center px-[20px]" style={{ gap: 0 }}>
                 <a
-                  href="/about"
+                  href="/company"
                   onClick={(e) => { e.stopPropagation(); setMobileOpen(false); }}
-                  style={{ flex: 1, display: "block", padding: "14px 0", fontSize: 16, fontWeight: 600, color: pathname.startsWith("/about") ? "#ef5023" : "#111", textDecoration: "none" }}
+                  style={{ flex: 1, display: "block", padding: "14px 0", fontSize: 16, fontWeight: 600, color: pathname.startsWith("/company") ? "#ef5023" : "#111", textDecoration: "none" }}
                 >
                   Company
                 </a>
@@ -820,11 +821,12 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
               {mobileSubmenu === "company" && (
                 <div className="flex flex-col pb-[8px]" style={{ background: "#fafafa" }}>
                   {[
-                    { title: "Our Story", href: "/about" },
-                    { title: "Leadership Team", href: "/about#leadership" },
-                    { title: "Life at InApps", href: "/about#culture" },
-                    { title: "Careers", href: "/about#careers" },
-                    { title: "Press & Awards", href: "/about#awards" },
+                    { title: "About Us", href: "/company/about" },
+                    { title: "Client Stories", href: "/company/client-stories" },
+                    { title: "Press & Awards", href: "/company#awards" },
+                    { title: "Solution Accelerators", href: "/company#accelerators" },
+                    { title: "Partner with InApps", href: "/company/partner" },
+                    { title: "Careers", href: "/careers" },
                   ].map((item) => (
                     <a key={item.href} href={item.href} onClick={() => setMobileOpen(false)} className="px-[32px] py-[10px] text-[14px]" style={{ color: "#555", textDecoration: "none" }}>
                       {item.title}

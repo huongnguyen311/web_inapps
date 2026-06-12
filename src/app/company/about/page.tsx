@@ -4,14 +4,14 @@ import ServiceTrustedLogos from "@/components/services/ServiceTrustedLogos";
 import TeamSlider from "@/components/TeamSlider";
 
 
-export default function AboutPage() {
+export default function CompanyAboutPage() {
   return (
     <div className="min-h-screen flex flex-col" style={{ background: "#0d0d0d" }}>
       <Header />
       <main className="flex-1 flex flex-col">
 
         {/* ── S1: Hero ── */}
-        <section className="relative px-[16px] md:px-[40px] overflow-hidden flex flex-col items-start gap-[28px] min-h-[600px] md:min-h-[850px] pt-[140px] md:pt-[228px]" style={{ paddingBottom: "100px" }}>
+        <section className="relative px-[40px] overflow-hidden flex flex-col items-start gap-[28px]" style={{ minHeight: "850px", paddingTop: "228px", paddingBottom: "100px" }}>
           {/* Banner background — case-study style */}
           <div className="absolute inset-0">
             <img
@@ -66,7 +66,7 @@ export default function AboutPage() {
         <ServiceTrustedLogos />
 
         {/* ── S3: Our Story ── */}
-        <section className="px-[16px] md:px-[40px] overflow-hidden" style={{ background: "#fff" }}>
+        <section className="px-[40px] overflow-hidden" style={{ background: "#fff" }}>
           <div className="max-w-[1320px] mx-auto py-[70px]">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-[48px]">
 
@@ -155,7 +155,7 @@ export default function AboutPage() {
         </section>
 
         {/* ── CEO ── */}
-        <section className="px-[16px] md:px-[40px]" style={{ background: "#0a0a0a", borderTop: "1px solid #222", backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='100'%3E%3Cpath d='M0 90 L20 75 L40 80 L60 55 L80 60 L100 35 L120 40 L140 20 L160 10' fill='none' stroke='%23181818' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M0 100 L20 88 L40 92 L60 70 L80 74 L100 52 L120 56 L140 38 L160 28' fill='none' stroke='%23141414' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`, backgroundSize: "160px 100px" }}>
+        <section style={{ background: "#0a0a0a", borderTop: "1px solid #222", backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='100'%3E%3Cpath d='M0 90 L20 75 L40 80 L60 55 L80 60 L100 35 L120 40 L140 20 L160 10' fill='none' stroke='%23181818' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M0 100 L20 88 L40 92 L60 70 L80 74 L100 52 L120 56 L140 38 L160 28' fill='none' stroke='%23141414' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`, backgroundSize: "160px 100px" }}>
             <div className="max-w-[1320px] mx-auto py-[70px]">
               <div className="grid grid-cols-1 lg:grid-cols-[3fr_400px] gap-[1px] items-center">
 
@@ -225,13 +225,13 @@ export default function AboutPage() {
         </section>
 
         {/* ── Journey: 2-col timeline + image ── */}
-        <section className="px-[16px] md:px-[40px] overflow-hidden" style={{ background: "#fff", borderTop: "1px solid #eee", borderBottom: "1px solid #eee", backgroundImage: "radial-gradient(ellipse 100% 90% at 50% 50%, rgba(239,80,35,0.12) 0%, transparent 70%), radial-gradient(ellipse 70% 60% at 50% 50%, rgba(255,200,150,0.09) 0%, transparent 65%)" }}>
+        <section className="px-[40px] overflow-hidden" style={{ background: "#fff", borderTop: "1px solid #eee", borderBottom: "1px solid #eee", backgroundImage: "radial-gradient(ellipse 100% 90% at 50% 50%, rgba(239,80,35,0.12) 0%, transparent 70%), radial-gradient(ellipse 70% 60% at 50% 50%, rgba(255,200,150,0.09) 0%, transparent 65%)" }}>
             <div className="max-w-[1320px] mx-auto py-[70px]">
               <div className="grid grid-cols-1 lg:grid-cols-[62%_38%] gap-[48px] items-stretch">
 
                 {/* Left: timeline */}
                 <div
-                  className="timeline-scroll relative flex flex-col rounded-[20px] p-[20px] md:p-[40px]"
+                  className="timeline-scroll relative flex flex-col rounded-[20px] p-[40px]"
                   style={{
                     background: "#fff",
                     border: "1px solid #e8e8e8",
@@ -376,7 +376,7 @@ export default function AboutPage() {
           .mv-card-mission .mv-icon-anim { animation-delay: 0.3s; }
           .mv-card-vision  .mv-icon-anim { animation-delay: 0.45s; }
         `}</style>
-        <section className="relative px-[16px] md:px-[40px] overflow-hidden" style={{ background: "#fafafa", borderBottom: "1px solid #eee" }}>
+        <section className="relative px-[40px] overflow-hidden" style={{ background: "#fafafa", borderBottom: "1px solid #eee" }}>
 
           {/* Background mesh */}
           <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0 }}>
@@ -413,31 +413,27 @@ export default function AboutPage() {
                 <p className="relative text-[15px] leading-[1.9]" style={{ color: "#666" }}>
                   Five principles guide everything we do , from how we write code to how we treat our clients.
                 </p>
-                <div className="grid grid-cols-3 md:grid-cols-5 gap-[8px]" style={{ paddingLeft: "0", paddingRight: "0" }}>
+                <div className="grid grid-cols-5 gap-[8px]" style={{ paddingLeft: "0", paddingRight: "0" }}>
                   {[
                     { label: "Integrity",
                       icon: <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
-                        {/* Shield with checkmark */}
                         <path d="M12 2L4 5.5V11c0 4.8 3.4 9.3 8 10.5C17.6 20.3 21 15.8 21 11V5.5L12 2z" stroke="#ef5023" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
                         <polyline points="8.5 12 11 14.5 15.5 9.5" stroke="#ef5023" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg> },
                     { label: "Expertise",
                       icon: <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
-                        {/* Person with star badge */}
                         <circle cx="10" cy="7" r="4" stroke="#ef5023" strokeWidth="1"/>
                         <path d="M2 21c0-4 3.6-7 8-7" stroke="#ef5023" strokeWidth="1" strokeLinecap="round"/>
                         <polygon points="17,11 18,14 21,14 18.5,16 19.5,19 17,17.5 14.5,19 15.5,16 13,14 16,14" stroke="#ef5023" strokeWidth="1" strokeLinejoin="round"/>
                       </svg> },
                     { label: "Quality",
                       icon: <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
-                        {/* Medal: circle + star + ribbon */}
                         <circle cx="12" cy="9" r="5" stroke="#ef5023" strokeWidth="1"/>
                         <polygon points="12,6 12.9,8.2 15.3,8.2 13.4,9.6 14.1,12 12,10.6 9.9,12 10.6,9.6 8.7,8.2 11.1,8.2" stroke="#ef5023" strokeWidth="1" strokeLinejoin="round"/>
                         <path d="M8.5 13.5L7 20l5-2 5 2-1.5-6.5" stroke="#ef5023" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg> },
                     { label: "Professional",
                       icon: <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
-                        {/* Briefcase */}
                         <rect x="2" y="8" width="20" height="13" rx="2" stroke="#ef5023" strokeWidth="1"/>
                         <path d="M16 8V6a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" stroke="#ef5023" strokeWidth="1"/>
                         <rect x="9" y="12" width="6" height="4" rx="1" stroke="#ef5023" strokeWidth="1"/>
@@ -446,7 +442,6 @@ export default function AboutPage() {
                       </svg> },
                     { label: "Ownership",
                       icon: <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
-                        {/* Person on mountain holding flag */}
                         <circle cx="12" cy="4" r="2" stroke="#ef5023" strokeWidth="1"/>
                         <path d="M12 6v5" stroke="#ef5023" strokeWidth="1" strokeLinecap="round"/>
                         <path d="M9 9l-2 4h10l-2-4" stroke="#ef5023" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
@@ -457,20 +452,10 @@ export default function AboutPage() {
                       </svg> },
                   ].map(({ label, icon }) => (
                     <div key={label} className="flex flex-col items-center gap-[10px]">
-                      {/* Circle */}
                       <div className="flex items-center justify-center" style={{ width: "76px", height: "76px", borderRadius: "50%", background: "rgba(239,80,35,0.07)" }}>
                         {icon}
                       </div>
-                      {/* Label */}
-                      <span
-                        className="font-bold"
-                        style={{
-                          fontSize: "12px",
-                          color: "#0a0a0a",
-                          letterSpacing: "0px",
-                        }}
-                      >{label}</span>
-                      {/* Dot + line */}
+                      <span className="font-bold" style={{ fontSize: "12px", color: "#0a0a0a", letterSpacing: "0px" }}>{label}</span>
                       <div className="flex items-center gap-[5px]">
                         <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: "#ef5023" }} />
                         <span style={{ width: "24px", height: "2px", background: "linear-gradient(90deg, #ef5023, rgba(239,80,35,0.2))", borderRadius: "2px" }} />
@@ -509,7 +494,7 @@ export default function AboutPage() {
 
         {/* ── S5: Core Values ── */}
         <section className="relative overflow-hidden py-[70px]" style={{ background: "#0d0d0d" }}>
-          <div className="max-w-[1320px] mx-auto px-[16px] md:px-[40px]">
+          <div className="max-w-[1320px] mx-auto px-[40px]">
             <div className="grid grid-cols-1 lg:grid-cols-[3fr_3fr]" style={{ minHeight: "600px" }}>
 
               {/* Left: office photo full-height with overlay + heading */}
@@ -520,9 +505,7 @@ export default function AboutPage() {
                   className="absolute inset-0 w-full h-full object-cover"
                   style={{ filter: "saturate(0.85)" }}
                 />
-                {/* Dark overlay */}
                 <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.45) 60%, rgba(239,80,35,0.15) 100%)" }} />
-                {/* Heading on photo */}
                 <div className="absolute inset-0 flex flex-col justify-end p-[52px]">
                   <p className="text-[11px] font-bold tracking-[2px] uppercase mb-[12px]" style={{ color: "#ef5023" }}>OUR VALUES</p>
                   <h2 className="font-black text-white leading-[1.1]" style={{ fontSize: "clamp(36px, 3.5vw, 52px)", letterSpacing: "-2px" }}>
@@ -534,13 +517,11 @@ export default function AboutPage() {
                 </div>
               </div>
 
-              {/* Right: value cards grid overlapping */}
+              {/* Right: value cards grid */}
               <div className="relative flex flex-col justify-center py-[70px] lg:pl-[48px]">
-                {/* Pattern overlay */}
                 <div className="absolute inset-0 pointer-events-none">
                   <img src="/Media/Pattern/p3.png" alt="" style={{ position: "absolute", bottom: "-35%", right: "-5%", width: "84%", maxWidth: "456px", opacity: 0.35, userSelect: "none" }} />
                 </div>
-                {/* Mobile heading */}
                 <div className="flex flex-col gap-[8px] mb-[40px] lg:hidden">
                   <p className="text-[11px] font-bold tracking-[2px] uppercase" style={{ color: "#ef5023" }}>OUR VALUES</p>
                   <h2 className="font-black text-white text-[36px] leading-[1.1]" style={{ letterSpacing: "-1.5px" }}>Our Core <span style={{ color: "#ef5023" }}>Mission</span></h2>
@@ -595,25 +576,16 @@ export default function AboutPage() {
         </section>
 
         {/* ── S4: Team ── */}
-        <section className="relative px-[16px] md:px-[40px] py-[70px] overflow-hidden" style={{ background: "#f5f4f0" }}>
+        <section className="relative px-[40px] py-[70px] overflow-hidden" style={{ background: "#f5f4f0" }}>
 
-          {/* Tech scatter icons */}
           <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-            {/* Code brackets — top left */}
             <svg style={{ position:"absolute", top:"8%", left:"4%", opacity:0.08 }} width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ef5023" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-            {/* CPU chip — mid left */}
             <svg style={{ position:"absolute", top:"45%", left:"2%", opacity:0.07, transform:"rotate(-10deg)" }} width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#ef5023" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="6" height="6"/><path d="M15 3h-2v2h-2V3H9v2H7V3H5v2H3v2h2v2H3v2h2v2H3v2h2v2h2v-2h2v2h2v-2h2v2h2v-2h2v-2h-2v-2h2v-2h-2V9h2V7h-2V5h2V3h-2v2z"/></svg>
-            {/* Terminal — bottom left */}
             <svg style={{ position:"absolute", top:"76%", left:"3%", opacity:0.08 }} width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#ef5023" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
-            {/* Layers — left top-mid */}
             <svg style={{ position:"absolute", top:"22%", left:"8%", opacity:0.07, transform:"rotate(6deg)" }} width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#ef5023" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
-            {/* Wifi — top right */}
             <svg style={{ position:"absolute", top:"6%", right:"5%", opacity:0.08, transform:"rotate(5deg)" }} width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#ef5023" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
-            {/* Database — right mid-top */}
             <svg style={{ position:"absolute", top:"32%", right:"3%", opacity:0.07, transform:"rotate(-6deg)" }} width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#ef5023" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-            {/* Globe — right mid */}
             <svg style={{ position:"absolute", top:"58%", right:"2%", opacity:0.07, transform:"rotate(12deg)" }} width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#ef5023" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-            {/* Cloud — bottom right */}
             <svg style={{ position:"absolute", top:"78%", right:"5%", opacity:0.08 }} width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ef5023" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
           </div>
 
@@ -626,7 +598,6 @@ export default function AboutPage() {
               </p>
             </div>
 
-            {/* Team members */}
             <style>{`
               .team-card {
                 transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
@@ -679,28 +650,20 @@ export default function AboutPage() {
                   className="team-card flex flex-col items-center text-center gap-[16px] pt-[28px] px-[24px] pb-0 rounded-[20px] overflow-hidden"
                   style={{ background: "#fff", border: "1px solid #e8e8e8", boxShadow: "0 2px 16px rgba(0,0,0,0.06)" }}
                 >
-                  {/* Circular photo */}
                   <div
                     className="team-photo-ring w-[120px] h-[120px] rounded-full overflow-hidden flex-shrink-0"
                     style={{ border: "3px solid #f0ede8", transition: "border-color 0.3s ease" }}
                   >
-                    <img
-                      alt={member.name}
-                      src={member.img}
-                      className="w-full h-full object-cover object-top"
-                    />
+                    <img alt={member.name} src={member.img} className="w-full h-full object-cover object-top" />
                   </div>
 
-                  {/* Name + role */}
                   <div className="flex flex-col gap-[4px]">
                     <h3 className="font-black text-[#0a0a0a] text-[18px] leading-[1.2]">{member.name}</h3>
                     <p className="font-bold text-[13px]" style={{ color: "#ef5023" }}>{member.role}</p>
                   </div>
 
-                  {/* Bio — max 4 lines */}
                   <p className="text-[13px] leading-[1.7]" style={{ color: "#666" }}>{member.bio}</p>
 
-                  {/* LinkedIn */}
                   <a
                     href={member.linkedin}
                     target="_blank"
@@ -712,13 +675,11 @@ export default function AboutPage() {
                     LinkedIn
                   </a>
 
-                  {/* Bottom accent bar */}
                   <div className="team-card-accent w-full" />
                 </div>
               ))}
             </div>
 
-            {/* Company Culture */}
             <div className="flex flex-col gap-[6px] items-center text-center">
               <p className="text-[11px] font-bold tracking-[2px] uppercase" style={{ color: "#ef5023" }}>COMPANY CULTURE</p>
               <p className="text-[15px] leading-[1.8]" style={{ color: "#555", maxWidth: "680px" }}>
@@ -726,14 +687,12 @@ export default function AboutPage() {
               </p>
             </div>
 
-            {/* Photo slideshow */}
             <TeamSlider />
           </div>
         </section>
 
         {/* ── S6: Final CTA ── */}
-        <section className="relative px-[16px] md:px-[40px] py-[70px] overflow-hidden" style={{ background: "#0d0d0d" }}>
-          {/* Constellation background */}
+        <section className="relative px-[40px] py-[70px] overflow-hidden" style={{ background: "#0d0d0d" }}>
           <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 0 }} viewBox="0 0 1200 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
             <g stroke="rgba(255,255,255,0.08)" strokeWidth="0.8" fill="none">
               <line x1="80"  y1="20"  x2="200" y2="60"/>
@@ -782,7 +741,6 @@ export default function AboutPage() {
                 border: "1px solid rgba(239,80,35,0.18)",
               }}
             >
-              {/* Glow */}
               <div
                 className="absolute pointer-events-none blur-[80px]"
                 style={{
