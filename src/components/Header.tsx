@@ -583,10 +583,10 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
                   {[
                     { num: "🏢", title: "About Us", desc: "People, expertise, and values", href: "/company/about" },
                     { num: "⭐", title: "Client Stories", desc: "Real results from global clients", href: "/company/client-stories" },
-                    { num: "🏆", title: "Press & Awards", desc: "Recognition from industry leaders", href: "/company#awards" },
-                    { num: "🚀", title: "Solution Accelerators", desc: "Launch faster with proven foundations", href: "/company#accelerators" },
+                    { num: "🏆", title: "Press & Awards", desc: "Recognition from industry leaders", href: "/company/award" },
+                    { num: "🚀", title: "Solution Accelerators", desc: "Launch faster with proven foundations", href: "/company/solution-accelerators" },
                     { num: "🤝", title: "Partner with InApps", desc: "Partnerships built for growth", href: "/company/partner" },
-                    { num: "💼", title: "Careers", desc: "Build products for global markets", href: "/careers" },
+                    { num: "💼", title: "Careers", desc: "Build products for global markets", href: "/company/careers" },
                   ].map((item) => (
                     <AboutMenuItem key={item.num} num={item.num} title={item.title} desc={item.desc} href={item.href} />
                   ))}
@@ -823,10 +823,10 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
                   {[
                     { title: "About Us", href: "/company/about" },
                     { title: "Client Stories", href: "/company/client-stories" },
-                    { title: "Press & Awards", href: "/company#awards" },
-                    { title: "Solution Accelerators", href: "/company#accelerators" },
+                    { title: "Press & Awards", href: "/company/award" },
+                    { title: "Solution Accelerators", href: "/company/solution-accelerators" },
                     { title: "Partner with InApps", href: "/company/partner" },
-                    { title: "Careers", href: "/careers" },
+                    { title: "Careers", href: "/company/careers" },
                   ].map((item) => (
                     <a key={item.href} href={item.href} onClick={() => setMobileOpen(false)} className="px-[32px] py-[10px] text-[14px]" style={{ color: "#555", textDecoration: "none" }}>
                       {item.title}
