@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -216,22 +217,24 @@ const countryNames: Record<string, string> = {
 
 const industries = ["All", ...Array.from(new Set(reviews.map((r) => r.industry)))];
 
-const QUOTE_LIMIT = 140;
+const industryColors: Record<string, { bg: string; text: string; border: string; dot: string }> = {
+  "HEALTHCARE":              { bg: "#f0fdfa", text: "#0f766e", border: "#99f6e4", dot: "#14b8a6" },
+  "E-COMMERCE & HEALTHCARE": { bg: "#f0fdf4", text: "#15803d", border: "#86efac", dot: "#22c55e" },
+  "FINTECH":                 { bg: "#eff6ff", text: "#1d4ed8", border: "#bfdbfe", dot: "#3b82f6" },
+  "BLOCKCHAIN & SECURITY":   { bg: "#f5f3ff", text: "#6d28d9", border: "#ddd6fe", dot: "#8b5cf6" },
+  "SAAS":                    { bg: "#eef2ff", text: "#4338ca", border: "#c7d2fe", dot: "#6366f1" },
+  "INSURANCE":               { bg: "#f8fafc", text: "#475569", border: "#cbd5e1", dot: "#64748b" },
+  "LOGISTICS":               { bg: "#fefce8", text: "#a16207", border: "#fde047", dot: "#eab308" },
+  "RETAIL":                  { bg: "#fff1f2", text: "#be123c", border: "#fecdd3", dot: "#f43f5e" },
+  "E-COMMERCE":              { bg: "#fdf4ff", text: "#7e22ce", border: "#e9d5ff", dot: "#a855f7" },
+};
+
+const QUOTE_LIMIT = 220;
 
 export default function ClientStoriesPage() {
   const [activeIndustry, setActiveIndustry] = useState("All");
-  const [expandedCards, setExpandedCards] = useState<Set<number>>(new Set());
 
   const filteredReviews = activeIndustry === "All" ? reviews : reviews.filter((r) => r.industry === activeIndustry);
-
-  const toggleExpand = (id: number) => {
-    setExpandedCards((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
-      return next;
-    });
-  };
 
   return (
     <div className="min-h-screen flex flex-col" style={{ background: "#0d0d0d" }}>
@@ -251,6 +254,20 @@ export default function ClientStoriesPage() {
               className="absolute inset-0"
               style={{ background: "linear-gradient(to right, #0d0d0d 35%, #0d0d0d 45%, rgba(13,13,13,0.7) 60%, transparent 100%)" }}
             />
+            {/* Họa tiết hero: grid chéo mờ */}
+            <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ opacity: 0.04 }} xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <pattern id="hero-grid" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+                  <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#fff" strokeWidth="0.5"/>
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#hero-grid)"/>
+            </svg>
+            {/* Họa tiết hero: vòng tròn cam góc trên phải */}
+            <div className="absolute pointer-events-none" style={{ top: "-80px", left: "10%", width: "340px", height: "340px", borderRadius: "50%", border: "1px solid rgba(239,80,35,0.12)" }} />
+            <div className="absolute pointer-events-none" style={{ top: "-120px", left: "6%", width: "500px", height: "500px", borderRadius: "50%", border: "1px solid rgba(239,80,35,0.06)" }} />
+            {/* Họa tiết hero: glow cam góc dưới trái */}
+            <div className="absolute pointer-events-none" style={{ bottom: "-60px", left: "-60px", width: "320px", height: "320px", background: "radial-gradient(circle, rgba(239,80,35,0.10) 0%, transparent 70%)", borderRadius: "50%" }} />
           </div>
 
           <div className="relative w-full max-w-[1320px] mx-auto">
@@ -315,15 +332,20 @@ export default function ClientStoriesPage() {
         {/* ── Clutch Stats bar ── */}
         {/* ── Stats ── */}
         <section className="relative px-[16px] md:px-[40px] py-[32px] md:py-[40px] overflow-hidden" style={{ background: "#fff", borderTop: "1px solid #e8e8e8", borderBottom: "1px solid #e8e8e8" }}>
-          {/* Subtle diagonal lines */}
-          <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.02]" xmlns="http://www.w3.org/2000/svg">
+          {/* Họa tiết stats: diagonal lines */}
+          <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.025]" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern id="stat-lines" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-                <line x1="0" y1="0" x2="0" y2="20" stroke="#000" strokeWidth="1"/>
+                <line x1="0" y1="0" x2="0" y2="20" stroke="#000" strokeWidth="0.8"/>
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#stat-lines)"/>
           </svg>
+          {/* Họa tiết stats: vòng tròn góc phải */}
+          <div className="absolute pointer-events-none" style={{ top: "-40px", right: "-40px", width: "180px", height: "180px", borderRadius: "50%", border: "1px solid rgba(239,80,35,0.10)" }} />
+          <div className="absolute pointer-events-none" style={{ top: "-70px", right: "-70px", width: "260px", height: "260px", borderRadius: "50%", border: "1px solid rgba(239,80,35,0.05)" }} />
+          {/* Họa tiết stats: accent line trái */}
+          <div className="absolute left-0 top-0 bottom-0 pointer-events-none" style={{ width: "3px", background: "linear-gradient(to bottom, transparent, #ef5023, transparent)" }} />
           <div className="relative max-w-[1320px] mx-auto flex flex-wrap items-center justify-between gap-[24px]">
 
             {/* Clutch badge + Rating */}
@@ -388,29 +410,34 @@ export default function ClientStoriesPage() {
             transition: transform .3s cubic-bezier(.4,0,.2,1);
           }
           .rv-card:hover {
-            transform: translateY(-8px) scale(1.01);
-            border-color: rgba(239,80,35,0.3) !important;
-            box-shadow: 0 20px 50px rgba(239,80,35,0.10), 0 8px 20px rgba(0,0,0,0.06) !important;
+            transform: translateY(-6px);
+            border-color: rgba(239,80,35,0.35) !important;
+            box-shadow: 0 20px 48px rgba(239,80,35,0.10), 0 6px 16px rgba(0,0,0,0.08) !important;
           }
           .rv-card:hover::after {
             transform: scaleX(1);
           }
-          @media (max-width: 639px) { .rv-grid { grid-template-columns: 1fr !important; } }
-          @media (min-width: 640px) and (max-width: 1023px) { .rv-grid { grid-template-columns: repeat(2, 1fr) !important; } }
+          @media (max-width: 639px) { .rv-list { grid-template-columns: 1fr !important; } }
+          @media (min-width: 640px) and (max-width: 1023px) { .rv-list { grid-template-columns: repeat(2, 1fr) !important; } }
         `}</style>
         <section id="reviews" className="relative px-[16px] md:px-[40px] py-[64px] md:py-[100px] overflow-hidden" style={{ background: "#fafafa" }}>
 
-          {/* Decorative background */}
-          <div className="absolute pointer-events-none" style={{ top: "-100px", right: "-60px", width: "400px", height: "400px", background: "radial-gradient(circle, rgba(239,80,35,0.05) 0%, transparent 70%)", borderRadius: "50%" }} />
-          <div className="absolute pointer-events-none" style={{ bottom: "-80px", left: "-40px", width: "300px", height: "300px", background: "radial-gradient(circle, rgba(239,80,35,0.04) 0%, transparent 70%)", borderRadius: "50%" }} />
-          <div className="absolute pointer-events-none" style={{ top: "40%", left: "50%", transform: "translate(-50%, -50%)", width: "600px", height: "600px", background: "radial-gradient(circle, rgba(239,80,35,0.03) 0%, transparent 60%)", borderRadius: "50%" }} />
-          <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.025]" xmlns="http://www.w3.org/2000/svg">
+          {/* Họa tiết reviews: dot grid toàn section */}
+          <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.03]" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern id="rv-dots-bg" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
                 <circle cx="1" cy="1" r="0.8" fill="#ef5023"/>
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#rv-dots-bg)"/>
+          </svg>
+          {/* Họa tiết reviews: glow cam góc trên phải */}
+          <div className="absolute pointer-events-none" style={{ top: "-80px", right: "-60px", width: "480px", height: "480px", background: "radial-gradient(circle, rgba(239,80,35,0.06) 0%, transparent 65%)", borderRadius: "50%" }} />
+          {/* Họa tiết reviews: glow cam góc dưới trái */}
+          <div className="absolute pointer-events-none" style={{ bottom: "-60px", left: "-40px", width: "360px", height: "360px", background: "radial-gradient(circle, rgba(239,80,35,0.05) 0%, transparent 65%)", borderRadius: "50%" }} />
+          {/* Họa tiết reviews: đường viền lượn sóng ngang */}
+          <svg className="absolute top-0 left-0 w-full pointer-events-none" style={{ height: "60px", opacity: 0.06 }} viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 30 C240 0, 480 60, 720 30 S1200 0, 1440 30 V0 H0Z" fill="#ef5023"/>
           </svg>
 
           <div className="relative max-w-[1320px] mx-auto flex flex-col gap-[48px]" style={{ zIndex: 1 }}>
@@ -427,99 +454,139 @@ export default function ClientStoriesPage() {
             </div>
 
             {/* Industry filter tabs */}
-            <div className="flex gap-0 border-b border-[#e8e8e8] overflow-x-auto">
-              {industries.map((ind) => {
-                const isActive = activeIndustry === ind;
-                return (
-                  <button
-                    key={ind}
-                    onClick={() => setActiveIndustry(ind)}
-                    className="text-[13px] px-[20px] py-[10px] transition-all relative whitespace-nowrap cursor-pointer"
-                    style={{
-                      background: "transparent",
-                      color: isActive ? "#ef5023" : "#555",
-                      fontWeight: 700,
-                      border: "none",
-                      borderBottom: isActive ? "2px solid #ef5023" : "2px solid transparent",
-                      marginBottom: "-1px",
-                    }}
-                  >
-                    {ind === "All" ? "All" : ind}
-                  </button>
-                );
-              })}
+            <div className="relative">
+              <div className="flex gap-0 border-b border-[#e8e8e8] overflow-x-auto">
+                {industries.map((ind) => {
+                  const isActive = activeIndustry === ind;
+                  return (
+                    <button
+                      key={ind}
+                      onClick={() => setActiveIndustry(ind)}
+                      className="text-[13px] px-[20px] py-[10px] transition-all relative whitespace-nowrap cursor-pointer"
+                      style={{
+                        background: "transparent",
+                        color: isActive ? "#ef5023" : "#555",
+                        fontWeight: 700,
+                        border: "none",
+                        borderBottom: isActive ? "2px solid #ef5023" : "2px solid transparent",
+                        marginBottom: "-1px",
+                      }}
+                    >
+                      {ind === "All" ? "All" : ind}
+                    </button>
+                  );
+                })}
+              </div>
+              <div className="absolute right-0 top-0 bottom-0 w-[60px] pointer-events-none md:hidden" style={{ background: "linear-gradient(to left, #fafafa, transparent)" }} />
             </div>
 
-            {/* Grid */}
+            {/* Cards */}
             <div
-              className="rv-grid"
-              style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "20px" }}
+              className="rv-list"
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(3, 1fr)",
+                gap: "20px",
+              }}
             >
               {filteredReviews.map((r) => {
-                const isLong = r.quote.length > QUOTE_LIMIT;
-                const isExpanded = expandedCards.has(r.id);
-                const displayQuote = isLong && !isExpanded ? r.quote.slice(0, QUOTE_LIMIT) + "..." : r.quote;
+                const displayQuote = r.quote.length > 185 ? r.quote.slice(0, 185) + "..." : r.quote;
 
                 return (
-                <div
-                  key={r.id}
-                  className="rv-card flex flex-col rounded-[16px] p-[24px] gap-[14px] overflow-hidden"
-                  style={{ background: "#fff", border: "1px solid #e8e8e8", boxShadow: "0 4px 20px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04)" }}
-                >
-                  {/* Verified badge + Country */}
-                  <div className="flex items-center justify-between">
-                    <div className="inline-flex items-center gap-[5px] rounded-full px-[10px] py-[3px]" style={{ background: "rgba(5,150,105,0.06)", border: "1px solid rgba(5,150,105,0.15)" }}>
-                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6 1l1.3.8 1.5-.2.5 1.4 1.3.7-.2 1.5L11 6l-.6 1.3.2 1.5-1.3.7-.5 1.4-1.5-.2L6 11l-1.3-.8-1.5.2-.5-1.4-1.3-.7.2-1.5L1 6l.6-1.3-.2-1.5 1.3-.7.5-1.4 1.5.2L6 1z" fill="#059669"/>
-                        <path d="M4.5 6l1 1 2-2" stroke="#fff" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                      <span className="text-[10px] font-bold" style={{ color: "#059669" }}>Clutch Verified</span>
-                    </div>
-                    <span className="text-[12px] font-medium rounded-[4px] px-[7px] py-[2px]" style={{ color: "#555", background: "rgba(0,0,0,0.04)", border: "1px solid rgba(0,0,0,0.06)" }}>
-                      {countryFlags[r.country] || ""} {countryNames[r.country] || r.country}
-                    </span>
-                  </div>
-
-                  {/* Industry */}
-                  <span className="text-[11px] font-bold tracking-[1.5px] uppercase" style={{ color: "#ef5023" }}>
-                    {r.industry}
-                  </span>
-
-                  {/* Result badge */}
                   <div
-                    className="inline-flex items-center gap-[6px] self-start rounded-full px-[12px] py-[5px]"
-                    style={{ background: "rgba(239,80,35,0.06)", border: "1px solid rgba(239,80,35,0.12)" }}
+                    key={r.id}
+                    className="rv-card flex flex-col rounded-[20px] overflow-hidden relative"
+                    style={{ background: "#fff", border: "1px solid #e8e1d9", boxShadow: "0 4px 24px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04)" }}
                   >
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink: 0 }}>
-                      <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="#ef5023" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                    <span className="text-[12px] font-semibold" style={{ color: "#ef5023" }}>{r.result}</span>
-                  </div>
+                    {/* Họa tiết: dot grid mờ góc trên phải */}
+                    <div className="absolute top-0 right-0 pointer-events-none" style={{
+                      width: "160px", height: "160px",
+                      backgroundImage: "radial-gradient(circle, rgba(239,80,35,0.22) 1.5px, transparent 1.5px)",
+                      backgroundSize: "14px 14px",
+                      WebkitMaskImage: "radial-gradient(ellipse at top right, black 10%, transparent 72%)",
+                      maskImage: "radial-gradient(ellipse at top right, black 10%, transparent 72%)",
+                    }} />
 
-                  {/* Quote */}
-                  <p className="text-[14px] leading-[1.75] flex-1" style={{ color: "#444" }}>
-                    &ldquo;{displayQuote}&rdquo;
-                    {isLong && (
-                      <button
-                        onClick={() => toggleExpand(r.id)}
-                        className="ml-[4px] font-semibold text-[13px] cursor-pointer hover:underline"
-                        style={{ color: "#ef5023", background: "none", border: "none", padding: 0 }}
-                      >
-                        {isExpanded ? "Show less" : "Read more"}
-                      </button>
-                    )}
-                  </p>
+                    {/* Họa tiết: vòng tròn lớn góc dưới trái */}
+                    <div className="absolute bottom-[-40px] left-[-40px] pointer-events-none rounded-full" style={{
+                      width: "130px", height: "130px",
+                      background: "radial-gradient(circle, rgba(239,80,35,0.07) 0%, transparent 70%)",
+                    }} />
 
-                  {/* Client info */}
-                  <div className="flex items-center gap-[10px] pt-[14px] mt-auto" style={{ borderTop: "1px solid rgba(239,80,35,0.10)" }}>
-                    <img src={r.avatar} alt={r.name} className="w-[40px] h-[40px] rounded-full object-cover flex-shrink-0" style={{ border: "2px solid rgba(239,80,35,0.2)" }} />
-                    <div className="flex flex-col min-w-0">
-                      <span className="font-bold text-[13px] text-[#0a0a0a]">{r.name}</span>
-                      <span className="text-[11px] leading-[1.4]" style={{ color: "#888" }}>{r.title}</span>
-                      <span className="text-[11px] font-semibold leading-[1.4]" style={{ color: "#ef5023" }}>{r.project}</span>
+                    {/* Accent bar trái */}
+                    <div className="absolute left-0 top-[28px] bottom-[28px] rounded-r-full pointer-events-none" style={{ width: "3px", background: "linear-gradient(to bottom, #ef5023, #ffb347)" }} />
+
+                    <div className="flex flex-col gap-[18px] p-[28px] pl-[34px] flex-1">
+
+                      {/* Header: industry + stars | country */}
+                      <div className="flex items-center justify-between gap-[8px]">
+                        <div className="flex items-center gap-[8px]">
+                          {(() => {
+                            const c = industryColors[r.industry] ?? { bg: "rgba(239,80,35,0.09)", text: "#ef5023", border: "rgba(239,80,35,0.2)", dot: "#ef5023" };
+                            return (
+                              <span className="inline-flex items-center gap-[5px] text-[9px] font-black tracking-[1.8px] uppercase px-[9px] py-[3px] rounded-full" style={{ background: c.bg, color: c.text, border: `1px solid ${c.border}` }}>
+                                <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: c.dot, display: "inline-block", flexShrink: 0 }} />
+                                {r.industry}
+                              </span>
+                            );
+                          })()}
+                          <div className="flex gap-[2px]">
+                            {Array.from({ length: r.rating }).map((_, i) => (
+                              <span key={i} style={{ color: "#f59e0b", fontSize: "11px" }}>★</span>
+                            ))}
+                          </div>
+                        </div>
+                        <span className="text-[12px] font-semibold" style={{ color: "#555" }}>
+                          {countryFlags[r.country]} <span style={{ color: "#666", fontSize: "11px" }}>{countryNames[r.country]}</span>
+                        </span>
+                      </div>
+
+                      {/* Quote */}
+                      <div className="flex-1 relative">
+                        <span style={{
+                          position: "absolute", top: "-10px", left: "-6px",
+                          fontSize: "72px", lineHeight: 1,
+                          color: "#ef5023", fontFamily: "Georgia, serif",
+                          opacity: 0.08, userSelect: "none", pointerEvents: "none",
+                        }}>&ldquo;</span>
+                        <p className="text-[14px] leading-[1.85] relative z-[1]" style={{ color: "#2c2c2c" }}>
+                          {displayQuote}
+                        </p>
+                      </div>
+
+                      {/* Result */}
+                      <div className="flex items-center gap-[10px]">
+                        <div className="w-[28px] h-[28px] rounded-[8px] flex items-center justify-center flex-shrink-0" style={{ background: "#ef5023" }}>
+                          <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
+                            <path d="M2 9.5L9.5 2M9.5 2H4M9.5 2V7.5" stroke="#fff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </div>
+                        <span className="text-[13px] font-bold" style={{ color: "#ef5023" }}>{r.result}</span>
+                      </div>
+
+                    </div>
+
+                    {/* Footer */}
+                    <div className="flex items-center justify-between gap-[10px] px-[28px] pl-[34px] py-[16px]" style={{ borderTop: "1px solid #f0ebe4", background: "#faf8f6" }}>
+                      <div className="flex items-center gap-[10px] min-w-0">
+                        <img src={r.avatar} alt={r.name} className="w-[38px] h-[38px] rounded-full object-cover flex-shrink-0" style={{ border: "2px solid rgba(239,80,35,0.2)" }} />
+                        <div className="flex flex-col min-w-0">
+                          <span className="font-bold text-[13px] truncate" style={{ color: "#111" }}>{r.name}</span>
+                          <span className="text-[11px] truncate" style={{ color: "#999" }}>{r.title}</span>
+                          <span className="text-[10px] font-semibold" style={{ color: "#ef5023" }}>{r.project}</span>
+                        </div>
+                      </div>
+                      <a href="https://clutch.co/profile/inapps-technology" target="_blank" rel="noopener noreferrer"
+                        className="inline-flex items-center gap-[5px] rounded-full px-[10px] py-[4px] flex-shrink-0"
+                        style={{ background: "rgba(5,150,105,0.07)", border: "1px solid rgba(5,150,105,0.2)", textDecoration: "none" }}>
+                        <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                          <path d="M6 1l1.3.8 1.5-.2.5 1.4 1.3.7-.2 1.5L11 6l-.6 1.3.2 1.5-1.3.7-.5 1.4-1.5-.2L6 11l-1.3-.8-1.5.2-.5-1.4-1.3-.7.2-1.5L1 6l.6-1.3-.2-1.5 1.3-.7.5-1.4 1.5.2L6 1z" fill="#059669"/>
+                          <path d="M4.5 6l1 1 2-2" stroke="#fff" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                        <span className="text-[10px] font-bold" style={{ color: "#059669" }}>Verified</span>
+                      </a>
                     </div>
                   </div>
-                </div>
                 );
               })}
             </div>
@@ -530,7 +597,18 @@ export default function ClientStoriesPage() {
         </section>
 
         {/* ── External Platforms Banner ── */}
-        <section className="px-[16px] md:px-[40px] py-[40px] md:py-[56px]" style={{ background: "#fff", borderTop: "1px solid #e8e8e8" }}>
+        <section className="relative px-[16px] md:px-[40px] py-[40px] md:py-[56px] overflow-hidden" style={{ background: "#fff", borderTop: "1px solid #e8e8e8" }}>
+          {/* Họa tiết external: horizontal stripes */}
+          <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.025]" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="ext-stripes" x="0" y="0" width="1" height="24" patternUnits="userSpaceOnUse">
+                <line x1="0" y1="0" x2="1440" y2="0" stroke="#000" strokeWidth="0.5"/>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#ext-stripes)"/>
+          </svg>
+          {/* Họa tiết external: accent line phải */}
+          <div className="absolute right-0 top-0 bottom-0 pointer-events-none" style={{ width: "3px", background: "linear-gradient(to bottom, transparent, rgba(239,80,35,0.4), transparent)" }} />
           <div className="max-w-[1320px] mx-auto">
             <div className="relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-[24px] rounded-[16px] px-[32px] md:px-[40px] py-[28px] md:py-[32px]" style={{ background: "linear-gradient(135deg, #f8f9fa 0%, #eef1f5 100%)", border: "1px solid #e0e4ea" }}>
               {/* Decorative circles */}
@@ -576,16 +654,18 @@ export default function ClientStoriesPage() {
 
         {/* ── Join Banner ── */}
         <section className="relative px-[16px] md:px-[40px] py-[40px] md:py-[56px] overflow-hidden" style={{ background: "#fafafa", borderTop: "1px solid #e8e8e8" }}>
-          <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.015]" xmlns="http://www.w3.org/2000/svg">
+          <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.04]" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern id="join-section-cross" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-                <circle cx="20" cy="20" r="0.6" fill="#ef5023"/>
-                <line x1="18" y1="20" x2="22" y2="20" stroke="#ef5023" strokeWidth="0.3"/>
-                <line x1="20" y1="18" x2="20" y2="22" stroke="#ef5023" strokeWidth="0.3"/>
+                <circle cx="20" cy="20" r="0.8" fill="#ef5023"/>
+                <line x1="17" y1="20" x2="23" y2="20" stroke="#ef5023" strokeWidth="0.4"/>
+                <line x1="20" y1="17" x2="20" y2="23" stroke="#ef5023" strokeWidth="0.4"/>
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#join-section-cross)"/>
           </svg>
+          {/* Họa tiết join: glow giữa */}
+          <div className="absolute pointer-events-none" style={{ top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: "600px", height: "300px", background: "radial-gradient(ellipse, rgba(239,80,35,0.05) 0%, transparent 70%)" }} />
           <div className="max-w-[1320px] mx-auto">
             <div className="relative overflow-hidden flex flex-col items-center text-center gap-[20px] rounded-[16px] px-[32px] md:px-[56px] py-[40px] md:py-[48px]" style={{ background: "linear-gradient(135deg, #ef5023 0%, #d94010 100%)" }}>
               {/* Decorative elements */}
@@ -602,7 +682,7 @@ export default function ClientStoriesPage() {
               <h3 className="relative font-black text-white leading-[1.2] tracking-[-0.5px]" style={{ fontSize: "clamp(22px, 3vw, 30px)" }}>
                 Join 300+ companies who trust InApps
               </h3>
-              <p className="relative text-[15px] leading-[1.6] max-w-[480px]" style={{ color: "rgba(255,255,255,0.85)" }}>
+              <p className="relative text-[15px] leading-[1.6] whitespace-nowrap" style={{ color: "rgba(255,255,255,0.85)" }}>
                 Start with a free 30-minute discovery call. No commitment required.
               </p>
               <div className="relative flex items-center gap-[12px] mt-[4px]">

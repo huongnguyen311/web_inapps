@@ -48,24 +48,26 @@ export default function AwardPage() {
         {/* ── S2: ISO Certifications ── */}
         <section className="relative px-[16px] md:px-[40px] py-[70px] overflow-hidden" style={{ background: "#ffffff", borderTop: "1px solid #e8e8e8" }}>
 
-          {/* circuit-board traces pattern */}
-          <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 0, opacity: 0.07 }} preserveAspectRatio="xMidYMid slice">
-            <defs>
-              <pattern id="cert-circuit" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-                <path d="M 80 0 L 0 0 0 80" fill="none" stroke="#0a0a0a" strokeWidth="0.5"/>
-                <circle cx="0" cy="0" r="1.5" fill="#0a0a0a"/>
-                <path d="M 0 40 L 20 40 L 24 36 L 56 36 L 60 40 L 80 40" fill="none" stroke="#0a0a0a" strokeWidth="0.5"/>
-                <path d="M 40 0 L 40 20 L 44 24 L 44 56 L 40 60 L 40 80" fill="none" stroke="#0a0a0a" strokeWidth="0.5"/>
-                <circle cx="40" cy="40" r="2" fill="none" stroke="#0a0a0a" strokeWidth="0.8"/>
-                <circle cx="24" cy="36" r="1.2" fill="#0a0a0a"/>
-                <circle cx="44" cy="24" r="1.2" fill="#0a0a0a"/>
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#cert-circuit)"/>
+          {/* topographic contour lines — từ about page */}
+          <svg width="100%" height="100%" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }} xmlns="http://www.w3.org/2000/svg">
+            {/* certification peak — concentric ellipses top-right */}
+            <g fill="none" strokeLinecap="round">
+              <ellipse cx="1200" cy="80"  rx="400" ry="210" stroke="#ef5023" strokeOpacity="0.035" strokeWidth="1"/>
+              <ellipse cx="1200" cy="80"  rx="300" ry="158" stroke="#ef5023" strokeOpacity="0.048" strokeWidth="1"/>
+              <ellipse cx="1200" cy="80"  rx="210" ry="110" stroke="#ef5023" strokeOpacity="0.065" strokeWidth="1.2"/>
+              <ellipse cx="1200" cy="80"  rx="130" ry="68"  stroke="#ef5023" strokeOpacity="0.085" strokeWidth="1.2"/>
+              <ellipse cx="1200" cy="80"  rx="60"  ry="32"  stroke="#ef5023" strokeOpacity="0.11"  strokeWidth="1.5"/>
+            </g>
+            {/* flowing ridge lines across section */}
+            <g fill="none" stroke="#0a0a0a" strokeOpacity="0.04" strokeLinecap="round">
+              <path d="M 0,300 C 200,240 420,160 660,200 S 980,310 1220,250 S 1380,170 1440,190" strokeWidth="1"/>
+              <path d="M 0,370 C 180,310 400,230 640,270 S 960,380 1200,320 S 1360,240 1440,260" strokeWidth="1"/>
+              <path d="M 0,440 C 160,380 380,300 620,340 S 940,450 1180,390 S 1340,310 1440,330" strokeWidth="0.8"/>
+            </g>
           </svg>
 
-          {/* orange glow top-right */}
-          <div className="absolute pointer-events-none" style={{ right: "-100px", top: "-100px", width: "500px", height: "500px", borderRadius: "50%", background: "radial-gradient(circle, rgba(239,80,35,0.045) 0%, transparent 65%)", zIndex: 1 }} />
+          {/* orange glow — aligned with contour peak */}
+          <div className="absolute pointer-events-none" style={{ right: "-120px", top: "-120px", width: "520px", height: "520px", borderRadius: "50%", background: "radial-gradient(circle, rgba(239,80,35,0.055) 0%, transparent 65%)", zIndex: 1 }} />
 
           <div className="relative max-w-[1320px] mx-auto" style={{ zIndex: 2 }}>
 
@@ -138,11 +140,16 @@ export default function AwardPage() {
                   <div
                     className="group flex-1 rounded-[20px] p-[28px] flex flex-col md:flex-row md:items-start gap-[20px] md:gap-[32px] transition-all duration-300 cursor-default"
                     style={{ background: "rgba(255,255,255,0.5)", border: "1px solid rgba(239,80,35,0.12)", boxShadow: "0 4px 20px rgba(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.08)" }}
-                    onMouseEnter={e => { const el = e.currentTarget; el.style.transform = "translateX(6px)"; el.style.borderColor = "rgba(239,80,35,0.35)"; el.style.boxShadow = "0 12px 40px rgba(0,0,0,0.18), 0 4px 12px rgba(0,0,0,0.1)"; }}
-                    onMouseLeave={e => { const el = e.currentTarget; el.style.transform = "translateX(0)"; el.style.borderColor = "rgba(239,80,35,0.12)"; el.style.boxShadow = "0 4px 20px rgba(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.08)"; }}
+                    onMouseEnter={e => { const el = e.currentTarget; el.style.transform = "translateY(-4px)"; el.style.borderColor = "rgba(239,80,35,0.35)"; el.style.boxShadow = "0 12px 40px rgba(0,0,0,0.18), 0 4px 12px rgba(0,0,0,0.1)"; }}
+                    onMouseLeave={e => { const el = e.currentTarget; el.style.transform = "translateY(0)"; el.style.borderColor = "rgba(239,80,35,0.12)"; el.style.boxShadow = "0 4px 20px rgba(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.08)"; }}
                   >
                     {/* title column */}
                     <div className="flex flex-col gap-[8px] md:w-[280px] flex-shrink-0">
+                      {/* mobile icon — shown only below md */}
+                      <div className="flex md:hidden w-[40px] h-[40px] rounded-full items-center justify-center flex-shrink-0 mb-[4px]"
+                        style={{ background: "#ef5023", boxShadow: "0 4px 12px rgba(239,80,35,0.3)" }}>
+                        {cert.icon}
+                      </div>
                       {cert.tag && (
                         <span className="inline-flex items-center gap-[5px] self-start px-[10px] py-[4px] rounded-[6px] text-[11px] font-bold uppercase tracking-[1px]" style={{ background: "#ef5023", color: "#fff" }}>
                           <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -174,7 +181,37 @@ export default function AwardPage() {
 
         {/* ── S3: Industry Awards ── */}
         <section id="awards" className="relative px-[16px] md:px-[40px] py-[70px] overflow-hidden" style={{ background: "#080808", borderTop: "1px solid #1a1a1a" }}>
-          <div className="max-w-[1320px] mx-auto flex flex-col gap-[48px]">
+
+          {/* constellation network — từ careers page */}
+          <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ opacity: 0.07, zIndex: 0 }}>
+            <defs>
+              <pattern id="s3-constellation" x="0" y="0" width="240" height="200" patternUnits="userSpaceOnUse">
+                <line x1="30"  y1="25"  x2="95"  y2="58"  stroke="white" strokeWidth="0.5"/>
+                <line x1="95"  y1="58"  x2="160" y2="30"  stroke="white" strokeWidth="0.5"/>
+                <line x1="160" y1="30"  x2="210" y2="90"  stroke="white" strokeWidth="0.5"/>
+                <line x1="95"  y1="58"  x2="140" y2="130" stroke="white" strokeWidth="0.5"/>
+                <line x1="140" y1="130" x2="210" y2="90"  stroke="white" strokeWidth="0.5"/>
+                <line x1="140" y1="130" x2="75"  y2="175" stroke="white" strokeWidth="0.5"/>
+                <line x1="30"  y1="25"  x2="0"   y2="80"  stroke="white" strokeWidth="0.5"/>
+                <line x1="210" y1="90"  x2="240" y2="50"  stroke="white" strokeWidth="0.5"/>
+                <circle cx="30"  cy="25"  r="1.5" fill="white"    opacity="0.5"/>
+                <circle cx="95"  cy="58"  r="2.8" fill="#ef5023"  opacity="0.9"/>
+                <circle cx="160" cy="30"  r="1.5" fill="white"    opacity="0.5"/>
+                <circle cx="210" cy="90"  r="2"   fill="white"    opacity="0.45"/>
+                <circle cx="140" cy="130" r="2.2" fill="#ef5023"  opacity="0.75"/>
+                <circle cx="75"  cy="175" r="1.2" fill="white"    opacity="0.35"/>
+                <circle cx="0"   cy="80"  r="1.2" fill="white"    opacity="0.3"/>
+                <circle cx="240" cy="50"  r="1.2" fill="white"    opacity="0.3"/>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#s3-constellation)"/>
+          </svg>
+
+          {/* blurred orange glow — từ careers page */}
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] pointer-events-none" style={{ background: "radial-gradient(circle, rgba(239,80,35,0.10) 0%, transparent 65%)", filter: "blur(80px)", zIndex: 0 }} />
+          <div className="absolute bottom-0 left-0 w-[420px] h-[420px] pointer-events-none" style={{ background: "radial-gradient(circle, rgba(239,80,35,0.07) 0%, transparent 65%)", filter: "blur(80px)", zIndex: 0 }} />
+
+          <div className="max-w-[1320px] mx-auto flex flex-col gap-[48px]" style={{ position: "relative", zIndex: 2 }}>
 
             {/* header */}
             <div className="flex flex-col gap-[12px]">
@@ -229,35 +266,43 @@ export default function AwardPage() {
                   desc: "The Vietnam ICT Award recognises technology companies driving innovation and digital transformation in Vietnam. InApps was recognised for its contribution to the offshore development ecosystem and for bringing international-grade engineering practices to Vietnam.",
                   icon: (
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ef5023" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="12" cy="8" r="5"/><path d="M8 13l-2 9 6-4 6 4-2-9"/>
+                      <path d="M6 9H4.5a2.5 2.5 0 010-5H6"/><path d="M18 9h1.5a2.5 2.5 0 000-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0012 0V2z"/>
                     </svg>
                   ),
                 },
               ].map((award) => (
                 <div
                   key={award.title}
-                  className="flex flex-col gap-[20px] rounded-[20px] p-[28px] cursor-default transition-all duration-200"
-                  style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.05)", boxShadow: "0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04)" }}
-                  onMouseEnter={e => { const el = e.currentTarget; el.style.background = "rgba(239,80,35,0.04)"; el.style.borderColor = "rgba(239,80,35,0.18)"; el.style.boxShadow = "0 8px 40px rgba(239,80,35,0.12), inset 0 1px 0 rgba(255,255,255,0.04)"; }}
-                  onMouseLeave={e => { const el = e.currentTarget; el.style.background = "rgba(255,255,255,0.02)"; el.style.borderColor = "rgba(255,255,255,0.05)"; el.style.boxShadow = "0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04)"; }}
+                  className="relative flex flex-col gap-[20px] rounded-[20px] p-[28px] cursor-default transition-all duration-300 overflow-hidden"
+                  style={{
+                    background: "rgba(255,255,255,0.05)",
+                    border: "1px solid rgba(255,255,255,0.10)",
+                    boxShadow: "0 4px 24px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.10)",
+                    backdropFilter: "blur(4px)",
+                  }}
+                  onMouseEnter={e => { const el = e.currentTarget; el.style.transform = "translateY(-4px)"; el.style.background = "rgba(239,80,35,0.08)"; el.style.borderColor = "rgba(239,80,35,0.28)"; el.style.boxShadow = "0 12px 48px rgba(0,0,0,0.5), 0 0 32px rgba(239,80,35,0.14), inset 0 1px 0 rgba(255,255,255,0.12)"; }}
+                  onMouseLeave={e => { const el = e.currentTarget; el.style.transform = "translateY(0)"; el.style.background = "rgba(255,255,255,0.05)"; el.style.borderColor = "rgba(255,255,255,0.10)"; el.style.boxShadow = "0 4px 24px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.10)"; }}
                 >
+                  {/* orange top accent line */}
+                  <div className="absolute top-0 left-0 right-0 h-[1px]" style={{ background: "linear-gradient(to right, transparent, rgba(239,80,35,0.55) 30%, rgba(239,80,35,0.55) 70%, transparent)" }} />
+
                   {/* icon + meta */}
                   <div className="flex items-start gap-[16px]">
                     <div
                       className="w-[48px] h-[48px] rounded-[12px] flex items-center justify-center flex-shrink-0"
-                      style={{ background: "rgba(239,80,35,0.08)" }}
+                      style={{ background: "rgba(239,80,35,0.16)", boxShadow: "0 0 16px rgba(239,80,35,0.18)" }}
                     >
                       {award.icon}
                     </div>
                     <div className="flex flex-col gap-[4px]">
                       <h3 className="font-black text-white text-[20px] leading-[28px] tracking-[-0.5px]">{award.title}</h3>
                       <span className="text-[#ef5023] text-[13px] font-bold">{award.org}</span>
-                      <span className="text-[13px]" style={{ color: "rgba(255,255,255,0.35)" }}>{award.years}</span>
+                      <span className="text-[13px]" style={{ color: "rgba(255,255,255,0.55)" }}>{award.years}</span>
                     </div>
                   </div>
 
                   {/* divider */}
-                  <div className="w-full h-[1px]" style={{ background: "rgba(255,255,255,0.06)" }} />
+                  <div className="w-full h-[1px]" style={{ background: "rgba(255,255,255,0.08)" }} />
 
                   {/* description */}
                   <p className="text-[14px] leading-[1.8]" style={{ color: "rgba(255,255,255,0.55)" }}>
@@ -271,7 +316,30 @@ export default function AwardPage() {
 
         {/* ── S4: Technology Partnerships ── */}
         <section className="relative px-[16px] md:px-[40px] py-[70px] overflow-hidden" style={{ background: "#fafafa", borderTop: "1px solid #e8e8e8" }}>
-          <div className="max-w-[1320px] mx-auto flex flex-col gap-[48px]">
+
+          {/* graph paper grid — từ about page */}
+          <div className="absolute inset-0 pointer-events-none" style={{
+            backgroundImage: "repeating-linear-gradient(0deg, rgba(0,0,0,0.045) 0px, rgba(0,0,0,0.045) 1px, transparent 1px, transparent 40px), repeating-linear-gradient(90deg, rgba(0,0,0,0.045) 0px, rgba(0,0,0,0.045) 1px, transparent 1px, transparent 40px)",
+            zIndex: 0,
+          }} />
+
+          {/* orange dot accents tại intersection */}
+          <svg width="100%" height="100%" viewBox="0 0 1440 560" preserveAspectRatio="xMidYMid slice" style={{ position: "absolute", inset: 0, zIndex: 1, pointerEvents: "none" }} xmlns="http://www.w3.org/2000/svg">
+            <circle cx="280"  cy="120" r="4"   fill="#ef5023" fillOpacity="0.22"/>
+            <circle cx="600"  cy="200" r="3"   fill="#ef5023" fillOpacity="0.15"/>
+            <circle cx="920"  cy="80"  r="4.5" fill="#ef5023" fillOpacity="0.18"/>
+            <circle cx="1200" cy="240" r="3.5" fill="#ef5023" fillOpacity="0.14"/>
+            <circle cx="440"  cy="360" r="3"   fill="#ef5023" fillOpacity="0.12"/>
+            <circle cx="760"  cy="440" r="3.5" fill="#ef5023" fillOpacity="0.13"/>
+            <circle cx="1080" cy="360" r="3"   fill="#ef5023" fillOpacity="0.11"/>
+            <circle cx="160"  cy="440" r="2.5" fill="#ef5023" fillOpacity="0.10"/>
+            <circle cx="1360" cy="400" r="3"   fill="#ef5023" fillOpacity="0.12"/>
+          </svg>
+
+          {/* orange glow top-right */}
+          <div className="absolute pointer-events-none" style={{ right: "-80px", top: "-80px", width: "380px", height: "380px", borderRadius: "50%", background: "radial-gradient(circle, rgba(239,80,35,0.055) 0%, transparent 65%)", zIndex: 2 }} />
+
+          <div className="max-w-[1320px] mx-auto flex flex-col gap-[48px]" style={{ position: "relative", zIndex: 2 }}>
 
             {/* header */}
             <div className="flex flex-col gap-[12px]">
@@ -335,7 +403,7 @@ export default function AwardPage() {
                     border: "1px solid rgba(239,80,35,0.15)",
                     boxShadow: "0 2px 16px rgba(0,0,0,0.07)",
                   }}
-                  onMouseEnter={e => { const el = e.currentTarget; el.style.transform = "translateY(-6px)"; el.style.borderColor = "rgba(239,80,35,0.4)"; el.style.boxShadow = "0 16px 40px rgba(0,0,0,0.1), 0 8px 24px rgba(239,80,35,0.08)"; }}
+                  onMouseEnter={e => { const el = e.currentTarget; el.style.transform = "translateY(-4px)"; el.style.borderColor = "rgba(239,80,35,0.4)"; el.style.boxShadow = "0 16px 40px rgba(0,0,0,0.1), 0 8px 24px rgba(239,80,35,0.08)"; }}
                   onMouseLeave={e => { const el = e.currentTarget; el.style.transform = "translateY(0)"; el.style.borderColor = "rgba(239,80,35,0.15)"; el.style.boxShadow = "0 2px 16px rgba(0,0,0,0.07)"; }}
                 >
                   {/* icon + meta */}
@@ -348,7 +416,7 @@ export default function AwardPage() {
                     </div>
                     <div className="flex flex-col gap-[4px]">
                       <h3 className="font-black text-[#0a0a0a] text-[20px] leading-[28px] tracking-[-0.5px]">{partner.title}</h3>
-                      <span className="text-[11px] font-black tracking-[2px] uppercase" style={{ color: "#ef5023" }}>{partner.tier}</span>
+                      <span className="inline-flex items-center self-start px-[10px] py-[4px] rounded-[6px] text-[11px] font-bold uppercase tracking-[1px]" style={{ background: "#ef5023", color: "#fff" }}>{partner.tier}</span>
                     </div>
                   </div>
 
@@ -366,8 +434,9 @@ export default function AwardPage() {
         </section>
 
         {/* ── S5: Stats ── */}
-        <section className="px-[16px] md:px-[40px] py-[32px]" style={{ background: "#ffffff", borderTop: "1px solid #e8e8e8" }}>
-          <div className="max-w-[1320px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-[14px]">
+        <section className="relative px-[16px] md:px-[40px] py-[70px] overflow-hidden" style={{ background: "#ffffff" }}>
+
+          <div className="relative max-w-[1320px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-[14px]">
             {[
               { value: "3", label: "ISO Certifications" },
               { value: "4×", label: "Sao Khue Award Winner" },
@@ -389,8 +458,23 @@ export default function AwardPage() {
         </section>
 
         {/* ── S6: CTA Banner ── */}
-        <section className="px-[16px] md:px-[40px] py-[70px]" style={{ background: "#0a0a0a", borderTop: "1px solid #1a1a1a" }}>
-          <div className="max-w-[1320px] mx-auto">
+        <section className="relative px-[16px] md:px-[40px] py-[70px] overflow-hidden" style={{ background: "#0a0a0a", borderTop: "1px solid #1a1a1a" }}>
+
+          {/* blurred radial glows — từ careers page */}
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] pointer-events-none" style={{ background: "radial-gradient(circle, rgba(239,80,35,0.10) 0%, transparent 65%)", filter: "blur(80px)", zIndex: 0 }} />
+          <div className="absolute bottom-0 left-0 w-[440px] h-[440px] pointer-events-none" style={{ background: "radial-gradient(circle, rgba(239,80,35,0.08) 0%, transparent 65%)", filter: "blur(80px)", zIndex: 0 }} />
+          <div className="absolute top-[40%] left-[50%] -translate-x-1/2 w-[700px] h-[320px] pointer-events-none" style={{ background: "radial-gradient(ellipse, rgba(239,80,35,0.06) 0%, transparent 70%)", filter: "blur(100px)", zIndex: 0 }} />
+
+          {/* concentric ripple rings — từ partner page */}
+          <svg width="100%" height="100%" viewBox="0 0 1440 280" preserveAspectRatio="xMidYMid slice" style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }} xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="80"  cy="280" rx="160" ry="100" fill="none" stroke="#ef5023" strokeWidth="1"   strokeOpacity="0.08"/>
+            <ellipse cx="80"  cy="280" rx="300" ry="190" fill="none" stroke="#ef5023" strokeWidth="0.8" strokeOpacity="0.055"/>
+            <ellipse cx="80"  cy="280" rx="460" ry="290" fill="none" stroke="#ef5023" strokeWidth="0.6" strokeOpacity="0.035"/>
+            <ellipse cx="1360" cy="0"  rx="200" ry="130" fill="none" stroke="#ef5023" strokeWidth="0.8" strokeOpacity="0.06"/>
+            <ellipse cx="1360" cy="0"  rx="360" ry="230" fill="none" stroke="#ef5023" strokeWidth="0.5" strokeOpacity="0.04"/>
+          </svg>
+
+          <div className="relative max-w-[1320px] mx-auto" style={{ zIndex: 2 }}>
             <div className="relative rounded-[20px] overflow-hidden px-[32px] md:px-[56px] py-[36px] flex flex-col md:flex-row md:items-center md:justify-between gap-[24px]"
               style={{ background: "#ef5023", boxShadow: "0 10px 30px -8px rgba(239,80,35,0.25), 0 4px 12px -4px rgba(239,80,35,0.15)" }}>
 

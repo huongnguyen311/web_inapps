@@ -124,6 +124,17 @@ export default function CareersPage() {
               style={{ background: "linear-gradient(to right, #0d0d0d 35%, #0d0d0d 45%, rgba(13,13,13,0.7) 60%, transparent 100%)" }}
             />
           </div>
+          {/* Halftone dot matrix — masked to dark left zone */}
+          <div className="absolute inset-0 pointer-events-none" style={{
+            backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.12) 1px, transparent 1px)",
+            backgroundSize: "28px 28px",
+            WebkitMaskImage: "linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.2) 38%, transparent 52%)",
+            maskImage: "linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.2) 38%, transparent 52%)",
+          }} />
+          {/* Floating ring */}
+          <div className="absolute pointer-events-none" style={{ top: "18%", left: "3%", width: "200px", height: "200px", borderRadius: "50%", border: "1px solid rgba(239,80,35,0.14)" }} />
+          {/* Orange ambient glow bottom-left */}
+          <div className="absolute bottom-0 left-0 w-[420px] h-[300px] pointer-events-none" style={{ background: "radial-gradient(ellipse at bottom left, rgba(239,80,35,0.10) 0%, transparent 70%)", filter: "blur(60px)" }} />
 
           <div className="relative w-full max-w-[1320px] mx-auto">
             <div className="relative flex flex-col items-start gap-[24px] max-w-[860px]">
@@ -160,77 +171,36 @@ export default function CareersPage() {
         {/* ── Client Logos ── */}
         <ServiceTrustedLogos />
 
-        {/* ── Stats Bar ── */}
-        <section className="px-[40px]" style={{ background: "#fafafa", borderTop: "1px solid #eee", borderBottom: "1px solid #eee" }}>
-          <div className="max-w-[960px] mx-auto py-[36px]">
-            <div className="flex items-center justify-center">
-              {[
-                { value: "9", label: "Open Roles" },
-                { value: "500+", label: "Engineers" },
-                { value: "9+", label: "Years of Excellence" },
-                { value: "300+", label: "Global Clients" },
-              ].map((stat, i) => (
-                <div key={stat.label} className="flex items-center">
-                  {i > 0 && <div className="w-[1px] h-[36px] mx-[32px] md:mx-[48px]" style={{ background: "#e0e0e0" }} />}
-                  <div className="flex flex-col items-center gap-[4px]">
-                    <span className="font-black text-[#ef5023] text-[28px] leading-[1]" style={{ letterSpacing: "-1px" }}>{stat.value}</span>
-                    <span className="text-[#888] text-[12px] font-medium tracking-[0.3px]">{stat.label}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* ── Life at InApps ── */}
         <section className="relative px-[40px] overflow-hidden" style={{ background: "#080808", borderTop: "1px solid #1a1a1a" }}>
-          {/* Constellation pattern */}
-          <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ opacity: 0.05 }}>
+          {/* L-grid lines + crosshair accents — dark-inverted from home "AI-Native" section */}
+          <svg className="absolute inset-0 pointer-events-none w-full h-full" preserveAspectRatio="xMidYMid slice">
             <defs>
-              <pattern id="constellation" x="0" y="0" width="240" height="200" patternUnits="userSpaceOnUse">
-                {/* Connection lines */}
-                <line x1="30" y1="25" x2="95" y2="58" stroke="#fff" strokeWidth="0.5"/>
-                <line x1="95" y1="58" x2="160" y2="30" stroke="#fff" strokeWidth="0.5"/>
-                <line x1="160" y1="30" x2="210" y2="70" stroke="#fff" strokeWidth="0.4"/>
-                <line x1="95" y1="58" x2="70" y2="110" stroke="rgba(239,80,35,0.45)" strokeWidth="0.5"/>
-                <line x1="70" y1="110" x2="140" y2="130" stroke="#fff" strokeWidth="0.4"/>
-                <line x1="140" y1="130" x2="210" y2="70" stroke="#fff" strokeWidth="0.4"/>
-                <line x1="140" y1="130" x2="190" y2="170" stroke="rgba(239,80,35,0.4)" strokeWidth="0.5"/>
-                <line x1="70" y1="110" x2="20" y2="160" stroke="#fff" strokeWidth="0.4"/>
-                <line x1="20" y1="160" x2="80" y2="185" stroke="#fff" strokeWidth="0.4"/>
-                <line x1="160" y1="30" x2="195" y2="12" stroke="#fff" strokeWidth="0.3"/>
-                <line x1="30" y1="25" x2="12" y2="65" stroke="#fff" strokeWidth="0.3"/>
-                <line x1="140" y1="130" x2="95" y2="58" stroke="rgba(239,80,35,0.3)" strokeWidth="0.4"/>
-                {/* Star nodes - large */}
-                <circle cx="95" cy="58" r="2.5" fill="#ef5023"/>
-                <circle cx="140" cy="130" r="2" fill="#ef5023"/>
-                {/* Star nodes - medium */}
-                <circle cx="30" cy="25" r="1.5" fill="#fff"/>
-                <circle cx="160" cy="30" r="1.5" fill="#fff"/>
-                <circle cx="70" cy="110" r="1.8" fill="#fff"/>
-                <circle cx="210" cy="70" r="1.5" fill="#fff"/>
-                <circle cx="20" cy="160" r="1.2" fill="#fff"/>
-                {/* Star nodes - small */}
-                <circle cx="190" cy="170" r="1" fill="#fff"/>
-                <circle cx="80" cy="185" r="1" fill="#fff"/>
-                <circle cx="195" cy="12" r="0.8" fill="rgba(239,80,35,0.6)"/>
-                <circle cx="12" cy="65" r="0.8" fill="#fff"/>
-                {/* Tiny ambient stars */}
-                <circle cx="120" cy="15" r="0.5" fill="rgba(255,255,255,0.5)"/>
-                <circle cx="45" cy="75" r="0.5" fill="rgba(255,255,255,0.4)"/>
-                <circle cx="180" cy="105" r="0.5" fill="rgba(255,255,255,0.5)"/>
-                <circle cx="105" cy="165" r="0.5" fill="rgba(255,255,255,0.4)"/>
-                <circle cx="225" cy="140" r="0.5" fill="rgba(255,255,255,0.3)"/>
+              <pattern id="life-grid" width="48" height="48" patternUnits="userSpaceOnUse">
+                <path d="M 48 0 L 0 0 0 48" fill="none" stroke="white" strokeWidth="0.5" opacity="0.06"/>
               </pattern>
             </defs>
-            <rect width="100%" height="100%" fill="url(#constellation)"/>
+            <rect width="100%" height="100%" fill="url(#life-grid)"/>
+            <g opacity="0.28">
+              <line x1="192" y1="80" x2="192" y2="112" stroke="#ef5023" strokeWidth="1.5"/>
+              <line x1="176" y1="96" x2="208" y2="96" stroke="#ef5023" strokeWidth="1.5"/>
+              <circle cx="192" cy="96" r="4" fill="none" stroke="#ef5023" strokeWidth="1"/>
+            </g>
+            <g opacity="0.20">
+              <line x1="880" y1="200" x2="880" y2="232" stroke="#ef5023" strokeWidth="1.5"/>
+              <line x1="864" y1="216" x2="896" y2="216" stroke="#ef5023" strokeWidth="1.5"/>
+              <circle cx="880" cy="216" r="4" fill="none" stroke="#ef5023" strokeWidth="1"/>
+            </g>
+            <g opacity="0.14">
+              <line x1="480" y1="380" x2="480" y2="412" stroke="#ef5023" strokeWidth="1.5"/>
+              <line x1="464" y1="396" x2="496" y2="396" stroke="#ef5023" strokeWidth="1.5"/>
+              <circle cx="480" cy="396" r="4" fill="none" stroke="#ef5023" strokeWidth="1"/>
+            </g>
           </svg>
           {/* Glow overlays */}
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] pointer-events-none" style={{ background: "radial-gradient(circle, rgba(239,80,35,0.12) 0%, transparent 65%)", filter: "blur(80px)" }} />
-          <div className="absolute bottom-0 left-0 w-[450px] h-[450px] pointer-events-none" style={{ background: "radial-gradient(circle, rgba(239,80,35,0.09) 0%, transparent 65%)", filter: "blur(80px)" }} />
-          <div className="absolute top-[40%] left-[50%] w-[600px] h-[300px] -translate-x-1/2 pointer-events-none" style={{ background: "radial-gradient(ellipse, rgba(239,80,35,0.06) 0%, transparent 70%)", filter: "blur(100px)" }} />
-          <div className="absolute top-[10%] left-[20%] w-[200px] h-[200px] pointer-events-none" style={{ background: "radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%)", filter: "blur(40px)" }} />
-          <div className="absolute bottom-[15%] right-[25%] w-[180px] h-[180px] pointer-events-none" style={{ background: "radial-gradient(circle, rgba(255,255,255,0.025) 0%, transparent 70%)", filter: "blur(35px)" }} />
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] pointer-events-none" style={{ background: "radial-gradient(circle, rgba(239,80,35,0.10) 0%, transparent 65%)", filter: "blur(80px)" }} />
+          <div className="absolute bottom-0 left-0 w-[450px] h-[450px] pointer-events-none" style={{ background: "radial-gradient(circle, rgba(239,80,35,0.08) 0%, transparent 65%)", filter: "blur(80px)" }} />
+          <div className="absolute top-[40%] left-[50%] w-[600px] h-[300px] -translate-x-1/2 pointer-events-none" style={{ background: "radial-gradient(ellipse, rgba(239,80,35,0.05) 0%, transparent 70%)", filter: "blur(100px)" }} />
 
           <div className="relative max-w-[1320px] mx-auto py-[70px]" style={{ zIndex: 2 }}>
             {/* Section header */}
@@ -314,21 +284,25 @@ export default function CareersPage() {
                   className="flex flex-col gap-[16px] rounded-[20px] p-[32px] transition-all duration-300 cursor-default"
                   style={{
                     background: "transparent",
-                    border: "1px solid rgba(255,255,255,0.06)",
+                    border: "1px solid rgba(255,255,255,0.10)",
+                    borderTop: "1px solid rgba(239,80,35,0.30)",
+                    boxShadow: "0 4px 24px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.04)",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "rgba(255,255,255,0.03)";
-                    e.currentTarget.style.borderColor = "rgba(239,80,35,0.15)";
-                    e.currentTarget.style.boxShadow = "0 0 15px rgba(239,80,35,0.08), 0 8px 32px rgba(0,0,0,0.4)";
-                    e.currentTarget.style.transform = "translateY(-4px) scale(1.02)";
+                    e.currentTarget.style.background = "transparent";
+                    e.currentTarget.style.borderColor = "rgba(255,255,255,0.16)";
+                    e.currentTarget.style.borderTopColor = "rgba(239,80,35,0.70)";
+                    e.currentTarget.style.boxShadow = "0 8px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(239,80,35,0.12), inset 0 1px 0 rgba(255,255,255,0.06)";
+                    e.currentTarget.style.transform = "translateY(-4px)";
                     const icon = e.currentTarget.querySelector(".card-icon") as HTMLElement;
                     if (icon) icon.style.filter = "drop-shadow(0 0 6px rgba(239,80,35,0.4))";
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.background = "transparent";
-                    e.currentTarget.style.borderColor = "rgba(255,255,255,0.06)";
-                    e.currentTarget.style.boxShadow = "none";
-                    e.currentTarget.style.transform = "translateY(0) scale(1)";
+                    e.currentTarget.style.borderColor = "rgba(255,255,255,0.10)";
+                    e.currentTarget.style.borderTopColor = "rgba(239,80,35,0.30)";
+                    e.currentTarget.style.boxShadow = "0 4px 24px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.04)";
+                    e.currentTarget.style.transform = "translateY(0)";
                     const icon = e.currentTarget.querySelector(".card-icon") as HTMLElement;
                     if (icon) icon.style.filter = "none";
                   }}
@@ -471,10 +445,39 @@ export default function CareersPage() {
           </div>
         </section>
 
+        {/* ── Stats Bar ── */}
+        <section className="px-[40px]" style={{ background: "#fafafa", borderTop: "1px solid #eee", borderBottom: "1px solid #eee" }}>
+          <div className="max-w-[960px] mx-auto py-[36px]">
+            <div className="flex items-center justify-center">
+              {[
+                { value: "9",    label: "Open Roles" },
+                { value: "500+", label: "Engineers" },
+                { value: "9+",   label: "Years of Excellence" },
+                { value: "300+", label: "Global Clients" },
+              ].map((stat, i) => (
+                <div key={stat.label} className="flex items-center">
+                  {i > 0 && <div className="w-[1px] h-[36px] mx-[32px] md:mx-[48px]" style={{ background: "#e0e0e0" }} />}
+                  <div className="flex flex-col items-center gap-[4px]">
+                    <span className="font-black text-[#ef5023] text-[28px] leading-[1]" style={{ letterSpacing: "-1px" }}>{stat.value}</span>
+                    <span className="text-[#888] text-[12px] font-medium tracking-[0.3px]">{stat.label}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ── Open Positions ── */}
         <section id="open-roles" className="relative px-[16px] md:px-[40px] overflow-hidden" style={{ background: "#f7f7f7", borderTop: "1px solid #e8e8e8" }}>
           {/* Pattern background */}
-          <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "url('/Media/Pattern/p1.png')", backgroundRepeat: "repeat", backgroundSize: "350px", opacity: 0.03 }} />
+          <div className="absolute inset-0 pointer-events-none" style={{
+            backgroundImage: "url('/Media/Pattern/p1.png')",
+            backgroundRepeat: "repeat",
+            backgroundSize: "600px",
+            opacity: 0.05,
+            WebkitMaskImage: "linear-gradient(to bottom right, transparent 0%, black 40%)",
+            maskImage: "linear-gradient(to bottom right, transparent 0%, black 40%)",
+          }} />
 
           <div className="relative max-w-[1320px] mx-auto py-[70px]" style={{ zIndex: 2 }}>
             {/* Section header */}
@@ -623,7 +626,30 @@ export default function CareersPage() {
           </div>
         </section>
         <section className="relative px-[40px] overflow-hidden" style={{ background: "#080808", borderTop: "1px solid #1a1a1a" }}>
-          <div className="absolute top-[-60px] right-[10%] w-[350px] h-[350px] pointer-events-none" style={{ background: "radial-gradient(circle, rgba(239,80,35,0.06) 0%, transparent 70%)", filter: "blur(60px)" }} />
+          {/* Concentric rings top-right — adapted from ServiceAIOverview for dark bg */}
+          <svg className="absolute -right-[100px] -top-[100px] pointer-events-none" width="580" height="580" viewBox="0 0 580 580" fill="none" style={{ opacity: 0.09 }}>
+            {[60, 110, 160, 210, 260, 310, 360].map((r, i) => (
+              <circle key={i} cx="290" cy="290" r={r} stroke="#ef5023" strokeWidth="1" />
+            ))}
+            <circle cx="290" cy="290" r="9" fill="#ef5023" opacity="0.45" />
+          </svg>
+          {/* Concentric rings bottom-left — white, from ServiceAIOverview */}
+          <svg className="absolute -left-[60px] -bottom-[60px] pointer-events-none" width="360" height="360" viewBox="0 0 360 360" fill="none" style={{ opacity: 0.04 }}>
+            {[45, 85, 125, 165].map((r, i) => (
+              <circle key={i} cx="180" cy="180" r={r} stroke="white" strokeWidth="1" />
+            ))}
+          </svg>
+          {/* Bracket accent corner — top right */}
+          <svg className="absolute top-[40px] right-[40px] pointer-events-none" width="48" height="48" viewBox="0 0 48 48" fill="none" style={{ opacity: 0.22 }}>
+            <path d="M48 0 L48 48 L0 48" stroke="#ef5023" strokeWidth="2" fill="none" />
+          </svg>
+          {/* Glow layers */}
+          <div className="absolute top-[-60px] right-[10%] w-[350px] h-[350px] pointer-events-none" style={{ background: "radial-gradient(circle, rgba(239,80,35,0.07) 0%, transparent 70%)", filter: "blur(60px)" }} />
+          <div className="absolute bottom-[10%] left-[5%] w-[420px] h-[320px] pointer-events-none" style={{ background: "radial-gradient(ellipse, rgba(239,80,35,0.06) 0%, transparent 70%)", filter: "blur(80px)" }} />
+          {/* Dashed vertical timeline spine on the left */}
+          <div className="absolute left-[40px] md:left-[72px] top-[120px] bottom-[80px] w-[1px] pointer-events-none" style={{
+            backgroundImage: "repeating-linear-gradient(to bottom, rgba(239,80,35,0.18) 0px, rgba(239,80,35,0.18) 6px, transparent 6px, transparent 14px)",
+          }} />
 
           <div className="relative max-w-[1320px] mx-auto py-[70px]" style={{ zIndex: 2 }}>
             <div className="flex flex-col items-start gap-[10px] mb-[48px]">
@@ -672,19 +698,22 @@ export default function CareersPage() {
                   key={item.step}
                   className="flex items-start gap-[24px] rounded-[20px] p-[32px] transition-all duration-300 hover:-translate-y-[2px]"
                   style={{
-                    background: "rgba(255,255,255,0.02)",
-                    border: "1px solid rgba(255,255,255,0.06)",
-                    boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
+                    background: "transparent",
+                    border: "1px solid rgba(255,255,255,0.10)",
+                    borderLeft: "1px solid rgba(239,80,35,0.30)",
+                    boxShadow: "0 4px 24px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.04)",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "rgba(239,80,35,0.04)";
-                    e.currentTarget.style.borderColor = "rgba(239,80,35,0.18)";
-                    e.currentTarget.style.boxShadow = "0 8px 40px rgba(239,80,35,0.12), inset 0 1px 0 rgba(255,255,255,0.04)";
+                    e.currentTarget.style.background = "transparent";
+                    e.currentTarget.style.borderColor = "rgba(255,255,255,0.16)";
+                    e.currentTarget.style.borderLeftColor = "rgba(239,80,35,0.70)";
+                    e.currentTarget.style.boxShadow = "0 8px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(239,80,35,0.10), inset 0 1px 0 rgba(255,255,255,0.06)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "rgba(255,255,255,0.02)";
-                    e.currentTarget.style.borderColor = "rgba(255,255,255,0.06)";
-                    e.currentTarget.style.boxShadow = "0 8px 32px rgba(0,0,0,0.4)";
+                    e.currentTarget.style.background = "transparent";
+                    e.currentTarget.style.borderColor = "rgba(255,255,255,0.10)";
+                    e.currentTarget.style.borderLeftColor = "rgba(239,80,35,0.30)";
+                    e.currentTarget.style.boxShadow = "0 4px 24px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.04)";
                   }}
                 >
                   <div
@@ -718,8 +747,15 @@ export default function CareersPage() {
         </section>
 
         {/* ── Ready to join ── */}
-        <section className="px-[40px]" style={{ background: "#0a0a0a", borderTop: "1px solid #1a1a1a" }}>
-          <div className="max-w-[1320px] mx-auto py-[70px]">
+        <section className="relative px-[40px] overflow-hidden" style={{ background: "#0a0a0a", borderTop: "1px solid #1a1a1a" }}>
+          {/* Dot grid pattern for dark bg */}
+          <div className="absolute inset-0 pointer-events-none" style={{
+            backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px)",
+            backgroundSize: "32px 32px",
+          }} />
+          {/* Corner glow */}
+          <div className="absolute bottom-0 right-0 w-[400px] h-[300px] pointer-events-none" style={{ background: "radial-gradient(ellipse at bottom right, rgba(239,80,35,0.08) 0%, transparent 65%)", filter: "blur(60px)" }} />
+          <div className="max-w-[1320px] mx-auto py-[70px]" style={{ position: "relative", zIndex: 2 }}>
             <div
               className="relative rounded-[20px] overflow-hidden px-[24px] sm:px-[56px] py-[36px] sm:py-[44px] flex flex-col md:flex-row md:items-center md:justify-between gap-[24px]"
               style={{
@@ -727,7 +763,11 @@ export default function CareersPage() {
                 boxShadow: "0 10px 30px -8px rgba(239,80,35,0.25), 0 4px 12px -4px rgba(239,80,35,0.15)",
               }}
             >
-              <div className="flex flex-col gap-[10px] max-w-[560px]">
+              {/* Diagonal stripe overlay inside card */}
+              <div className="absolute inset-0 pointer-events-none" style={{
+                backgroundImage: "repeating-linear-gradient(-45deg, rgba(255,255,255,0.045) 0px, rgba(255,255,255,0.045) 1px, transparent 1px, transparent 18px)",
+              }} />
+              <div className="relative flex flex-col gap-[10px] max-w-[560px]" style={{ zIndex: 1 }}>
                 <h2 className="font-black text-white text-[28px] leading-[36px]" style={{ letterSpacing: "-0.6px" }}>
                   Ready to join the team?
                 </h2>
@@ -736,7 +776,7 @@ export default function CareersPage() {
                 </p>
               </div>
 
-              <div className="flex flex-wrap items-center gap-[12px]">
+              <div className="relative flex flex-wrap items-center gap-[12px]" style={{ zIndex: 1 }}>
                 <a
                   href="mailto:careers@inapps.net"
                   className="inline-flex items-center gap-[10px] px-[28px] h-[44px] rounded-[10px] font-bold text-[13px] hover:bg-[#f5f5f5] transition-colors"
