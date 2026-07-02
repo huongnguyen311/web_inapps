@@ -428,7 +428,6 @@ export default function AIAgentWidget() {
           background: #ef5023;
           border-radius: 50%;
           animation: float1 4s ease-in-out infinite;
-          box-shadow: 0 0 8px rgba(239,80,35,0.7);
         }
 
         .ina-float-2 {
@@ -439,7 +438,6 @@ export default function AIAgentWidget() {
           background: #ff7a4d;
           border-radius: 50%;
           animation: float2 5s ease-in-out infinite;
-          box-shadow: 0 0 10px rgba(255,122,77,0.7);
         }
 
         .ina-float-3 {
@@ -450,7 +448,6 @@ export default function AIAgentWidget() {
           background: #ef5023;
           border-radius: 4px;
           animation: float3 4.5s ease-in-out infinite;
-          box-shadow: 0 0 8px rgba(239,80,35,0.6);
         }
 
         .ina-float-4 {
@@ -461,7 +458,6 @@ export default function AIAgentWidget() {
           background: #ff7a4d;
           border-radius: 50%;
           animation: float4 6s ease-in-out infinite;
-          box-shadow: 0 0 10px rgba(255,122,77,0.6);
         }
 
         .ina-float-5 {
@@ -472,7 +468,6 @@ export default function AIAgentWidget() {
           background: #ef5023;
           border-radius: 2px;
           animation: float5 5.5s ease-in-out infinite;
-          box-shadow: 0 0 8px rgba(239,80,35,0.7);
         }
 
         @keyframes float1 {
@@ -628,7 +623,6 @@ export default function AIAgentWidget() {
           display: flex; align-items: center; justify-content: center;
           animation: inaPop 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
           transform-origin: center bottom;
-          filter: drop-shadow(0 0 16px rgba(239,80,35,0.6)) drop-shadow(0 0 32px rgba(255,122,77,0.3));
         }
         /* OPTION 2 (Active): Expanding Ripple - Dynamic Wave Effect */
         .ina-mini::before {
@@ -696,7 +690,6 @@ export default function AIAgentWidget() {
           display: none;
         }
         .ina-mini .ina-avatar-container {
-          filter: drop-shadow(0 0 12px rgba(239,80,35,0.5));
           animation: miniPulse 2s ease-in-out infinite;
         }
         @keyframes miniPulse {
