@@ -729,14 +729,29 @@ export default function AIAgentWidget() {
         .ina-panel {
           width: 480px; max-width: calc(100vw - 36px);
           height: 696px; max-height: calc(100vh - 100px);
-          background: #fafafa; color: #1a1a1a;
-          border-radius: 24px; overflow: hidden;
-          display: flex; flex-direction: column;
+          background: rgba(250, 250, 250, 0.95);
+          backdrop-filter: blur(20px);
+          color: #1a1a1a;
+          border-radius: 24px;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
           transform-origin: bottom right;
-          box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 0 1px rgba(0,0,0,0.08);
-          animation: inaRise 0.45s cubic-bezier(0.34,1.4,0.5,1) both;
+          border: 1px solid rgba(239,80,35,0.15);
+          box-shadow: 0 25px 70px rgba(0,0,0,0.25), 0 0 0 1px rgba(239,80,35,0.2), inset 0 1px 0 rgba(255,255,255,0.8);
+          animation: inaRise 0.45s cubic-bezier(0.34,1.4,0.5,1) both, panelGlow 4s ease-in-out 0.5s infinite;
         }
-        .ina-head { display: flex; align-items: center; gap: 14px; padding: 18px 18px 16px; border-bottom: 1px solid #f0f0f0; background: #ffffff; cursor: grab; touch-action: none; user-select: none; }
+        @keyframes panelGlow {
+          0%, 100% { box-shadow: 0 25px 70px rgba(0,0,0,0.25), 0 0 0 1px rgba(239,80,35,0.2), inset 0 1px 0 rgba(255,255,255,0.8); }
+          50% { box-shadow: 0 25px 70px rgba(0,0,0,0.3), 0 0 20px rgba(239,80,35,0.3), inset 0 1px 0 rgba(255,255,255,0.9); }
+        }
+        .ina-head {
+          display: flex; align-items: center; gap: 14px; padding: 18px 18px 16px;
+          border-bottom: 1px solid rgba(239,80,35,0.1);
+          background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(255,250,248,0.95));
+          backdrop-filter: blur(10px);
+          cursor: grab; touch-action: none; user-select: none;
+        }
         .ina-head:active { cursor: grabbing; }
         .ina-head-av {
           width: 51px;
@@ -801,9 +816,25 @@ export default function AIAgentWidget() {
         .ina-msg-av .ina-avatar-glow {
           display: none;
         }
-        .ina-bubble { max-width: 85%; font-size: 14px; line-height: 1.55; padding: 12px 15px; border-radius: 16px; }
-        .ina-bubble.bot { background: #ffffff; border: 1px solid #e8e8e8; color: #1a1a1a; border-bottom-left-radius: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
-        .ina-bubble.user { background: linear-gradient(135deg, #ff7a45, #d94010); color: #fff; border-bottom-right-radius: 4px; box-shadow: 0 3px 12px rgba(239,80,35,0.25); }
+        .ina-bubble { max-width: 85%; font-size: 14px; line-height: 1.55; padding: 12px 15px; border-radius: 16px; animation: bubbleIn 0.4s ease-out; }
+        .ina-bubble.bot {
+          background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,250,248,0.9));
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(239,80,35,0.12);
+          color: #1a1a1a;
+          border-bottom-left-radius: 4px;
+          box-shadow: 0 4px 15px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.6);
+        }
+        .ina-bubble.user {
+          background: linear-gradient(135deg, #ff7a45, #d94010);
+          color: #fff;
+          border-bottom-right-radius: 4px;
+          box-shadow: 0 4px 16px rgba(239,80,35,0.3), inset 0 1px 0 rgba(255,255,255,0.3);
+        }
+        @keyframes bubbleIn {
+          from { opacity: 0; transform: translateY(8px) scale(0.95); }
+          to { opacity: 1; transform: none; }
+        }
 
         .ina-typing { display: flex; gap: 4px; align-items: center; padding: 13px; }
         .ina-typing span { width: 6px; height: 6px; border-radius: 999px; background: #ef5023; animation: inaBounce 1.2s infinite ease-in-out; }
@@ -838,15 +869,23 @@ export default function AIAgentWidget() {
 
         .ina-input-bar { display: flex; align-items: center; gap: 8px; padding: 4px 16px 16px; }
         .ina-input {
-          flex: 1; background: #f5f3f0; border: 1.5px solid #e8e3de; border-radius: 12px;
-          padding: 12px 16px; color: #23201d; font-size: 13.5px; outline: none;
-          transition: all 0.2s ease;
+          flex: 1;
+          background: linear-gradient(135deg, rgba(245,243,240,0.9), rgba(255,250,248,0.8));
+          border: 1.5px solid rgba(239,80,35,0.15);
+          border-radius: 12px;
+          padding: 12px 16px;
+          color: #23201d;
+          font-size: 13.5px;
+          outline: none;
+          transition: all 0.3s ease;
+          backdrop-filter: blur(8px);
         }
         .ina-input::placeholder { color: #9d9590; }
         .ina-input:focus {
           border-color: #ef5023;
-          background: #fff;
-          box-shadow: 0 0 0 3px rgba(239,80,35,0.15), 0 4px 12px rgba(0,0,0,0.08);
+          background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(255,250,248,0.95));
+          box-shadow: 0 0 0 3px rgba(239,80,35,0.15), 0 6px 20px rgba(239,80,35,0.2), inset 0 1px 0 rgba(255,255,255,0.5);
+          backdrop-filter: blur(15px);
         }
         .ina-send {
           width: 44px; height: 44px; border-radius: 13px; border: none;
