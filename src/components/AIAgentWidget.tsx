@@ -95,21 +95,20 @@ const InaAvatar = ({ size = 60, context = "default" }: { size?: number; context?
     default: ""
   }[context];
 
-  // Only show radar effect for peek and mini
-  const showRadar = context === "peek" || context === "mini";
+  // Only show floating elements for mini (after close)
+  const showFloating = context === "mini";
 
   return (
     <div className={`ina-avatar ${sizeClass}`} style={{ width: size, height: size }}>
       <div className="ina-avatar-container">
-        {showRadar && (
+        {showFloating && (
           <>
-            {/* Concentric rotating rings */}
-            <div className="ina-radar-circle ina-radar-circle-1" />
-            <div className="ina-radar-circle ina-radar-circle-2" />
-            {/* Floating sparkles */}
-            <div className="ina-sparkle ina-sparkle-1" />
-            <div className="ina-sparkle ina-sparkle-2" />
-            <div className="ina-sparkle ina-sparkle-3" />
+            {/* Floating animated elements - after close only */}
+            <div className="ina-float-element ina-float-1" />
+            <div className="ina-float-element ina-float-2" />
+            <div className="ina-float-element ina-float-3" />
+            <div className="ina-float-element ina-float-4" />
+            <div className="ina-float-element ina-float-5" />
           </>
         )}
         <div className="ina-avatar-bg" />
@@ -119,7 +118,6 @@ const InaAvatar = ({ size = 60, context = "default" }: { size?: number; context?
           className="ina-avatar-img"
           style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 0%" }}
         />
-        <div className="ina-avatar-shine" />
       </div>
       <div className="ina-avatar-shadow" />
       <div className="ina-avatar-glow" />
@@ -370,7 +368,7 @@ export default function AIAgentWidget() {
           position: relative;
           width: 100%;
           height: 100%;
-          overflow: hidden;
+          overflow: visible;
           transform-style: preserve-3d;
           animation: inaFloat 3.8s ease-in-out infinite;
           backface-visibility: hidden;
@@ -383,61 +381,8 @@ export default function AIAgentWidget() {
           width: 100%;
           height: 100%;
           border-radius: 50%;
-          background: #ef5023;
+          background: linear-gradient(135deg, #ef5023 0%, #ff7a4d 100%);
           z-index: -1;
-        }
-        .ina-avatar-shine {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          border-radius: 50%;
-          background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%, rgba(0,0,0,0.1) 100%);
-          animation: shine 3s ease-in-out infinite;
-          pointer-events: none;
-          z-index: 2;
-        }
-        @keyframes shine {
-          0%, 100% { opacity: 0.3; }
-          50% { opacity: 0.8; }
-        }
-        .ina-sparkle {
-          position: absolute;
-          width: 4px;
-          height: 4px;
-          background: #ef5023;
-          border-radius: 50%;
-          pointer-events: none;
-          z-index: 1;
-        }
-        .ina-sparkle-1 {
-          top: -8px;
-          left: 50%;
-          margin-left: -2px;
-          animation: sparkleFloat 2.5s ease-in-out infinite;
-          box-shadow: 0 0 8px rgba(239,80,35,0.8);
-        }
-        .ina-sparkle-2 {
-          top: 50%;
-          right: -8px;
-          margin-top: -2px;
-          animation: sparkleFloat 2.5s ease-in-out infinite 0.83s;
-          box-shadow: 0 0 8px rgba(239,80,35,0.8);
-        }
-        .ina-sparkle-3 {
-          bottom: -8px;
-          left: 50%;
-          margin-left: -2px;
-          animation: sparkleFloat 2.5s ease-in-out infinite 1.66s;
-          box-shadow: 0 0 8px rgba(239,80,35,0.8);
-        }
-        @keyframes sparkleFloat {
-          0%, 100% { transform: translateY(0) scale(1); opacity: 0; }
-          20% { opacity: 1; }
-          50% { transform: translateY(-12px) scale(1.2); opacity: 1; }
-          80% { opacity: 1; }
-          100% { transform: translateY(0) scale(1); opacity: 0; }
         }
         .ina-avatar-img {
           display: block;
@@ -468,42 +413,91 @@ export default function AIAgentWidget() {
         }
 
         /* ── Simple Pulsing Circles (2 layers - concentric) ────────────── */
-        .ina-radar-circle {
+        /* Floating animated elements - completely new concept */
+        .ina-float-element {
           position: absolute;
+          z-index: 1;
+          pointer-events: none;
+        }
+
+        .ina-float-1 {
+          top: -35px;
+          left: 20px;
+          width: 14px;
+          height: 14px;
+          background: #ef5023;
           border-radius: 50%;
-          border: 2px solid rgba(239,80,35,0.6);
-          top: 50%;
-          left: 50%;
-          z-index: 0;
-          box-sizing: border-box;
+          animation: float1 4s ease-in-out infinite;
+          box-shadow: 0 0 8px rgba(239,80,35,0.7);
         }
 
-        .ina-radar-circle-1 {
-          width: 100%;
-          height: 100%;
-          margin-left: -50%;
-          margin-top: -50%;
-          animation: rotateRing1 4s linear infinite;
-          filter: drop-shadow(0 0 12px rgba(239,80,35,0.7));
+        .ina-float-2 {
+          top: 10px;
+          right: -30px;
+          width: 12px;
+          height: 12px;
+          background: #ff7a4d;
+          border-radius: 50%;
+          animation: float2 5s ease-in-out infinite;
+          box-shadow: 0 0 10px rgba(255,122,77,0.7);
         }
 
-        .ina-radar-circle-2 {
-          width: 140%;
-          height: 140%;
-          margin-left: -70%;
-          margin-top: -70%;
-          animation: rotateRing2 5.5s linear infinite reverse;
-          filter: drop-shadow(0 0 16px rgba(239,80,35,0.6));
+        .ina-float-3 {
+          bottom: 15px;
+          left: -25px;
+          width: 11px;
+          height: 11px;
+          background: #ef5023;
+          border-radius: 4px;
+          animation: float3 4.5s ease-in-out infinite;
+          box-shadow: 0 0 8px rgba(239,80,35,0.6);
         }
 
-        @keyframes rotateRing1 {
-          0% { transform: rotate(0deg); opacity: 0.7; }
-          100% { transform: rotate(360deg); opacity: 0.7; }
+        .ina-float-4 {
+          top: 35%;
+          right: -35px;
+          width: 10px;
+          height: 10px;
+          background: #ff7a4d;
+          border-radius: 50%;
+          animation: float4 6s ease-in-out infinite;
+          box-shadow: 0 0 10px rgba(255,122,77,0.6);
         }
 
-        @keyframes rotateRing2 {
-          0% { transform: rotate(0deg); opacity: 0.6; }
-          100% { transform: rotate(360deg); opacity: 0.6; }
+        .ina-float-5 {
+          bottom: -25px;
+          right: 25px;
+          width: 13px;
+          height: 13px;
+          background: #ef5023;
+          border-radius: 2px;
+          animation: float5 5.5s ease-in-out infinite;
+          box-shadow: 0 0 8px rgba(239,80,35,0.7);
+        }
+
+        @keyframes float1 {
+          0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.3; }
+          50% { transform: translateY(-30px) translateX(10px) rotate(180deg); opacity: 1; }
+        }
+
+        @keyframes float2 {
+          0%, 100% { transform: translateX(0) rotate(0deg); opacity: 0.2; }
+          50% { transform: translateX(-35px) rotate(180deg); opacity: 0.9; }
+        }
+
+        @keyframes float3 {
+          0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.4; }
+          50% { transform: translateY(25px) translateX(-15px) scale(1.3); opacity: 0.8; }
+        }
+
+        @keyframes float4 {
+          0%, 100% { transform: translateX(0) translateY(0); opacity: 0.3; }
+          50% { transform: translateX(-25px) translateY(20px); opacity: 0.7; }
+        }
+
+        @keyframes float5 {
+          0%, 100% { transform: rotate(0deg) scale(1); opacity: 0.4; }
+          50% { transform: rotate(360deg) scale(1.2); opacity: 1; }
         }
 
         @keyframes inaFloat {
@@ -634,18 +628,18 @@ export default function AIAgentWidget() {
           display: flex; align-items: center; justify-content: center;
           animation: inaPop 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
           transform-origin: center bottom;
-          filter: drop-shadow(0 0 12px rgba(239,80,35,0.4)) drop-shadow(0 0 24px rgba(239,80,35,0.15));
+          filter: drop-shadow(0 0 16px rgba(239,80,35,0.6)) drop-shadow(0 0 32px rgba(255,122,77,0.3));
         }
         /* OPTION 2 (Active): Expanding Ripple - Dynamic Wave Effect */
         .ina-mini::before {
           content: ""; position: absolute; inset: -20px; border-radius: 50%;
-          border: 2px solid rgba(239,80,35,0.8);
+          border: 2px solid rgba(239,80,35,0.9);
           animation: miniRipple 2s ease-out infinite;
           z-index: 0;
           pointer-events: none;
         }
         @keyframes miniRipple {
-          0% { transform: scale(1); opacity: 0.8; }
+          0% { transform: scale(1); opacity: 0.9; }
           100% { transform: scale(1.4); opacity: 0; }
         }
 
@@ -702,36 +696,40 @@ export default function AIAgentWidget() {
           display: none;
         }
         .ina-mini .ina-avatar-container {
-          filter: drop-shadow(0 0 8px rgba(239,80,35,0.3));
+          filter: drop-shadow(0 0 12px rgba(239,80,35,0.5));
           animation: miniPulse 2s ease-in-out infinite;
         }
         @keyframes miniPulse {
           0%, 100% { transform: scale(1); }
           50% { transform: scale(1.02); }
         }
-        .ina-mini .ina-sparkle {
-          opacity: 0.8;
-          box-shadow: 0 0 8px rgba(239,80,35,0.7) !important;
+        .ina-mini .ina-float-element {
+          animation-duration: 3s !important;
         }
-        .ina-mini .ina-sparkle-1 {
-          animation: sparkleFloatMini 2.5s ease-in-out infinite, sparklePulse 1.5s ease-in-out infinite;
+        .ina-mini .ina-float-1 {
+          width: 10px;
+          height: 10px;
+          background: #ef5023;
         }
-        .ina-mini .ina-sparkle-2 {
-          animation: sparkleFloatMini 2.5s ease-in-out infinite 0.83s, sparklePulse 1.5s ease-in-out infinite 0.5s;
+        .ina-mini .ina-float-2 {
+          width: 8px;
+          height: 8px;
+          background: #ff7a4d;
         }
-        .ina-mini .ina-sparkle-3 {
-          animation: sparkleFloatMini 2.5s ease-in-out infinite 1.66s, sparklePulse 1.5s ease-in-out infinite 1s;
+        .ina-mini .ina-float-3 {
+          width: 6px;
+          height: 6px;
+          background: #ef5023;
         }
-        @keyframes sparkleFloatMini {
-          0%, 100% { transform: translateY(0) scale(1.2); opacity: 0.3; }
-          20% { opacity: 1; }
-          50% { transform: translateY(-18px) scale(1.5); opacity: 1; }
-          80% { opacity: 1; }
-          100% { transform: translateY(0) scale(1.2); opacity: 0.3; }
+        .ina-mini .ina-float-4 {
+          width: 5px;
+          height: 5px;
+          background: #ff7a4d;
         }
-        @keyframes sparklePulse {
-          0%, 100% { box-shadow: 0 0 4px rgba(239,80,35,0.6); }
-          50% { box-shadow: 0 0 10px rgba(239,80,35,0.8); }
+        .ina-mini .ina-float-5 {
+          width: 9px;
+          height: 9px;
+          background: #ef5023;
         }
 
         /* ── Panel (light) ──────────────────────────────────────────────── */
