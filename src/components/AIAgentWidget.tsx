@@ -412,6 +412,29 @@ export default function AIAgentWidget() {
           display: none;
         }
 
+        /* Enhanced glow effects */
+        .ina-avatar-container::before {
+          content: "";
+          position: absolute;
+          inset: -12px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(239,80,35,0.4) 0%, rgba(239,80,35,0.15) 50%, transparent 70%);
+          animation: avatarGlow 3s ease-in-out infinite;
+          z-index: -1;
+          pointer-events: none;
+        }
+
+        @keyframes avatarGlow {
+          0%, 100% {
+            opacity: 0.4;
+            filter: blur(8px);
+          }
+          50% {
+            opacity: 0.8;
+            filter: blur(12px);
+          }
+        }
+
         /* ── Simple Pulsing Circles (2 layers - concentric) ────────────── */
         /* Floating animated elements - completely new concept */
         .ina-float-element {
@@ -428,6 +451,8 @@ export default function AIAgentWidget() {
           background: #ef5023;
           border-radius: 50%;
           animation: float1 4s ease-in-out infinite;
+          box-shadow: 0 0 8px rgba(239,80,35,0.8), 0 0 16px rgba(239,80,35,0.4);
+          filter: drop-shadow(0 0 6px rgba(239,80,35,0.6));
         }
 
         .ina-float-2 {
@@ -438,6 +463,8 @@ export default function AIAgentWidget() {
           background: #ff7a4d;
           border-radius: 50%;
           animation: float2 5s ease-in-out infinite;
+          box-shadow: 0 0 10px rgba(255,122,77,0.7), 0 0 20px rgba(255,122,77,0.3);
+          filter: drop-shadow(0 0 6px rgba(255,122,77,0.5));
         }
 
         .ina-float-3 {
@@ -448,6 +475,8 @@ export default function AIAgentWidget() {
           background: #ef5023;
           border-radius: 4px;
           animation: float3 4.5s ease-in-out infinite;
+          box-shadow: 0 0 8px rgba(239,80,35,0.7), 0 0 14px rgba(239,80,35,0.35);
+          filter: drop-shadow(0 0 5px rgba(239,80,35,0.6));
         }
 
         .ina-float-4 {
@@ -458,6 +487,8 @@ export default function AIAgentWidget() {
           background: #ff7a4d;
           border-radius: 50%;
           animation: float4 6s ease-in-out infinite;
+          box-shadow: 0 0 8px rgba(255,122,77,0.6), 0 0 16px rgba(255,122,77,0.25);
+          filter: drop-shadow(0 0 5px rgba(255,122,77,0.5));
         }
 
         .ina-float-5 {
@@ -468,6 +499,8 @@ export default function AIAgentWidget() {
           background: #ef5023;
           border-radius: 2px;
           animation: float5 5.5s ease-in-out infinite;
+          box-shadow: 0 0 9px rgba(239,80,35,0.8), 0 0 18px rgba(239,80,35,0.4);
+          filter: drop-shadow(0 0 6px rgba(239,80,35,0.6));
         }
 
         @keyframes float1 {
@@ -631,10 +664,12 @@ export default function AIAgentWidget() {
           animation: miniRipple 2s ease-out infinite;
           z-index: 0;
           pointer-events: none;
+          box-shadow: 0 0 15px rgba(239,80,35,0.6), inset 0 0 15px rgba(239,80,35,0.2);
+          filter: drop-shadow(0 0 8px rgba(239,80,35,0.5));
         }
         @keyframes miniRipple {
-          0% { transform: scale(1); opacity: 0.9; }
-          100% { transform: scale(1.4); opacity: 0; }
+          0% { transform: scale(1); opacity: 0.9; filter: drop-shadow(0 0 12px rgba(239,80,35,0.8)); }
+          100% { transform: scale(1.4); opacity: 0; filter: drop-shadow(0 0 4px rgba(239,80,35,0.2)); }
         }
 
         /* OPTION 1: Breathing Ring - Simple & Modern */
@@ -742,8 +777,12 @@ export default function AIAgentWidget() {
           animation: inaRise 0.45s cubic-bezier(0.34,1.4,0.5,1) both, panelGlow 4s ease-in-out 0.5s infinite;
         }
         @keyframes panelGlow {
-          0%, 100% { box-shadow: 0 25px 70px rgba(0,0,0,0.25), 0 0 0 1px rgba(239,80,35,0.2), inset 0 1px 0 rgba(255,255,255,0.8); }
-          50% { box-shadow: 0 25px 70px rgba(0,0,0,0.3), 0 0 20px rgba(239,80,35,0.3), inset 0 1px 0 rgba(255,255,255,0.9); }
+          0%, 100% {
+            box-shadow: 0 25px 70px rgba(0,0,0,0.25), 0 0 0 1px rgba(239,80,35,0.2), inset 0 1px 0 rgba(255,255,255,0.8), 0 0 30px rgba(239,80,35,0);
+          }
+          50% {
+            box-shadow: 0 25px 70px rgba(0,0,0,0.3), 0 0 30px rgba(239,80,35,0.4), inset 0 1px 0 rgba(255,255,255,0.9), 0 0 50px rgba(239,80,35,0.25);
+          }
         }
         .ina-head {
           display: flex; align-items: center; gap: 14px; padding: 18px 18px 16px;
