@@ -568,7 +568,7 @@ export default function AIAgentWidget() {
         .ina-peek .ina-avatar-container {
           border-radius: 50%;
           border: 2px solid rgba(255,255,255,0.95);
-          box-shadow: 0 0 0 2px rgba(239,80,35,0.6), 0 8px 24px rgba(0,0,0,0.15);
+          box-shadow: 0 0 0 2px rgba(239,80,35,0.6), 0 8px 24px rgba(0,0,0,0.15), 0 0 20px rgba(239,80,35,0.35), inset 0 0 12px rgba(239,80,35,0.15);
         }
         .ina-peek .ina-avatar-shadow {
           bottom: -28px;
@@ -578,6 +578,16 @@ export default function AIAgentWidget() {
         }
         .ina-peek .ina-avatar-glow {
           display: none;
+        }
+        .ina-peek .ina-avatar-container::before {
+          content: "";
+          position: absolute;
+          inset: -12px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(239,80,35,0.35) 0%, rgba(239,80,35,0.12) 50%, transparent 70%);
+          animation: avatarGlow 3s ease-in-out infinite;
+          z-index: -1;
+          pointer-events: none;
         }
         @keyframes inaBobWave {
           0%, 26%, 100% { transform: translateY(0) rotate(0); }
