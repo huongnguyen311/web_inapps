@@ -416,22 +416,23 @@ export default function AIAgentWidget() {
         .ina-avatar-container::before {
           content: "";
           position: absolute;
-          inset: -12px;
+          inset: -16px;
           border-radius: 50%;
-          background: radial-gradient(circle, rgba(239,80,35,0.4) 0%, rgba(239,80,35,0.15) 50%, transparent 70%);
+          background: radial-gradient(circle, rgba(239,80,35,0.7) 0%, rgba(239,80,35,0.35) 40%, transparent 75%);
           animation: avatarGlow 3s ease-in-out infinite;
           z-index: -1;
           pointer-events: none;
+          filter: blur(3px);
         }
 
         @keyframes avatarGlow {
           0%, 100% {
-            opacity: 0.4;
-            filter: blur(8px);
+            opacity: 0.6;
+            transform: scale(1);
           }
           50% {
-            opacity: 0.8;
-            filter: blur(12px);
+            opacity: 1;
+            transform: scale(1.15);
           }
         }
 
@@ -451,8 +452,6 @@ export default function AIAgentWidget() {
           background: #ef5023;
           border-radius: 50%;
           animation: float1 4s ease-in-out infinite;
-          box-shadow: 0 0 8px rgba(239,80,35,0.8), 0 0 16px rgba(239,80,35,0.4);
-          filter: drop-shadow(0 0 6px rgba(239,80,35,0.6));
         }
 
         .ina-float-2 {
@@ -463,8 +462,6 @@ export default function AIAgentWidget() {
           background: #ff7a4d;
           border-radius: 50%;
           animation: float2 5s ease-in-out infinite;
-          box-shadow: 0 0 10px rgba(255,122,77,0.7), 0 0 20px rgba(255,122,77,0.3);
-          filter: drop-shadow(0 0 6px rgba(255,122,77,0.5));
         }
 
         .ina-float-3 {
@@ -475,8 +472,6 @@ export default function AIAgentWidget() {
           background: #ef5023;
           border-radius: 4px;
           animation: float3 4.5s ease-in-out infinite;
-          box-shadow: 0 0 8px rgba(239,80,35,0.7), 0 0 14px rgba(239,80,35,0.35);
-          filter: drop-shadow(0 0 5px rgba(239,80,35,0.6));
         }
 
         .ina-float-4 {
@@ -487,8 +482,6 @@ export default function AIAgentWidget() {
           background: #ff7a4d;
           border-radius: 50%;
           animation: float4 6s ease-in-out infinite;
-          box-shadow: 0 0 8px rgba(255,122,77,0.6), 0 0 16px rgba(255,122,77,0.25);
-          filter: drop-shadow(0 0 5px rgba(255,122,77,0.5));
         }
 
         .ina-float-5 {
@@ -499,8 +492,6 @@ export default function AIAgentWidget() {
           background: #ef5023;
           border-radius: 2px;
           animation: float5 5.5s ease-in-out infinite;
-          box-shadow: 0 0 9px rgba(239,80,35,0.8), 0 0 18px rgba(239,80,35,0.4);
-          filter: drop-shadow(0 0 6px rgba(239,80,35,0.6));
         }
 
         @keyframes float1 {
@@ -568,7 +559,7 @@ export default function AIAgentWidget() {
         .ina-peek .ina-avatar-container {
           border-radius: 50%;
           border: 2px solid rgba(255,255,255,0.95);
-          box-shadow: 0 0 0 2px rgba(239,80,35,0.6), 0 8px 24px rgba(0,0,0,0.15), 0 0 20px rgba(239,80,35,0.35), inset 0 0 12px rgba(239,80,35,0.15);
+          box-shadow: 0 0 0 2px rgba(239,80,35,0.6), 0 8px 24px rgba(0,0,0,0.15);
         }
         .ina-peek .ina-avatar-shadow {
           bottom: -28px;
@@ -582,12 +573,13 @@ export default function AIAgentWidget() {
         .ina-peek .ina-avatar-container::before {
           content: "";
           position: absolute;
-          inset: -12px;
+          inset: -16px;
           border-radius: 50%;
-          background: radial-gradient(circle, rgba(239,80,35,0.35) 0%, rgba(239,80,35,0.12) 50%, transparent 70%);
+          background: radial-gradient(circle, rgba(239,80,35,0.75) 0%, rgba(239,80,35,0.4) 40%, transparent 75%);
           animation: avatarGlow 3s ease-in-out infinite;
           z-index: -1;
           pointer-events: none;
+          filter: blur(3px);
         }
         @keyframes inaBobWave {
           0%, 26%, 100% { transform: translateY(0) rotate(0); }
@@ -603,7 +595,7 @@ export default function AIAgentWidget() {
           color: #0a0a0a; border-radius: 24px;
           border: 1px solid #f0f0f8;
           padding: 22px 24px; width: 280px; max-width: calc(100vw - 24px); cursor: pointer;
-          box-shadow: 0 20px 60px rgba(239,80,35,0.15), 0 8px 24px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.8);
+          box-shadow: 0 20px 60px rgba(239,80,35,0.15), 0 8px 24px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.8), 0 0 30px rgba(255,255,255,0.8), 0 0 60px rgba(255,255,255,0.5);
           font-size: 16px; font-weight: 600; line-height: 1.6;
           margin-bottom: 48px;
           order: -1;
@@ -611,10 +603,19 @@ export default function AIAgentWidget() {
           flex-direction: column;
           gap: 0;
           transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+          animation: greetGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes greetGlow {
+          0%, 100% {
+            box-shadow: 0 20px 60px rgba(239,80,35,0.15), 0 8px 24px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.8), 0 0 20px rgba(255,255,255,0.6), 0 0 40px rgba(255,255,255,0.3);
+          }
+          50% {
+            box-shadow: 0 20px 60px rgba(239,80,35,0.15), 0 8px 24px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.8), 0 0 40px rgba(255,255,255,0.9), 0 0 80px rgba(255,255,255,0.6);
+          }
         }
         .ina-greet-bubble:hover {
           transform: translateY(-3px);
-          box-shadow: 0 24px 72px rgba(239,80,35,0.2), 0 12px 32px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.9);
         }
         /* Pointer/tail pointing down to avatar - larger and more visible */
         .ina-greet-bubble::after {
@@ -674,12 +675,10 @@ export default function AIAgentWidget() {
           animation: miniRipple 2s ease-out infinite;
           z-index: 0;
           pointer-events: none;
-          box-shadow: 0 0 15px rgba(239,80,35,0.6), inset 0 0 15px rgba(239,80,35,0.2);
-          filter: drop-shadow(0 0 8px rgba(239,80,35,0.5));
         }
         @keyframes miniRipple {
-          0% { transform: scale(1); opacity: 0.9; filter: drop-shadow(0 0 12px rgba(239,80,35,0.8)); }
-          100% { transform: scale(1.4); opacity: 0; filter: drop-shadow(0 0 4px rgba(239,80,35,0.2)); }
+          0% { transform: scale(1); opacity: 0.9; }
+          100% { transform: scale(1.4); opacity: 0; }
         }
 
         /* OPTION 1: Breathing Ring - Simple & Modern */
@@ -723,7 +722,7 @@ export default function AIAgentWidget() {
         .ina-mini .ina-avatar-container {
           border-radius: 50%;
           border: 2px solid rgba(255,255,255,0.95);
-          box-shadow: 0 0 0 2px rgba(239,80,35,0.5), 0 8px 20px rgba(0,0,0,0.12);
+          box-shadow: 0 0 0 2px rgba(239,80,35,0.6), 0 8px 20px rgba(0,0,0,0.12);
         }
         .ina-mini .ina-avatar-shadow {
           bottom: -20px;
@@ -788,10 +787,10 @@ export default function AIAgentWidget() {
         }
         @keyframes panelGlow {
           0%, 100% {
-            box-shadow: 0 25px 70px rgba(0,0,0,0.25), 0 0 0 1px rgba(239,80,35,0.2), inset 0 1px 0 rgba(255,255,255,0.8), 0 0 30px rgba(239,80,35,0);
+            box-shadow: 0 25px 70px rgba(0,0,0,0.25), 0 0 0 1px rgba(239,80,35,0.2), inset 0 1px 0 rgba(255,255,255,0.8);
           }
           50% {
-            box-shadow: 0 25px 70px rgba(0,0,0,0.3), 0 0 30px rgba(239,80,35,0.4), inset 0 1px 0 rgba(255,255,255,0.9), 0 0 50px rgba(239,80,35,0.25);
+            box-shadow: 0 25px 70px rgba(0,0,0,0.3), 0 0 20px rgba(239,80,35,0.3), inset 0 1px 0 rgba(255,255,255,0.9);
           }
         }
         .ina-head {
