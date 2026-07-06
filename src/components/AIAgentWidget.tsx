@@ -744,26 +744,31 @@ export default function AIAgentWidget() {
           animation-duration: 3s !important;
         }
         .ina-mini .ina-float-1 {
+          top: -28px; left: 16px;
           width: 10px;
           height: 10px;
           background: #ef5023;
         }
         .ina-mini .ina-float-2 {
+          top: 8px; right: -24px;
           width: 8px;
           height: 8px;
           background: #ff7a4d;
         }
         .ina-mini .ina-float-3 {
+          bottom: 12px; left: -20px;
           width: 6px;
           height: 6px;
           background: #ef5023;
         }
         .ina-mini .ina-float-4 {
+          right: -28px;
           width: 5px;
           height: 5px;
           background: #ff7a4d;
         }
         .ina-mini .ina-float-5 {
+          bottom: -20px; right: 20px;
           width: 9px;
           height: 9px;
           background: #ef5023;
@@ -952,6 +957,11 @@ export default function AIAgentWidget() {
           .ina-greet-bubble { width: 179px; max-width: calc(100vw - 84px); font-size: 10px; padding: 14px 15px; }
           .ina-peek { width: 64px; height: 64px; }
           .ina-mini { width: 64px; height: 64px; }
+          .ina-mini .ina-float-1 { top: -22px; left: 13px; }
+          .ina-mini .ina-float-2 { top: 6px; right: -19px; }
+          .ina-mini .ina-float-3 { bottom: 9px; left: -16px; }
+          .ina-mini .ina-float-4 { right: -22px; }
+          .ina-mini .ina-float-5 { bottom: -16px; right: 16px; }
         }
 
         @media (prefers-reduced-motion: reduce) {
