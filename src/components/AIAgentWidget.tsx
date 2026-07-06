@@ -86,7 +86,7 @@ function renderGreet(s: string) {
 // ─── Ina — the AI agent avatar with radar scanner effect ───────────────────────
 // Full original image with concentric radar glow, sweeping arc, and particle effects.
 
-const InaAvatar = ({ size = 60, context = "default" }: { size?: number; context?: "peek" | "mini" | "message" | "header" | "default" }) => {
+const InaAvatar = ({ size = 48, context = "default" }: { size?: number; context?: "peek" | "mini" | "message" | "header" | "default" }) => {
   const sizeClass = {
     peek: "ina-avatar-peek",
     mini: "ina-avatar-mini",
@@ -320,7 +320,7 @@ export default function AIAgentWidget() {
       {/* ── Mini launcher (after greeter dismissed) ────────────────────── */}
       {!open && dismissed && (
         <button className="ina-mini" aria-label="Open Inka chat (drag to move)" onClick={openPanel} onPointerDown={onDragStart}>
-          <InaAvatar size={101} context="mini" />
+          <InaAvatar size={80} context="mini" />
         </button>
       )}
 
@@ -341,7 +341,7 @@ export default function AIAgentWidget() {
             </span>
           </div>
           <button className="ina-peek" aria-label="Open Inka chat (drag to move)" onClick={openPanel} onPointerDown={onDragStart}>
-            <InaAvatar size={101} context="peek" />
+            <InaAvatar size={80} context="peek" />
           </button>
         </div>
       )}
@@ -548,7 +548,7 @@ export default function AIAgentWidget() {
         }
         .ina-peek {
           position: relative;
-          width: 101px; height: 101px; padding: 0; border: none; background: none; cursor: pointer;
+          width: 80px; height: 80px; padding: 0; border: none; background: none; cursor: pointer;
           margin-top: -32px; z-index: 2;
           transform-origin: center bottom;
         }
@@ -592,12 +592,12 @@ export default function AIAgentWidget() {
         .ina-greet-bubble {
           position: relative; overflow: visible;
           background: linear-gradient(135deg, #ffffff 0%, #fafbff 100%);
-          color: #0a0a0a; border-radius: 24px;
+          color: #0a0a0a; border-radius: 19px;
           border: 1px solid #f0f0f8;
-          padding: 22px 24px; width: 280px; max-width: calc(100vw - 24px); cursor: pointer;
+          padding: 18px 19px; width: 224px; max-width: calc(100vw - 24px); cursor: pointer;
           box-shadow: 0 20px 60px rgba(239,80,35,0.15), 0 8px 24px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.8), 0 0 30px rgba(255,255,255,0.8), 0 0 60px rgba(255,255,255,0.5);
-          font-size: 16px; font-weight: 600; line-height: 1.6;
-          margin-bottom: 48px;
+          font-size: 13px; font-weight: 600; line-height: 1.6;
+          margin-bottom: 38px;
           order: -1;
           display: flex;
           flex-direction: column;
@@ -663,7 +663,7 @@ export default function AIAgentWidget() {
 
         /* ── Mini launcher ──────────────────────────────────────────────── */
         .ina-mini {
-          position: relative; width: 101px; height: 101px; padding: 0; border: none; background: none; cursor: pointer;
+          position: relative; width: 80px; height: 80px; padding: 0; border: none; background: none; cursor: pointer;
           display: flex; align-items: center; justify-content: center;
           animation: inaPop 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
           transform-origin: center bottom;
@@ -771,8 +771,8 @@ export default function AIAgentWidget() {
 
         /* ── Panel (light) ──────────────────────────────────────────────── */
         .ina-panel {
-          width: 480px; max-width: calc(100vw - 36px);
-          height: 696px; max-height: calc(100vh - 100px);
+          width: 384px; max-width: calc(100vw - 36px);
+          height: 557px; max-height: calc(100vh - 100px);
           background: rgba(250, 250, 250, 0.95);
           backdrop-filter: blur(20px);
           color: #1a1a1a;
@@ -949,7 +949,10 @@ export default function AIAgentWidget() {
         @media (max-width: 640px) {
           .ina-widget { right: 12px; bottom: 16px; }
           .ina-panel { width: calc(100vw - 24px); max-width: none; height: calc(100dvh - 96px); max-height: none; }
-          .ina-greet-bubble { width: auto; max-width: calc(100vw - 84px); }
+          .ina-greet-bubble { width: 179px; max-width: calc(100vw - 84px); font-size: 10px; padding: 14px 15px; }
+          .ina-peek { width: 64px; height: 64px; }
+          .ina-mini { width: 64px; height: 64px; }
+          .ina-avatar { transform: scale(0.8); transform-origin: center; }
         }
 
         @media (prefers-reduced-motion: reduce) {
