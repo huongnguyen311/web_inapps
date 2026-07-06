@@ -870,6 +870,9 @@ export default function AIAgentWidget() {
           transform: none;
           border-radius: 8px;
         }
+        .ina-msg-av .ina-avatar-container::before {
+          display: none;
+        }
         .ina-msg-av .ina-avatar-shadow {
           display: none;
         }
