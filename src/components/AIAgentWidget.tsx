@@ -101,16 +101,6 @@ const InaAvatar = ({ size = 48, context = "default" }: { size?: number; context?
   return (
     <div className={`ina-avatar ${sizeClass}`} style={{ width: size, height: size }}>
       <div className="ina-avatar-container">
-        {showFloating && (
-          <>
-            {/* Floating animated elements - after close only */}
-            <div className="ina-float-element ina-float-1" />
-            <div className="ina-float-element ina-float-2" />
-            <div className="ina-float-element ina-float-3" />
-            <div className="ina-float-element ina-float-4" />
-            <div className="ina-float-element ina-float-5" />
-          </>
-        )}
         <div className="ina-avatar-bg" />
         <img
           src="/Media/Image/Ina.png"
@@ -119,6 +109,16 @@ const InaAvatar = ({ size = 48, context = "default" }: { size?: number; context?
           style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 0%" }}
         />
       </div>
+      {showFloating && (
+        <>
+          {/* Floating animated elements - after close only, OUTSIDE container to avoid transform */}
+          <div className="ina-float-element ina-float-1" />
+          <div className="ina-float-element ina-float-2" />
+          <div className="ina-float-element ina-float-3" />
+          <div className="ina-float-element ina-float-4" />
+          <div className="ina-float-element ina-float-5" />
+        </>
+      )}
       <div className="ina-avatar-shadow" />
       <div className="ina-avatar-glow" />
     </div>
