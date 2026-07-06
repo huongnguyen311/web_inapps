@@ -827,6 +827,9 @@ export default function AIAgentWidget() {
           animation: none;
           transform: none;
         }
+        .ina-head-av .ina-avatar-container::before {
+          display: none;
+        }
         .ina-head-av .ina-avatar-shadow {
           display: none;
         }
