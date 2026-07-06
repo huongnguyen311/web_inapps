@@ -827,6 +827,9 @@ export default function AIAgentWidget() {
           animation: none;
           transform: none;
         }
+        .ina-head-av .ina-avatar-bg {
+          display: none;
+        }
         .ina-head-av .ina-avatar-container::before {
           display: none;
         }
@@ -869,6 +872,9 @@ export default function AIAgentWidget() {
           animation: none;
           transform: none;
           border-radius: 8px;
+        }
+        .ina-msg-av .ina-avatar-bg {
+          display: none;
         }
         .ina-msg-av .ina-avatar-container::before {
           display: none;
