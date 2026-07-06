@@ -363,6 +363,7 @@ export default function AIAgentWidget() {
         .ina-avatar {
           position: relative;
           perspective: 1200px;
+          aspect-ratio: 1 / 1;
         }
         .ina-avatar-container {
           position: relative;
