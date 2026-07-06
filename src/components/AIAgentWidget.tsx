@@ -573,7 +573,7 @@ export default function AIAgentWidget() {
         .ina-peek .ina-avatar-container::before {
           content: "";
           position: absolute;
-          inset: -16px;
+          inset: -13px;
           border-radius: 50%;
           background: radial-gradient(circle, rgba(239,80,35,0.75) 0%, rgba(239,80,35,0.4) 40%, transparent 75%);
           animation: avatarGlow 3s ease-in-out infinite;
@@ -735,6 +735,9 @@ export default function AIAgentWidget() {
         }
         .ina-mini .ina-avatar-container {
           animation: miniPulse 2s ease-in-out infinite;
+        }
+        .ina-mini .ina-avatar-container::before {
+          inset: -13px;
         }
         @keyframes miniPulse {
           0%, 100% { transform: scale(1); }
@@ -957,6 +960,7 @@ export default function AIAgentWidget() {
           .ina-greet-bubble { width: 179px; max-width: calc(100vw - 84px); font-size: 10px; padding: 14px 15px; }
           .ina-peek { width: 64px; height: 64px; }
           .ina-mini { width: 64px; height: 64px; }
+          .ina-mini .ina-avatar-container::before { inset: -10px; }
           .ina-mini .ina-float-1 { top: -22px; left: 13px; }
           .ina-mini .ina-float-2 { top: 6px; right: -19px; }
           .ina-mini .ina-float-3 { bottom: 9px; left: -16px; }
