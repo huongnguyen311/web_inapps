@@ -973,6 +973,7 @@ export default function AIAgentWidget() {
           .ina-greet-bubble { width: 179px; max-width: calc(100vw - 84px); font-size: 10px; padding: 14px 15px; }
           .ina-peek { width: 64px; height: 64px; }
           .ina-mini { width: 64px; height: 64px; margin-top: -32px; }
+          .ina-mini::before { display: none; }
           .ina-mini .ina-avatar-container::before { inset: -10px; }
           .ina-mini .ina-float-1 { top: -22px; left: 13px; }
           .ina-mini .ina-float-2 { top: 6px; right: -19px; }
