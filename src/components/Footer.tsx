@@ -104,7 +104,7 @@ function LocationsColumn() {
   const [open, setOpen] = useState<string | null>(null);
 
   return (
-    <div className="flex flex-col gap-[14px] w-[200px]">
+    <div className="flex flex-col gap-[14px] min-w-0">
       <span className="text-white text-[11px] font-bold tracking-[2px] uppercase">Our Locations</span>
       <div className="flex flex-col gap-[2px]">
         {locations.map(({ country, flag, external, details }) => {
@@ -266,7 +266,7 @@ export default function Footer() {
             </div>
 
             {/* Links */}
-            <div className="grid grid-cols-2 md:flex gap-[28px] md:gap-[48px] md:flex-wrap">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:flex gap-[28px] md:gap-[48px] md:flex-wrap">
               {Object.entries(footerLinks).map(([heading, links]) => (
                 <div key={heading} className="flex flex-col gap-[14px]">
                   <span className="text-white text-[11px] font-bold tracking-[2px] uppercase">{heading}</span>

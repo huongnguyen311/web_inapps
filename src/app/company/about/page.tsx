@@ -11,7 +11,7 @@ export default function CompanyAboutPage() {
       <main className="flex-1 flex flex-col">
 
         {/* ── S1: Hero ── */}
-        <section className="relative px-[40px] overflow-hidden flex flex-col items-start gap-[28px]" style={{ minHeight: "850px", paddingTop: "228px", paddingBottom: "100px" }}>
+        <section className="relative px-[16px] md:px-[40px] overflow-hidden flex flex-col items-start gap-[28px] min-h-[600px] md:min-h-[850px] pt-[140px] md:pt-[228px]" style={{ paddingBottom: "100px" }}>
           {/* Banner background — case-study style */}
           <div className="absolute inset-0">
             <img
@@ -22,8 +22,9 @@ export default function CompanyAboutPage() {
             />
             <div
               className="absolute inset-0"
-              style={{ background: "linear-gradient(to right, #0d0d0d 35%, #0d0d0d 45%, rgba(13,13,13,0.7) 60%, transparent 100%)" }}
+              style={{ background: "linear-gradient(to right, #0d0d0d 55%, rgba(13,13,13,0.85) 75%, transparent 100%)" }}
             />
+            <div className="absolute inset-0 block md:hidden" style={{ background: "rgba(13,13,13,0.35)" }} />
           </div>
 
           <div className="relative w-full max-w-[1320px] mx-auto">
@@ -42,7 +43,7 @@ export default function CompanyAboutPage() {
             </p>
 
             {/* CTAs */}
-            <div className="flex items-center gap-[12px] pt-[4px]">
+            <div className="flex flex-wrap items-center gap-[12px] pt-[4px]">
               <a
                 href="/contact"
                 className="bg-[#ef5023] hover:bg-[#d94010] text-white font-bold text-[16px] px-[28px] h-[55px] rounded-[10px] inline-flex items-center transition-colors"
@@ -66,7 +67,7 @@ export default function CompanyAboutPage() {
         <ServiceTrustedLogos />
 
         {/* ── S3: Our Story ── */}
-        <section className="px-[40px] overflow-hidden" style={{ background: "#fff" }}>
+        <section className="px-[16px] md:px-[40px] overflow-hidden" style={{ background: "#fff" }}>
           <div className="max-w-[1320px] mx-auto py-[70px]">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-[48px]">
 
@@ -155,7 +156,7 @@ export default function CompanyAboutPage() {
         </section>
 
         {/* ── CEO ── */}
-        <section style={{ background: "#0a0a0a", borderTop: "1px solid #222", backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='100'%3E%3Cpath d='M0 90 L20 75 L40 80 L60 55 L80 60 L100 35 L120 40 L140 20 L160 10' fill='none' stroke='%23181818' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M0 100 L20 88 L40 92 L60 70 L80 74 L100 52 L120 56 L140 38 L160 28' fill='none' stroke='%23141414' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`, backgroundSize: "160px 100px" }}>
+        <section className="px-[16px] md:px-[40px]" style={{ background: "#0a0a0a", borderTop: "1px solid #222", backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='100'%3E%3Cpath d='M0 90 L20 75 L40 80 L60 55 L80 60 L100 35 L120 40 L140 20 L160 10' fill='none' stroke='%23181818' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M0 100 L20 88 L40 92 L60 70 L80 74 L100 52 L120 56 L140 38 L160 28' fill='none' stroke='%23141414' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`, backgroundSize: "160px 100px" }}>
             <div className="max-w-[1320px] mx-auto py-[70px]">
               <div className="grid grid-cols-1 lg:grid-cols-[3fr_400px] gap-[1px] items-center">
 
@@ -225,13 +226,13 @@ export default function CompanyAboutPage() {
         </section>
 
         {/* ── Journey: 2-col timeline + image ── */}
-        <section className="px-[40px] overflow-hidden" style={{ background: "#fff", borderTop: "1px solid #eee", borderBottom: "1px solid #eee", backgroundImage: "radial-gradient(ellipse 100% 90% at 50% 50%, rgba(239,80,35,0.12) 0%, transparent 70%), radial-gradient(ellipse 70% 60% at 50% 50%, rgba(255,200,150,0.09) 0%, transparent 65%)" }}>
+        <section className="px-[16px] md:px-[40px] overflow-hidden" style={{ background: "#fff", borderTop: "1px solid #eee", borderBottom: "1px solid #eee", backgroundImage: "radial-gradient(ellipse 100% 90% at 50% 50%, rgba(239,80,35,0.12) 0%, transparent 70%), radial-gradient(ellipse 70% 60% at 50% 50%, rgba(255,200,150,0.09) 0%, transparent 65%)" }}>
             <div className="max-w-[1320px] mx-auto py-[70px]">
               <div className="grid grid-cols-1 lg:grid-cols-[62%_38%] gap-[48px] items-stretch">
 
                 {/* Left: timeline */}
                 <div
-                  className="timeline-scroll relative flex flex-col rounded-[20px] p-[40px]"
+                  className="timeline-scroll relative flex flex-col rounded-[20px] p-[16px] sm:p-[40px]"
                   style={{
                     background: "#fff",
                     border: "1px solid #e8e8e8",
@@ -242,7 +243,7 @@ export default function CompanyAboutPage() {
                     scrollbarWidth: "none",
                   }}
                 >
-                  <div className="absolute top-[40px] bottom-[40px]" style={{ left: "105px", width: "1px", background: "linear-gradient(to bottom, transparent, rgba(239,80,35,0.3) 5%, rgba(239,80,35,0.3) 95%, transparent)" }} />
+                  <div className="absolute top-[40px] bottom-[40px] left-[81px] sm:left-[105px]" style={{ width: "1px", background: "linear-gradient(to bottom, transparent, rgba(239,80,35,0.3) 5%, rgba(239,80,35,0.3) 95%, transparent)" }} />
                   {[
                     { year: "2026", title: "Global AI Expansion", body: "Scaling AI-native engineering teams across North America, Europe, and APAC. Deepening partnerships in enterprise AI and cloud-native platforms.", isCurrent: true },
                     { year: "2025", title: "AI-Native ODC", body: "Every engineering team is AI-Native: faster delivery, smarter QA, measurable ROI." },
@@ -277,7 +278,7 @@ export default function CompanyAboutPage() {
                 </div>
 
                 {/* Right: stats panel */}
-                <div className="relative flex flex-col gap-[0px] rounded-[20px] overflow-hidden self-start sticky top-[24px]" style={{ border: "1px solid #e8e8e8", boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}>
+                <div className="relative flex flex-col gap-[0px] rounded-[20px] overflow-hidden self-start lg:sticky top-[24px]" style={{ border: "1px solid #e8e8e8", boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}>
 
                   {/* Dark header */}
                   <div className="flex flex-col gap-[12px] px-[32px] py-[28px]" style={{ background: "#0a0a0a" }}>
@@ -297,7 +298,7 @@ export default function CompanyAboutPage() {
                     ].map((s, i) => (
                       <div
                         key={s.label}
-                        className="flex flex-col gap-[6px] px-[28px] py-[28px]"
+                        className="flex flex-col gap-[6px] px-[16px] py-[20px] sm:px-[28px] sm:py-[28px]"
                         style={{
                           background: "#fff",
                           borderRight: i % 2 === 0 ? "1px solid #eee" : "none",
@@ -376,7 +377,7 @@ export default function CompanyAboutPage() {
           .mv-card-mission .mv-icon-anim { animation-delay: 0.3s; }
           .mv-card-vision  .mv-icon-anim { animation-delay: 0.45s; }
         `}</style>
-        <section className="relative px-[40px] overflow-hidden" style={{ background: "#fafafa", borderBottom: "1px solid #eee" }}>
+        <section className="relative px-[16px] md:px-[40px] overflow-hidden" style={{ background: "#fafafa", borderBottom: "1px solid #eee" }}>
 
           {/* Background mesh */}
           <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0 }}>
@@ -413,7 +414,7 @@ export default function CompanyAboutPage() {
                 <p className="relative text-[15px] leading-[1.9]" style={{ color: "#666" }}>
                   Five principles guide everything we do , from how we write code to how we treat our clients.
                 </p>
-                <div className="grid grid-cols-5 gap-[8px]" style={{ paddingLeft: "0", paddingRight: "0" }}>
+                <div className="grid grid-cols-3 sm:grid-cols-5 gap-[4px] sm:gap-[8px]" style={{ paddingLeft: "0", paddingRight: "0" }}>
                   {[
                     { label: "Integrity",
                       icon: <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
@@ -451,11 +452,11 @@ export default function CompanyAboutPage() {
                         <path d="M16 4l3 1.5-3 1.5" stroke="#ef5023" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg> },
                   ].map(({ label, icon }) => (
-                    <div key={label} className="flex flex-col items-center gap-[10px]">
-                      <div className="flex items-center justify-center" style={{ width: "76px", height: "76px", borderRadius: "50%", background: "rgba(239,80,35,0.07)" }}>
+                    <div key={label} className="flex flex-col items-center gap-[6px] sm:gap-[10px]">
+                      <div className="flex items-center justify-center w-[46px] h-[46px] sm:w-[76px] sm:h-[76px]" style={{ borderRadius: "50%", background: "rgba(239,80,35,0.07)" }}>
                         {icon}
                       </div>
-                      <span className="font-bold" style={{ fontSize: "12px", color: "#0a0a0a", letterSpacing: "0px" }}>{label}</span>
+                      <span className="font-bold text-[9px] sm:text-[12px]" style={{ color: "#0a0a0a", letterSpacing: "0px" }}>{label}</span>
                       <div className="flex items-center gap-[5px]">
                         <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: "#ef5023" }} />
                         <span style={{ width: "24px", height: "2px", background: "linear-gradient(90deg, #ef5023, rgba(239,80,35,0.2))", borderRadius: "2px" }} />
@@ -493,8 +494,8 @@ export default function CompanyAboutPage() {
         </section>
 
         {/* ── S5: Core Values ── */}
-        <section className="relative overflow-hidden py-[70px]" style={{ background: "#0d0d0d" }}>
-          <div className="max-w-[1320px] mx-auto px-[40px]">
+        <section className="relative overflow-hidden py-[70px] px-[16px] md:px-[40px]" style={{ background: "#0d0d0d" }}>
+          <div className="max-w-[1320px] mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-[3fr_3fr]" style={{ minHeight: "600px" }}>
 
               {/* Left: office photo full-height with overlay + heading */}
@@ -576,7 +577,7 @@ export default function CompanyAboutPage() {
         </section>
 
         {/* ── S4: Team ── */}
-        <section className="relative px-[40px] py-[70px] overflow-hidden" style={{ background: "#f5f4f0" }}>
+        <section className="relative px-[16px] md:px-[40px] py-[70px] overflow-hidden" style={{ background: "#f5f4f0" }}>
 
           <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
             <svg style={{ position:"absolute", top:"8%", left:"4%", opacity:0.08 }} width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ef5023" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
@@ -692,7 +693,7 @@ export default function CompanyAboutPage() {
         </section>
 
         {/* ── S6: Final CTA ── */}
-        <section className="relative px-[40px] py-[70px] overflow-hidden" style={{ background: "#0d0d0d" }}>
+        <section className="relative px-[16px] md:px-[40px] py-[70px] overflow-hidden" style={{ background: "#0d0d0d" }}>
           <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 0 }} viewBox="0 0 1200 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
             <g stroke="rgba(255,255,255,0.08)" strokeWidth="0.8" fill="none">
               <line x1="80"  y1="20"  x2="200" y2="60"/>

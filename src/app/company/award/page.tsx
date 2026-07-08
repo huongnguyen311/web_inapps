@@ -25,6 +25,7 @@ export default function AwardPage() {
               className="absolute inset-0"
               style={{ background: "linear-gradient(to right, #0d0d0d 35%, #0d0d0d 45%, rgba(13,13,13,0.7) 60%, transparent 100%)" }}
             />
+            <div className="absolute inset-0 block md:hidden" style={{ background: "rgba(13,13,13,0.55)" }} />
           </div>
 
           <div className="relative w-full max-w-[1320px] mx-auto">
@@ -48,26 +49,31 @@ export default function AwardPage() {
         {/* ── S2: ISO Certifications ── */}
         <section className="relative px-[16px] md:px-[40px] py-[70px] overflow-hidden" style={{ background: "#ffffff", borderTop: "1px solid #e8e8e8" }}>
 
-          {/* topographic contour lines — từ about page */}
-          <svg width="100%" height="100%" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }} xmlns="http://www.w3.org/2000/svg">
-            {/* certification peak — concentric ellipses top-right */}
-            <g fill="none" strokeLinecap="round">
-              <ellipse cx="1200" cy="80"  rx="400" ry="210" stroke="#ef5023" strokeOpacity="0.035" strokeWidth="1"/>
-              <ellipse cx="1200" cy="80"  rx="300" ry="158" stroke="#ef5023" strokeOpacity="0.048" strokeWidth="1"/>
-              <ellipse cx="1200" cy="80"  rx="210" ry="110" stroke="#ef5023" strokeOpacity="0.065" strokeWidth="1.2"/>
-              <ellipse cx="1200" cy="80"  rx="130" ry="68"  stroke="#ef5023" strokeOpacity="0.085" strokeWidth="1.2"/>
-              <ellipse cx="1200" cy="80"  rx="60"  ry="32"  stroke="#ef5023" strokeOpacity="0.11"  strokeWidth="1.5"/>
-            </g>
-            {/* flowing ridge lines across section */}
-            <g fill="none" stroke="#0a0a0a" strokeOpacity="0.04" strokeLinecap="round">
-              <path d="M 0,300 C 200,240 420,160 660,200 S 980,310 1220,250 S 1380,170 1440,190" strokeWidth="1"/>
-              <path d="M 0,370 C 180,310 400,230 640,270 S 960,380 1200,320 S 1360,240 1440,260" strokeWidth="1"/>
-              <path d="M 0,440 C 160,380 380,300 620,340 S 940,450 1180,390 S 1340,310 1440,330" strokeWidth="0.8"/>
+          {/* fingerprint arc field — biometric verification motif, radiates from top-right */}
+          <svg width="100%" height="100%" viewBox="0 0 1440 560" preserveAspectRatio="xMidYMid slice" style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }} xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="cert-dots" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+                <circle cx="12" cy="12" r="1" fill="#0a0a0a" fillOpacity="0.055"/>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#cert-dots)"/>
+            <g fill="none">
+              {Array.from({ length: 22 }).map((_, i) => {
+                const r = 60 + i * 28;
+                return (
+                  <path key={i}
+                    d={`M${1440},${r} A${r},${r} 0 0,1 ${1440 - r},0`}
+                    stroke="#ef5023"
+                    strokeOpacity={Math.max(0.012, 0.075 - i * 0.003)}
+                    strokeWidth={i < 4 ? 1.1 : 0.75}
+                  />
+                );
+              })}
             </g>
           </svg>
 
-          {/* orange glow — aligned with contour peak */}
-          <div className="absolute pointer-events-none" style={{ right: "-120px", top: "-120px", width: "520px", height: "520px", borderRadius: "50%", background: "radial-gradient(circle, rgba(239,80,35,0.055) 0%, transparent 65%)", zIndex: 1 }} />
+          {/* orange glow at arc origin */}
+          <div className="absolute pointer-events-none" style={{ right: "-80px", top: "-80px", width: "380px", height: "380px", borderRadius: "50%", background: "radial-gradient(circle, rgba(239,80,35,0.07) 0%, transparent 60%)", zIndex: 1 }} />
 
           <div className="relative max-w-[1320px] mx-auto" style={{ zIndex: 2 }}>
 
@@ -500,10 +506,10 @@ export default function AwardPage() {
               </div>
 
               {/* CTAs - right */}
-              <div className="relative flex items-center gap-[12px] flex-shrink-0">
+              <div className="relative flex flex-col sm:flex-row items-stretch sm:items-center gap-[10px]">
                 <Link
                   href="/contact"
-                  className="h-[44px] px-[28px] rounded-[10px] font-bold text-[#ef5023] text-[13px] inline-flex items-center gap-[7px] transition-all duration-200 hover:bg-[#f5f5f5]"
+                  className="h-[44px] px-[28px] rounded-[10px] font-bold text-[#ef5023] text-[13px] inline-flex items-center justify-center gap-[7px] transition-all duration-200 hover:bg-[#f5f5f5]"
                   style={{ background: "#ffffff", textDecoration: "none" }}
                 >
                   Start a Project

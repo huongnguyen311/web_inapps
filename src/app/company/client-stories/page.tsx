@@ -254,20 +254,7 @@ export default function ClientStoriesPage() {
               className="absolute inset-0"
               style={{ background: "linear-gradient(to right, #0d0d0d 35%, #0d0d0d 45%, rgba(13,13,13,0.7) 60%, transparent 100%)" }}
             />
-            {/* Họa tiết hero: grid chéo mờ */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ opacity: 0.04 }} xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <pattern id="hero-grid" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
-                  <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#fff" strokeWidth="0.5"/>
-                </pattern>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#hero-grid)"/>
-            </svg>
-            {/* Họa tiết hero: vòng tròn cam góc trên phải */}
-            <div className="absolute pointer-events-none" style={{ top: "-80px", left: "10%", width: "340px", height: "340px", borderRadius: "50%", border: "1px solid rgba(239,80,35,0.12)" }} />
-            <div className="absolute pointer-events-none" style={{ top: "-120px", left: "6%", width: "500px", height: "500px", borderRadius: "50%", border: "1px solid rgba(239,80,35,0.06)" }} />
-            {/* Họa tiết hero: glow cam góc dưới trái */}
-            <div className="absolute pointer-events-none" style={{ bottom: "-60px", left: "-60px", width: "320px", height: "320px", background: "radial-gradient(circle, rgba(239,80,35,0.10) 0%, transparent 70%)", borderRadius: "50%" }} />
+            <div className="absolute inset-0 block md:hidden" style={{ background: "rgba(13,13,13,0.55)" }} />
           </div>
 
           <div className="relative w-full max-w-[1320px] mx-auto">
@@ -281,7 +268,7 @@ export default function ClientStoriesPage() {
                 Every word is from a real client at a real company: CTOs, founders, and VPs Engineering who trusted InApps to build their products across ODC, staff augmentation, and project engagements.
               </p>
 
-              <div className="flex items-center gap-[12px] pt-[4px]">
+              <div className="flex flex-wrap items-center gap-[12px] pt-[4px]">
                 <a
                   href="#reviews"
                   className="bg-[#ef5023] hover:bg-[#d94010] text-white font-bold text-[16px] px-[28px] h-[55px] rounded-[10px] inline-flex items-center transition-colors"
@@ -299,7 +286,7 @@ export default function ClientStoriesPage() {
               </div>
 
               {/* Rating badges */}
-              <div className="flex items-center gap-[12px] pt-[12px]">
+              <div className="flex flex-wrap items-center gap-[12px] pt-[12px]">
                 {[
                   { score: "4.9/5", platform: "Clutch.co", reviews: "48+ reviews" },
                   { score: "4.8/5", platform: "GoodFirms", reviews: "32+ reviews" },
@@ -367,12 +354,12 @@ export default function ClientStoriesPage() {
             </div>
 
             {/* Top badges + CTA */}
-            <div className="flex items-center gap-[14px] flex-wrap">
-              <div className="flex flex-col items-center justify-center rounded-[12px] px-[32px] py-[16px]" style={{ background: "#f3f3f3" }}>
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-[10px]">
+              <div className="flex flex-col items-center justify-center rounded-[12px] px-[32px] py-[16px] text-center" style={{ background: "#f3f3f3" }}>
                 <span className="font-black text-[#1a1a2e] text-[20px] leading-[1]">Top 1000</span>
                 <span className="text-[12px] mt-[3px]" style={{ color: "#666" }}>Global Service Providers</span>
               </div>
-              <div className="flex flex-col items-center justify-center rounded-[12px] px-[32px] py-[16px]" style={{ background: "#f3f3f3" }}>
+              <div className="flex flex-col items-center justify-center rounded-[12px] px-[32px] py-[16px] text-center" style={{ background: "#f3f3f3" }}>
                 <span className="font-black text-[#1a1a2e] text-[20px] leading-[1]">Top 25</span>
                 <span className="text-[12px] mt-[3px]" style={{ color: "#666" }}>Vietnam IT Companies</span>
               </div>
@@ -380,7 +367,7 @@ export default function ClientStoriesPage() {
                 href="https://clutch.co/profile/inapps-technology"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-[6px] px-[24px] h-[48px] rounded-[10px] font-bold text-[14px] text-white whitespace-nowrap transition-all hover:brightness-110"
+                className="inline-flex items-center justify-center gap-[6px] px-[24px] h-[48px] rounded-[10px] font-bold text-[14px] text-white transition-all hover:brightness-110"
                 style={{ background: "#ef5023", textDecoration: "none" }}
               >
                 Read all reviews on Clutch →
@@ -417,8 +404,6 @@ export default function ClientStoriesPage() {
           .rv-card:hover::after {
             transform: scaleX(1);
           }
-          @media (max-width: 639px) { .rv-list { grid-template-columns: 1fr !important; } }
-          @media (min-width: 640px) and (max-width: 1023px) { .rv-list { grid-template-columns: repeat(2, 1fr) !important; } }
         `}</style>
         <section id="reviews" className="relative px-[16px] md:px-[40px] py-[64px] md:py-[100px] overflow-hidden" style={{ background: "#fafafa" }}>
 
@@ -481,14 +466,7 @@ export default function ClientStoriesPage() {
             </div>
 
             {/* Cards */}
-            <div
-              className="rv-list"
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(3, 1fr)",
-                gap: "20px",
-              }}
-            >
+            <div className="rv-list grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[20px]">
               {filteredReviews.map((r) => {
                 const displayQuote = r.quote.length > 185 ? r.quote.slice(0, 185) + "..." : r.quote;
 
@@ -628,12 +606,12 @@ export default function ClientStoriesPage() {
                   Our full review history is available on Clutch.co and GoodFirms, independently verified, unedited reviews from verified clients.
                 </p>
               </div>
-              <div className="relative flex items-center gap-[12px] flex-shrink-0">
+              <div className="relative flex flex-col sm:flex-row items-stretch sm:items-center gap-[10px]">
                 <a
                   href="https://clutch.co/profile/inapps-technology"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-[6px] px-[20px] h-[42px] rounded-[10px] font-bold text-[13px] text-white whitespace-nowrap transition-all hover:brightness-110"
+                  className="inline-flex items-center justify-center gap-[6px] px-[20px] h-[42px] rounded-[10px] font-bold text-[13px] text-white transition-all hover:brightness-110"
                   style={{ background: "#ef5023", textDecoration: "none" }}
                 >
                   View on Clutch.co →
@@ -642,7 +620,7 @@ export default function ClientStoriesPage() {
                   href="https://www.goodfirms.co/company/inapps-technology"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-[6px] px-[20px] h-[42px] rounded-[10px] font-bold text-[13px] whitespace-nowrap transition-all hover:bg-[#f0f0f0]"
+                  className="inline-flex items-center justify-center gap-[6px] px-[20px] h-[42px] rounded-[10px] font-bold text-[13px] transition-all hover:bg-[#f0f0f0]"
                   style={{ background: "#fff", border: "1px solid #d0d0d0", color: "#333", textDecoration: "none" }}
                 >
                   View on GoodFirms →
@@ -682,20 +660,20 @@ export default function ClientStoriesPage() {
               <h3 className="relative font-black text-white leading-[1.2] tracking-[-0.5px]" style={{ fontSize: "clamp(22px, 3vw, 30px)" }}>
                 Join 300+ companies who trust InApps
               </h3>
-              <p className="relative text-[15px] leading-[1.6] whitespace-nowrap" style={{ color: "rgba(255,255,255,0.85)" }}>
+              <p className="relative text-[15px] leading-[1.6]" style={{ color: "rgba(255,255,255,0.85)" }}>
                 Start with a free 30-minute discovery call. No commitment required.
               </p>
-              <div className="relative flex items-center gap-[12px] mt-[4px]">
+              <div className="relative flex flex-wrap items-center gap-[12px] mt-[4px]">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-[6px] px-[24px] h-[44px] rounded-[10px] font-bold text-[14px] text-[#ef5023] whitespace-nowrap transition-all hover:brightness-95"
+                  className="inline-flex items-center gap-[6px] px-[24px] h-[44px] rounded-[10px] font-bold text-[14px] text-[#ef5023] transition-all hover:brightness-95"
                   style={{ background: "#fff", textDecoration: "none" }}
                 >
                   Start a Conversation
                 </Link>
                 <Link
                   href="/case-study"
-                  className="inline-flex items-center gap-[6px] px-[24px] h-[44px] rounded-[10px] font-bold text-[14px] text-white whitespace-nowrap transition-all hover:bg-white/10"
+                  className="inline-flex items-center gap-[6px] px-[24px] h-[44px] rounded-[10px] font-bold text-[14px] text-white transition-all hover:bg-white/10"
                   style={{ border: "1px solid rgba(255,255,255,0.4)", textDecoration: "none" }}
                 >
                   View Case Studies

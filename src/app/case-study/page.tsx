@@ -198,7 +198,7 @@ export default function CaseStudyListPage() {
                 }}
               >
                 {/* Thumbnail */}
-                <div style={{ position: "relative", overflow: "hidden", minHeight: 400 }}>
+                <div className="relative overflow-hidden min-h-[220px] md:min-h-[400px]">
                   {latest.image ? (
                     <img src={latest.image} alt={latest.name} style={{ width: "100%", height: "100%", objectFit: "cover", position: "absolute", inset: 0 }} />
                   ) : (

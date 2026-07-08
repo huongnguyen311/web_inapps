@@ -111,7 +111,7 @@ export default function CareersPage() {
       <main className="flex-1 flex flex-col">
 
         {/* ── S1: Hero ── */}
-        <section className="relative px-[40px] overflow-hidden flex flex-col items-start gap-[28px]" style={{ minHeight: "850px", paddingTop: "228px", paddingBottom: "100px" }}>
+        <section className="relative px-[16px] md:px-[40px] overflow-hidden flex flex-col items-start gap-[28px] min-h-[600px] md:min-h-[850px] pt-[140px] md:pt-[228px]" style={{ paddingBottom: "100px" }}>
           <div className="absolute inset-0">
             <img
               src="/Media/Image/case 16.png"
@@ -121,8 +121,9 @@ export default function CareersPage() {
             />
             <div
               className="absolute inset-0"
-              style={{ background: "linear-gradient(to right, #0d0d0d 35%, #0d0d0d 45%, rgba(13,13,13,0.7) 60%, transparent 100%)" }}
+              style={{ background: "linear-gradient(to right, #0d0d0d 55%, rgba(13,13,13,0.85) 75%, transparent 100%)" }}
             />
+            <div className="absolute inset-0 block md:hidden" style={{ background: "rgba(13,13,13,0.35)" }} />
           </div>
           {/* Halftone dot matrix — masked to dark left zone */}
           <div className="absolute inset-0 pointer-events-none" style={{
@@ -148,7 +149,7 @@ export default function CareersPage() {
                 Join Vietnam&apos;s leading AI-native offshore development center. Work on international products used by millions of users across the US, EU, Singapore, and Australia, without leaving Vietnam.
               </p>
 
-              <div className="flex items-center gap-[12px] pt-[4px]">
+              <div className="flex flex-wrap items-center gap-[12px] pt-[4px]">
                 <a
                   href="#open-roles"
                   className="bg-[#ef5023] hover:bg-[#d94010] text-white font-bold text-[16px] px-[28px] h-[55px] rounded-[10px] inline-flex items-center transition-colors"
@@ -172,7 +173,7 @@ export default function CareersPage() {
         <ServiceTrustedLogos />
 
         {/* ── Life at InApps ── */}
-        <section className="relative px-[40px] overflow-hidden" style={{ background: "#080808", borderTop: "1px solid #1a1a1a" }}>
+        <section className="relative px-[16px] md:px-[40px] overflow-hidden" style={{ background: "#080808", borderTop: "1px solid #1a1a1a" }}>
           {/* L-grid lines + crosshair accents — dark-inverted from home "AI-Native" section */}
           <svg className="absolute inset-0 pointer-events-none w-full h-full" preserveAspectRatio="xMidYMid slice">
             <defs>
@@ -323,7 +324,7 @@ export default function CareersPage() {
         </section>
 
         {/* ── Perks & Benefits ── */}
-        <section className="relative px-[40px] overflow-hidden" style={{ background: "#fafafa", borderTop: "1px solid #e8e8e8" }}>
+        <section className="relative px-[16px] md:px-[40px] overflow-hidden" style={{ background: "#fafafa", borderTop: "1px solid #e8e8e8" }}>
           {/* Graph paper grid pattern */}
           <div className="absolute inset-0 pointer-events-none" style={{
             backgroundImage: `repeating-linear-gradient(0deg, #e8e8e8 0px, #e8e8e8 1px, transparent 1px, transparent 28px),
@@ -446,17 +447,17 @@ export default function CareersPage() {
         </section>
 
         {/* ── Stats Bar ── */}
-        <section className="px-[40px]" style={{ background: "#fafafa", borderTop: "1px solid #eee", borderBottom: "1px solid #eee" }}>
+        <section className="px-[16px] md:px-[40px]" style={{ background: "#fafafa", borderTop: "1px solid #eee", borderBottom: "1px solid #eee" }}>
           <div className="max-w-[960px] mx-auto py-[36px]">
-            <div className="flex items-center justify-center">
+            <div className="grid grid-cols-2 sm:flex sm:items-center sm:justify-center gap-y-[24px]">
               {[
                 { value: "9",    label: "Open Roles" },
                 { value: "500+", label: "Engineers" },
                 { value: "9+",   label: "Years of Excellence" },
                 { value: "300+", label: "Global Clients" },
               ].map((stat, i) => (
-                <div key={stat.label} className="flex items-center">
-                  {i > 0 && <div className="w-[1px] h-[36px] mx-[32px] md:mx-[48px]" style={{ background: "#e0e0e0" }} />}
+                <div key={stat.label} className="flex items-center justify-center">
+                  {i > 0 && <div className="hidden sm:block w-[1px] h-[36px] mx-[32px] md:mx-[48px]" style={{ background: "#e0e0e0" }} />}
                   <div className="flex flex-col items-center gap-[4px]">
                     <span className="font-black text-[#ef5023] text-[28px] leading-[1]" style={{ letterSpacing: "-1px" }}>{stat.value}</span>
                     <span className="text-[#888] text-[12px] font-medium tracking-[0.3px]">{stat.label}</span>
@@ -494,7 +495,7 @@ export default function CareersPage() {
             </div>
 
             {/* Filter tabs — underline style */}
-            <div className="flex items-center gap-[4px] mb-[36px] pb-[1px]" style={{ borderBottom: "1px solid #e0e0e0" }}>
+            <div className="flex items-center gap-[4px] mb-[36px] pb-[1px] overflow-x-auto" style={{ borderBottom: "1px solid #e0e0e0" }}>
               {DEPARTMENTS.map((dept) => (
                 <button
                   key={dept}
@@ -558,21 +559,32 @@ export default function CareersPage() {
                         </span>
                       </div>
 
-                      <div className="flex flex-wrap items-center gap-[16px] text-[13px] text-[#777]">
-                        <span className="flex items-center gap-[5px]">
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                          {job.location}
-                        </span>
-                        <span className="flex items-center gap-[5px]">
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                          {job.mode}
-                        </span>
-                        <span className="flex items-center gap-[5px]">
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                          {job.type}
-                        </span>
+                      <div className="flex flex-col gap-[8px]">
+                        {/* Row 1: Location · Mode · Type */}
+                        <div className="flex flex-wrap items-stretch w-fit rounded-[10px] overflow-hidden text-[12px] font-medium" style={{ border: "none" }}>
+                          <span className="flex items-center gap-[6px] px-[14px] py-[8px] text-[#555]" style={{ borderRight: "1px solid #e8e8e8" }}>
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            {job.location}
+                          </span>
+                          <span className="flex items-center gap-[6px] px-[14px] py-[8px] text-[#555]" style={{ borderRight: "1px solid #e8e8e8" }}>
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            {job.mode}
+                          </span>
+                          <span className="flex items-center gap-[6px] px-[14px] py-[8px] text-[#555]">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                            {job.type}
+                          </span>
+                        </div>
+                        {/* Row 2: Salary */}
                         {job.salary && (
-                          <span className="font-semibold text-[#ef5023]">{job.salary}</span>
+                          <div className="flex items-stretch w-fit rounded-[10px] overflow-hidden text-[12px] font-bold" style={{ border: "none" }}>
+                            <span className="flex items-center justify-center px-[12px] py-[8px]" style={{ background: "rgba(239,80,35,0.10)", color: "#ef5023", borderRight: "1px solid rgba(239,80,35,0.25)" }}>
+                              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                            </span>
+                            <span className="flex items-center px-[14px] py-[8px]" style={{ background: "rgba(239,80,35,0.05)", color: "#ef5023" }}>
+                              {job.salary}
+                            </span>
+                          </div>
                         )}
                       </div>
                     </div>
@@ -590,6 +602,7 @@ export default function CareersPage() {
                     {job.desc}
                   </p>
 
+                  <div style={{ borderTop: "1px solid rgba(239,80,35,0.18)" }} />
                   <div className="flex flex-wrap gap-[8px]">
                     {job.skills.map((skill) => (
                       <span
@@ -625,7 +638,7 @@ export default function CareersPage() {
             </div>
           </div>
         </section>
-        <section className="relative px-[40px] overflow-hidden" style={{ background: "#080808", borderTop: "1px solid #1a1a1a" }}>
+        <section className="relative px-[16px] md:px-[40px] overflow-hidden" style={{ background: "#080808", borderTop: "1px solid #1a1a1a" }}>
           {/* Concentric rings top-right — adapted from ServiceAIOverview for dark bg */}
           <svg className="absolute -right-[100px] -top-[100px] pointer-events-none" width="580" height="580" viewBox="0 0 580 580" fill="none" style={{ opacity: 0.09 }}>
             {[60, 110, 160, 210, 260, 310, 360].map((r, i) => (
@@ -747,7 +760,7 @@ export default function CareersPage() {
         </section>
 
         {/* ── Ready to join ── */}
-        <section className="relative px-[40px] overflow-hidden" style={{ background: "#0a0a0a", borderTop: "1px solid #1a1a1a" }}>
+        <section className="relative px-[16px] md:px-[40px] overflow-hidden" style={{ background: "#0a0a0a", borderTop: "1px solid #1a1a1a" }}>
           {/* Dot grid pattern for dark bg */}
           <div className="absolute inset-0 pointer-events-none" style={{
             backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px)",

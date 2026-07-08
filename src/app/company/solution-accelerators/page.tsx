@@ -37,67 +37,33 @@ export default function SolutionAcceleratorsPage() {
 
         {/* ── Hero ── */}
         <section
-          className="relative px-[16px] md:px-[40px] overflow-hidden flex flex-col items-start gap-[28px] min-h-[560px] md:min-h-[760px] pt-[140px] md:pt-[200px]"
-          style={{ paddingBottom: "80px" }}
+          className="relative px-[16px] md:px-[40px] overflow-hidden flex flex-col items-start gap-[28px] min-h-[600px] md:min-h-[850px] pt-[140px] md:pt-[228px]"
+          style={{ paddingBottom: "100px" }}
         >
           <div className="absolute inset-0">
             <img
               src="/Media/Image/case 16.png"
               alt=""
               className="absolute right-0 top-0 h-full"
-              style={{ width: "60%", objectFit: "cover", objectPosition: "right center" }}
+              style={{ width: "65%", objectFit: "cover", objectPosition: "right center" }}
             />
             <div
               className="absolute inset-0"
-              style={{ background: "linear-gradient(to right, #0d0d0d 40%, #0d0d0d 50%, rgba(13,13,13,0.7) 65%, transparent 100%)" }}
+              style={{ background: "linear-gradient(to right, #0d0d0d 35%, #0d0d0d 45%, rgba(13,13,13,0.7) 60%, transparent 100%)" }}
             />
-
-            {/* dot grid */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <pattern id="hero-dots" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
-                  <circle cx="1" cy="1" r="0.9" fill="rgba(255,255,255,0.07)" />
-                </pattern>
-              </defs>
-              <rect width="55%" height="100%" fill="url(#hero-dots)" />
-            </svg>
-
-            {/* large arc top-left */}
-            <svg className="absolute pointer-events-none" style={{ top: "-60px", left: "-60px", width: "480px", height: "480px", opacity: 0.07 }} viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="120" cy="120" r="200" stroke="#ef5023" strokeWidth="1.5" />
-              <circle cx="120" cy="120" r="140" stroke="#ef5023" strokeWidth="1" />
-              <circle cx="120" cy="120" r="80" stroke="#ef5023" strokeWidth="0.8" />
-            </svg>
-
-            {/* corner bracket bottom-left */}
-            <svg className="absolute pointer-events-none" style={{ bottom: "40px", left: "32px", width: "80px", height: "80px", opacity: 0.18 }} viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M0 80 L0 0 L80 0" stroke="#ef5023" strokeWidth="2" fill="none" />
-            </svg>
-
-            {/* horizontal scan lines */}
-            <svg className="absolute pointer-events-none" style={{ top: 0, left: 0, width: "50%", height: "100%", opacity: 0.04 }} xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <pattern id="hero-lines" x="0" y="0" width="1" height="24" patternUnits="userSpaceOnUse">
-                  <line x1="0" y1="0" x2="10000" y2="0" stroke="#fff" strokeWidth="0.8" />
-                </pattern>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#hero-lines)" />
-            </svg>
-
-            {/* glow orb bottom */}
-            <div className="absolute pointer-events-none" style={{ bottom: "-80px", left: "15%", width: "320px", height: "320px", background: "radial-gradient(circle, rgba(239,80,35,0.12) 0%, transparent 65%)", borderRadius: "50%" }} />
+            <div className="absolute inset-0 block md:hidden" style={{ background: "rgba(13,13,13,0.55)" }} />
           </div>
 
           <div className="relative w-full max-w-[1320px] mx-auto">
-            <div className="flex flex-col items-start gap-[20px] max-w-[720px]">
-              <h1 className="font-black text-white text-[38px] leading-[46px] sm:text-[50px] sm:leading-[58px] md:text-[64px] md:leading-[72px] tracking-[-2px]">
+            <div className="relative flex flex-col items-start gap-[24px] max-w-[860px]">
+              <h1 className="font-black text-white text-[40px] leading-[48px] sm:text-[52px] sm:leading-[60px] md:text-[68px] md:leading-[76px] tracking-[-2px]">
                 Launch Faster with<br />
                 <span className="text-[#ef5023]">Proven Foundations</span>
               </h1>
-              <p className="text-[rgba(255,255,255,0.75)] text-[16px] leading-[28px]">
+              <p className="text-[rgba(255,255,255,0.75)] text-[20px] leading-[32px]">
                 Move from Idea → POC → MVP in just 2–4 weeks with our ready-to-customize Solution Accelerators.
               </p>
-              <div className="flex items-center gap-[12px] pt-[8px]">
+              <div className="flex flex-wrap items-center gap-[12px] pt-[8px]">
                 <a
                   href="#accelerators"
                   className="bg-[#ef5023] hover:bg-[#d94010] text-white font-bold text-[16px] px-[28px] h-[55px] rounded-[10px] inline-flex items-center transition-colors"
@@ -122,18 +88,34 @@ export default function SolutionAcceleratorsPage() {
 
         {/* ── Filter + Cards ── */}
         <section id="accelerators" className="relative px-[16px] md:px-[40px] py-[72px] md:py-[100px] overflow-hidden" style={{ background: "#fafafa" }}>
-          <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.025]" xmlns="http://www.w3.org/2000/svg">
+
+          {/* square grid */}
+          <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg" style={{ opacity: 0.06 }}>
             <defs>
-              <pattern id="sa-list-dots" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
-                <circle cx="1" cy="1" r="0.8" fill="#ef5023" />
+              <pattern id="sa-grid" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+                <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#b0a090" strokeWidth="0.6" />
               </pattern>
             </defs>
-            <rect width="100%" height="100%" fill="url(#sa-list-dots)" />
+            <rect width="100%" height="100%" fill="url(#sa-grid)" />
           </svg>
-          <div
-            className="absolute pointer-events-none"
-            style={{ top: "-80px", right: "-60px", width: "500px", height: "500px", background: "radial-gradient(circle, rgba(239,80,35,0.05) 0%, transparent 65%)", borderRadius: "50%" }}
-          />
+
+          {/* large bold ">" bracket top-right */}
+          <svg className="absolute pointer-events-none" style={{ top: "-20px", right: "60px", opacity: 0.045 }} width="260" height="320" viewBox="0 0 260 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 40 20 L 220 160 L 40 300" stroke="#ef5023" strokeWidth="12" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          <svg className="absolute pointer-events-none" style={{ top: "-20px", right: "120px", opacity: 0.025 }} width="260" height="320" viewBox="0 0 260 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 40 20 L 220 160 L 40 300" stroke="#ef5023" strokeWidth="12" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+
+          {/* horizontal lines bottom-left */}
+          <svg className="absolute pointer-events-none" style={{ bottom: "0", left: "0", width: "320px", height: "200px", opacity: 0.07 }} xmlns="http://www.w3.org/2000/svg">
+            {[0,1,2,3,4,5,6,7].map((i) => (
+              <line key={i} x1="0" y1={24 * i + 12} x2={200 - i * 16} y2={24 * i + 12} stroke="#0a0a0a" strokeWidth="1" />
+            ))}
+          </svg>
+
+          {/* warm glow center-right */}
+          <div className="absolute pointer-events-none" style={{ top: "10%", right: "-100px", width: "600px", height: "600px", background: "radial-gradient(ellipse, rgba(239,80,35,0.055) 0%, transparent 60%)", borderRadius: "50%" }} />
 
           <div className="relative max-w-[1320px] mx-auto flex flex-col gap-[48px]">
 
@@ -169,7 +151,7 @@ export default function SolutionAcceleratorsPage() {
             </div>
 
             {/* Cards grid */}
-            <div className="sa-list-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "24px" }}>
+            <div className="sa-list-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[24px]">
               {filtered.map((acc) => {
                 const tags = getTopTags(acc);
                 return (
@@ -322,10 +304,10 @@ export default function SolutionAcceleratorsPage() {
               <p className="relative text-[15px] leading-[1.65]" style={{ color: "rgba(255,255,255,0.85)", maxWidth: "560px" }}>
                 Tell us your domain and tech constraints. We&apos;ll scope an accelerator that fits — and show you a proof of concept before you commit.
               </p>
-              <div className="relative flex items-center gap-[12px] mt-[4px]">
+              <div className="relative flex flex-wrap items-center gap-[12px] mt-[4px]">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-[6px] px-[28px] h-[48px] rounded-[10px] font-bold text-[15px] text-[#ef5023] whitespace-nowrap transition-all hover:brightness-95"
+                  className="inline-flex items-center gap-[6px] px-[28px] h-[48px] rounded-[10px] font-bold text-[15px] text-[#ef5023] transition-all hover:brightness-95"
                   style={{ background: "#fff", textDecoration: "none" }}
                 >
                   Talk to an Engineer
@@ -343,10 +325,6 @@ export default function SolutionAcceleratorsPage() {
         </section>
 
         <style>{`
-          @media (max-width: 639px) { .sa-list-grid { grid-template-columns: 1fr !important; } }
-          @media (min-width: 640px) and (max-width: 1023px) { .sa-list-grid { grid-template-columns: repeat(2, 1fr) !important; } }
-          @media (max-width: 639px) { .sa-list-grid { grid-template-columns: 1fr !important; } }
-          @media (min-width: 640px) and (max-width: 1023px) { .sa-list-grid { grid-template-columns: repeat(2, 1fr) !important; } }
           .sa-list-card { transition: transform .35s cubic-bezier(.22,1,.36,1), border-color .3s, box-shadow .35s; }
           .sa-list-card:hover { transform: translateY(-10px); border-color: rgba(239,80,35,0.35) !important; box-shadow: 0 8px 0 rgba(239,80,35,0.08), 0 24px 56px rgba(239,80,35,0.14), 0 10px 28px rgba(0,0,0,0.1) !important; }
           .sa-list-card:hover .sa-list-img { transform: scale(1.07); opacity: 1 !important; }

@@ -25,6 +25,7 @@ export default function AboutPage() {
               className="absolute inset-0"
               style={{ background: "linear-gradient(to right, #0d0d0d 35%, #0d0d0d 45%, rgba(13,13,13,0.7) 60%, transparent 100%)" }}
             />
+            <div className="absolute inset-0 block md:hidden" style={{ background: "rgba(13,13,13,0.55)" }} />
           </div>
 
           <div className="relative w-full max-w-[1320px] mx-auto">
@@ -43,7 +44,7 @@ export default function AboutPage() {
             </p>
 
             {/* CTAs */}
-            <div className="flex items-center gap-[12px] pt-[4px]">
+            <div className="flex flex-wrap items-center gap-[12px] pt-[4px]">
               <a
                 href="/contact"
                 className="bg-[#ef5023] hover:bg-[#d94010] text-white font-bold text-[16px] px-[28px] h-[55px] rounded-[10px] inline-flex items-center transition-colors"
@@ -303,7 +304,7 @@ export default function AboutPage() {
 
                 <div className="flex flex-col gap-[20px] p-[28px]">
                   {/* Icon + title row + badge */}
-                  <div className="flex items-start justify-between gap-[12px]">
+                  <div className="flex flex-wrap items-start justify-between gap-[12px]">
                     <div className="flex items-center gap-[14px]">
                       <div className="w-[52px] h-[52px] rounded-[14px] flex items-center justify-center flex-shrink-0" style={{ background: "linear-gradient(135deg, #3b5bdb 0%, #7c3aed 100%)" }}>
                         <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
@@ -361,7 +362,7 @@ export default function AboutPage() {
 
                 <div className="flex flex-col gap-[20px] p-[28px]">
                   {/* Icon + title row + badge */}
-                  <div className="flex items-start justify-between gap-[12px]">
+                  <div className="flex flex-wrap items-start justify-between gap-[12px]">
                     <div className="flex items-center gap-[14px]">
                       <div className="w-[52px] h-[52px] rounded-[14px] flex items-center justify-center flex-shrink-0" style={{ background: "linear-gradient(135deg, #059669 0%, #0ea5e9 100%)" }}>
                         <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
@@ -494,7 +495,7 @@ export default function AboutPage() {
 
               {/* Right column — Use Cases card */}
               <div
-                className="flex flex-col rounded-[18px] overflow-hidden self-start sticky top-[100px]"
+                className="flex flex-col rounded-[18px] overflow-hidden self-start lg:sticky top-[100px]"
                 style={{ background: "#fff", border: "1px solid #e8e8e8", boxShadow: "0 8px 32px rgba(0,0,0,0.08)" }}
               >
                 {/* Card header */}
@@ -580,7 +581,7 @@ export default function AboutPage() {
 
               {/* Left column — Tech Stacks card */}
               <div
-                className="flex flex-col rounded-[18px] overflow-hidden self-start sticky top-[100px]"
+                className="flex flex-col rounded-[18px] overflow-hidden self-start lg:sticky top-[100px]"
                 style={{ background: "#fff", border: "1px solid #e8e8e8", boxShadow: "0 8px 32px rgba(0,0,0,0.08)" }}
               >
                 {/* Card header — orange gradient */}
@@ -752,10 +753,10 @@ export default function AboutPage() {
                 <div className="flex flex-col gap-[40px]">
 
                   {/* ── Progression diagram ── */}
-                  <div className="flex items-center justify-center gap-[48px]">
+                  <div className="flex flex-wrap items-center justify-center gap-[24px] md:gap-[48px]">
                     {tiers.map((tier, i) => (
                       <Fragment key={tier.tierName}>
-                        <div className="flex flex-col items-center gap-[12px]" style={{ minWidth: "140px" }}>
+                        <div className="flex flex-col items-center gap-[12px]" style={{ minWidth: "120px" }}>
                           <div className="flex items-center justify-center" style={{ width: "96px", height: "96px", borderRadius: "22px", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", boxShadow: "0 4px 20px rgba(0,0,0,0.3)" }}>
                             {tier.icon}
                           </div>
@@ -763,7 +764,7 @@ export default function AboutPage() {
                           <span className="font-bold text-[14px] text-white">{tier.tierName}</span>
                         </div>
                         {i < tiers.length - 1 && (
-                          <div style={{ flexShrink: 0, marginBottom: "52px" }}>
+                          <div className="hidden sm:block" style={{ flexShrink: 0, marginBottom: "52px" }}>
                             <svg width="52" height="28" viewBox="0 0 52 28" fill="none">
                               <defs>
                                 <linearGradient id={`ag${i}`} x1="0" y1="0" x2="52" y2="0" gradientUnits="userSpaceOnUse">
@@ -781,16 +782,17 @@ export default function AboutPage() {
                   </div>
 
                   {/* ── Table ── */}
-                  <div className="rounded-[16px] overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.07)", boxShadow: "0 12px 40px rgba(0,0,0,0.5)", backdropFilter: "blur(12px)", background: "rgba(10,10,10,0.5)" }}>
+                  <div className="overflow-x-auto">
+                  <div className="rounded-[16px] overflow-hidden" style={{ minWidth: "600px", border: "1px solid rgba(255,255,255,0.07)", boxShadow: "0 12px 40px rgba(0,0,0,0.5)", backdropFilter: "blur(12px)", background: "rgba(10,10,10,0.5)" }}>
                     {/* Header */}
-                    <div className="grid px-[28px] py-[16px]" style={{ gridTemplateColumns: "220px 1fr 2fr 1fr", background: "linear-gradient(90deg, rgba(239,80,35,0.9) 0%, rgba(255,106,56,0.85) 100%)" }}>
+                    <div className="grid px-[28px] py-[16px]" style={{ gridTemplateColumns: "minmax(120px, 220px) 1fr 2fr 1fr", background: "linear-gradient(90deg, rgba(239,80,35,0.9) 0%, rgba(255,106,56,0.85) 100%)" }}>
                       {["Tier", "Fit", "Benefits", "Extras"].map((h) => (
                         <span key={h} className="font-bold text-white text-[15px]">{h}</span>
                       ))}
                     </div>
                     {/* Rows */}
                     {tiers.map((tier, i) => (
-                      <div key={tier.tierName} className="grid items-center px-[28px] py-[22px]" style={{ gridTemplateColumns: "220px 1fr 2fr 1fr", background: i % 2 === 0 ? "rgba(255,255,255,0.02)" : "transparent", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
+                      <div key={tier.tierName} className="grid items-center px-[28px] py-[22px]" style={{ gridTemplateColumns: "minmax(120px, 220px) 1fr 2fr 1fr", background: i % 2 === 0 ? "rgba(255,255,255,0.02)" : "transparent", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
                         {/* Tier cell */}
                         <div className="flex items-center gap-[12px]">
                           <div className="flex-shrink-0 flex items-center justify-center" style={{ width: "36px", height: "36px", borderRadius: "10px", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}>
@@ -808,6 +810,7 @@ export default function AboutPage() {
                         <span className="text-[13px]" style={{ color: "#666" }}>{tier.extras ?? "–"}</span>
                       </div>
                     ))}
+                  </div>
                   </div>
 
                 </div>

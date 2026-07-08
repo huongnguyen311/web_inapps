@@ -60,8 +60,9 @@ export default function TechnologyPage() {
             />
             <div
               className="absolute inset-0"
-              style={{ background: "linear-gradient(to right, #0d0d0d 35%, #0d0d0d 45%, rgba(13,13,13,0.7) 60%, transparent 100%)" }}
+              style={{ background: "linear-gradient(to right, #0d0d0d 55%, rgba(13,13,13,0.85) 75%, transparent 100%)" }}
             />
+            <div className="absolute inset-0 block md:hidden" style={{ background: "rgba(13,13,13,0.4)" }} />
           </div>
 
           <div className="relative w-full max-w-[1320px] mx-auto">
@@ -135,7 +136,7 @@ export default function TechnologyPage() {
                   </button>
                 ))}
               </div>
-              <div className="rounded-[16px] p-[36px] flex flex-col gap-[20px]" style={{ background: "#fff", border: "1px solid #e8e8e8", boxShadow: "0 8px 32px rgba(0,0,0,0.08)" }}>
+              <div className="rounded-[16px] p-[20px] md:p-[36px] flex flex-col gap-[20px]" style={{ background: "#fff", border: "1px solid #e8e8e8", boxShadow: "0 8px 32px rgba(0,0,0,0.08)" }}>
                 <div className="flex flex-col gap-[8px]">
                   <span className="text-[10px] font-bold uppercase tracking-[2px] text-[#ef5023]">{faqItems[faqIndex].label}</span>
                   <h3 className="font-black text-[#0a0a0a] text-[20px] leading-[1.35] tracking-[-0.4px]">

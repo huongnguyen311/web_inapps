@@ -79,55 +79,85 @@ export default function SolutionAcceleratorDetailClient({
       <main className="flex-1 flex flex-col">
 
         {/* ── Hero ── */}
-        <section className="relative px-[16px] md:px-[40px] overflow-hidden flex flex-col items-start min-h-[600px] md:min-h-[820px] pt-[140px] md:pt-[210px]" style={{ paddingBottom: "90px" }}>
+        <section
+          className={a.slug === "ai-document-intelligence"
+            ? "relative px-[16px] md:px-[40px] overflow-hidden flex flex-col items-start gap-[28px]"
+            : "relative px-[16px] md:px-[40px] overflow-hidden flex flex-col items-start min-h-[600px] md:min-h-[820px] pt-[140px] md:pt-[210px]"}
+          style={a.slug === "ai-document-intelligence"
+            ? { minHeight: "850px", paddingTop: "228px", paddingBottom: "100px" }
+            : { paddingBottom: "90px" }}
+        >
           {/* Background image */}
           <div className="absolute inset-0">
-            <img
-              src={a.heroImage}
-              alt=""
-              className="absolute right-0 top-0 h-full"
-              style={{ width: "60%", objectFit: "cover", objectPosition: "center" }}
-            />
-            <div className="absolute inset-0" style={{ background: "linear-gradient(to right, #0d0d0d 38%, #0d0d0d 48%, rgba(13,13,13,0.75) 63%, transparent 100%)" }} />
-            <div className="absolute inset-0" style={{ background: "linear-gradient(to top, #0d0d0d 0%, transparent 40%)" }} />
-            {/* grid overlay */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ opacity: 0.03 }} xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <pattern id="hero-grid-sa" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
-                  <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#fff" strokeWidth="0.5" />
-                </pattern>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#hero-grid-sa)" />
-            </svg>
-            {/* glow accent */}
-            <div className="absolute pointer-events-none" style={{ bottom: "-60px", left: "-40px", width: "380px", height: "380px", background: "radial-gradient(circle, rgba(239,80,35,0.10) 0%, transparent 70%)", borderRadius: "50%" }} />
+            {a.slug === "ai-document-intelligence" ? (
+              <>
+                <img
+                  src={a.heroImage}
+                  alt=""
+                  className="absolute right-0 top-0 h-full"
+                  style={{ width: "65%", objectFit: "cover", objectPosition: "right center" }}
+                />
+                <div
+                  className="absolute inset-0"
+                  style={{ background: "linear-gradient(to right, #0d0d0d 35%, #0d0d0d 45%, rgba(13,13,13,0.7) 60%, transparent 100%)" }}
+                />
+                <div className="absolute inset-0 block md:hidden" style={{ background: "rgba(13,13,13,0.55)" }} />
+              </>
+            ) : (
+              <>
+                <img
+                  src={a.heroImage}
+                  alt=""
+                  className="absolute right-0 top-0 h-full"
+                  style={{ width: "60%", objectFit: "cover", objectPosition: "center" }}
+                />
+                <div className="absolute inset-0" style={{ background: "linear-gradient(to right, #0d0d0d 38%, #0d0d0d 48%, rgba(13,13,13,0.75) 63%, transparent 100%)" }} />
+                <div className="absolute inset-0" style={{ background: "linear-gradient(to top, #0d0d0d 0%, transparent 40%)" }} />
+                <div className="absolute inset-0 block md:hidden" style={{ background: "rgba(13,13,13,0.55)" }} />
+                <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ opacity: 0.03 }} xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <pattern id="hero-grid-sa" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+                      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#fff" strokeWidth="0.5" />
+                    </pattern>
+                  </defs>
+                  <rect width="100%" height="100%" fill="url(#hero-grid-sa)" />
+                </svg>
+                <div className="absolute pointer-events-none" style={{ bottom: "-60px", left: "-40px", width: "380px", height: "380px", background: "radial-gradient(circle, rgba(239,80,35,0.10) 0%, transparent 70%)", borderRadius: "50%" }} />
+              </>
+            )}
           </div>
 
           <div className="relative w-full max-w-[1320px] mx-auto">
             {/* Breadcrumb */}
-            <div className="flex items-center gap-[8px] mb-[28px] text-[13px]" style={{ color: "rgba(255,255,255,0.45)" }}>
-              <Link href="/company/solution-accelerators" className="hover:text-white transition-colors" style={{ textDecoration: "none", color: "inherit" }}>Solution Accelerators</Link>
-              <span>/</span>
-              <span style={{ color: "rgba(255,255,255,0.7)" }}>{a.name}</span>
-            </div>
+            {a.slug !== "ai-document-intelligence" && (
+              <div className="flex items-center gap-[8px] mb-[28px] text-[13px]" style={{ color: "rgba(255,255,255,0.45)" }}>
+                <Link href="/company/solution-accelerators" className="hover:text-white transition-colors" style={{ textDecoration: "none", color: "inherit" }}>Solution Accelerators</Link>
+                <span>/</span>
+                <span style={{ color: "rgba(255,255,255,0.7)" }}>{a.name}</span>
+              </div>
+            )}
 
-            <div className="flex flex-col items-start gap-[20px] max-w-[820px]">
+            <div className={`flex flex-col items-start ${a.slug === "ai-document-intelligence" ? "gap-[24px] max-w-[860px]" : "gap-[20px] max-w-[820px]"}`}>
               {/* Category badge */}
-              <span
-                className="inline-flex items-center gap-[6px] text-[11px] font-black tracking-[1.8px] uppercase px-[12px] py-[5px] rounded-full"
-                style={{ background: `${a.categoryColor}18`, color: a.categoryColor, border: `1px solid ${a.categoryColor}40` }}
-              >
-                <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: a.categoryColor, display: "inline-block" }} />
-                {a.category}
-              </span>
+              {a.slug !== "ai-document-intelligence" && (
+                <span
+                  className="inline-flex items-center gap-[6px] text-[11px] font-black tracking-[1.8px] uppercase px-[12px] py-[5px] rounded-full"
+                  style={{ background: `${a.categoryColor}18`, color: a.categoryColor, border: `1px solid ${a.categoryColor}40` }}
+                >
+                  <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: a.categoryColor, display: "inline-block" }} />
+                  {a.category}
+                </span>
+              )}
 
               <h1 className="font-black text-white text-[36px] leading-[44px] sm:text-[48px] sm:leading-[56px] md:text-[64px] md:leading-[72px] tracking-[-2px]">
                 {a.name}
               </h1>
 
-              <p className="text-[18px] font-semibold italic" style={{ color: a.categoryColor, marginTop: "-6px" }}>
-                {a.tagline}
-              </p>
+              {a.slug !== "ai-document-intelligence" && (
+                <p className="text-[18px] font-semibold italic" style={{ color: a.categoryColor, marginTop: "-6px" }}>
+                  {a.tagline}
+                </p>
+              )}
 
               <p className="text-[16px] leading-[1.75]" style={{ color: "rgba(255,255,255,0.7)", maxWidth: "680px" }}>
                 {a.shortDescription}
@@ -154,24 +184,26 @@ export default function SolutionAcceleratorDetailClient({
               </div>
 
               {/* Quick stats */}
-              <div className="flex items-center gap-[12px] pt-[16px] flex-wrap">
-                {[
-                  { label: "Time to production", value: a.timeSaved },
-                  { label: "Technologies", value: a.techCount },
-                  { label: "Active deployments", value: a.clientsUsing },
-                ].map((s) => (
-                  <div
-                    key={s.label}
-                    className="flex items-center gap-[10px] rounded-[10px] px-[16px] py-[10px]"
-                    style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.10)" }}
-                  >
-                    <div className="flex flex-col">
-                      <span className="font-black text-white text-[18px] leading-[1.1]">{s.value}</span>
-                      <span className="text-[11px]" style={{ color: "rgba(255,255,255,0.45)" }}>{s.label}</span>
+              {a.slug !== "ai-document-intelligence" && (
+                <div className="flex items-center gap-[12px] pt-[16px] flex-wrap">
+                  {[
+                    { label: "Time to production", value: a.timeSaved },
+                    { label: "Technologies", value: a.techCount },
+                    { label: "Active deployments", value: a.clientsUsing },
+                  ].map((s) => (
+                    <div
+                      key={s.label}
+                      className="flex items-center gap-[10px] rounded-[10px] px-[16px] py-[10px]"
+                      style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.10)" }}
+                    >
+                      <div className="flex flex-col">
+                        <span className="font-black text-white text-[18px] leading-[1.1]">{s.value}</span>
+                        <span className="text-[11px]" style={{ color: "rgba(255,255,255,0.45)" }}>{s.label}</span>
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </section>
@@ -180,57 +212,463 @@ export default function SolutionAcceleratorDetailClient({
         <ServiceTrustedLogos />
 
         {/* ── Overview + Problem ── */}
-        <section className="relative px-[16px] md:px-[40px] py-[72px] md:py-[100px] overflow-hidden" style={{ background: "#fff" }}>
-          <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.025]" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="sa-dot-ov" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
-                <circle cx="1" cy="1" r="0.8" fill="#ef5023" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#sa-dot-ov)" />
-          </svg>
-          <div className="absolute left-0 top-0 bottom-0 pointer-events-none" style={{ width: "3px", background: "linear-gradient(to bottom, transparent, #ef5023, transparent)" }} />
+        {a.slug === "ai-document-intelligence" ? (
+          <>
+            {/* S-A: Business Challenge */}
+            <section className="relative px-[16px] md:px-[40px] py-[70px] md:py-[96px] overflow-hidden" style={{ background: "#fafafa" }}>
+              <div className="absolute left-0 top-0 bottom-0 pointer-events-none" style={{ width: "3px", background: "linear-gradient(to bottom, transparent, #ef5023, transparent)" }} />
 
-          <div className="relative max-w-[1320px] mx-auto grid md:grid-cols-2 gap-[56px] items-start">
-            <div className="flex flex-col gap-[20px]">
-              <p className="text-[#ef5023] text-[11px] font-bold tracking-[2px] uppercase">OVERVIEW</p>
-              <h2 className="font-black text-[#0a0a0a] text-[32px] leading-[40px] tracking-[-1.2px]">
-                What it is
-              </h2>
-              <p className="text-[16px] leading-[1.75]" style={{ color: "#444" }}>
-                {a.overview}
-              </p>
+              <div className="relative max-w-[1320px] mx-auto flex flex-col gap-[48px]">
+                <div className="flex flex-col gap-[12px] max-w-[680px]">
+                  <p className="text-[#ef5023] text-[11px] font-bold tracking-[2px] uppercase">THE CHALLENGE</p>
+                  <h2 className="font-black text-[#0a0a0a] text-[28px] md:text-[36px] leading-[36px] md:leading-[44px] tracking-[-1.5px]">
+                    Why document processing <span className="text-[#ef5023]">breaks at scale</span>
+                  </h2>
+                  <p className="text-[16px] leading-[1.75]" style={{ color: "#666" }}>
+                    Enterprises spend 40–60% of operational bandwidth manually processing documents — while off-the-shelf tools fail when layouts change or schemas evolve.
+                  </p>
+                </div>
+
+                {/* Diagnostic rows — one container, separated by hairlines */}
+                <div className="rounded-[20px] overflow-hidden" style={{ background: "#fff", border: "1px solid #e8e1d9", boxShadow: "0 8px 32px rgba(0,0,0,0.08)" }}>
+                  {[
+                    {
+                      stat: "40–60%",
+                      label: "ops bandwidth",
+                      icon: "clock",
+                      title: "High processing overhead",
+                      desc: "Nearly half of enterprise operational bandwidth is consumed by manual document handling — invoices, contracts, forms — with zero automation.",
+                    },
+                    {
+                      stat: "9–12 mo",
+                      label: "build from scratch",
+                      icon: "trending-up",
+                      title: "Slow build cycles",
+                      desc: "Building a custom extraction pipeline from scratch takes 9–12 months before a single document is processed in production.",
+                    },
+                    {
+                      stat: "3–6×",
+                      label: "tool fragmentation",
+                      icon: "database",
+                      title: "Knowledge silos",
+                      desc: "Teams maintain multiple disconnected tools for document handling. Each one breaks when layouts drift — and nobody owns the failure.",
+                    },
+                  ].map((c, i) => (
+                    <div
+                      key={i}
+                      className="challenge-row flex flex-col sm:flex-row"
+                      style={{ borderTop: i > 0 ? "1px solid #e8e1d9" : "none" }}
+                    >
+                      {/* Stat column */}
+                      <div
+                        className="flex sm:flex-col items-center sm:justify-center gap-[8px] sm:gap-[6px] px-[28px] py-[20px] sm:py-[32px] flex-shrink-0 sm:w-[160px] relative overflow-hidden"
+                        style={{ background: "#0a0a0a", borderBottom: "1px solid #1a1a1a" }}
+                      >
+                        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(circle at center, rgba(239,80,35,0.10) 0%, transparent 70%)" }} />
+                        <span className="relative font-black text-[22px] sm:text-[24px] leading-[1] tracking-[-1px]" style={{ color: "#ef5023" }}>{c.stat}</span>
+                        <span className="relative text-[10px] sm:text-center leading-[1.4] uppercase tracking-[1px] font-bold" style={{ color: "rgba(255,255,255,0.35)" }}>{c.label}</span>
+                      </div>
+
+                      {/* Content */}
+                      <div className="flex items-start gap-[16px] px-[28px] py-[24px] sm:py-[28px] flex-1">
+                        <div className="w-[38px] h-[38px] flex items-center justify-center flex-shrink-0 mt-[1px]">
+                          <Icon name={c.icon} size={20} color="#ef5023" />
+                        </div>
+                        <div className="flex flex-col gap-[4px]">
+                          <h3 className="font-black text-[#0a0a0a] text-[16px] leading-[1.3]">{c.title}</h3>
+                          <p className="text-[14px] leading-[1.7]" style={{ color: "#666" }}>{c.desc}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            {/* S-B: Solution Overview — full-width redesign */}
+            <section className="relative px-[16px] md:px-[40px] py-[70px] md:py-[96px] overflow-hidden" style={{ background: "#fff" }}>
+              {/* Grid paper pattern */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ opacity: 0.09 }} xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <pattern id="sa-ov-grid" x="0" y="0" width="36" height="36" patternUnits="userSpaceOnUse">
+                    <path d="M 36 0 L 0 0 0 36" fill="none" stroke="#ef5023" strokeWidth="1" />
+                  </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#sa-ov-grid)" />
+              </svg>
+              {/* Orange radial glow — top left */}
+              <div className="absolute pointer-events-none" style={{ top: "-120px", left: "-80px", width: "520px", height: "520px", background: "radial-gradient(circle, rgba(239,80,35,0.07) 0%, transparent 65%)", borderRadius: "50%" }} />
+              <div className="absolute right-0 top-0 bottom-0 pointer-events-none" style={{ width: "3px", background: "linear-gradient(to bottom, transparent, #ef5023, transparent)" }} />
+
+              <div className="relative max-w-[1320px] mx-auto flex flex-col gap-[48px]">
+
+                {/* Header — full width */}
+                <div className="flex flex-col gap-[12px] max-w-[580px]">
+                  <p className="text-[#ef5023] text-[11px] font-bold tracking-[2px] uppercase">SOLUTION OVERVIEW</p>
+                  <h2 className="font-black text-[#0a0a0a] text-[36px] leading-[44px] tracking-[-1.5px]">
+                    What the engine <span className="text-[#ef5023]">delivers</span>
+                  </h2>
+                  <p className="text-[16px] leading-[1.75]" style={{ color: "#444" }}>
+                    {a.shortDescription}
+                  </p>
+                </div>
+
+                {/* Feature grid + Built with footer — one container */}
+                <div
+                  className="rounded-[20px] overflow-hidden"
+                  style={{ border: "1px solid #e8e1d9", boxShadow: "0 16px 56px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06)" }}
+                >
+                  <div className="grid grid-cols-1 md:grid-cols-2">
+                    {a.features.map((f, i) => (
+                      <div
+                        key={i}
+                        className="sol-feat-row flex items-start gap-[16px] px-[28px] py-[24px]"
+                        style={{
+                          borderTop: Math.floor(i / 2) > 0 ? "1px solid #e8e1d9" : "none",
+                          borderLeft: i % 2 === 1 ? "1px solid #e8e1d9" : "none",
+                        }}
+                      >
+                        <div className="flex-shrink-0 mt-[2px]">
+                          <Icon name={f.icon} size={18} color="#ef5023" />
+                        </div>
+                        <div className="flex flex-col gap-[3px]">
+                          <span className="font-black text-[#0a0a0a] text-[15px] leading-[1.3]">{f.title}</span>
+                          <span className="text-[13px] leading-[1.65]" style={{ color: "#888" }}>{f.description}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Built with — full-width footer row */}
+                  <div
+                    className="flex flex-wrap items-center gap-x-[20px] gap-y-[10px] px-[28px] py-[18px]"
+                    style={{ borderTop: "1px solid #e8e1d9", background: "#fafafa" }}
+                  >
+                    <span className="text-[11px] font-bold tracking-[1.5px] uppercase flex-shrink-0" style={{ color: "#bbb" }}>Built with</span>
+                    {["GPT-4o", "PaddleOCR", "LangChain", "FastAPI", "Kubernetes", "React"].map((tech) => (
+                      <span
+                        key={tech}
+                        className="text-[12px] font-semibold px-[10px] py-[4px] rounded-full"
+                        style={{ background: "#fff", border: "1px solid #e8e1d9", color: "#555" }}
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+              </div>
+            </section>
+          </>
+        ) : (
+          <section className="relative px-[16px] md:px-[40px] py-[70px] md:py-[96px] overflow-hidden" style={{ background: "#fff" }}>
+            <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.025]" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <pattern id="sa-dot-ov" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
+                  <circle cx="1" cy="1" r="0.8" fill="#ef5023" />
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#sa-dot-ov)" />
+            </svg>
+            <div className="absolute left-0 top-0 bottom-0 pointer-events-none" style={{ width: "3px", background: "linear-gradient(to bottom, transparent, #ef5023, transparent)" }} />
+            <div className="relative max-w-[1320px] mx-auto grid md:grid-cols-2 gap-[56px] items-start">
+              <div className="flex flex-col gap-[20px]">
+                <p className="text-[#ef5023] text-[11px] font-bold tracking-[2px] uppercase">OVERVIEW</p>
+                <h2 className="font-black text-[#0a0a0a] text-[32px] leading-[40px] tracking-[-1.2px]">What it is</h2>
+                <p className="text-[16px] leading-[1.75]" style={{ color: "#444" }}>{a.overview}</p>
+              </div>
+              <div className="flex flex-col gap-[20px]">
+                <p className="text-[11px] font-bold tracking-[2px] uppercase" style={{ color: "#888" }}>THE PROBLEM IT SOLVES</p>
+                <h2 className="font-black text-[#0a0a0a] text-[32px] leading-[40px] tracking-[-1.2px]">Why teams need this</h2>
+                <p className="text-[16px] leading-[1.75]" style={{ color: "#444" }}>{a.problemStatement}</p>
+              </div>
             </div>
-            <div className="flex flex-col gap-[20px]">
-              <p className="text-[11px] font-bold tracking-[2px] uppercase" style={{ color: "#888" }}>THE PROBLEM IT SOLVES</p>
-              <h2 className="font-black text-[#0a0a0a] text-[32px] leading-[40px] tracking-[-1.2px]">
-                Why teams need this
-              </h2>
-              <p className="text-[16px] leading-[1.75]" style={{ color: "#444" }}>
-                {a.problemStatement}
-              </p>
+          </section>
+        )}
+
+        {/* ── Video Demo — ai-document-intelligence only ── */}
+        {a.slug === "ai-document-intelligence" && (
+          <section className="relative px-[16px] md:px-[40px] py-[70px] md:py-[96px] overflow-hidden" style={{ background: "#0a0a0a" }}>
+            {/* Spotlight glow behind frame */}
+            <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
+              <div style={{ width: "900px", height: "500px", background: "radial-gradient(ellipse, rgba(239,80,35,0.10) 0%, rgba(239,80,35,0.03) 40%, transparent 70%)", borderRadius: "50%" }} />
             </div>
-          </div>
-        </section>
+            {/* Subtle grid */}
+            <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ opacity: 0.035 }} xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <pattern id="vid-grid" x="0" y="0" width="48" height="48" patternUnits="userSpaceOnUse">
+                  <path d="M 48 0 L 0 0 0 48" fill="none" stroke="#fff" strokeWidth="0.6" />
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#vid-grid)" />
+            </svg>
+
+            <div className="relative max-w-[1320px] mx-auto flex flex-col gap-[52px]">
+              {/* Header */}
+              <div className="flex flex-col gap-[12px] max-w-[640px]">
+                <p className="text-[11px] font-bold tracking-[2px] uppercase" style={{ color: "#ef5023" }}>PROTOTYPE DEMO</p>
+                <h2 className="font-black text-white text-[36px] leading-[44px] tracking-[-1.5px]">
+                  See it <span style={{ color: "#ef5023" }}>in action</span>
+                </h2>
+                <p className="text-[16px] leading-[1.75]" style={{ color: "rgba(255,255,255,0.55)" }}>
+                  Watch the AI Document Intelligence Engine process a real document — from raw upload to structured output in seconds.
+                </p>
+              </div>
+
+              {/* Floating video frame */}
+              <div className="relative">
+                {/* Orange ground glow / reflection */}
+                <div className="absolute pointer-events-none" style={{
+                  bottom: "-32px", left: "10%", right: "10%", height: "60px",
+                  background: "radial-gradient(ellipse, rgba(239,80,35,0.18) 0%, transparent 70%)",
+                  filter: "blur(12px)",
+                }} />
+
+                {/* Frame wrapper — elevated */}
+                <div
+                  style={{
+                    borderRadius: "14px",
+                    boxShadow: [
+                      "0 0 0 1px rgba(255,255,255,0.11)",        /* rim highlight */
+                      "0 2px 4px rgba(0,0,0,0.5)",               /* near shadow */
+                      "0 20px 60px rgba(0,0,0,0.75)",            /* mid shadow */
+                      "0 60px 120px rgba(0,0,0,0.6)",            /* deep shadow */
+                      "0 0 80px rgba(239,80,35,0.08)",           /* orange aura */
+                    ].join(", "),
+                    transform: "translateY(-4px)",
+                    position: "relative",
+                  }}
+                >
+                  {/* Top highlight line */}
+                  <div style={{ position: "absolute", top: 0, left: "20%", right: "20%", height: "1px", background: "linear-gradient(to right, transparent, rgba(255,255,255,0.25), transparent)", zIndex: 2, borderRadius: "2px" }} />
+
+                  {/* Browser chrome */}
+                  <div
+                    className="flex items-center gap-[10px] px-[16px]"
+                    style={{
+                      background: "linear-gradient(to bottom, #252525, #1e1e1e)",
+                      height: "46px",
+                      borderRadius: "14px 14px 0 0",
+                      borderBottom: "1px solid rgba(255,255,255,0.08)",
+                    }}
+                  >
+                    {/* Traffic lights */}
+                    <div className="flex items-center gap-[7px] flex-shrink-0">
+                      <div className="w-[13px] h-[13px] rounded-full" style={{ background: "#ff5f57", boxShadow: "0 0 6px rgba(255,95,87,0.5)" }} />
+                      <div className="w-[13px] h-[13px] rounded-full" style={{ background: "#febc2e", boxShadow: "0 0 6px rgba(254,188,46,0.4)" }} />
+                      <div className="w-[13px] h-[13px] rounded-full" style={{ background: "#28c840", boxShadow: "0 0 6px rgba(40,200,64,0.4)" }} />
+                    </div>
+                    {/* URL bar */}
+                    <div className="flex-1 flex justify-center px-[20px] hidden md:flex">
+                      <div className="flex items-center gap-[8px] px-[14px] h-[28px] rounded-[6px] text-[12px]" style={{ background: "rgba(255,255,255,0.07)", color: "rgba(255,255,255,0.45)", maxWidth: "420px", width: "100%" }}>
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        <span>demo.inapps.net / ai-document-intelligence</span>
+                      </div>
+                    </div>
+                    {/* Demo badge */}
+                    <span
+                      className="text-[10px] font-bold px-[10px] py-[4px] rounded-full flex-shrink-0 flex items-center gap-[5px]"
+                      style={{ background: "rgba(239,80,35,0.18)", color: "#ef5023", border: "1px solid rgba(239,80,35,0.35)" }}
+                    >
+                      <span className="w-[5px] h-[5px] rounded-full inline-block animate-pulse" style={{ background: "#ef5023" }} />
+                      LIVE DEMO
+                    </span>
+                  </div>
+
+                  {/* Video */}
+                  <div style={{ position: "relative", paddingBottom: "56.25%", background: "#000", borderRadius: "0 0 14px 14px", overflow: "hidden" }}>
+                    <video
+                      controls
+                      className="absolute inset-0 w-full h-full object-cover"
+                      poster={a.heroImage}
+                      style={{ background: "#000" }}
+                    >
+                      <source src="/Media/Video/ai-document-demo.mp4" type="video/mp4" />
+                    </video>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+        )}
+
+        {/* ── Idea → POC/MVP — ai-document-intelligence only ── */}
+        {a.slug === "ai-document-intelligence" && (
+          <section className="relative px-[16px] md:px-[40px] py-[70px] md:py-[96px] overflow-hidden" style={{ background: "#fff" }}>
+            <div className="relative max-w-[1320px] mx-auto flex flex-col md:flex-row gap-[48px] md:gap-[64px] md:items-start">
+
+              {/* Left: heading + promise + CTA */}
+              <div className="flex flex-col gap-[32px] md:max-w-[360px] flex-shrink-0">
+                <div className="flex flex-col gap-[12px]">
+                  <p className="text-[#ef5023] text-[11px] font-bold tracking-[2px] uppercase">SPEED TO MARKET</p>
+                  <h2 className="font-black text-[#0a0a0a] text-[36px] leading-[44px] tracking-[-1.5px]">
+                    From idea to
+                    <span className="flex items-center gap-[10px]" style={{ paddingLeft: "48px", marginTop: "2px" }}>
+                      <span
+                        className="inline-flex items-center justify-center flex-shrink-0 rounded-full"
+                        style={{
+                          width: "30px",
+                          height: "30px",
+                          background: "#ef5023",
+                          lineHeight: 1,
+                        }}
+                      >
+                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+                          <path d="M2 6.5h9M7 2.5l4 4-4 4" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </span>
+                      <span style={{ color: "#ef5023" }}>POC / MVP</span>
+                    </span>
+                  </h2>
+                  <p className="text-[16px] leading-[1.7]" style={{ color: "#666" }}>
+                    We don't start with slide decks. We configure, connect, and ship a working prototype you can demo to stakeholders — in weeks, not quarters.
+                  </p>
+                </div>
+
+                {/* Promise card */}
+                <div
+                  className="rounded-[20px] overflow-hidden flex"
+                  style={{
+                    border: "1px solid rgba(239,80,35,0.2)",
+                    boxShadow: "0 8px 32px rgba(239,80,35,0.12), 0 2px 8px rgba(0,0,0,0.08)",
+                  }}
+                >
+                  {/* Orange left panel — the number */}
+                  <div
+                    className="flex flex-col items-center justify-center gap-[2px] px-[20px] py-[20px] flex-shrink-0"
+                    style={{ background: "#ef5023", minWidth: "100px" }}
+                  >
+                    <span className="font-black leading-none tracking-[-2px] text-white" style={{ fontSize: "42px" }}>2–4</span>
+                    <span className="font-bold text-[11px] tracking-[2px] uppercase text-white" style={{ opacity: 0.8 }}>weeks</span>
+                  </div>
+                  {/* Dark right panel — context */}
+                  <div
+                    className="flex flex-col justify-center gap-[5px] px-[18px] py-[18px] relative overflow-hidden flex-1"
+                    style={{ background: "#0a0a0a" }}
+                  >
+                    <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(circle at right center, rgba(239,80,35,0.07) 0%, transparent 65%)" }} />
+                    <span className="relative font-black text-[15px] tracking-[-0.2px] text-white leading-[1.25]">to POC / MVP</span>
+                    <span className="relative text-[11px] leading-[1.5]" style={{ color: "rgba(255,255,255,0.38)" }}>Full production in ~12 wks</span>
+                  </div>
+                </div>
+
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-[8px] px-[24px] h-[48px] rounded-[10px] font-bold text-[15px] text-white w-fit"
+                  style={{ background: "#ef5023", boxShadow: "0 4px 20px rgba(239,80,35,0.3)", textDecoration: "none" }}
+                >
+                  Book a Scoping Call
+                  <Icon name="arrow-right" size={15} color="#fff" />
+                </Link>
+              </div>
+
+              {/* Right: sprint brief table */}
+              <div className="flex-1 overflow-x-auto">
+              <div
+                className="rounded-[20px] overflow-hidden"
+                style={{
+                  minWidth: "320px",
+                  border: "1px solid #e8e1d9",
+                  boxShadow: "0 8px 40px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04)",
+                }}
+              >
+                {/* Table header */}
+                <div
+                  className="grid px-[28px] py-[15px]"
+                  style={{
+                    gridTemplateColumns: "140px 1fr",
+                    background: "#ef5023",
+                    borderBottom: "none",
+                  }}
+                >
+                  <span className="text-[13px] font-bold tracking-[1.5px] uppercase text-white">TIMELINE</span>
+                  <span className="text-[13px] font-bold tracking-[1.5px] uppercase text-white">MILESTONE</span>
+                </div>
+
+                {/* Milestone rows */}
+                {[
+                  {
+                    week: "Week 1",
+                    title: "Idea & Scoping",
+                    desc: "We map your document types, data targets, and integration endpoints. A working spec in 5 days — no slide decks.",
+                    final: false,
+                  },
+                  {
+                    week: "Week 1–2",
+                    title: "AI Pipeline Config",
+                    desc: "OCR, extraction models, and classification rules configured for your exact document schemas and edge cases.",
+                    final: false,
+                  },
+                  {
+                    week: "Week 2–3",
+                    title: "Integration & Testing",
+                    desc: "Connect to your ERP, CRM, or cloud storage. Validated against real documents from your environment.",
+                    final: false,
+                  },
+                  {
+                    week: "Week 3–4",
+                    title: "POC / MVP Live",
+                    desc: "A working deployment you can demo to stakeholders — or push directly into production.",
+                    final: true,
+                  },
+                ].map((step, i, arr) => (
+                  <div
+                    key={i}
+                    className="grid px-[28px] py-[24px]"
+                    style={{
+                      gridTemplateColumns: "140px 1fr",
+                      borderBottom: i < arr.length - 1 ? "1px solid #e8e1d9" : "none",
+                      background: step.final ? "rgba(239,80,35,0.03)" : "#fff",
+                    }}
+                  >
+                    {/* Week pill */}
+                    <div className="flex items-start pt-[3px]">
+                      <span
+                        className="text-[11px] font-black tracking-[0.3px] px-[10px] py-[4px] rounded-full whitespace-nowrap"
+                        style={{
+                          background: step.final ? "#ef5023" : "rgba(239,80,35,0.08)",
+                          color: step.final ? "#fff" : "#ef5023",
+                        }}
+                      >
+                        {step.week}
+                      </span>
+                    </div>
+                    {/* Content */}
+                    <div className="flex flex-col gap-[6px]">
+                      <div className="flex items-center gap-[8px]">
+                        {step.final && (
+                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0">
+                            <circle cx="8" cy="8" r="7.5" fill="#ef5023" />
+                            <path d="M4.5 8.2l2.3 2.3 4.2-4.8" stroke="#fff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        )}
+                        <h3 className="font-black text-[#0a0a0a] text-[16px] leading-[1.3]">{step.title}</h3>
+                      </div>
+                      <p className="text-[14px] leading-[1.7]" style={{ color: "#666" }}>{step.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              </div>
+
+            </div>
+          </section>
+        )}
 
         {/* ── Key Features ── */}
-        <section className="relative px-[16px] md:px-[40px] py-[72px] md:py-[100px] overflow-hidden" style={{ background: "#fafafa" }}>
-          <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.03]" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="sa-lines-feat" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-                <line x1="0" y1="0" x2="0" y2="40" stroke="#ef5023" strokeWidth="0.5" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#sa-lines-feat)" />
-          </svg>
+        <section className="relative px-[16px] md:px-[40px] py-[70px] md:py-[96px] overflow-hidden" style={{ background: "#fff" }}>
           <div className="absolute pointer-events-none" style={{ top: "-80px", right: "-60px", width: "500px", height: "500px", background: "radial-gradient(circle, rgba(239,80,35,0.05) 0%, transparent 65%)", borderRadius: "50%" }} />
 
           <div className="relative max-w-[1320px] mx-auto flex flex-col gap-[48px]">
-            <div className="flex flex-col gap-[12px] max-w-[640px]">
+            <div className="flex flex-col gap-[14px] max-w-[640px]">
               <p className="text-[#ef5023] text-[11px] font-bold tracking-[2px] uppercase">CAPABILITIES</p>
               <h2 className="font-black text-[#0a0a0a] text-[36px] leading-[44px] tracking-[-1.5px]">
                 What's <span className="text-[#ef5023]">included</span>
               </h2>
+              <p className="text-[16px] leading-[1.75]" style={{ color: "#555" }}>
+                Six production-ready modules built for scale — activate selectively based on your document workflow and integration needs.
+              </p>
             </div>
 
             <div
@@ -245,24 +683,24 @@ export default function SolutionAcceleratorDetailClient({
                 <div
                   key={i}
                   className="sa-feat-card flex flex-col gap-[16px] rounded-[20px] p-[28px] relative overflow-hidden"
-                  style={{ background: "#fff", border: "1px solid #e8e1d9", boxShadow: "0 4px 20px rgba(0,0,0,0.06)" }}
+                  style={{ background: "#fafaf8", border: "1px solid #ddd5cc", boxShadow: "0 4px 24px rgba(0,0,0,0.09), 0 1px 4px rgba(0,0,0,0.05)" }}
                 >
                   {/* Dot pattern corner */}
                   <div className="absolute top-0 right-0 pointer-events-none" style={{
                     width: "120px", height: "120px",
-                    backgroundImage: `radial-gradient(circle, ${a.categoryColor}30 1.5px, transparent 1.5px)`,
+                    backgroundImage: `radial-gradient(circle, #ef502330 1.5px, transparent 1.5px)`,
                     backgroundSize: "14px 14px",
                     WebkitMaskImage: "radial-gradient(ellipse at top right, black 10%, transparent 72%)",
                     maskImage: "radial-gradient(ellipse at top right, black 10%, transparent 72%)",
                   }} />
                   {/* Accent bar */}
-                  <div className="absolute left-0 top-[24px] bottom-[24px] rounded-r-full pointer-events-none" style={{ width: "3px", background: `linear-gradient(to bottom, ${a.categoryColor}, ${a.categoryColor}80)` }} />
+                  <div className="absolute left-0 top-[24px] bottom-[24px] rounded-r-full pointer-events-none" style={{ width: "3px", background: "linear-gradient(to bottom, #ef5023, #ef502380)" }} />
 
                   <div
                     className="w-[44px] h-[44px] rounded-[12px] flex items-center justify-center flex-shrink-0"
-                    style={{ background: `${a.categoryColor}15` }}
+                    style={{ background: "#ef502315" }}
                   >
-                    <Icon name={f.icon} size={20} color={a.categoryColor} />
+                    <Icon name={f.icon} size={20} color="#ef5023" />
                   </div>
                   <div className="flex flex-col gap-[8px]">
                     <h3 className="font-black text-[#0a0a0a] text-[16px] leading-[1.3]">{f.title}</h3>
@@ -275,98 +713,157 @@ export default function SolutionAcceleratorDetailClient({
         </section>
 
         {/* ── Tech Stack ── */}
-        <section className="relative px-[16px] md:px-[40px] py-[72px] md:py-[96px] overflow-hidden" style={{ background: "#0d0d0d" }}>
-          <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ opacity: 0.04 }} xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="sa-tech-grid" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
-                <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#fff" strokeWidth="0.5" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#sa-tech-grid)" />
-          </svg>
-          <div className="absolute pointer-events-none" style={{ top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: "700px", height: "400px", background: `radial-gradient(ellipse, ${a.categoryColor}0a 0%, transparent 65%)` }} />
+        <section className="relative px-[16px] md:px-[40px] py-[48px] md:py-[64px] overflow-hidden" style={{ background: "#0a0a0a" }}>
+          <div className="relative max-w-[1320px] mx-auto flex flex-col gap-[36px]">
 
-          <div className="relative max-w-[1320px] mx-auto flex flex-col gap-[48px]">
-            <div className="flex flex-col gap-[12px]">
-              <p className="text-[11px] font-bold tracking-[2px] uppercase" style={{ color: a.categoryColor }}>TECHNOLOGY STACK</p>
-              <h2 className="font-black text-white text-[36px] leading-[44px] tracking-[-1.5px]">
-                Built with production-grade tech
-              </h2>
+            {/* Header */}
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-[16px]">
+              <div className="flex flex-col gap-[12px]">
+                <p className="text-[11px] font-bold tracking-[2.5px] uppercase" style={{ color: "#ef5023" }}>TECHNOLOGY STACK</p>
+                <h2 className="font-black text-white text-[36px] leading-[44px] tracking-[-1.5px]">
+                  Built with <span style={{ color: "#ef5023" }}>production-grade</span> tech
+                </h2>
+              </div>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-[20px]">
-              {a.techCategories.map((cat, i) => (
-                <div
-                  key={i}
-                  className="flex flex-col gap-[16px] rounded-[16px] p-[24px]"
-                  style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}
-                >
-                  <p className="text-[11px] font-black tracking-[1.5px] uppercase" style={{ color: a.categoryColor }}>
-                    {cat.label}
-                  </p>
-                  <div className="flex flex-col gap-[8px]">
-                    {cat.items.map((tech, j) => (
-                      <div key={j} className="flex items-center gap-[8px]">
-                        <div className="w-[5px] h-[5px] rounded-full flex-shrink-0" style={{ background: a.categoryColor }} />
-                        <span className="text-[14px] font-medium" style={{ color: "rgba(255,255,255,0.75)" }}>{tech}</span>
-                      </div>
-                    ))}
+            {/* Editorial rows */}
+            <div className="flex flex-col">
+              {a.techCategories.map((cat, i) => {
+                const featured = i === 0;
+                return (
+                  <div
+                    key={i}
+                    className="sa-tech-row flex flex-col md:flex-row md:items-start gap-[16px] md:gap-0 py-[24px] relative"
+                    style={{ borderTop: `1px solid ${featured ? "rgba(239,80,35,0.20)" : "rgba(255,255,255,0.08)"}` }}
+                  >
+                    {/* Category name column */}
+                    <div className="flex-shrink-0 md:w-[220px] flex flex-col gap-[6px] md:pt-[2px]">
+                      <span
+                        className="font-black tracking-[-0.5px] leading-none"
+                        style={{
+                          fontSize: "20px",
+                          color: featured ? "#ef5023" : "#ffffff",
+                        }}
+                      >
+                        {cat.label}
+                      </span>
+                    </div>
+
+                    {/* Rule line (desktop) */}
+                    <div
+                      className="hidden md:block self-start mt-[12px] mx-[28px] flex-shrink-0"
+                      style={{
+                        width: "28px",
+                        height: "2px",
+                        background: featured ? "#ef5023" : "rgba(255,255,255,0.2)",
+                        borderRadius: "2px",
+                      }}
+                    />
+
+                    {/* Chips */}
+                    <div className="flex flex-wrap gap-[8px] flex-1 md:pt-[2px]">
+                      {cat.items.map((tech, j) => (
+                        <span
+                          key={j}
+                          className="sa-tech-chip inline-flex items-center text-[13px] font-semibold px-[14px] py-[7px] rounded-[8px]"
+                          style={{
+                            background: featured ? "rgba(239,80,35,0.12)" : "rgba(255,255,255,0.06)",
+                            border: featured ? "1px solid rgba(239,80,35,0.28)" : "1px solid rgba(255,255,255,0.12)",
+                            color: featured ? "#ffffff" : "rgba(255,255,255,0.78)",
+                          }}
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
+
+              {/* Bottom rule */}
+              <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }} />
             </div>
+
           </div>
         </section>
 
         {/* ── Business Outcomes ── */}
-        <section className="relative px-[16px] md:px-[40px] py-[72px] md:py-[100px] overflow-hidden" style={{ background: "#fff" }}>
-          <div className="absolute right-0 top-0 bottom-0 pointer-events-none" style={{ width: "3px", background: "linear-gradient(to bottom, transparent, #ef5023, transparent)" }} />
-          <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.02]" xmlns="http://www.w3.org/2000/svg">
+        <section className="relative px-[16px] md:px-[40px] py-[70px] md:py-[96px] overflow-hidden" style={{ background: "#fff" }}>
+          {/* Dot grid pattern */}
+          <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ opacity: 0.14 }} xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <pattern id="sa-out-dots" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
-                <circle cx="1" cy="1" r="0.8" fill="#0a0a0a" />
+              <pattern id="sa-out-dots" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
+                <circle cx="14" cy="14" r="1.6" fill="#ef5023" />
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#sa-out-dots)" />
           </svg>
-          <div className="absolute pointer-events-none" style={{ bottom: "-60px", left: "-40px", width: "400px", height: "400px", background: "radial-gradient(circle, rgba(239,80,35,0.05) 0%, transparent 70%)", borderRadius: "50%" }} />
+          {/* Orange radial glow — bottom right */}
+          <div className="absolute pointer-events-none" style={{ bottom: "-100px", right: "-80px", width: "480px", height: "480px", background: "radial-gradient(circle, rgba(239,80,35,0.07) 0%, transparent 65%)", borderRadius: "50%" }} />
 
-          <div className="relative max-w-[1320px] mx-auto flex flex-col gap-[56px]">
-            <div className="flex flex-col gap-[12px] max-w-[640px]">
-              <p className="text-[#ef5023] text-[11px] font-bold tracking-[2px] uppercase">PROVEN RESULTS</p>
-              <h2 className="font-black text-[#0a0a0a] text-[36px] leading-[44px] tracking-[-1.5px]">
-                Business <span className="text-[#ef5023]">outcomes</span>
-              </h2>
-              <p className="text-[16px] leading-[1.7]" style={{ color: "#666" }}>
-                Real numbers from live client deployments using this accelerator.
-              </p>
+          <div className="relative max-w-[1320px] mx-auto flex flex-col gap-[48px]">
+
+            {/* Header */}
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-[16px]">
+              <div className="flex flex-col gap-[10px]">
+                <p className="text-[11px] font-bold tracking-[2px] uppercase" style={{ color: "#ef5023" }}>PROVEN RESULTS</p>
+                <h2 className="font-black text-[#0a0a0a] text-[36px] leading-[44px] tracking-[-1.5px]">
+                  Business <span style={{ color: "#ef5023" }}>outcomes</span>
+                </h2>
+              </div>
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-[20px]">
-              {a.outcomes.map((o, i) => (
-                <div
-                  key={i}
-                  className="flex flex-col gap-[12px] rounded-[20px] p-[28px] relative overflow-hidden"
-                  style={{ background: i === 0 ? "#0a0a0a" : "#f7f6f5", border: i === 0 ? "1px solid rgba(239,80,35,0.3)" : "1px solid #e8e1d9" }}
-                >
-                  {i === 0 && (
-                    <div className="absolute pointer-events-none inset-0 rounded-[20px]" style={{ background: "radial-gradient(circle at top left, rgba(239,80,35,0.12) 0%, transparent 60%)" }} />
-                  )}
-                  <span className="font-black text-[40px] leading-[1] tracking-[-2px]" style={{ color: i === 0 ? "#ef5023" : a.categoryColor }}>
-                    {o.metric}
-                  </span>
-                  <div className="flex flex-col gap-[4px]">
-                    <span className="font-black text-[15px] leading-[1.3]" style={{ color: i === 0 ? "#fff" : "#0a0a0a" }}>{o.label}</span>
-                    <span className="text-[12px]" style={{ color: i === 0 ? "rgba(255,255,255,0.5)" : "#999" }}>{o.description}</span>
+            {/* Scoreboard */}
+            <div
+              className="rounded-[20px] overflow-hidden"
+              style={{ border: "1px solid #e5e5e5", boxShadow: "0 16px 56px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.05)" }}
+            >
+              {/* Orange top stripe */}
+              <div style={{ height: "3px", background: "linear-gradient(to right, #ef5023 0%, #ff7a4d 35%, rgba(239,80,35,0.12) 100%)" }} />
+
+              {/* Stats row */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+                {a.outcomes.map((o, i) => (
+                  <div
+                    key={i}
+                    className="sa-outcome-cell flex flex-col gap-[20px] px-[20px] sm:px-[32px] py-[28px] sm:py-[40px] relative"
+                    style={{
+                      borderRight: i < a.outcomes.length - 1 ? "1px solid #e8e1d9" : "none",
+                      borderTop: i >= 2 ? "1px solid #e8e1d9" : "none",
+                    }}
+                  >
+                    {/* Number */}
+                    <span
+                      className="font-black leading-none tracking-[-2px]"
+                      style={{
+                        fontSize: "clamp(32px, 3.5vw, 44px)",
+                        color: i === 0 ? "#ef5023" : "#0a0a0a",
+                      }}
+                    >
+                      {o.metric}
+                    </span>
+
+                    {/* Label + desc */}
+                    <div className="flex flex-col gap-[5px]">
+                      <span className="font-bold text-[14px] leading-[1.35]" style={{ color: "#0a0a0a" }}>
+                        {o.label}
+                      </span>
+                      <span className="text-[12px] leading-[1.5]" style={{ color: "#aaa" }}>
+                        {o.description}
+                      </span>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
+
             </div>
+
           </div>
         </section>
 
         {/* ── How it Works ── */}
-        <section className="relative px-[16px] md:px-[40px] py-[72px] md:py-[100px] overflow-hidden" style={{ background: "#fafafa" }}>
+        {a.slug !== "ai-document-intelligence" && (
+        <section className="relative px-[16px] md:px-[40px] py-[70px] md:py-[96px] overflow-hidden" style={{ background: "#fafafa" }}>
           <div className="relative max-w-[1320px] mx-auto flex flex-col gap-[48px]">
             <div className="flex flex-col gap-[12px] max-w-[640px]">
               <p className="text-[#ef5023] text-[11px] font-bold tracking-[2px] uppercase">ENGAGEMENT MODEL</p>
@@ -398,11 +895,12 @@ export default function SolutionAcceleratorDetailClient({
             </div>
           </div>
         </section>
+        )}
 
         {/* ── Related Accelerators ── */}
         {related.length > 0 && (
-          <section className="relative px-[16px] md:px-[40px] py-[72px] md:py-[96px] overflow-hidden" style={{ background: "#0d0d0d" }}>
-            <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ opacity: 0.03 }} xmlns="http://www.w3.org/2000/svg">
+          <section className="relative px-[16px] md:px-[40px] py-[70px] md:py-[96px] overflow-hidden" style={{ background: "#0d0d0d" }}>
+            <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ opacity: 0.025 }} xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <pattern id="sa-rel-grid" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
                   <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#fff" strokeWidth="0.5" />
@@ -411,59 +909,95 @@ export default function SolutionAcceleratorDetailClient({
               <rect width="100%" height="100%" fill="url(#sa-rel-grid)" />
             </svg>
 
-            <div className="relative max-w-[1320px] mx-auto flex flex-col gap-[48px]">
+            <div className="relative max-w-[1320px] mx-auto flex flex-col gap-[40px]">
+
+              {/* Header */}
               <div className="flex items-end justify-between gap-[20px]">
                 <div className="flex flex-col gap-[10px]">
-                  <p className="text-[11px] font-bold tracking-[2px] uppercase" style={{ color: "rgba(255,255,255,0.4)" }}>MORE ACCELERATORS</p>
+                  <p className="text-[11px] font-bold tracking-[2px] uppercase" style={{ color: "rgba(255,255,255,0.35)" }}>MORE ACCELERATORS</p>
                   <h2 className="font-black text-white text-[32px] leading-[40px] tracking-[-1.2px]">
-                    Explore <span className="text-[#ef5023]">others</span>
+                    Explore <span style={{ color: "#ef5023" }}>others</span>
                   </h2>
                 </div>
                 <Link
                   href="/company/solution-accelerators"
-                  className="hidden sm:inline-flex items-center gap-[6px] font-bold text-[14px] text-white/60 hover:text-white transition-colors"
-                  style={{ textDecoration: "none" }}
+                  className="hidden sm:inline-flex items-center gap-[6px] font-semibold text-[13px] transition-colors"
+                  style={{ color: "rgba(255,255,255,0.4)", textDecoration: "none" }}
                 >
-                  View all <Icon name="arrow-right" size={14} color="currentColor" />
+                  View all <Icon name="arrow-right" size={13} color="currentColor" />
                 </Link>
               </div>
 
+              {/* Cards grid */}
               <div className="grid md:grid-cols-3 gap-[20px]">
                 {related.map((r) => (
                   <Link
                     key={r.slug}
                     href={`/company/solution-accelerators/${r.slug}`}
-                    className="sa-rel-card group flex flex-col rounded-[20px] overflow-hidden relative"
-                    style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", textDecoration: "none" }}
+                    className="sa-rel-card group flex flex-col rounded-[20px] overflow-hidden"
+                    style={{
+                      background: "#161616",
+                      border: "1px solid rgba(255,255,255,0.12)",
+                      textDecoration: "none",
+                    }}
                   >
-                    <div className="relative overflow-hidden" style={{ height: "180px" }}>
-                      <img src={r.image} alt={r.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                      <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(13,13,13,0.8) 0%, transparent 50%)" }} />
+                    {/* Image */}
+                    <div className="relative overflow-hidden flex-shrink-0" style={{ height: "196px" }}>
+                      <img
+                        src={r.image}
+                        alt={r.name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.2) 50%, transparent 100%)" }} />
+                      {/* Category chip */}
                       <span
-                        className="absolute bottom-[14px] left-[14px] inline-flex items-center gap-[5px] text-[10px] font-black tracking-[1.5px] uppercase px-[10px] py-[4px] rounded-full"
-                        style={{ background: `${r.categoryColor}20`, color: r.categoryColor, border: `1px solid ${r.categoryColor}40` }}
+                        className="absolute bottom-[16px] left-[16px] inline-flex items-center gap-[6px] text-[10px] font-bold tracking-[1.5px] uppercase px-[10px] py-[5px] rounded-full"
+                        style={{
+                          background: "rgba(10,10,10,0.55)",
+                          backdropFilter: "blur(10px)",
+                          WebkitBackdropFilter: "blur(10px)",
+                          border: "1px solid rgba(255,255,255,0.14)",
+                          color: "#ffffff",
+                        }}
                       >
+                        <span
+                          className="flex-shrink-0 rounded-full"
+                          style={{ width: "6px", height: "6px", background: r.categoryColor }}
+                        />
                         {r.category}
                       </span>
                     </div>
-                    <div className="flex flex-col gap-[10px] p-[22px]">
-                      <h3 className="font-black text-white text-[16px] leading-[1.35] group-hover:text-[#ef5023] transition-colors">{r.name}</h3>
-                      <p className="text-[13px] leading-[1.65]" style={{ color: "rgba(255,255,255,0.5)" }}>{r.shortDescription.slice(0, 100)}…</p>
-                      <div className="flex items-center gap-[6px] mt-[4px]">
-                        <span className="text-[12px] font-bold" style={{ color: "rgba(255,255,255,0.3)" }}>
-                          {r.timeSaved} to production · {r.clientsUsing} deployments
+
+                    {/* Body */}
+                    <div className="flex flex-col gap-[12px] p-[24px] flex-1">
+                      <h3 className="font-black text-white text-[16px] leading-[1.35] group-hover:text-[#ef5023] transition-colors">
+                        {r.name}
+                      </h3>
+                      <p className="text-[13px] leading-[1.65] flex-1" style={{ color: "rgba(255,255,255,0.45)" }}>
+                        {r.shortDescription.slice(0, 96)}…
+                      </p>
+
+                      {/* Footer */}
+                      <div className="flex items-center justify-between pt-[8px]" style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}>
+                        <span className="text-[12px] font-semibold" style={{ color: "rgba(255,255,255,0.3)" }}>
+                          {r.timeSaved} to production
                         </span>
+                        <div className="opacity-0 group-hover:opacity-100 transition-opacity">
+                          <Icon name="arrow-right" size={15} color="#ef5023" />
+                        </div>
                       </div>
                     </div>
                   </Link>
                 ))}
               </div>
+
             </div>
           </section>
         )}
 
         {/* ── CTA ── */}
         <section className="relative px-[16px] md:px-[40px] py-[56px] md:py-[80px] overflow-hidden" style={{ background: "#0d0d0d", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+          {/* Grid pattern on section background */}
           <div className="max-w-[1320px] mx-auto">
             <div
               className="relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-[32px] rounded-[20px] px-[36px] md:px-[52px] py-[40px] md:py-[48px]"
@@ -471,14 +1005,6 @@ export default function SolutionAcceleratorDetailClient({
             >
               <div className="absolute pointer-events-none" style={{ top: "-60px", right: "-40px", width: "280px", height: "280px", background: "radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 70%)", borderRadius: "50%" }} />
               <div className="absolute pointer-events-none" style={{ bottom: "-40px", left: "20%", width: "200px", height: "200px", background: "radial-gradient(circle, rgba(255,255,255,0.07) 0%, transparent 70%)", borderRadius: "50%" }} />
-              <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.06]" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <pattern id="cta-grid-sa" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#fff" strokeWidth="0.5" />
-                  </pattern>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#cta-grid-sa)" />
-              </svg>
 
               <div className="relative flex flex-col gap-[10px] max-w-[560px]">
                 <h3 className="font-black text-white text-[26px] leading-[1.25] tracking-[-0.5px]">
@@ -516,9 +1042,18 @@ export default function SolutionAcceleratorDetailClient({
         @media (max-width: 767px) { .sa-feat-grid { grid-template-columns: 1fr !important; } }
         @media (min-width: 768px) and (max-width: 1023px) { .sa-feat-grid { grid-template-columns: repeat(2, 1fr) !important; } }
         .sa-feat-card { transition: transform .3s cubic-bezier(.4,0,.2,1), box-shadow .3s; }
-        .sa-feat-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(0,0,0,0.10) !important; }
-        .sa-rel-card { transition: border-color .3s, background .3s; }
-        .sa-rel-card:hover { border-color: rgba(239,80,35,0.35) !important; background: rgba(255,255,255,0.07) !important; }
+        .sa-feat-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(0,0,0,0.13), 0 4px 12px rgba(0,0,0,0.07) !important; }
+        .sa-rel-card { transition: border-color .25s, transform .25s, box-shadow .25s; }
+        .sa-rel-card:hover { border-color: rgba(239,80,35,0.35) !important; transform: translateY(-4px); box-shadow: 0 20px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(239,80,35,0.25); }
+        .challenge-row { transition: background .18s; cursor: default; }
+        .challenge-row:hover { background: rgba(239,80,35,0.03) !important; }
+        .sol-feat-row { transition: background .18s; }
+        .sol-feat-row:hover { background: rgba(239,80,35,0.03) !important; }
+        .sa-tech-row { transition: background .2s; }
+        .sa-tech-chip { transition: filter .15s; cursor: default; }
+        .sa-tech-chip:hover { filter: brightness(1.2); }
+        .sa-outcome-cell { transition: background .2s; background: #fff; }
+        .sa-outcome-cell:hover { background: #fdf9f7 !important; }
       `}</style>
 
       <Footer />

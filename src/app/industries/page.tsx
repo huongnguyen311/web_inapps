@@ -162,12 +162,13 @@ export default function IndustriesPage() {
             <img
               src="/Media/Image/case 5.png"
               alt=""
-              className="absolute right-0 top-0 h-full"
+              className="absolute right-0 top-0 h-full hidden md:block"
               style={{ width: "65%", objectFit: "cover", objectPosition: "right center" }}
             />
+            <div className="absolute inset-0 bg-[#0d0d0d] md:bg-transparent" />
             <div
-              className="absolute inset-0"
-              style={{ background: "linear-gradient(to right, #0d0d0d 35%, #0d0d0d 45%, rgba(13,13,13,0.7) 60%, transparent 100%)" }}
+              className="absolute inset-0 hidden md:block"
+              style={{ background: "linear-gradient(to right, #0d0d0d 55%, rgba(13,13,13,0.85) 75%, transparent 100%)" }}
             />
           </div>
 
@@ -355,7 +356,7 @@ export default function IndustriesPage() {
               </div>
 
               {/* right - answer panel */}
-              <div className="rounded-[16px] p-[36px] flex flex-col gap-[20px]" style={{ background: "#fff", border: "1px solid #e8e8e8", boxShadow: "0 8px 32px rgba(0,0,0,0.08)" }}>
+              <div className="rounded-[16px] p-[20px] md:p-[36px] flex flex-col gap-[20px]" style={{ background: "#fff", border: "1px solid #e8e8e8", boxShadow: "0 8px 32px rgba(0,0,0,0.08)" }}>
                 <div className="flex flex-col gap-[8px]">
                   <span className="text-[11px] font-bold uppercase tracking-[2px] text-[#ef5023]">{faqItems[faqIndex].label}</span>
                   <h3 className="font-black text-[#0a0a0a] text-[20px] leading-[1.35] tracking-[-0.4px]">

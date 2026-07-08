@@ -28,7 +28,7 @@ export const solutionAccelerators: SolutionAccelerator[] = [
     category: "AI & Automation",
     categoryColor: "#8b5cf6",
     image: "https://images.unsplash.com/photo-1655720031554-a929595ffad7?w=800&q=80",
-    heroImage: "https://images.unsplash.com/photo-1655720031554-a929595ffad7?w=1600&q=80",
+    heroImage: "/Media/Image/case 10.png",
     timeSaved: "12 weeks",
     techCount: "18",
     clientsUsing: "14",
@@ -52,7 +52,7 @@ export const solutionAccelerators: SolutionAccelerator[] = [
     ],
     outcomes: [
       { metric: "85%", label: "Reduction in manual processing", description: "Across 14 client deployments" },
-      { metric: "12 wk", label: "Average time to production", description: "vs. 9–12 months from scratch" },
+      { metric: "12 wk", label: "Time to full production", description: "POC/MVP in 2–4 wks, full deploy in 12" },
       { metric: "99.2%", label: "Extraction accuracy", description: "On structured invoice templates" },
       { metric: "500+", label: "Documents/minute", description: "Peak throughput under load" },
     ],
