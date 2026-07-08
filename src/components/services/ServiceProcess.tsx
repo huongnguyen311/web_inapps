@@ -5,10 +5,13 @@ interface ProcessStep {
   duration: string;
   description: string;
   includes: string[];
+  deliverable?: string;
 }
 
 interface Props {
   steps: ProcessStep[];
+  heading?: string;
+  subtitle?: string;
 }
 
 const stepIcons = [
@@ -56,7 +59,7 @@ const BOT_NODES = [
   { x: 280, y: 292, stepIdx: 3 },
 ];
 
-export default function ServiceProcess({ steps }: Props) {
+export default function ServiceProcess({ steps, heading, subtitle }: Props) {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
   const [activeNode, setActiveNode] = useState<number | null>(null);
   const startRef = useRef<number | null>(null);
@@ -93,10 +96,10 @@ export default function ServiceProcess({ steps }: Props) {
             <p className="text-[#ef5023] text-[11px] font-bold tracking-[2px] uppercase">OUR PROCESS</p>
           </div>
           <h2 className="font-black text-[#0a0a0a] text-[36px] leading-[44px] tracking-[-1.5px]">
-            How We Turn Ideas into <span className="text-[#ef5023]">Real Results</span>
+            {heading ?? <>How We Turn Ideas into <span className="text-[#ef5023]">Real Results</span></>}
           </h2>
           <p className="text-[#555] text-[14px] leading-[1.75]">
-            From first brief to shipped product. Transparent, iterative, and built around your goals.
+            {subtitle ?? "From first brief to shipped product. Transparent, iterative, and built around your goals."}
           </p>
         </div>
 
@@ -153,6 +156,21 @@ export default function ServiceProcess({ steps }: Props) {
                       </div>
                     ))}
                   </div>
+
+                  {/* deliverable badge */}
+                  {step.deliverable && (
+                    <div className="mt-auto pt-[12px]">
+                      <span
+                        className="inline-flex items-center gap-[6px] text-[11px] font-bold px-[10px] py-[4px] rounded-[6px]"
+                        style={{ background: "#f0fdf4", color: "#16a34a", border: "1px solid #bbf7d0" }}
+                      >
+                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                          <path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="#16a34a" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                        {step.deliverable}
+                      </span>
+                    </div>
+                  )}
                 </div>
               </div>
 

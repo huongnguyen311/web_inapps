@@ -19,7 +19,7 @@ export default function ServiceCaseStudy({ data }: Props) {
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const progressRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const cs = data.items.find(c => c.model === activeModel) ?? data.items[0];
+  const cs = data.items.find(c => c.model === activeModel) ?? data.items[tabIndex % data.items.length];
 
   const startTimers = () => {
     if (timerRef.current) clearInterval(timerRef.current);
@@ -183,7 +183,7 @@ export default function ServiceCaseStudy({ data }: Props) {
         <div className="relative overflow-hidden group min-h-[240px] md:min-h-0" style={{ background: "#f0f0f0" }}>
           <img
             src={cs.image ?? "/Media/Image/prd 1.jpg"}
-            alt={cs.title}
+            alt={cs.altText ?? cs.title}
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
           />
         </div>

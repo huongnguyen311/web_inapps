@@ -2,9 +2,12 @@ import Link from "next/link";
 
 interface Props {
   serviceName: string;
+  heading?: string;
+  subtitle?: string;
+  ctaLabel?: string;
 }
 
-export default function ServiceCta({ serviceName }: Props) {
+export default function ServiceCta({ serviceName, heading, subtitle, ctaLabel }: Props) {
   return (
     <section className="relative px-[16px] md:px-[40px] py-[48px] overflow-hidden" style={{ background: "#0d0d0d" }}>
       {/* constellation background */}
@@ -69,10 +72,10 @@ export default function ServiceCta({ serviceName }: Props) {
 
           <div className="relative flex flex-col gap-[8px] min-w-0" style={{ zIndex: 2 }}>
             <h2 className="font-black text-white text-[28px] leading-[36px] tracking-[-0.6px]">
-              Ready to get started with {serviceName}?
+              {heading ?? `Ready to get started with ${serviceName}?`}
             </h2>
             <p className="text-[14px] text-[#888] leading-[1.6]">
-              Tell us about your project - no pitch, no obligation.
+              {subtitle ?? "Tell us about your project - no pitch, no obligation."}
             </p>
           </div>
 
@@ -87,7 +90,7 @@ export default function ServiceCta({ serviceName }: Props) {
               whiteSpace: "nowrap",
             }}
           >
-            <span>Talk to a Solutions Consultant</span>
+            <span>{ctaLabel ?? "Talk to a Solutions Consultant"}</span>
             <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
               <path d="M2 5h6M5 2l3 3-3 3" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>

@@ -1,7 +1,30 @@
 "use client";
 
+interface FitItem {
+  title: string;
+  desc: string;
+  tag?: string;
+  highlight?: string;
+}
+
+function renderTitle(title: string, highlight?: string) {
+  if (!highlight) return <>{title}</>;
+  const idx = title.indexOf(highlight);
+  if (idx === -1) return <>{title}</>;
+  return (
+    <>
+      {title.slice(0, idx)}
+      <span style={{ color: "#ef5023" }}>{highlight}</span>
+      {title.slice(idx + highlight.length)}
+    </>
+  );
+}
+
 interface Props {
   checklist: string[];
+  sectionLabel?: string;
+  heading?: string;
+  items?: FitItem[];
   variant?: "ai";
 }
 
@@ -26,8 +49,8 @@ const cards = [
       </svg>
     ),
     iconBg: "#ef5023",
-    title: "You want cost efficiency without the management headache",
-    desc: "We handle HR, payroll, onboarding, and performance. You stay focused on building.",
+    title: "You want to reduce hiring costs without adding management work",
+    desc: "We own HR, payroll, onboarding, and performance reviews. You stay focused on the product.",
   },
   {
     tag: "Good fit",
@@ -40,13 +63,14 @@ const cards = [
       </svg>
     ),
     iconBg: "#ef5023",
-    title: "You're looking for a long-term team, not a short-term vendor",
-    desc: "Our clients stay an average of 3+ years. We grow with your product.",
+    title: "You need a long-term team, not a 3-month contractor pool",
+    desc: "Our average client engagement runs over 10 years. We scale with your product as your roadmap grows.",
   },
 ];
 
-export default function ServiceRightForYou({ checklist, variant }: Props) {
+export default function ServiceRightForYou({ checklist, sectionLabel, heading, items, variant }: Props) {
   const isAI = variant === "ai";
+  const displayCards: FitItem[] = items ?? cards.map(c => ({ title: c.title, desc: c.desc, tag: c.tag }));
   return (
     <section className="relative px-[16px] md:px-[40px] py-[48px] md:py-[70px] overflow-hidden" style={{ background: isAI ? "#f4f4f4" : "#ffffff", borderTop: "1px solid #e8e8e8" }}>
 
@@ -97,15 +121,15 @@ export default function ServiceRightForYou({ checklist, variant }: Props) {
 
         {/* header */}
         <div className="flex flex-col gap-[10px]">
-          <p className="text-[#ef5023] text-[11px] font-bold tracking-[2px] uppercase">IS THIS RIGHT FOR YOU?</p>
+          <p className="text-[#ef5023] text-[11px] font-bold tracking-[2px] uppercase">{sectionLabel ?? "IS THIS RIGHT FOR YOU?"}</p>
           <h2 className="font-black text-[#0a0a0a] text-[36px] leading-[44px] tracking-[-1.5px]">
-            You'll benefit from this if
+            {heading ?? "You'll benefit from this if"}
           </h2>
         </div>
 
         {/* 3 cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-[20px]">
-          {cards.map((card, i) => (
+          {displayCards.map((card, i) => (
             <div
               key={i}
               className="flex flex-col items-center text-center gap-[20px] px-[32px] pt-[36px] pb-[36px] rounded-[20px]"
@@ -116,20 +140,22 @@ export default function ServiceRightForYou({ checklist, variant }: Props) {
                 className="text-[12px] font-semibold px-[14px] py-[5px] rounded-full"
                 style={{ background: "#fff4f0", color: "#ef5023", border: "1px solid #fcd5c7" }}
               >
-                {card.tag}
+                {items ? (card.tag ?? `Fit ${i + 1}`) : cards[i]?.tag ?? "Good fit"}
               </span>
 
               {/* icon circle */}
-              <div
-                className="w-[64px] h-[64px] rounded-full flex items-center justify-center flex-shrink-0"
-                style={{ background: card.iconBg, boxShadow: `0 8px 24px ${card.iconBg}40` }}
-              >
-                {card.icon}
-              </div>
+              {!items && (
+                <div
+                  className="w-[64px] h-[64px] rounded-full flex items-center justify-center flex-shrink-0"
+                  style={{ background: cards[i]?.iconBg ?? "#ef5023", boxShadow: `0 8px 24px ${cards[i]?.iconBg ?? "#ef5023"}40` }}
+                >
+                  {cards[i]?.icon}
+                </div>
+              )}
 
               {/* text */}
               <div className="flex flex-col gap-[8px]">
-                <h3 className="font-bold text-[#0a0a0a] text-[16px] leading-[24px]">{card.title}</h3>
+                <h3 className="font-bold text-[#0a0a0a] text-[16px] leading-[24px]">{renderTitle(card.title, card.highlight)}</h3>
                 <p className="text-[#666] text-[14px] leading-[22px]">{card.desc}</p>
               </div>
             </div>

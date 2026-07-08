@@ -29,8 +29,8 @@ const FEATURES = [
         <path d="M8.5 12l2.5 2.5 4.5-4.5"/>
       </svg>
     ),
-    title: "Built for production, not demos",
-    desc: "We don't ship prototypes. Every build includes guardrails, monitoring, rollback plans, and SLA agreements before it touches real users.",
+    title: "AI-native engineers, built for production",
+    desc: "Our engineers use AI tooling as a core part of their workflow, not an afterthought. Every build ships with monitoring, rollback plans, and SLA agreements before your first user sees a line of code.",
   },
   {
     icon: (
@@ -39,8 +39,8 @@ const FEATURES = [
         <path d="M8 10l2 2-2 2M13 14h3"/>
       </svg>
     ),
-    title: "Top 1% vetted talent",
-    desc: "Our engineers pass a rigorous multi-stage vetting process. They are not learning on your project — they have shipped production systems before.",
+    title: "Top 1% vetted engineers",
+    desc: "Every engineer passes a 4-stage evaluation before joining a client team. They have shipped production systems before. Your project is not their training ground.",
   },
 ];
 

@@ -15,7 +15,7 @@ export default function ServiceHero({ service }: Props) {
       {/* Banner background */}
       <div className="absolute inset-0">
         <img
-          src={service.slug === "ai-agent-development" ? "/Media/Image/case 17.png" : service.slug === "custom-software-development" ? "/Media/Image/case 18.png" : "/Media/Image/case 7.png"}
+          src={service.slug === "ai-agent-development" ? "/Media/Image/case 17.png" : service.slug === "custom-software-development" ? "/Media/Image/case 18.png" : service.slug === "staff-augmentation" ? "/Media/Image/InApps-AI-Native-Offshore-Development-Team (4).png" : service.slug === "project-based-dev" ? "/Media/Image/Ảnh Công Ty  (2).png" : service.slug === "agentic-workflow-automation" ? "/Media/Image/case 4.png" : service.slug === "generative-ai-integration" ? "/Media/Image/case 10.png" : service.slug === "mvp-proof-of-concept" ? "/Media/Image/Ảnh Công Ty .png" : "/Media/Image/case 7.png"}
           alt="Hero background"
           className="absolute right-0 top-0 h-full"
           style={{ width: "65%", objectFit: "cover", objectPosition: "right center" }}
@@ -42,7 +42,7 @@ export default function ServiceHero({ service }: Props) {
             className="bg-[#ef5023] hover:bg-[#d94010] text-white font-bold text-[16px] px-[28px] h-[55px] rounded-[10px] inline-flex items-center transition-colors"
             style={{ boxShadow: "0 8px 32px rgba(239,80,35,0.35)", textDecoration: "none" }}
           >
-            Start a Project
+            Book a Discovery Call
           </Link>
           <Link
             href="/case-study"

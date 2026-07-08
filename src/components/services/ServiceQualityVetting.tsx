@@ -13,9 +13,12 @@ interface QualityMetric {
 interface Props {
   stages: VettingStage[];
   metrics: QualityMetric[];
+  subtitle?: string;
+  heading?: string;
+  eyebrow?: string;
 }
 
-export default function ServiceQualityVetting({ stages, metrics }: Props) {
+export default function ServiceQualityVetting({ stages, metrics, subtitle, heading, eyebrow }: Props) {
   return (
     <section className="relative px-[16px] md:px-[40px] py-[48px] md:py-[70px] overflow-hidden" style={{ background: "#080808", borderTop: "1px solid #1a1a1a" }}>
       {/* pattern top-left corner */}
@@ -52,12 +55,12 @@ export default function ServiceQualityVetting({ stages, metrics }: Props) {
 
         {/* header */}
         <div className="flex flex-col gap-[10px] mb-[48px]">
-          <p className="text-[11px] font-bold tracking-[2px] uppercase text-[#ef5023]">HIRING PROCESS</p>
+          <p className="text-[11px] font-bold tracking-[2px] uppercase text-[#ef5023]">{eyebrow ?? "HIRING PROCESS"}</p>
           <h2 className="font-black text-white text-[36px] leading-[44px] tracking-[-1.5px]">
-            Our Engineer Evaluation Process
+            {heading ?? "Our Engineer Evaluation Process"}
           </h2>
           <p className="text-[#888] text-[15px] leading-[1.75] max-w-[520px]">
-            Every engineer on your project passes 4 rigorous stages before we let them near client work.
+            {subtitle ?? "Every engineer on your project passes 4 rigorous stages before we let them near client work."}
           </p>
         </div>
 

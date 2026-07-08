@@ -13,6 +13,8 @@ export interface FeatureItem {
   icon: string;
   title: string;
   description: string;
+  subtitle?: string;
+  bullets?: string[];
 }
 
 export interface PricingTier {
@@ -44,6 +46,7 @@ export interface CaseStudyData {
   link: string;
   stats: { value: string; label: string }[];
   image?: string;
+  altText?: string;
   model?: CaseStudyModel;
 }
 
@@ -71,6 +74,7 @@ export interface ProcessStep {
   duration: string;
   description: string;
   includes: string[];
+  deliverable?: string;
 }
 
 export interface TeamRole {
@@ -106,17 +110,20 @@ export interface ServiceData {
   heroIllo: string;
   techStack?: TechGroup[];
   showTrustBadge?: boolean;
+  cta?: { heading?: string; subtitle?: string; ctaLabel?: string };
+  metaTitle?: string;
+  metaDescription?: string;
   sections: {
-    buyerProblems: SectionToggle & { problems: ProblemItem[]; heading?: string; subtitle?: string };
+    buyerProblems: SectionToggle & { problems: ProblemItem[]; heading?: string; subtitle?: string; insightText?: string; hideTrustBadge?: boolean };
     serviceOverview: SectionToggle & ServiceOverviewData;
-    isRightForYou: SectionToggle & { checklist: string[] };
-    whatYouGet: SectionToggle & { items: FeatureItem[] };
-    process: SectionToggle & { steps: ProcessStep[] };
-    teamStructure: SectionToggle & { roles: TeamRole[]; note?: string };
-    qualityVetting: SectionToggle & { stages: VettingStage[]; metrics: QualityMetric[] };
+    isRightForYou: SectionToggle & { checklist: string[]; sectionLabel?: string; heading?: string; items?: { title: string; desc: string; tag?: string; highlight?: string }[] };
+    whatYouGet: SectionToggle & { items: FeatureItem[]; heading?: string };
+    process: SectionToggle & { steps: ProcessStep[]; heading?: string; subtitle?: string };
+    teamStructure: SectionToggle & { roles: TeamRole[]; note?: string; subtitle?: string };
+    qualityVetting: SectionToggle & { stages: VettingStage[]; metrics: QualityMetric[]; subtitle?: string; heading?: string; eyebrow?: string };
     caseStudy: SectionToggle & { items: CaseStudyData[] };
     comparison: SectionToggle & { rows: ComparisonRow[]; competitorLabel?: string };
-    faq: SectionToggle & { items: FaqItem[] };
+    faq: SectionToggle & { items: FaqItem[]; heading?: string };
   };
 }
 
@@ -159,15 +166,15 @@ export const services: ServiceData[] = [
     sections: {
       buyerProblems: {
         enabled: true,
-        heading: "Why Most AI Agent\nProjects Fail",
-        subtitle: "Launching an app is easy. Building one that people actually use, trust, and return to is where most teams fall short.",
+        heading: "Why Most AI Agent Projects\nNever Reach Production",
+        subtitle: "The demo works. Production is a different problem entirely.",
         problems: [
-          { title: "Apps that launch but fail to gain traction or retain users", description: "" },
-          { title: "Poor performance, bugs, and inconsistent behavior across devices", description: "" },
-          { title: "Feature-heavy products with no clear core experience", description: "" },
-          { title: "Internal teams misaligned on scope, priorities, and roadmap", description: "" },
-          { title: "Constant redesigns and rebuilds due to lack of upfront clarity", description: "" },
-          { title: "Development that drags on without clear progress or outcomes", description: "" },
+          { title: "Agents that hallucinate or take wrong actions in production — with no framework to catch it before users do", description: "" },
+          { title: "LLM costs that explode at scale because nobody modeled token usage, caching, or prompt size", description: "" },
+          { title: "Tool integrations that work in the demo but break silently on real data and edge cases", description: "" },
+          { title: "No eval pipeline — so the team can't measure quality or prove improvement to stakeholders", description: "" },
+          { title: "Engineering hours burned learning LLM patterns in production, on a live product, with real users watching", description: "" },
+          { title: "An agent stuck in pilot indefinitely because nobody can get sign-off without a reliability proof", description: "" },
         ],
       },
       serviceOverview: {
@@ -351,27 +358,28 @@ export const services: ServiceData[] = [
     category: "AI & Automation",
     categoryIcon: "⚡",
     heroTagline: "AI-driven pipelines that run reliably at scale",
-    heroDescription: "Replace manual processes with AI-driven pipelines that run reliably at scale.",
+    heroDescription: "Your team is doing work that should not require a human. We build AI-driven pipelines that handle it continuously, adapt to exceptions, and run reliably at scale.",
     heroIllo: "/services/agentic-workflow-automation.svg",
     sections: {
       buyerProblems: {
         enabled: true,
-        heading: "Why Manual Workflows\nKill Productivity",
-        subtitle: "Every hour your team spends on repetitive tasks is an hour not spent on growth. Here is where most businesses are losing.",
+        heading: "Why Manual Workflows\nDrain Your Best People",
+        subtitle: "Your team is too expensive to be doing work a computer could handle in seconds.",
+        insightText: "Every hour your team spends on repeatable, rule-based work is an hour not spent on decisions only humans should make. Here is where that time goes.",
         problems: [
-          { title: "Hours lost daily to manual data entry, approvals, and handoffs", description: "" },
-          { title: "Errors and inconsistencies from human-driven processes", description: "" },
-          { title: "Bottlenecks when key people are unavailable or overloaded", description: "" },
-          { title: "No visibility into where work is stuck or how long things take", description: "" },
-          { title: "Tools that don't talk to each other, forcing manual re-entry", description: "" },
-          { title: "Scaling operations means hiring more people, not working smarter", description: "" },
+          { title: "Hours lost every day to data entry, approval routing, and manual handoffs between systems that do not talk to each other", description: "" },
+          { title: "Errors that compound when humans are the integration layer between your tools", description: "" },
+          { title: "Entire workflows stalled because one person is on leave or overloaded", description: "" },
+          { title: "No visibility into where a request is sitting or how long each step takes", description: "" },
+          { title: "Tools that do not connect, forcing someone to copy data from one system and paste it into another, every time", description: "" },
+          { title: "Growing the business means hiring more people to do the same manual work, not building systems that handle it automatically", description: "" },
         ],
       },
       serviceOverview: {
         enabled: true,
         image: "/Media/Image/case 6.png",
         title: "What is Agentic Workflow Automation?",
-        body: "Agentic workflows use AI to orchestrate multi-step business processes end-to-end — triggering actions, making decisions, and adapting to outcomes without human intervention. Unlike simple RPA, our agents reason over context, handle exceptions, and integrate with your existing tools.\n\nWe map your current workflows, identify automation opportunities, and build AI-powered pipelines that run 24/7 with full auditability.",
+        body: "Agentic workflows use AI to orchestrate multi-step business processes from start to finish: triggering actions, making decisions, and adapting to outcomes without human intervention. Unlike simple RPA that breaks when a format changes, our agents reason over context, handle exceptions, and integrate with your existing tools.\n\nWe map your current workflows, identify the highest-ROI automation opportunities, and build AI-powered pipelines that run continuously with full audit logging.",
         stats: [
           { value: "70%", label: "Avg. time saved" },
           { value: "40+", label: "Workflows automated" },
@@ -380,21 +388,84 @@ export const services: ServiceData[] = [
       },
       isRightForYou: {
         enabled: true,
+        heading: "AI workflow automation is a fit if:",
         checklist: [
           "Your team spends 10+ hours per week on repetitive, rule-based tasks",
           "You have multi-step processes that involve multiple tools or approvals",
           "You want to scale operations without proportionally growing headcount",
         ],
+        items: [
+          {
+            tag: "Manual Process",
+            title: "Your team still runs repeatable processes by hand",
+            highlight: "repeatable processes",
+            desc: "Your team follows the same steps every time: checking data, routing for approval, copying between systems, sending notifications. The process is defined. It just has not been automated yet.",
+          },
+          {
+            tag: "Brittle Automation",
+            title: "Your current automation breaks when inputs are unstructured or unexpected",
+            highlight: "automation breaks",
+            desc: "Your RPA breaks when an email format changes or a PDF looks different. You need automation that reads context, handles exceptions, and makes sensible decisions on edge cases.",
+          },
+          {
+            tag: "Scaling Ops",
+            title: "You want operations to scale without scaling headcount proportionally",
+            highlight: "scale without scaling headcount",
+            desc: "You are scaling fast, but you do not want to grow your ops team at the same rate. You need systems that scale with volume, not with headcount.",
+          },
+        ],
       },
       whatYouGet: {
         enabled: true,
         items: [
-          { icon: "🗺️", title: "Workflow Mapping", description: "Deep-dive into your existing processes to identify automation candidates and design optimal flows." },
-          { icon: "🤖", title: "AI Orchestration Engine", description: "Multi-step pipelines with decision logic, branching, retries, and exception handling built in." },
-          { icon: "🔗", title: "Tool Integration", description: "Connect to your CRM, ERP, Slack, email, databases, and any API your workflow depends on." },
-          { icon: "👁️", title: "Real-time Monitoring", description: "Live dashboards showing workflow status, step durations, error rates, and completion trends." },
-          { icon: "🛑", title: "Human-in-the-Loop", description: "Configurable checkpoints where humans review and approve before the pipeline continues." },
-          { icon: "📋", title: "Audit Trail", description: "Full logs of every decision and action taken — essential for compliance and debugging." },
+          {
+            icon: "icon:workflow-map",
+            title: "Discovery and Workflow Mapping",
+            description: "",
+            subtitle: "We understand the process before touching any code.",
+            bullets: [
+              "End-to-end workflow audit and documentation",
+              "Bottleneck identification and ROI estimation per workflow",
+              "Automation feasibility assessment",
+              "Prioritized pipeline roadmap before scoping begins",
+            ],
+          },
+          {
+            icon: "icon:pipeline-design",
+            title: "Pipeline Design and Architecture",
+            description: "",
+            subtitle: "Designed for reliability, not just functionality.",
+            bullets: [
+              "Multi-step pipeline architecture",
+              "Tool integration and API connection plan",
+              "Exception handling and human-in-the-loop fallback design",
+              "Approval flow logic and audit trail specification",
+            ],
+          },
+          {
+            icon: "icon:build-test",
+            title: "Build, Integrate, and Test",
+            description: "",
+            subtitle: "Every path tested, including the ones that break.",
+            bullets: [
+              "Agent development and LLM integration",
+              "API connections to your CRM, ERP, and third-party tools",
+              "Full QA including edge cases and failure scenarios",
+              "Staging deployment and client UAT before go-live",
+            ],
+          },
+          {
+            icon: "icon:go-live",
+            title: "Go-Live and Ongoing Support",
+            description: "",
+            subtitle: "99.5% uptime SLA from day one.",
+            bullets: [
+              "Production deployment with monitoring and alerting",
+              "Performance tuning in the first 30 days",
+              "User training and documentation",
+              "Ongoing support retainer available",
+            ],
+          },
         ],
       },
       process: {
@@ -435,8 +506,8 @@ export const services: ServiceData[] = [
       caseStudy: {
         enabled: true,
         items: [
-          { client: "Logistics Co.", industry: "Logistics", title: "Automated invoice processing — 90% faster approvals", description: "We built an agentic pipeline that extracts invoice data, matches purchase orders, flags discrepancies, and routes for approval — cutting a 3-day process to 4 hours.", link: "/case-study", stats: [{ value: "90%", label: "Faster approvals" }, { value: "3 days→4h", label: "Cycle time" }] },
-          { client: "HealthTech SaaS", industry: "Healthcare", title: "Patient onboarding automation — zero manual steps", description: "End-to-end onboarding pipeline that collects patient data, verifies insurance, schedules appointments, and sends confirmations without any human involvement.", link: "/case-study", stats: [{ value: "100%", label: "Manual steps removed" }, { value: "4×", label: "Onboarding capacity" }] },
+          { client: "Logistics Co.", industry: "Logistics", title: "Automated invoice processing: 90% faster approvals", description: "We built an agentic pipeline that extracts invoice data, matches purchase orders, flags discrepancies, and routes for approval, cutting a 3-day process to 4 hours.", link: "/case-study", stats: [{ value: "90%", label: "Faster approvals" }, { value: "3 days→4h", label: "Cycle time" }] },
+          { client: "HealthTech SaaS", industry: "Healthcare", title: "Patient onboarding automation: zero manual steps", description: "End-to-end onboarding pipeline that collects patient data, verifies insurance, schedules appointments, and sends confirmations without any human involvement.", link: "/case-study", stats: [{ value: "100%", label: "Manual steps removed" }, { value: "4×", label: "Onboarding capacity" }] },
         ],
       },
       comparison: {
@@ -468,20 +539,20 @@ export const services: ServiceData[] = [
     category: "AI & Automation",
     categoryIcon: "✨",
     heroTagline: "LLM-powered features built into your product",
-    heroDescription: "Embed LLM-powered features — chat, search, generation — directly into your product.",
+    heroDescription: "We embed LLM-powered features into your existing product: semantic search, conversational UI, content generation, and summarization. Production-ready. Shipped in 4 weeks.",
     heroIllo: "/services/generative-ai-integration.svg",
     sections: {
       buyerProblems: {
         enabled: true,
         heading: "Why Most AI Features\nFail to Ship",
-        subtitle: "Adding AI to your product sounds simple. Making it reliable, safe, and actually useful is where teams get stuck.",
+        subtitle: "Adding AI to your product sounds straightforward. Making it reliable, safe, and actually useful in production is where teams get stuck.",
         problems: [
-          { title: "AI outputs that hallucinate or produce inconsistent results", description: "" },
-          { title: "No clear strategy for which AI features actually drive value", description: "" },
-          { title: "LLM costs ballooning without a token optimization strategy", description: "" },
-          { title: "Slow response times that degrade user experience", description: "" },
-          { title: "Security and data privacy concerns blocking production deployment", description: "" },
-          { title: "Engineering teams without LLM application experience wasting months", description: "" },
+          { title: "AI outputs that hallucinate or contradict themselves — and you find out when a customer screenshots it", description: "" },
+          { title: "No strategy for which AI features actually move a metric, so the team builds what's interesting, not what users need", description: "" },
+          { title: "LLM costs that balloon in production because nobody modeled token usage before going live", description: "" },
+          { title: "Response times that kill the UX — users submit a request and wait 8 seconds for an answer", description: "" },
+          { title: "Legal or InfoSec blocking deployment because nobody thought through data residency, PII, or model provider terms", description: "" },
+          { title: "A working prototype that took 2 weeks to build and 3 months to get production-hardened", description: "" },
         ],
       },
       serviceOverview: {
@@ -497,10 +568,28 @@ export const services: ServiceData[] = [
       },
       isRightForYou: {
         enabled: true,
+        heading: "AI integration is a fit if:",
         checklist: [
           "You want to add AI-powered chat, search, or generation to your existing product",
           "Your team lacks LLM application experience and needs to ship fast",
           "You need production-grade AI — not a demo — with cost control and safety built in",
+        ],
+        items: [
+          {
+            tag: "Existing Product",
+            title: "You have a product. Now you want AI in it.",
+            desc: "Not building from scratch. You have a working product, an existing user base, and a specific AI feature on your roadmap that moves faster than your current team has bandwidth to keep up with.",
+          },
+          {
+            tag: "Data-Powered UX",
+            title: "Your product has data. Your users should be able to talk to it.",
+            desc: "Your product holds data, documents, or content that could power semantic search, Q&A, recommendations, or personalized generation. You want users to experience that, not just search with keywords.",
+          },
+          {
+            tag: "Production-Ready",
+            title: "You need the feature to work reliably in production, not just in a demo",
+            desc: "Hallucination-free. Cost-controlled. Safe. Fast enough that users do not notice the AI call. You need someone who has shipped this before, not learned it on your project.",
+          },
         ],
       },
       whatYouGet: {
@@ -552,8 +641,8 @@ export const services: ServiceData[] = [
       caseStudy: {
         enabled: true,
         items: [
-          { client: "EdTech Platform", industry: "Education", title: "AI tutor feature — 3× user engagement", description: "We integrated a context-aware AI tutor into an existing LMS, including RAG over course content and adaptive question generation, shipped in 6 weeks.", link: "/case-study", stats: [{ value: "3×", label: "Engagement" }, { value: "6wk", label: "Time to ship" }] },
-          { client: "Legal SaaS", industry: "Legal Tech", title: "Contract summarization — 80% faster review", description: "LLM pipeline that ingests contracts, extracts key clauses, flags risks, and generates plain-language summaries for non-legal stakeholders.", link: "/case-study", stats: [{ value: "80%", label: "Faster review" }, { value: "40%", label: "Cost reduction" }] },
+          { client: "EdTech Platform", industry: "Education", title: "AI tutor feature: 3× user engagement", description: "We integrated a context-aware AI tutor into an existing LMS, including RAG over course content and adaptive question generation, shipped in 6 weeks.", link: "/case-study", stats: [{ value: "3×", label: "Engagement" }, { value: "6wk", label: "Time to ship" }] },
+          { client: "Legal SaaS", industry: "Legal Tech", title: "Contract summarization: 80% faster review", description: "LLM pipeline that ingests contracts, extracts key clauses, flags risks, and generates plain-language summaries for non-legal stakeholders.", link: "/case-study", stats: [{ value: "80%", label: "Faster review" }, { value: "40%", label: "Cost reduction" }] },
         ],
       },
       comparison: {
@@ -590,15 +679,15 @@ export const services: ServiceData[] = [
     sections: {
       buyerProblems: {
         enabled: true,
-        heading: "Why Most Mobile Apps\nFail To Deliver",
-        subtitle: "Launching an app is easy. Building one that people actually use, trust, and return to is where most teams fall short.",
+        heading: "Why Most Mobile Apps\nFail to Retain Users",
+        subtitle: "The app stores are full of products that were launched and then quietly abandoned. Here's what goes wrong.",
         problems: [
-          { title: "Apps that launch but fail to gain traction or retain users", description: "" },
-          { title: "Poor performance, bugs, and inconsistent behavior across devices", description: "" },
-          { title: "Feature-heavy products with no clear core experience", description: "" },
-          { title: "Internal teams misaligned on scope, priorities, and roadmap", description: "" },
-          { title: "Constant redesigns and rebuilds due to lack of upfront clarity", description: "" },
-          { title: "Development that drags on without clear progress or outcomes", description: "" },
+          { title: "10,000 downloads, 200 daily actives — launched, not adopted", description: "" },
+          { title: "Crashes and blank screens that reach the App Store as 1-star reviews before the team hears about them", description: "" },
+          { title: "Fifty features in the backlog, none of them the one that would make users actually stay", description: "" },
+          { title: "Design, product, and engineering each working from a different version of the plan", description: "" },
+          { title: "A V2 that requires rewriting V1 because the foundation wasn't built to extend", description: "" },
+          { title: "Six months in, three months late, with no clear answer on what's left to do", description: "" },
         ],
       },
       serviceOverview: {
@@ -669,8 +758,8 @@ export const services: ServiceData[] = [
       caseStudy: {
         enabled: true,
         items: [
-          { client: "Fintech Startup", industry: "Fintech", title: "Payment app — 500K downloads in 6 months", description: "Built a React Native payment app with biometric auth, real-time notifications, and offline transaction queuing.", link: "/case-study", stats: [{ value: "500K", label: "Downloads" }, { value: "4.8★", label: "App Store rating" }] },
-          { client: "Healthcare Provider", industry: "Healthcare", title: "Patient app — 85% appointment no-show reduction", description: "Cross-platform app with appointment booking, telemedicine, and push reminders that cut no-shows dramatically.", link: "/case-study", stats: [{ value: "85%", label: "No-show reduction" }, { value: "4.7★", label: "Rating" }] },
+          { client: "Fintech Startup", industry: "Fintech", title: "Payment app: 500K downloads in 6 months", description: "Built a React Native payment app with biometric auth, real-time notifications, and offline transaction queuing.", link: "/case-study", stats: [{ value: "500K", label: "Downloads" }, { value: "4.8★", label: "App Store rating" }] },
+          { client: "Healthcare Provider", industry: "Healthcare", title: "Patient app: 85% appointment no-show reduction", description: "Cross-platform app with appointment booking, telemedicine, and push reminders that cut no-shows dramatically.", link: "/case-study", stats: [{ value: "85%", label: "No-show reduction" }, { value: "4.7★", label: "Rating" }] },
         ],
       },
       comparison: {
@@ -710,12 +799,12 @@ export const services: ServiceData[] = [
         heading: "Why SaaS Products\nStruggle to Scale",
         subtitle: "Building a SaaS product is one thing. Building one that handles multi-tenancy, billing, and growth without crumbling is another.",
         problems: [
-          { title: "Multi-tenancy not designed in from day one, causing costly rewrites later", description: "" },
-          { title: "Billing and subscription management that breaks at scale or edge cases", description: "" },
-          { title: "Authentication and permission systems that can't support enterprise buyers", description: "" },
-          { title: "Performance degradation as the tenant count grows", description: "" },
-          { title: "No feature flagging or usage-based metering infrastructure", description: "" },
-          { title: "Technical debt from rapid MVP shipping that blocks the next growth phase", description: "" },
+          { title: "Multi-tenancy added in month 6 — requiring a painful architectural rewrite at exactly the worst moment", description: "" },
+          { title: "A billing system that works cleanly for 10 customers and quietly breaks at 100", description: "" },
+          { title: "Auth and permissions that satisfy SMB buyers but block every enterprise deal requiring SSO, SCIM, or audit logs", description: "" },
+          { title: "Database performance that degrades as tenant count grows because row-level isolation was never designed in", description: "" },
+          { title: "No feature flagging or usage metering — so you can't run gradual rollouts or usage-based pricing", description: "" },
+          { title: "Technical debt from moving fast on the MVP that now blocks every feature the business actually wants to build", description: "" },
         ],
       },
       serviceOverview: {
@@ -786,8 +875,8 @@ export const services: ServiceData[] = [
       caseStudy: {
         enabled: true,
         items: [
-          { client: "HR Tech", industry: "HR", title: "Multi-tenant HR platform — 200 enterprise clients onboarded", description: "Built a SaaS HR platform with per-tenant data isolation, SAML SSO, usage-based billing, and a self-serve onboarding flow.", link: "/case-study", stats: [{ value: "200", label: "Enterprise tenants" }, { value: "4wk", label: "Avg. onboarding time" }] },
-          { client: "PropTech", industry: "Real Estate", title: "Property SaaS — scaled from 50 to 2,000 tenants", description: "Re-architected a monolithic property management tool into a proper multi-tenant SaaS with Stripe billing and role-based access.", link: "/case-study", stats: [{ value: "40×", label: "Tenant growth" }, { value: "99.95%", label: "Uptime" }] },
+          { client: "HR Tech", industry: "HR", title: "Multi-tenant HR platform: 200 enterprise clients onboarded", description: "Built a SaaS HR platform with per-tenant data isolation, SAML SSO, usage-based billing, and a self-serve onboarding flow.", link: "/case-study", stats: [{ value: "200", label: "Enterprise tenants" }, { value: "4wk", label: "Avg. onboarding time" }] },
+          { client: "PropTech", industry: "Real Estate", title: "Property SaaS: scaled from 50 to 2,000 tenants", description: "Re-architected a monolithic property management tool into a proper multi-tenant SaaS with Stripe billing and role-based access.", link: "/case-study", stats: [{ value: "40×", label: "Tenant growth" }, { value: "99.95%", label: "Uptime" }] },
         ],
       },
       comparison: {
@@ -819,27 +908,29 @@ export const services: ServiceData[] = [
     category: "Engineering",
     categoryIcon: "☁️",
     heroTagline: "CI/CD pipelines and cloud-native deployments",
-    heroDescription: "CI/CD pipelines, infrastructure as code, and cloud-native deployments.",
+    heroDescription: "Your team should not be babysitting deployments, debugging environments that do not match production, or finding out the monitoring is broken when a customer emails you. We fix the infrastructure so your engineers can focus on shipping.",
     heroIllo: "/services/cloud-devops.svg",
     sections: {
       buyerProblems: {
         enabled: true,
-        heading: "Why Poor DevOps\nSlows Everything Down",
-        subtitle: "Slow deploys, fragile infrastructure, and manual processes aren't just annoying — they're a competitive disadvantage.",
+        heading: "Why Fragile Infrastructure\nPuts Engineering Teams in Firefighting Mode",
+        subtitle: "Slow deploys, brittle environments, and manual processes are not just frustrating. They are a tax on every engineer on your team.",
+        insightText: "Slow deploys and brittle environments are not just frustrating. They are a compounding tax on every engineer on your team, every day. Here is where that cost shows up.",
+        hideTrustBadge: true,
         problems: [
-          { title: "Deployments that take hours and require a senior engineer to babysit", description: "" },
-          { title: "No staging environment, so bugs only surface in production", description: "" },
-          { title: "Cloud costs spiraling with no visibility into what's driving spend", description: "" },
-          { title: "Infrastructure configured by hand — no reproducibility, no audit trail", description: "" },
-          { title: "No monitoring or alerting until customers report an outage", description: "" },
-          { title: "Security misconfigurations and open ports discovered in the worst moments", description: "" },
+          { title: "Deployments that take 90 minutes and need a senior engineer to babysit every release", description: "" },
+          { title: "Bugs that only surface in production because there is no staging environment that actually mirrors it", description: "" },
+          { title: "Cloud costs that grew 40% last quarter and nobody can explain what changed", description: "" },
+          { title: "Infrastructure configured by hand, so spinning up a new environment means starting from scratch", description: "" },
+          { title: "No monitoring until a customer emails to say something is down", description: "" },
+          { title: "Security misconfigurations sitting open, waiting to become an incident", description: "" },
         ],
       },
       serviceOverview: {
         enabled: true,
         image: "/Media/Image/case 6.png",
-        title: "What is Cloud & DevOps at InApps?",
-        body: "We design and implement cloud infrastructure, CI/CD pipelines, and DevOps practices that let your team ship faster with more confidence. Whether you're starting from scratch or modernizing a messy legacy setup, we bring infrastructure as code, automated testing gates, and observability from day one.\n\nWe work across AWS, GCP, and Azure — and we're platform-agnostic, recommending the right tools for your team's size and requirements.",
+        title: "What is Cloud and DevOps at InApps?",
+        body: "We design and implement cloud infrastructure, CI/CD pipelines, and DevOps practices that let your team ship faster with more confidence. Whether you are starting from scratch or modernizing a legacy setup, we bring infrastructure as code, automated testing gates, and observability from day one.\n\nWe work across AWS, GCP, and Azure. We are platform-agnostic and will recommend the right tools for your team size, existing skills, and workload requirements.",
         stats: [
           { value: "50+", label: "Infrastructure setups delivered" },
           { value: "10×", label: "Avg. deploy frequency improvement" },
@@ -848,30 +939,35 @@ export const services: ServiceData[] = [
       },
       isRightForYou: {
         enabled: true,
+        heading: "Cloud and DevOps support is a fit if:",
         checklist: [
           "Your team deploys manually or less than once per week",
           "You have no infrastructure as code — environments are snowflakes",
           "You want full observability: logs, metrics, traces, and alerts before the next incident",
         ],
+        items: [
+          { tag: "Slow Deploys", title: "Your team is spending more time managing infrastructure than shipping product", highlight: "spending more time", desc: "Deployments are manual, slow, or require a senior engineer to supervise. Every release is a risk event. You need pipelines that run automatically, test every change, and roll back without human intervention." },
+          { tag: "No Observability", title: "You find out something is broken when a customer tells you", highlight: "something is broken", desc: "There is no monitoring, no alerting, and no structured way to understand what is happening in production. You need full observability: logs, metrics, traces, and on-call alerting configured before the next incident." },
+          { tag: "Growing Cloud Costs", title: "Your cloud bill is growing and nobody can explain why", highlight: "cloud bill is growing", desc: "Costs scaled faster than usage. Resources are over-provisioned, environments are running idle, and there is no cost allocation to understand which service is responsible. You need infrastructure as code, right-sized resources, and a cost model you can explain to leadership." },
+        ],
       },
       whatYouGet: {
         enabled: true,
+        heading: "One engagement. Infrastructure that runs itself.",
         items: [
-          { icon: "🔄", title: "CI/CD Pipelines", description: "Automated build, test, and deploy pipelines on GitHub Actions, GitLab CI, or CircleCI." },
-          { icon: "📐", title: "Infrastructure as Code", description: "Terraform or Pulumi for reproducible, version-controlled infrastructure across all environments." },
-          { icon: "☁️", title: "Cloud Architecture", description: "Right-sized AWS/GCP/Azure architecture with cost optimization, HA, and disaster recovery." },
-          { icon: "🐳", title: "Containerization & Orchestration", description: "Docker, Kubernetes (EKS/GKE/AKS), and Helm charts for scalable container deployments." },
-          { icon: "📊", title: "Observability Stack", description: "Centralized logging (ELK/Loki), metrics (Prometheus/Grafana), traces (Datadog/Jaeger), and alerting." },
-          { icon: "🔒", title: "Security & Compliance", description: "IAM hardening, secret management (Vault/SSM), network policies, and compliance scanning." },
+          { icon: "icon:audit-arch", title: "Audit and Architecture", subtitle: "We understand what you have before we change anything.", description: "", bullets: ["Full infrastructure audit and cost analysis", "Architecture design for your scale and workload", "Security review and misconfiguration report", "Recommended toolchain before any work begins"] },
+          { icon: "icon:foundation-iac", title: "Foundation and Infrastructure as Code", subtitle: "Everything reproducible, nothing configured by hand.", description: "", bullets: ["Infrastructure as code setup (Terraform or Pulumi)", "Environment parity: dev, staging, and production", "Secret management and access control", "Baseline monitoring and alerting from day one"] },
+          { icon: "icon:cicd-auto", title: "CI/CD and Automation", subtitle: "Every commit tested. Every deploy automated.", description: "", bullets: ["CI/CD pipeline setup and integration", "Automated test gates before every deployment", "Deployment automation and rollback strategy", "Container orchestration where required"] },
+          { icon: "icon:observe-handover", title: "Observability and Handover", subtitle: "Your team can run this without us.", description: "", bullets: ["Full observability stack: logs, metrics, and tracing", "On-call setup and alerting runbooks", "Team training and knowledge transfer", "30-day post-handover support"] },
         ],
       },
       process: {
         enabled: true,
         steps: [
-          { phase: "Audit & Design", duration: "Week 1", description: "", includes: ["Infrastructure audit", "Cost analysis", "Architecture design", "Security review"] },
-          { phase: "Foundation", duration: "Week 2–4", description: "", includes: ["IaC setup", "Environments", "Secret management", "Baseline monitoring"] },
-          { phase: "CI/CD & Automation", duration: "Week 3–6", description: "", includes: ["Pipeline setup", "Test gates", "Deploy automation", "Rollback strategy"] },
-          { phase: "Observability & Handover", duration: "Week 6–8", description: "", includes: ["Full observability", "Runbooks", "On-call setup", "Team training"] },
+          { phase: "Audit and Design", duration: "Week 1", description: "", includes: ["Infrastructure audit", "Cost analysis", "Architecture design", "Security review"] },
+          { phase: "Foundation", duration: "Week 2 to 4", description: "", includes: ["IaC setup", "Environments", "Secret management", "Baseline monitoring"] },
+          { phase: "CI/CD and Automation", duration: "Week 3 to 6", description: "", includes: ["Pipeline setup", "Test gates", "Deploy automation", "Rollback strategy"] },
+          { phase: "Observability and Handover", duration: "Week 6 to 8", description: "", includes: ["Full observability", "Runbooks", "On-call setup", "Team training"] },
         ],
       },
       teamStructure: {
@@ -883,28 +979,30 @@ export const services: ServiceData[] = [
           { icon: "📊", title: "Observability Engineer", responsibility: "Sets up logging, metrics, tracing, and on-call alerting." },
           { icon: "📋", title: "Project Manager", responsibility: "Coordinates delivery and team knowledge transfer." },
         ],
-        note: "Small setups run with 2 DevOps engineers. Complex multi-region, multi-account platforms require 4–5 specialists.",
+        subtitle: "Every Cloud and DevOps engagement is staffed with a named specialist team. Not generalist engineers learning your stack mid-project.",
+        note: "Small setups run with 2 DevOps engineers. Complex multi-region, multi-account platforms require 4 to 5 specialists.",
       },
       qualityVetting: {
         enabled: true,
+        subtitle: "Only 3% of applicants pass all four stages. Here is what the other 97% do not clear.",
         stages: [
-          { stage: 'Live Coding & System Design', description: 'Real-world coding challenge, System design interview, Code quality & problem solving' },
-          { stage: 'Communication & English', description: 'Technical communication, Client-facing scenario, Written & spoken English' },
-          { stage: 'Agile Collaboration & Ownership', description: 'Agile mindset & teamwork, Ownership & accountability, Adaptability & growth mindset' },
-          { stage: 'Final Review & Reference Check', description: 'Technical panel interview, Reference & background check, Culture & values alignment' },
+          { stage: 'Live Coding and System Design', description: 'Real-world coding challenge, System design interview, Code quality and problem solving' },
+          { stage: 'Communication and English', description: 'Technical communication, Client-facing scenario, Written and spoken English' },
+          { stage: 'Agile Collaboration and Ownership', description: 'Agile mindset and teamwork, Ownership and accountability, Adaptability and growth mindset' },
+          { stage: 'Final Review and Reference Check', description: 'Technical panel interview, Reference and background check, Culture and values alignment' },
         ],
         metrics: [
-          { value: "3%", label: "Pass rate" },
-          { value: "4", label: "Vetting stages" },
+          { value: "3%", label: "Accept rate" },
+          { value: "4", label: "Stages of vetting" },
           { value: "97%", label: "Client satisfaction" },
-          { value: "2wk", label: "Avg. time to team ready" },
+          { value: "2 weeks", label: "to team ready" },
         ],
       },
       caseStudy: {
         enabled: true,
         items: [
-          { client: "E-commerce Platform", industry: "Retail", title: "AWS migration — 60% infrastructure cost reduction", description: "Migrated a self-hosted monolith to EKS with auto-scaling, cutting monthly cloud spend from $40K to $16K while improving uptime.", link: "/case-study", stats: [{ value: "60%", label: "Cost reduction" }, { value: "99.99%", label: "Uptime" }] },
-          { client: "FinTech", industry: "Finance", title: "CI/CD overhaul — 10× deploy frequency", description: "Replaced manual deploys with GitHub Actions pipelines and Terraform IaC, going from weekly releases to multiple deploys per day.", link: "/case-study", stats: [{ value: "10×", label: "Deploy frequency" }, { value: "90%", label: "Less deploy time" }] },
+          { client: "E-commerce Platform", industry: "Retail", title: "AWS migration: 60% infrastructure cost reduction", description: "Migrated a self-hosted monolith to EKS with auto-scaling, cutting monthly cloud spend from $40K to $16K while improving uptime.", link: "/case-study", stats: [{ value: "60%", label: "Cost reduction" }, { value: "99.99%", label: "Uptime" }] },
+          { client: "FinTech", industry: "Finance", title: "CI/CD overhaul: 10× deploy frequency", description: "Replaced manual deploys with GitHub Actions pipelines and Terraform IaC, going from weekly releases to multiple deploys per day.", link: "/case-study", stats: [{ value: "10×", label: "Deploy frequency" }, { value: "90%", label: "Less deploy time" }] },
         ],
       },
       comparison: {
@@ -942,53 +1040,61 @@ export const services: ServiceData[] = [
       buyerProblems: {
         enabled: true,
         heading: "Why Most Products\nFail Before They Launch",
-        subtitle: "The biggest risk isn't building the wrong thing — it's spending 12 months and $500K finding out it was wrong.",
+        subtitle: "The biggest risk isn't building the wrong thing. It's spending 12 months and $500K finding out.",
+        insightText: "Most products fail not because they were built badly, but because they were built before anyone confirmed users wanted them. Here is how that happens.",
         problems: [
-          { title: "Spending months building features users don't actually want", description: "" },
-          { title: "Investors asking for a working demo before committing funding", description: "" },
-          { title: "No way to test assumptions without committing to a full build", description: "" },
-          { title: "Internal teams too busy with existing products to build something new", description: "" },
-          { title: "Agencies that quote 6+ months and $300K for what should be a 6-week MVP", description: "" },
-          { title: "Prototypes that look great but can't be shown to real users or extended", description: "" },
+          { title: "Six months of engineering time spent on a feature set users do not want", description: "" },
+          { title: "Investors who need to see working software, not slides with mockups", description: "" },
+          { title: "No way to test whether the core assumption is right without committing to a full build", description: "" },
+          { title: "Your current team is heads-down on the existing product. There is no bandwidth for something new.", description: "" },
+          { title: "An agency that quoted $250K and 6 months for what should be a 6-week prototype", description: "" },
+          { title: "A Figma prototype that looks real but cannot be tested by real users or extended into a product", description: "" },
         ],
       },
       serviceOverview: {
         enabled: true,
         image: "/Media/Image/case 6.png",
         title: "What is MVP Development at InApps?",
-        body: "We help founders, product teams, and innovation labs go from idea to working product in 4–8 weeks. Our MVP service is designed to validate your core hypothesis with the minimum viable feature set — built on a production-grade foundation you can extend, not throw away.\n\nWe scope ruthlessly, cut scope that doesn't test the hypothesis, and ship something real users can interact with — then help you decide what to build next based on what you learn.",
+        body: "We help founders, product teams, and innovation labs go from idea to working product in 4 to 6 weeks. Our MVP service is designed to validate your core hypothesis with the minimum viable feature set, built on a production-grade foundation you can extend, not throw away.\n\nWe scope ruthlessly, cut anything that does not test the hypothesis, and ship something real users can interact with. Then we help you decide what to build next based on what you learn.",
         stats: [
           { value: "40+", label: "MVPs shipped" },
-          { value: "6wk", label: "Avg. time to launch" },
+          { value: "4–6wk", label: "Avg. to launch" },
           { value: "70%", label: "Proceed to full product" },
         ],
       },
       isRightForYou: {
         enabled: true,
+        heading: "MVP development is a fit if:",
         checklist: [
           "You have an idea or hypothesis that needs to be tested with real users",
-          "You need something working — not a slide deck or Figma prototype — in weeks",
+          "You need something working, not a slide deck or Figma prototype, in weeks",
           "You want a foundation you can build on, not a throwaway prototype",
+        ],
+        items: [
+          { tag: "Unvalidated Idea", title: "You have a hypothesis that needs testing before full investment", highlight: "a hypothesis that needs testing", desc: "You believe there is a market, a problem worth solving, or a feature users will pay for. But you have not confirmed it yet. You need working software in front of real users before committing 12 months and a full engineering team." },
+          { tag: "No Internal Bandwidth", title: "Your core team cannot take this on right now", highlight: "cannot take this", desc: "Your engineers are heads-down on the existing product. Pulling them off to build an unvalidated idea is a risk you cannot take. You need a separate team that owns this end to end while your core product keeps moving." },
+          { tag: "Speed Over Perfection", title: "You need to ship fast, not build perfectly", highlight: "ship fast", desc: "You are not looking for a polished product. You are looking for the fastest path to a real user response. Done and testable in 6 weeks beats perfect and unshipped in 6 months." },
         ],
       },
       whatYouGet: {
         enabled: true,
+        heading: "One engagement. Working product in 4 to 6 weeks.",
         items: [
-          { icon: "🎯", title: "Scope Definition", description: "We facilitate a ruthless scoping session to define the exact features needed to test your core hypothesis." },
-          { icon: "🎨", title: "UX Design", description: "Lean UI/UX — enough to be usable and testable, not over-designed before you know what works." },
-          { icon: "⚙️", title: "Full-stack Development", description: "Working product built on a modern, extensible stack — not a fragile demo held together with duct tape." },
-          { icon: "🚀", title: "Deployment", description: "Live on the internet with a real domain, SSL, and a database — ready for real user testing." },
-          { icon: "📊", title: "Analytics", description: "Basic event tracking so you can measure what users actually do versus what you expected." },
-          { icon: "🗺️", title: "Next Steps Roadmap", description: "After launch, we help you interpret early signals and define what to build in the next phase." },
+          { icon: "icon:scope-hypothesis", title: "Scoping and Hypothesis Design", subtitle: "We define what to build before we write a line of code.", description: "", bullets: ["Core hypothesis documented and agreed", "User story mapping to minimum viable feature set", "Scope ruthlessly cut to only what tests the hypothesis", "Tech stack decision for speed and extensibility"] },
+          { icon: "icon:design-proto-mvp", title: "Design and Prototype", subtitle: "Fast, functional, and testable by real users.", description: "", bullets: ["Lean wireframes for core user flows", "Minimal design system to move fast without looking rough", "Stakeholder sign-off before build begins", "Interactive prototype for early user feedback"] },
+          { icon: "icon:build-launch-mvp", title: "Build and Launch", subtitle: "Production-grade from day one, not throwaway code.", description: "", bullets: ["Core features only, built on extensible architecture", "Weekly live demos throughout build", "CI/CD setup and basic analytics from day one", "Production deployment at the end of week 4 to 6"] },
+          { icon: "icon:learn-decide", title: "Learn and Decide", subtitle: "We help you interpret what you learn and decide what comes next.", description: "", bullets: ["User testing facilitation in first two weeks post-launch", "Data review session based on analytics from day one", "Go / no-go / pivot recommendation", "Roadmap for full product if hypothesis is validated"] },
         ],
       },
       process: {
         enabled: true,
+        heading: "From Idea to Validated Product in 4 to 6 Weeks",
+        subtitle: "A lean, structured process designed to get working software in front of real users as fast as possible.",
         steps: [
-          { phase: "Scoping Sprint", duration: "Week 1", description: "", includes: ["Hypothesis definition", "User story mapping", "Feature prioritization", "Tech decision"] },
-          { phase: "Design", duration: "Week 1–2", description: "", includes: ["Wireframes", "Core flows", "Design system lite", "Stakeholder sign-off"] },
-          { phase: "Build", duration: "Week 2–5", description: "", includes: ["Core features only", "Weekly demos", "CI/CD setup", "Basic analytics"] },
-          { phase: "Launch & Learn", duration: "Week 6", description: "", includes: ["Production deploy", "User testing", "Data review", "Next phase planning"] },
+          { phase: "Scoping Sprint", duration: "Week 1", description: "", includes: ["Hypothesis definition", "User story mapping", "Feature prioritization", "Tech stack decision"] },
+          { phase: "Design", duration: "Week 1 to 2", description: "", includes: ["Wireframes for core flows", "Minimal design system", "Stakeholder sign-off", "Build planning"] },
+          { phase: "Build", duration: "Week 2 to 5", description: "", includes: ["Core features only", "Weekly live demos", "CI/CD setup", "Basic analytics from day one"] },
+          { phase: "Launch and Learn", duration: "Week 5 to 6", description: "", includes: ["Production deployment", "User testing", "Data review", "Go/no-go/pivot decision"] },
         ],
       },
       teamStructure: {
@@ -997,9 +1103,10 @@ export const services: ServiceData[] = [
           { icon: "🎯", title: "Product Lead", responsibility: "Facilitates scoping, cuts scope ruthlessly, and keeps the team focused on the hypothesis." },
           { icon: "⚙️", title: "Full-stack Engineer (×2)", responsibility: "Builds frontend, backend, and APIs as a lean, fast-moving pair." },
           { icon: "🎨", title: "UX Designer", responsibility: "Creates lean wireframes and a minimal design system to move fast without looking rough." },
-          { icon: "📋", title: "Project Manager", responsibility: "Keeps the engagement on time and scope — the most important role in an MVP build." },
+          { icon: "📋", title: "Project Manager", responsibility: "Keeps the engagement on time and scope. The most important role in an MVP build." },
         ],
-        note: "MVPs run lean by design. We scale up only after validation, when you know what to build.",
+        subtitle: "MVP builds run lean by design. Every engagement is staffed with a small, named team focused entirely on shipping something testable, not building something perfect.",
+        note: "We do not add engineers to speed up an MVP. We cut scope instead. More people means more coordination, not faster shipping.",
       },
       qualityVetting: {
         enabled: true,
@@ -1019,8 +1126,8 @@ export const services: ServiceData[] = [
       caseStudy: {
         enabled: true,
         items: [
-          { client: "Series A Startup", industry: "PropTech", title: "MVP in 5 weeks — raised $2M seed round", description: "Built a working marketplace MVP for short-term property rentals in 5 weeks. The founder used it to close a $2M seed round.", link: "/case-study", stats: [{ value: "5wk", label: "Time to ship" }, { value: "$2M", label: "Seed raised" }] },
-          { client: "Enterprise Innovation Lab", industry: "Logistics", title: "PoC in 3 weeks — secured internal funding", description: "Built a proof of concept for an AI-powered route optimization tool. The PoC secured $500K internal innovation budget.", link: "/case-study", stats: [{ value: "3wk", label: "Time to PoC" }, { value: "$500K", label: "Budget secured" }] },
+          { client: "Series A Startup", industry: "PropTech", title: "MVP in 5 weeks. Raised $2M seed round.", description: "Built a working marketplace MVP for short-term property rentals in 5 weeks. The founder used it to close a $2M seed round.", image: "/Media/Image/case 8.png", altText: "MVP development for PropTech marketplace - InApps Technology", link: "/case-study", stats: [{ value: "5wk", label: "Time to ship" }, { value: "$2M", label: "Seed raised" }] },
+          { client: "Enterprise Innovation Lab", industry: "Logistics", title: "PoC in 3 weeks. Secured internal funding.", description: "Built a proof of concept for an AI-powered route optimization tool. The PoC secured $500K internal innovation budget.", link: "/case-study", stats: [{ value: "3wk", label: "Time to PoC" }, { value: "$500K", label: "Budget secured" }] },
         ],
       },
       comparison: {
@@ -1028,20 +1135,21 @@ export const services: ServiceData[] = [
         competitorLabel: "Typical Agency",
         rows: [
           { criterion: "Fixed scope, fixed timeline", inApps: true, inHouse: false, typical: "Rarely" },
-          { criterion: "Production-grade foundation (not a demo)", inApps: true, inHouse: false, typical: false },
-          { criterion: "Ships in 4–8 weeks", inApps: true, inHouse: false, typical: false },
+          { criterion: "Production-grade code, not throwaway prototype", inApps: true, inHouse: false, typical: false },
+          { criterion: "Ships in 4 to 6 weeks", inApps: true, inHouse: false, typical: false },
           { criterion: "Analytics from day 1", inApps: true, inHouse: false, typical: false },
           { criterion: "Post-launch roadmap session", inApps: true, inHouse: false, typical: false },
         ],
       },
       faq: {
         enabled: true,
+        heading: "Common questions about MVP development",
         items: [
-          { label: "Scope", question: "How do you decide what goes in the MVP?", answer: "We run a scoping sprint where we map your core hypothesis to the minimum features needed to test it. Anything that doesn't directly test the hypothesis gets cut or deferred." },
-          { label: "Quality", question: "Is the code production-quality or throwaway?", answer: "Production-quality. We use the same stack and practices as a full product build — you're not throwing it away after validation. The MVP becomes the foundation for v2." },
-          { label: "Timeline", question: "Can you really ship in 4–6 weeks?", answer: "Yes, but only if scope is locked. Scope creep is the #1 killer of MVP timelines. We enforce scope discipline aggressively." },
-          { label: "Post-MVP", question: "What happens after launch?", answer: "We run a learning session to interpret your data, then help you prioritize the next phase. Most clients move into a dedicated team or sprint-based engagement." },
-          { label: "Tech Stack", question: "What stack do you use?", answer: "Next.js for frontend, Node.js or Python for backend, PostgreSQL, and Vercel/AWS for hosting. Fast to build, easy to extend." },
+          { label: "Scope", question: "How do you decide what goes in the MVP?", answer: "We run a scoping sprint where we map your core hypothesis to the minimum features needed to test it. Anything that does not directly test the hypothesis gets cut or deferred." },
+          { label: "Quality", question: "Is the code production-quality or throwaway?", answer: "It is production-grade from day one. We use the same architecture, CI/CD setup, and code standards we would on a full product build. The difference is scope, not quality. You can extend what we ship directly into your full product without rewriting it." },
+          { label: "Timeline", question: "Can you really ship in 4 to 6 weeks?", answer: "Yes, because we scope to fit the timeline, not the other way around. The scoping sprint in week one exists specifically to cut everything that does not need to be in the first version. If your hypothesis requires more than a 6-week build to test, we will tell you and recommend an alternative approach." },
+          { label: "Post-MVP", question: "What happens after launch?", answer: "We run a learn and decide session in the two weeks after launch: user testing, data review, and a go/no-go/pivot recommendation. If the hypothesis is validated, we scope the full product build. If it is not, we help you understand why and what to test next. You do not have to figure that out alone." },
+          { label: "Tech Stack", question: "What stack do you use?", answer: "We recommend the stack that gives you the fastest path to a working, extensible product. For most MVPs that is React or Next.js on the frontend, Node.js or Python on the backend, and PostgreSQL or Firebase depending on your data model. If you have an existing stack you need to integrate with, we work within it. Stack decisions are made in the scoping sprint before any build begins." },
         ],
       },
     },
@@ -1059,21 +1167,21 @@ export const services: ServiceData[] = [
       buyerProblems: {
         enabled: true,
         heading: "Why Most Offshore\nEngagements Fail",
-        subtitle: "Offshore development has a bad reputation but the problem isn't the location. It's the model.",
+        subtitle: "Offshore development has a bad reputation. But the problem isn't the location. It's the model.",
         problems: [
-          { title: "Engineers shared across multiple clients with no real commitment to yours", description: "" },
-          { title: "No visibility into what the team is actually working on day to day", description: "" },
-          { title: "Communication gaps that compound into weeks of misaligned work", description: "" },
-          { title: "High turnover the engineer you onboarded leaves 3 months in", description: "" },
-          { title: "No accountability missed sprints, broken builds, and no consequences", description: "" },
-          { title: "Hidden costs: management overhead, rework, and integration delays", description: "" },
+          { title: "Engineers split across 5 clients: yours gets 15% of their attention, regardless of what the contract says", description: "" },
+          { title: "Stand-ups where nobody can explain what was actually done, or what's blocking progress", description: "" },
+          { title: "Timezone gaps that turn a 2-hour clarification into a 2-day delay and a week of rework", description: "" },
+          { title: "The engineer you spent 3 months onboarding leaves, and the vendor sends a replacement who's never seen your codebase", description: "" },
+          { title: "Sprints that close green on metrics, and code that fails review or quietly never got reviewed at all", description: "" },
+          { title: "10 hours a week of your senior engineers managing the vendor. Exactly what you were trying to avoid.", description: "" },
         ],
       },
       serviceOverview: {
         enabled: true,
         image: "/Media/Image/case 6.png",
-        title: "What is an Offshore Dev Center?",
-        body: "An Offshore Dev Center (ODC) is a dedicated team of engineers based in Vietnam, working exclusively on your product not split across five other clients. We recruit, vet, onboard, and manage the team on your behalf, while you retain full technical direction.\n\nYou get the cost efficiency of offshore hiring with the reliability, accountability, and visibility of an in-house team. Most clients run their ODC as a permanent extension of their engineering organization.",
+        title: "What is a Dedicated Development Team?",
+        body: "A Dedicated Development Team is a group of AI-native senior engineers based in Vietnam, working exclusively on your product. Not shared across other clients. Not rotated when a higher-paying project comes in.\n\nInApps handle recruiting, vetting, onboarding, and day-to-day management. Our engineers work with AI-native mindset as a standard part of their workflow, not as an add-on. You retain full technical direction and direct access to every engineer on the team.\n\nYou get the cost structure of offshore hiring with the reliability and accountability of an in-house team. Our average client engagement runs over 10 years.",
         stats: [
           { value: "750+", label: "Projects delivered" },
           { value: "10+", label: "Years in business" },
@@ -1083,16 +1191,18 @@ export const services: ServiceData[] = [
       },
       isRightForYou: {
         enabled: true,
+        sectionLabel: "IS THIS A FIT?",
+        heading: "This works well if:",
         checklist: [
           "You need a team of 3+ engineers working full-time, exclusively on your product",
-          "You want the cost efficiency of offshore hiring without the management headache",
-          "You're looking for a long-term team, not a short-term project vendor",
+          "You want to reduce hiring costs without adding management work",
+          "You need a long-term team, not a 3-month contractor pool",
         ],
       },
       whatYouGet: {
         enabled: true,
         items: [
-          { icon: "🌏", title: "Dedicated Team", description: "Engineers work exclusively on your product — not shared with other clients." },
+          { icon: "🌏", title: "Dedicated Team", description: "Engineers work exclusively on your product, not shared with other clients." },
           { icon: "🎯", title: "Talent Recruitment", description: "We source, screen, and place engineers matching your technical requirements and culture." },
           { icon: "📋", title: "Full Management Layer", description: "HR, payroll, compliance, performance management, and local operations handled entirely by us." },
           { icon: "👁️", title: "Full Transparency", description: "Daily standups, sprint reviews, time tracking, and direct communication with your team." },
@@ -1138,7 +1248,7 @@ export const services: ServiceData[] = [
       caseStudy: {
         enabled: true,
         items: [
-          { client: "Australian SaaS", industry: "SaaS", title: "ODC of 8 engineers — product shipped 2× faster", description: "Established an 8-person ODC in Vietnam for an Australian HR SaaS, reducing their cost per engineer by 58% while doubling feature output.", link: "/case-study", stats: [{ value: "58%", label: "Cost reduction" }, { value: "2×", label: "Feature velocity" }] },
+          { client: "Australian SaaS", industry: "SaaS", title: "ODC of 8 engineers: product shipped 2× faster", description: "Established an 8-person ODC in Vietnam for an Australian HR SaaS, reducing their cost per engineer by 58% while doubling feature output.", link: "/case-study", stats: [{ value: "58%", label: "Cost reduction" }, { value: "2×", label: "Feature velocity" }] },
           { client: "US Fintech", industry: "Fintech", title: "12-person ODC running for 4 years", description: "Long-running ODC partnership where the Vietnam team now leads architecture decisions and has shipped 3 major product versions.", link: "/case-study", stats: [{ value: "4yr", label: "Partnership" }, { value: "95%", label: "Team retention" }] },
         ],
       },
@@ -1177,14 +1287,14 @@ export const services: ServiceData[] = [
       buyerProblems: {
         enabled: true,
         heading: "Why Scaling Your Team\nIs Harder Than It Should Be",
-        subtitle: "You have work that needs doing. Hiring takes 3 months and agencies send you whoever is available.",
+        subtitle: "You have work that needs doing. Hiring takes 3 months. Most agencies send whoever is available.",
         problems: [
-          { title: "3–6 month hiring cycles for senior engineers in a competitive market", description: "" },
-          { title: "Agencies placing junior engineers at senior rates", description: "" },
-          { title: "Contractors who take weeks to become productive on your codebase", description: "" },
-          { title: "Communication style mismatches that create friction with your team", description: "" },
-          { title: "No visibility into a contractor's actual skill level before they start", description: "" },
-          { title: "Inflexibility — locked into 12-month contracts when your needs change", description: "" },
+          { title: "3–4 month hiring cycles while the backlog grows and the core team gets stretched thin", description: "" },
+          { title: "Agencies promising senior engineers and placing someone who needs 6 weeks of handholding", description: "" },
+          { title: "Contractors who take a month to become productive — and the engagement ends before they're fully up to speed", description: "" },
+          { title: "Communication style mismatches that create friction in code review and slow down every sprint", description: "" },
+          { title: "No way to verify a contractor's real skill level until they're already onboarded and committing code", description: "" },
+          { title: "12-month contracts when your roadmap changes every quarter", description: "" },
         ],
       },
       serviceOverview: {
@@ -1252,8 +1362,8 @@ export const services: ServiceData[] = [
       caseStudy: {
         enabled: true,
         items: [
-          { client: "UK SaaS Scale-up", industry: "SaaS", title: "4 engineers placed in 10 days — roadmap unblocked", description: "Placed a senior React engineer and 3 backend engineers in under 2 weeks, unblocking a product roadmap that had been stalled for 2 months.", link: "/case-study", stats: [{ value: "10 days", label: "Time to placed" }, { value: "2mo", label: "Roadmap unblocked" }] },
-          { client: "US Startup", industry: "AI", title: "ML engineer placed — product shipped 6 weeks early", description: "Placed a specialized LLM engineer who led the AI feature development. The product launched 6 weeks ahead of schedule.", link: "/case-study", stats: [{ value: "6wk", label: "Ahead of schedule" }, { value: "1wk", label: "Time to placement" }] },
+          { client: "UK SaaS Scale-up", industry: "SaaS", title: "4 engineers placed in 10 days: roadmap unblocked", description: "Placed a senior React engineer and 3 backend engineers in under 2 weeks, unblocking a product roadmap that had been stalled for 2 months.", link: "/case-study", stats: [{ value: "10 days", label: "Time to placed" }, { value: "2mo", label: "Roadmap unblocked" }] },
+          { client: "US Startup", industry: "AI", title: "ML engineer placed: product shipped 6 weeks early", description: "Placed a specialized LLM engineer who led the AI feature development. The product launched 6 weeks ahead of schedule.", link: "/case-study", stats: [{ value: "6wk", label: "Ahead of schedule" }, { value: "1wk", label: "Time to placement" }] },
         ],
       },
       comparison: {
@@ -1285,27 +1395,33 @@ export const services: ServiceData[] = [
     category: "Engagement Models",
     categoryIcon: "✅",
     heroTagline: "Fixed-scope delivery with clear milestones",
-    heroDescription: "Fixed-scope delivery with clear milestones, managed end-to-end by our team.",
+    heroDescription: "You define the scope. We own the delivery. Fixed price, fixed timeline, full accountability. No surprises at invoice time.",
+    cta: {
+      heading: "Tell us what needs to be built. We will scope it and price it.",
+      subtitle: "Describe your deliverable. We will come back with a scoped proposal and fixed-price estimate within 48 hours. One call. No commitment.",
+      ctaLabel: "Book a Discovery Call",
+    },
     heroIllo: "/services/project-based-dev.svg",
     sections: {
       buyerProblems: {
         enabled: true,
         heading: "Why Fixed-Price Projects\nUsually Go Wrong",
-        subtitle: "You need a defined deliverable, on time and on budget. Most vendors can't deliver that reliably.",
+        subtitle: "You need a defined deliverable, on time and on budget. Most vendors can't deliver that without renegotiating the contract.",
+        insightText: "Most vendors quote low to win the deal, then expand scope to recover margin. Here is what that looks like on your side of the contract.",
         problems: [
-          { title: "Projects that drag on 2× longer than quoted with scope always expanding", description: "" },
-          { title: "No accountability — the vendor delivers something different from what was agreed", description: "" },
-          { title: "Milestone payments with no real deliverables to validate against", description: "" },
-          { title: "Handover that leaves your team unable to maintain or extend the system", description: "" },
-          { title: "Communication gaps — no updates for weeks, then a big reveal at the end", description: "" },
-          { title: "Post-launch bugs that the vendor classifies as 'out of scope'", description: "" },
+          { title: "Projects that run 2x over timeline with scope expanding on every call", description: "" },
+          { title: "No accountability: the delivery looks nothing like what was agreed", description: "" },
+          { title: "Milestone payments released before anything useful is delivered", description: "" },
+          { title: "A handover so poor your team cannot maintain or extend the system", description: "" },
+          { title: "No updates for weeks, then a big reveal at the end that misses the brief", description: "" },
+          { title: "Post-launch bugs the vendor declares out of scope and refuses to fix", description: "" },
         ],
       },
       serviceOverview: {
         enabled: true,
         image: "/Media/Image/case 6.png",
         title: "What is Project-Based Development?",
-        body: "Our project-based engagement is a fixed-scope, fixed-timeline delivery model. We define the requirements precisely, agree on milestones with real deliverables, and take full accountability for shipping on time and on budget.\n\nYou get a dedicated project team, a single point of contact, weekly progress demos, and a 30-day post-launch support period — all included. No surprises, no scope ambiguity, no excuses.",
+        body: "Our project-based model is a fixed-scope, fixed-timeline engagement. We define requirements precisely, agree on milestones with verifiable deliverables, and take full accountability for shipping on time and within budget.\n\nYou get a dedicated project team, a single point of contact, weekly progress demos, and a 30-day post-launch support period. All included. No surprises, no hidden costs, no ambiguous scope.",
         stats: [
           { value: "96%", label: "On-time delivery rate" },
           { value: "98%", label: "Budget adherence" },
@@ -1314,34 +1430,138 @@ export const services: ServiceData[] = [
       },
       isRightForYou: {
         enabled: true,
+        heading: "Project-based development works well if:",
         checklist: [
           "You have a well-defined deliverable with clear success criteria",
           "You need a fixed price and fixed timeline you can plan against",
           "You want a vendor who takes full ownership of delivery — not just providing bodies",
         ],
+        items: [
+          {
+            tag: "Defined Scope",
+            title: "You have a defined scope and can commit to requirements upfront",
+            desc: "You know what needs to be built. You can document it, approve it, and hold to it. Fixed-price only works when the brief is clear on both sides.",
+          },
+          {
+            tag: "Fixed Budget",
+            title: "You need a fixed price with no hidden extras",
+            desc: "Budget certainty matters more than flexibility. You want one number, one contract, and no surprises at the end of each sprint.",
+          },
+          {
+            tag: "Hands-Off Delivery",
+            title: "You need a team that owns delivery, not just executes tasks",
+            desc: "You do not want to manage the project yourself. You want to approve milestones and be informed when something changes. We handle the rest.",
+          },
+        ],
       },
       whatYouGet: {
         enabled: true,
+        heading: "One fixed price. Everything included.",
         items: [
-          { icon: "📋", title: "Fixed Scope Definition", description: "Detailed requirements document with acceptance criteria agreed before development starts." },
-          { icon: "🗓️", title: "Milestone-based Delivery", description: "Defined checkpoints with demo-able deliverables so you can track real progress." },
-          { icon: "👤", title: "Single Point of Contact", description: "One project manager owns communication, coordination, and escalation end-to-end." },
-          { icon: "🧪", title: "QA Included", description: "Testing is part of the delivery, not an afterthought billed separately." },
-          { icon: "🚀", title: "Deployment Included", description: "We ship to production and configure your infrastructure as part of delivery." },
-          { icon: "🛡️", title: "30-day Hypercare", description: "Post-launch support period where we fix any bugs or issues at no extra cost." },
+          {
+            icon: "icon:delivery-team",
+            title: "Delivery Team",
+            description: "",
+            subtitle: "The right people for your scope and stack.",
+            bullets: [
+              "Project Manager: single point of contact",
+              "2 to 6 engineers sized to project scope",
+              "UI/UX designer for interface-heavy projects",
+              "Dedicated QA engineer per milestone",
+            ],
+          },
+          {
+            icon: "icon:process-governance",
+            title: "Process and Governance",
+            description: "",
+            subtitle: "How we keep scope, timeline, and budget under control.",
+            bullets: [
+              "Scope locked before any code is written",
+              "Formal change request process for material changes",
+              "Weekly written updates and live sprint demos",
+              "Shared project board with real-time visibility",
+            ],
+          },
+          {
+            icon: "icon:quality-assurance",
+            title: "Quality Assurance",
+            description: "",
+            subtitle: "Testing built into every stage, not bolted on at the end.",
+            bullets: [
+              "Acceptance criteria agreed upfront per milestone",
+              "QA sign-off required before milestone payment released",
+              "Automated tests run on every commit",
+              "Regression testing before every release",
+            ],
+          },
+          {
+            icon: "icon:handover-support",
+            title: "Handover and Support",
+            description: "",
+            subtitle: "You own everything we build.",
+            bullets: [
+              "Full source code and IP assigned to you",
+              "Architecture documentation and runbook",
+              "Team knowledge transfer session",
+              "30-day post-launch hypercare support",
+            ],
+          },
         ],
       },
       process: {
         enabled: true,
+        heading: "From Signed Brief to Shipped Product",
+        subtitle: "A structured delivery process with formal sign-off at every milestone. Nothing proceeds without your approval.",
         steps: [
-          { phase: "Discovery & Scoping", duration: "Week 1–2", description: "", includes: ["Requirements workshops", "Acceptance criteria", "Fixed quote", "Contract signing"] },
-          { phase: "Design & Architecture", duration: "Week 2–3", description: "", includes: ["Technical architecture", "UI/UX designs", "Stakeholder sign-off", "Sprint planning"] },
-          { phase: "Development & QA", duration: "Week 3–N", description: "", includes: ["Milestone delivery", "Weekly demos", "QA per milestone", "Bug resolution"] },
-          { phase: "Launch & Hypercare", duration: "Week N + 30 days", description: "", includes: ["Production deploy", "UAT sign-off", "Handover docs", "30-day support"] },
+          {
+            phase: "Discovery and Scoping",
+            duration: "Week 1 to 2",
+            description: "",
+            includes: [
+              "Requirements workshops and stakeholder interviews",
+              "Acceptance criteria documented per milestone",
+              "Fixed quote with line-item breakdown",
+              "Contract signing",
+            ],
+          },
+          {
+            phase: "Design and Architecture",
+            duration: "Week 2 to 3",
+            description: "",
+            includes: [
+              "Technical architecture document",
+              "UI/UX designs and prototype",
+              "Formal stakeholder sign-off",
+              "Sprint planning and task breakdown",
+            ],
+          },
+          {
+            phase: "Development and QA",
+            duration: "Week 3 to N",
+            description: "",
+            includes: [
+              "Milestone delivery against agreed acceptance criteria",
+              "Weekly live demos",
+              "QA review and sign-off per milestone",
+              "Bug resolution before next milestone starts",
+            ],
+          },
+          {
+            phase: "Launch and Hypercare",
+            duration: "Week N plus 30 days",
+            description: "",
+            includes: [
+              "Production deployment",
+              "UAT sign-off from your team",
+              "Handover docs and knowledge transfer",
+              "30-day hypercare with priority issue response",
+            ],
+          },
         ],
       },
       teamStructure: {
         enabled: true,
+        subtitle: "Every project is staffed with a named, fixed team scoped precisely to your deliverable. Not an anonymous contractor pool that rotates mid-project.",
         roles: [
           { icon: "📋", title: "Project Manager", responsibility: "Single point of contact. Owns scope, timeline, and client communication throughout." },
           { icon: "⚙️", title: "Engineers (×2–6)", responsibility: "Sized to the project scope, working exclusively on your deliverable." },
@@ -1368,8 +1588,8 @@ export const services: ServiceData[] = [
       caseStudy: {
         enabled: true,
         items: [
-          { client: "Insurance Platform", industry: "Insurance", title: "Claims portal delivered on time and under budget", description: "Fixed-price delivery of a claims management portal in 14 weeks, including integrations with 3 legacy systems.", link: "/case-study", stats: [{ value: "14wk", label: "On-time delivery" }, { value: "Under budget", label: "By 8%" }] },
-          { client: "Government Agency", industry: "Public Sector", title: "Reporting dashboard — delivered in 8 weeks", description: "Fixed-scope data visualization dashboard with strict accessibility requirements, delivered 1 week early.", link: "/case-study", stats: [{ value: "8wk", label: "Delivered" }, { value: "1wk", label: "Ahead of schedule" }] },
+          { client: "Insurance Platform", industry: "Insurance", title: "Claims portal delivered on time and under budget", description: "Fixed-price delivery of a claims management portal in 14 weeks. Integrated with 3 legacy systems. Delivered under budget by 8%.", link: "/case-study", stats: [{ value: "14wk", label: "On-time delivery" }, { value: "Under budget", label: "By 8%" }], image: "/Media/Image/case 5.png", altText: "Project-based software delivery for claims management portal InApps Technology" },
+          { client: "Government Agency", industry: "Public Sector", title: "Reporting dashboard: delivered in 8 weeks", description: "Fixed-scope data visualization dashboard with strict accessibility requirements, delivered 1 week early.", link: "/case-study", stats: [{ value: "8wk", label: "Delivered" }, { value: "1wk", label: "Ahead of schedule" }] },
         ],
       },
       comparison: {
@@ -1386,11 +1606,11 @@ export const services: ServiceData[] = [
       faq: {
         enabled: true,
         items: [
-          { label: "Scope Changes", question: "What happens if requirements change mid-project?", answer: "We handle small clarifications within scope. Material changes go through a formal change request process with an impact assessment on timeline and price before proceeding." },
-          { label: "Pricing", question: "How do you set the fixed price?", answer: "We estimate bottom-up after a thorough discovery and scoping phase. The quote is only issued when we're confident in the requirements. We include a contingency buffer for unknowns." },
-          { label: "Milestone Sign-off", question: "What if I'm not happy with a milestone delivery?", answer: "We won't move to the next milestone until you sign off on the current one. We iterate until the acceptance criteria are met — no extra charge." },
-          { label: "Timeline", question: "What's the shortest project you take on?", answer: "Minimum 4 weeks. Below that, we recommend our MVP service which is optimized for fast, lean delivery." },
-          { label: "Post-launch", question: "What if bugs appear after the 30-day hypercare?", answer: "The 30-day period covers bugs in delivered features. After that, we offer ongoing maintenance retainers or you can handle it with your own team." },
+          { label: "Scope Changes", question: "What happens if requirements change mid-project?", answer: "Small clarifications within intent are handled within scope at no extra cost. Material changes go through a formal change request: we document the impact on timeline and price, and nothing proceeds until you approve." },
+          { label: "Pricing", question: "How do you set the fixed price?", answer: "After a requirements workshop, we document scope, acceptance criteria, and milestones. The fixed price is calculated from this documented scope. You see a line-item breakdown before signing. If the scope is too vague for a fixed price, we will tell you and recommend a time-and-materials approach instead." },
+          { label: "Milestone Sign-off", question: "What if I am not happy with a milestone delivery?", answer: "Milestone sign-off is your gate. If the delivery does not meet the agreed acceptance criteria, we fix it before releasing the milestone payment and before moving to the next stage. You never pay for work you have not approved." },
+          { label: "Timeline", question: "What is the shortest project you take on?", answer: "Our minimum is 6 weeks. Below that, the scoping and process overhead makes fixed-price uneconomical for both sides. For smaller tasks, Staff Augmentation is a better fit." },
+          { label: "Post-launch", question: "What if bugs appear after the 30-day hypercare period?", answer: "The 30-day hypercare covers production bugs related to the delivered scope. After that period, you can engage a maintenance retainer or raise a new project scope for additional work." },
         ],
       },
     },
@@ -1401,27 +1621,27 @@ export const services: ServiceData[] = [
     category: "Quality & Design",
     categoryIcon: "🧪",
     heroTagline: "Ship with confidence, zero regressions",
-    heroDescription: "Manual and automated testing to ship with confidence and zero regressions.",
+    heroDescription: "We catch bugs before your users do. Embedded QA engineers, automated test suites, and a quality process built to keep pace with your release cadence.",
     heroIllo: "/services/qa-testing.svg",
     sections: {
       buyerProblems: {
         enabled: true,
-        heading: "Why Software Quality\nIs Harder Than It Looks",
-        subtitle: "Shipping fast is easy. Shipping fast without breaking things requires a real QA practice.",
+        heading: "Why QA Is the First Thing\nThat Gets Cut When Shipping Pressure Arrives",
+        subtitle: "Every engineering team intends to do QA properly. Then a deadline moves. A sprint gets compressed. QA is the first thing to shrink. Here is what that pattern costs over time.",
         problems: [
-          { title: "Regressions reaching production because there's no automated safety net", description: "" },
-          { title: "Manual testing that takes 2 weeks and still misses critical bugs", description: "" },
-          { title: "No cross-browser or cross-device testing until users complain", description: "" },
-          { title: "Performance issues that only surface under real load", description: "" },
-          { title: "QA treated as an afterthought, added at the end of each sprint", description: "" },
+          { title: "Regressions reaching production because the regression suite does not exist, or has not been maintained in six months", description: "" },
+          { title: "A 2-week manual testing cycle that delays every release and still misses the same categories of bugs every time", description: "" },
+          { title: "Cross-browser and cross-device failures discovered by users, not your QA team", description: "" },
+          { title: "Performance that holds up fine with 10 users and collapses at 500, discovered on launch day", description: "" },
+          { title: "QA bolted on at the end of the sprint instead of integrated from the start, which means it catches bugs too late to fix without delaying the release", description: "" },
           { title: "Security vulnerabilities discovered in production instead of before release", description: "" },
         ],
       },
       serviceOverview: {
         enabled: true,
         image: "/Media/Image/case 6.png",
-        title: "What is QA & Testing at InApps?",
-        body: "We embed QA engineers into your team or take ownership of your entire testing function — building automated test suites, running manual exploratory testing, and establishing the processes your team needs to ship with confidence.\n\nOur QA engineers don't just find bugs. They design test strategies, build automation frameworks, and measure quality over time so your team has the data to make smart release decisions.",
+        title: "What is QA and Testing at InApps?",
+        body: "We embed QA engineers directly into your engineering team or take ownership of your entire testing function. We build automated test suites, run manual exploratory testing, and establish the processes your team needs to release without fear.\n\nOur QA engineers do more than find bugs. They design test strategies, build automation frameworks, use AI-assisted tooling to accelerate coverage, and measure quality over time so your team has the data to decide when it is safe to release.\n\nThe difference from a traditional QA vendor: we work inside your sprint, not alongside it.",
         stats: [
           { value: "95%", label: "Bug detection before production" },
           { value: "10×", label: "Faster test cycles with automation" },
@@ -1430,30 +1650,86 @@ export const services: ServiceData[] = [
       },
       isRightForYou: {
         enabled: true,
-        checklist: [
-          "You're releasing to production and discovering bugs only when users report them",
-          "Your test cycles take too long, slowing down your release cadence",
-          "You want automated regression coverage so developers can ship with confidence",
+        checklist: [],
+        sectionLabel: "Is This a Fit?",
+        heading: "This works well if:",
+        items: [
+          {
+            title: "Your team is shipping code faster than QA can keep up",
+            desc: "Releases are slipping because manual testing is the bottleneck. Or regressions are reaching production regularly. The code is good. The testing process is not keeping pace.",
+          },
+          {
+            title: "You have no automated test coverage and need to build it",
+            desc: "Your codebase has no regression suite. Every release is a manual effort. Every deployment carries risk you cannot quantify. You know you need automation and have not started.",
+          },
+          {
+            title: "You want QA integrated in every sprint, not added at the end",
+            desc: "You want a QA engineer reviewing requirements before development starts, writing test cases in parallel, and signing off before anything merges. Not a test phase at the end that delays every release.",
+          },
         ],
       },
       whatYouGet: {
         enabled: true,
         items: [
-          { icon: "🤖", title: "Test Automation", description: "E2E automation with Playwright or Cypress; API testing with Postman/Rest Assured; unit test coverage improvement." },
-          { icon: "🔍", title: "Exploratory Testing", description: "Manual testing by experienced QA engineers who think like adversarial users." },
-          { icon: "📱", title: "Cross-platform Testing", description: "Browser matrix, device matrix, and OS version testing to catch platform-specific issues." },
-          { icon: "⚡", title: "Performance Testing", description: "Load, stress, and spike testing with k6 or JMeter to validate behavior under production traffic." },
-          { icon: "🔒", title: "Security Testing", description: "OWASP Top 10 scanning, penetration testing basics, and vulnerability assessment." },
-          { icon: "📊", title: "Quality Metrics", description: "Bug escape rate, test coverage, flakiness rate, and mean time to detect — tracked and reported." },
+          {
+            icon: "🧪",
+            title: "Test Coverage That Scales With Your Product",
+            description: "",
+            subtitle: "Every critical path covered before it reaches users.",
+            bullets: [
+              "Automated E2E regression suite (Playwright, Appium, Detox)",
+              "API test suite (Postman/Newman, Rest Assured)",
+              "Manual exploratory testing for edge cases every sprint",
+              "Performance and load testing for high-traffic paths",
+            ],
+          },
+          {
+            icon: "⚙️",
+            title: "CI/CD Integration From Day One",
+            description: "",
+            subtitle: "QA built into your pipeline, not run after it.",
+            bullets: [
+              "Automated tests triggered on every commit",
+              "Failing tests block merges to main",
+              "Test results and coverage reports in your dashboard",
+              "Staging environment gates every production release",
+            ],
+          },
+          {
+            icon: "📊",
+            title: "Strategy, Metrics, and Release Confidence",
+            description: "",
+            subtitle: "A QA practice, not just a QA resource.",
+            bullets: [
+              "Test strategy and risk-based coverage plan",
+              "Quality metrics tracked over time",
+              "Release readiness report before every deployment",
+              "Bug triage and severity classification",
+            ],
+          },
+          {
+            icon: "📦",
+            title: "Handover So Your Team Owns It Long-Term",
+            description: "",
+            subtitle: "Your suite survives after we leave.",
+            bullets: [
+              "Full documentation for every test suite built",
+              "Runbook for automation maintenance",
+              "Handover session so your engineers can extend coverage",
+              "Ongoing support retainer available post-engagement",
+            ],
+          },
         ],
       },
       process: {
         enabled: true,
+        heading: "From Zero Coverage to Production-Ready QA in 6 Weeks",
+        subtitle: "A structured QA onboarding that builds coverage fast and integrates into your pipeline from sprint one.",
         steps: [
-          { phase: "QA Audit", duration: "Week 1", description: "", includes: ["Current state review", "Test gap analysis", "Risk assessment", "Strategy design"] },
-          { phase: "Framework Setup", duration: "Week 2–3", description: "", includes: ["Automation framework", "CI/CD integration", "Test data management", "Reporting setup"] },
-          { phase: "Test Suite Build", duration: "Week 3–6", description: "", includes: ["Critical path coverage", "Regression suite", "API test suite", "Performance baselines"] },
-          { phase: "Ongoing QA", duration: "Per sprint", description: "", includes: ["Sprint test execution", "Automation maintenance", "Exploratory testing", "Quality reporting"] },
+          { phase: "QA Audit", duration: "Week 1", description: "", includes: ["Current test coverage audit", "Test gap and risk analysis", "Coverage priority ranking", "Test strategy document"], deliverable: "Codebase audit and test strategy" },
+          { phase: "Framework Setup", duration: "Week 2 to 3", description: "", includes: ["Automation framework scaffolded and configured", "CI/CD pipeline integration", "Test data management and environment setup", "Reporting dashboard and coverage baseline"], deliverable: "Framework in CI/CD pipeline" },
+          { phase: "Test Suite Build", duration: "Week 3 to 6", description: "", includes: ["Critical user path coverage automated", "Full regression suite built", "API test suite", "Performance and load test baselines"], deliverable: "Regression suite in staging" },
+          { phase: "Ongoing QA", duration: "Per sprint", description: "", includes: ["Test execution and sign-off every sprint", "Automation suite maintenance and extension", "Exploratory and edge-case testing", "Release readiness report before every deployment"], deliverable: "Sprint QA report" },
         ],
       },
       teamStructure: {
@@ -1484,8 +1760,8 @@ export const services: ServiceData[] = [
       caseStudy: {
         enabled: true,
         items: [
-          { client: "FinTech App", industry: "Finance", title: "Automation suite — 80% regression time reduction", description: "Built a Playwright E2E suite covering 300+ critical paths, cutting manual regression testing from 2 weeks to 2 days per release.", link: "/case-study", stats: [{ value: "80%", label: "Regression time cut" }, { value: "300+", label: "Automated test cases" }] },
-          { client: "E-commerce", industry: "Retail", title: "Performance testing — prevented Black Friday outage", description: "Load testing revealed a bottleneck that would have collapsed the checkout at 500 concurrent users. Fixed before the peak traffic event.", link: "/case-study", stats: [{ value: "0", label: "Downtime on peak day" }, { value: "10×", label: "Load capacity improvement" }] },
+          { client: "FinTech App", industry: "Finance", title: "Automation suite: 80% reduction in regression testing time", description: "Built a Playwright E2E regression suite covering 300+ critical user paths for a FinTech product. Manual regression testing time dropped from 2 weeks to 2 days per release cycle. The QA lead embedded in the client's sprint from day one.", link: "/case-study", stats: [{ value: "80%", label: "Regression time reduction" }, { value: "300+", label: "Critical paths automated" }] },
+          { client: "E-commerce", industry: "Retail", title: "Performance testing: prevented Black Friday outage", description: "Load testing revealed a bottleneck that would have collapsed the checkout at 500 concurrent users. Fixed before the peak traffic event.", link: "/case-study", stats: [{ value: "0", label: "Downtime on peak day" }, { value: "10×", label: "Load capacity improvement" }] },
         ],
       },
       comparison: {
@@ -1517,27 +1793,29 @@ export const services: ServiceData[] = [
     category: "Quality & Design",
     categoryIcon: "🎨",
     heroTagline: "Interfaces that convert and delight",
-    heroDescription: "User research, wireframes, and pixel-perfect interfaces that convert and delight.",
+    heroDescription: "Your product should guide users to outcomes without friction, confusion, or drop-off. We design interfaces grounded in real user research, from discovery and wireframes through to developer-ready Figma files.",
     heroIllo: "/services/ui-ux-design.svg",
     sections: {
       buyerProblems: {
         enabled: true,
         heading: "Why Most Product Designs\nFail to Convert",
-        subtitle: "A product that looks good in Figma but confuses users in the real world isn't a design win.",
+        subtitle: "A product that looks good in Figma but confuses users in the real world is not a design win.",
+        insightText: "Good design is not about how it looks in a review. It is about what users do when they encounter it alone for the first time. Here is where most design engagements fall short.",
+        hideTrustBadge: true,
         problems: [
-          { title: "High drop-off rates at key steps because the UX creates friction", description: "" },
-          { title: "Designs that look beautiful but don't match how users actually think", description: "" },
-          { title: "Inconsistent UI that erodes trust and makes the product feel unpolished", description: "" },
-          { title: "No design system, so every feature looks slightly different", description: "" },
-          { title: "Handoff to developers that requires constant back-and-forth clarification", description: "" },
-          { title: "Mobile UX that was clearly an afterthought of a desktop-first design", description: "" },
+          { title: "Users dropping off at the exact step where the product should be converting and no data on why", description: "" },
+          { title: "A design that tests well internally but fails when real users encounter it for the first time", description: "" },
+          { title: "Inconsistent UI that makes the product feel like it was built by three different teams in three different years", description: "" },
+          { title: "No design system so every new feature restarts the conversation about buttons, colors, and spacing", description: "" },
+          { title: "Developer handoff that requires 20 Slack threads per feature to clarify what was actually intended", description: "" },
+          { title: "A mobile experience that was clearly designed for desktop and then scaled down as an afterthought", description: "" },
         ],
       },
       serviceOverview: {
         enabled: true,
         image: "/Media/Image/case 6.png",
         title: "What is UI/UX Design at InApps?",
-        body: "We design product interfaces grounded in user research — from initial discovery and wireframes through to pixel-perfect, developer-ready Figma files. Our designers work at the intersection of aesthetics and function, creating experiences that guide users to outcomes while reflecting your brand.\n\nWe embed within your product team or take end-to-end ownership of a design project, including design system creation, component libraries, and developer handoff.",
+        body: "We design product interfaces grounded in user research, from initial discovery and wireframes through to pixel-perfect, developer-ready Figma files. Our designers work at the intersection of aesthetics and function, creating experiences that guide users to outcomes while reflecting your brand.\n\nWe embed within your product team or take end-to-end ownership of a design project, including design system creation, component libraries, and developer handoff.",
         stats: [
           { value: "80+", label: "Products designed" },
           { value: "35%", label: "Avg. conversion improvement" },
@@ -1546,62 +1824,124 @@ export const services: ServiceData[] = [
       },
       isRightForYou: {
         enabled: true,
-        checklist: [
-          "Your product has UX friction you can feel but struggle to pinpoint — users drop off but you're not sure why",
-          "You need designs that developers can implement accurately without constant clarification",
-          "You want a design system that makes future feature development faster and more consistent",
+        sectionLabel: "IS THIS RIGHT FOR YOU?",
+        heading: "UI/UX design support is a fit if:",
+        checklist: [],
+        items: [
+          {
+            tag: "Design Debt",
+            title: "Your product has grown faster than the design holding it together",
+            desc: "Different screens were built at different times by different people. There is no design system, no component library, and no consistency. Every new feature reopens decisions about spacing, colors, and patterns that should have been settled long ago.",
+          },
+          {
+            tag: "Low Conversion",
+            title: "Users are dropping off and you do not know why",
+            desc: "The analytics show a problem. Users reach a certain step and do not proceed. But without user research and usability testing, you are guessing at solutions. You need a design process that identifies the real friction before proposing a fix.",
+          },
+          {
+            tag: "Handoff Breakdown",
+            title: "Your developers are losing time to design ambiguity",
+            desc: "Handoff files are incomplete. Developers ask clarifying questions on every feature. Implemented screens do not match the design. You need developer-ready Figma specs with clear annotations, component states, and interaction notes that leave nothing open to interpretation.",
+          },
         ],
       },
       whatYouGet: {
         enabled: true,
+        heading: "One engagement. Design your team can build from and your users can navigate.",
         items: [
-          { icon: "🔬", title: "User Research", description: "Interviews, surveys, and usability testing to understand how real users think and where they struggle." },
-          { icon: "🗺️", title: "Information Architecture", description: "Navigation structures, user flows, and content hierarchy designed around mental models." },
-          { icon: "📐", title: "Wireframing", description: "Low-fidelity wireframes that align stakeholders on structure before investing in visual design." },
-          { icon: "🎨", title: "Visual Design", description: "High-fidelity Figma designs with pixel-perfect attention to typography, color, and spacing." },
-          { icon: "🧩", title: "Design System", description: "Component library with tokens, variants, and documentation for consistent, scalable UI." },
-          { icon: "🤝", title: "Developer Handoff", description: "Annotated Figma files with specs, assets, and interaction notes — ready for dev, no guesswork." },
+          {
+            icon: "icon:workflow-map",
+            title: "Research and Discovery",
+            description: "",
+            subtitle: "Design decisions backed by user evidence, not assumptions.",
+            bullets: [
+              "User interviews and behavioral analysis",
+              "Competitive audit and heuristic evaluation",
+              "Journey mapping and friction identification",
+              "Research synthesis into actionable design direction",
+            ],
+          },
+          {
+            icon: "icon:design-proto-mvp",
+            title: "Architecture and Wireframes",
+            description: "",
+            subtitle: "Structure before visuals. Flow before aesthetics.",
+            bullets: [
+              "Information architecture design",
+              "User flow mapping for all primary journeys",
+              "Low-fidelity wireframes for stakeholder review",
+              "Iterative refinement before visual design begins",
+            ],
+          },
+          {
+            icon: "icon:build-launch-mvp",
+            title: "Visual Design and Design System",
+            description: "",
+            subtitle: "Consistent, extensible, and brand-aligned.",
+            bullets: [
+              "High-fidelity screen design across all breakpoints",
+              "Design system with tokens, components, and usage guidelines",
+              "Micro-interaction and animation specification",
+              "Interactive prototype for usability testing",
+            ],
+          },
+          {
+            icon: "icon:handover-support",
+            title: "Handoff and Design QA",
+            description: "",
+            subtitle: "Developers get everything they need. Nothing left to interpretation.",
+            bullets: [
+              "Developer-ready Figma files with full annotation",
+              "Asset export and specification documentation",
+              "Design QA during implementation",
+              "Usability testing post-launch with iteration recommendations",
+            ],
+          },
         ],
       },
       process: {
         enabled: true,
+        heading: "From User Research to Developer-Ready Design",
+        subtitle: "A research-grounded design process with stakeholder review built in at every stage. Nothing moves to high-fidelity until the structure is validated.",
         steps: [
-          { phase: "Research & Discovery", duration: "Week 1–2", description: "", includes: ["User interviews", "Competitive audit", "Heuristic evaluation", "Journey mapping"] },
-          { phase: "Architecture & Wireframes", duration: "Week 2–4", description: "", includes: ["User flows", "IA design", "Wireframes", "Stakeholder review"] },
-          { phase: "Visual Design", duration: "Week 4–7", description: "", includes: ["Design system", "High-fidelity screens", "Micro-interactions", "Prototype"] },
-          { phase: "Handoff & Iteration", duration: "Ongoing", description: "", includes: ["Developer specs", "Asset export", "Usability testing", "Design QA"] },
+          { phase: "Research and Discovery", duration: "Week 1 to 2", description: "", includes: ["User interviews", "Competitive audit", "Heuristic evaluation", "Journey mapping"] },
+          { phase: "Architecture and Wireframes", duration: "Week 2 to 4", description: "", includes: ["User flows", "IA design", "Wireframes", "Stakeholder review"] },
+          { phase: "Visual Design", duration: "Week 4 to 7", description: "", includes: ["Design system", "High-fidelity screens", "Micro-interactions", "Interactive prototype"] },
+          { phase: "Handoff and Iteration", duration: "Ongoing", description: "", includes: ["Developer specs", "Asset export", "Usability testing", "Design QA"] },
         ],
       },
       teamStructure: {
         enabled: true,
+        subtitle: "Every UI/UX Design engagement is staffed with a named specialist team. Research, UX, and UI are separate roles, not one designer doing all three.",
         roles: [
           { icon: "🔬", title: "UX Researcher", responsibility: "Runs user interviews, usability tests, and synthesizes insights into design direction." },
           { icon: "🗺️", title: "UX Designer", responsibility: "Designs information architecture, user flows, and wireframes." },
           { icon: "🎨", title: "UI Designer", responsibility: "Produces high-fidelity visuals, design system, and component library." },
           { icon: "🤝", title: "Design Lead", responsibility: "Owns design quality, stakeholder alignment, and developer handoff." },
         ],
-        note: "Small feature design work runs with 1 designer. Full product design engagements include research, UX, and UI as separate roles.",
+        note: "Small feature design work runs with 1 designer. Full product design engagements include UX Researcher, UX Designer, UI Designer, and Design Lead as separate roles.",
       },
       qualityVetting: {
         enabled: true,
+        subtitle: "Only 5% of designer applicants pass all four stages. Here is what the other 95% do not clear.",
         stages: [
-          { stage: 'Live Coding & System Design', description: 'Real-world coding challenge, System design interview, Code quality & problem solving' },
-          { stage: 'Communication & English', description: 'Technical communication, Client-facing scenario, Written & spoken English' },
-          { stage: 'Agile Collaboration & Ownership', description: 'Agile mindset & teamwork, Ownership & accountability, Adaptability & growth mindset' },
-          { stage: 'Final Review & Reference Check', description: 'Technical panel interview, Reference & background check, Culture & values alignment' },
+          { stage: 'Portfolio and Design Challenge', description: 'Real-world design challenge with brief and constraints, Portfolio review across product and UX work, Design rationale and decision walkthrough' },
+          { stage: 'Communication and English', description: 'Technical communication, Client-facing scenario, Written and spoken English' },
+          { stage: 'Agile Collaboration and Ownership', description: 'Agile mindset and teamwork, Ownership and accountability, Adaptability and growth mindset' },
+          { stage: 'Final Review and Reference Check', description: 'Technical panel interview, Reference and background check, Culture and values alignment' },
         ],
         metrics: [
-          { value: "5%", label: "Pass rate" },
-          { value: "4", label: "Vetting stages" },
+          { value: "5%", label: "Accept rate" },
+          { value: "4", label: "Stages of vetting" },
           { value: "97%", label: "Client satisfaction" },
-          { value: "2wk", label: "Avg. time to designer ready" },
+          { value: "2 wks", label: "to designer ready" },
         ],
       },
       caseStudy: {
         enabled: true,
         items: [
-          { client: "B2B SaaS", industry: "SaaS", title: "Onboarding redesign — 40% activation improvement", description: "Redesigned the onboarding flow based on user research and usability testing, increasing 7-day activation rate from 28% to 39%.", link: "/case-study", stats: [{ value: "40%", label: "Activation improvement" }, { value: "39%", label: "7-day activation rate" }] },
-          { client: "FinTech App", industry: "Fintech", title: "Full app redesign — App Store rating 3.2 → 4.6", description: "Complete UX overhaul of a mobile banking app including navigation restructure, design system, and component library for 3 platform teams.", link: "/case-study", stats: [{ value: "4.6★", label: "App Store rating" }, { value: "3×", label: "Faster feature dev" }] },
+          { client: "B2B SaaS", industry: "SaaS", title: "Onboarding redesign: 7-day activation from 28% to 39%", description: "Redesigned the onboarding flow based on user research and usability testing, increasing 7-day activation rate from 28% to 39%.", link: "/case-study", image: "/Media/Image/case 5.png", altText: "UI/UX design and onboarding redesign for SaaS product - InApps Technology", stats: [{ value: "28% to 39%", label: "7-day activation" }, { value: "User research", label: "and usability testing" }] },
+          { client: "FinTech App", industry: "Fintech", title: "Full app redesign: App Store rating 3.2 to 4.6", description: "Complete UX overhaul of a mobile banking app including navigation restructure, design system, and component library for 3 platform teams.", link: "/case-study", stats: [{ value: "4.6★", label: "App Store rating" }, { value: "3×", label: "Faster feature dev" }] },
         ],
       },
       comparison: {
@@ -1609,7 +1949,7 @@ export const services: ServiceData[] = [
         competitorLabel: "Freelance Designer",
         rows: [
           { criterion: "User research included", inApps: true, inHouse: false, typical: "Extra cost" },
-          { criterion: "Design system & component library", inApps: true, inHouse: false, typical: "Rarely" },
+          { criterion: "Design system and component library", inApps: true, inHouse: false, typical: "Rarely" },
           { criterion: "Usability testing", inApps: true, inHouse: false, typical: false },
           { criterion: "Developer-ready Figma specs", inApps: true, inHouse: false, typical: "Sometimes" },
           { criterion: "Design QA during implementation", inApps: true, inHouse: false, typical: false },
@@ -1617,14 +1957,20 @@ export const services: ServiceData[] = [
       },
       faq: {
         enabled: true,
+        heading: "Common questions about UI/UX design",
         items: [
-          { label: "Tool", question: "Which design tool do you use?", answer: "Figma. It's the industry standard, enables real-time collaboration, and produces the most developer-friendly handoff files." },
-          { label: "Research", question: "Do we need user research if we already know our users?", answer: "Almost always yes. What users say and what they do are different. Research surfaces assumptions you didn't know you were making." },
-          { label: "Design System", question: "How long does a design system take?", answer: "A foundational design system (colors, typography, spacing, core components) takes 3–4 weeks. A comprehensive enterprise design system takes 8–12 weeks." },
-          { label: "Handoff", question: "How do you ensure developers implement designs accurately?", answer: "We annotate Figma files with specs, export assets at all required resolutions, document interaction states, and run a design QA pass after implementation." },
-          { label: "Iteration", question: "What if we want changes after designs are approved?", answer: "Small refinements are included throughout. Significant scope changes are handled via a change request. We prefer iterating based on real user feedback after launch." },
+          { label: "Tool", question: "Which design tool do you use?", answer: "Figma. It is the industry standard, enables real-time collaboration, and produces the most developer-friendly handoff files. All deliverables are handed over as organized Figma files with named layers, component libraries, and developer mode annotations." },
+          { label: "Research", question: "Do we need user research if we already know our users?", answer: "This is the most common assumption that leads to failed redesigns. Knowing your users from support tickets and internal feedback is not the same as observing them navigate your product without help. User research surfaces the gap between what users say they do and what they actually do. We recommend at minimum 5 moderated usability sessions before any significant redesign. If your timeline or budget does not allow for full research, we scope a lean discovery sprint that gives you enough signal to design with confidence." },
+          { label: "Design System", question: "How long does a design system take?", answer: "A foundational design system covering typography, color, spacing, and core components takes 3 to 4 weeks for a product of average complexity. A full system covering all component states, dark mode, responsive variants, and documentation takes 6 to 8 weeks. We scope the right level of investment during discovery based on your product size, team structure, and how frequently new features are being designed." },
+          { label: "Handoff", question: "How do you ensure developers implement designs accurately?", answer: "Three things: developer-ready Figma files with full annotation on every component, a design QA pass during implementation where we review the built screens against the Figma specs, and a shared component library in Figma that maps directly to your codebase where possible. We do not hand off files and disappear. We stay involved through implementation to catch drift before it ships." },
+          { label: "Iteration", question: "What if we want changes after designs are approved?", answer: "Minor refinements within the approved direction are handled as part of the engagement. Significant changes that alter user flows, add screens, or reopen approved decisions are scoped as change requests with a clear impact on timeline. We document approval at each milestone specifically to protect both sides from scope ambiguity. If you are expecting the design to evolve significantly post-approval, we recommend a retainer model rather than a fixed-scope project." },
         ],
       },
+    },
+    cta: {
+      heading: "Tell us where your product is losing users.",
+      subtitle: "Describe the design problem. We will come back with a research-grounded approach and scoped proposal within 48 hours. One call. No commitment.",
+      ctaLabel: "Book a Discovery Call",
     },
   },
   {
@@ -1633,27 +1979,29 @@ export const services: ServiceData[] = [
     category: "Engineering",
     categoryIcon: "🔗",
     heroTagline: "Connect APIs, ERPs, and data sources seamlessly",
-    heroDescription: "Connect your systems, APIs, ERPs, and data sources into one cohesive platform.",
+    heroDescription: "Your systems should not require a human in the middle to move data from one to another. We build integrations that connect your CRM, ERP, databases, and third-party tools into a reliable, automated data ecosystem.",
     heroIllo: "/services/system-integration.svg",
     sections: {
       buyerProblems: {
         enabled: true,
         heading: "Why Disconnected Systems\nCost More Than You Think",
-        subtitle: "Every manual data transfer between systems is a tax on your team's time, accuracy, and sanity.",
+        subtitle: "Every manual data transfer between systems is a tax on your team's time, accuracy, and patience.",
+        insightText: "Every manual data transfer between systems is a tax on your team's time, accuracy, and patience. Here is where that cost shows up.",
+        hideTrustBadge: true,
         problems: [
-          { title: "Teams re-entering the same data across multiple systems every day", description: "" },
-          { title: "Reports that require manual exports and stitching from 5 different tools", description: "" },
-          { title: "No single source of truth — every system has a slightly different version", description: "" },
-          { title: "Point-to-point integrations built years ago that nobody understands anymore", description: "" },
-          { title: "New tools blocked from adoption because integration costs are too high", description: "" },
-          { title: "Errors from manual transfers causing compliance, billing, or fulfillment issues", description: "" },
+          { title: "Someone on the team manually copying data between CRM, ERP, and spreadsheets every single working day", description: "" },
+          { title: "A weekly report that requires pulling exports from 4 tools and stitching them in Excel for 3 hours", description: "" },
+          { title: "Five systems, five different customer records, and nobody knows which one is correct", description: "" },
+          { title: "A web of point-to-point integrations built years ago by someone who no longer works there", description: "" },
+          { title: "A new tool blocked from adoption because connecting it to the rest of the stack costs more than the tool saves", description: "" },
+          { title: "A compliance or billing error traced back to a sync that failed silently three weeks ago", description: "" },
         ],
       },
       serviceOverview: {
         enabled: true,
         image: "/Media/Image/case 6.png",
         title: "What is System Integration at InApps?",
-        body: "We design and build integrations that connect your business systems — CRM, ERP, e-commerce, payment processors, data warehouses, and custom internal tools — into a cohesive, reliable data ecosystem. Whether it's a simple webhook, a complex bidirectional sync, or a full middleware layer, we engineer integrations that hold up under production load.\n\nWe also audit and replace fragile legacy integrations with robust, monitored solutions that your team can actually maintain.",
+        body: "We design and build integrations that connect your business systems into a cohesive, reliable data ecosystem: CRM, ERP, e-commerce platforms, payment processors, data warehouses, and custom internal tools. Whether you need a simple webhook, a complex bidirectional sync, or a full middleware layer, we engineer integrations that hold up under production load.\n\nWe also audit and replace fragile legacy integrations with robust, monitored solutions that your team can actually maintain.",
         stats: [
           { value: "100+", label: "Integrations built" },
           { value: "99.5%", label: "Avg. sync reliability" },
@@ -1662,30 +2010,90 @@ export const services: ServiceData[] = [
       },
       isRightForYou: {
         enabled: true,
-        checklist: [
-          "Your team manually transfers data between systems on a daily or weekly basis",
-          "You have a new tool to adopt but it's blocked by integration complexity",
-          "Your current integrations are fragile, undocumented, or break regularly",
+        sectionLabel: "IS THIS RIGHT FOR YOU?",
+        heading: "System integration is a fit if:",
+        checklist: [],
+        items: [
+          {
+            tag: "Manual Transfers",
+            title: "Your team is moving data between systems by hand",
+            desc: "Someone is copying records from the CRM into the ERP, exporting CSVs to reconcile reports, or re-entering the same data in multiple tools. The work is repetitive, error-prone, and should not require a human.",
+          },
+          {
+            tag: "Fragile Legacy",
+            title: "You have integrations that break and nobody knows why",
+            desc: "Point-to-point integrations built years ago by engineers who have since left. No documentation, no monitoring, no error handling. When they fail silently, you find out three weeks later via a billing discrepancy or a customer complaint.",
+          },
+          {
+            tag: "Scaling Stack",
+            title: "You are adding tools faster than your stack can absorb them",
+            desc: "Every new tool adoption requires a custom integration project. The cost and complexity of connecting each addition is slowing down your operations more than the tool improves them. You need an integration layer that makes connecting new systems straightforward.",
+          },
         ],
       },
       whatYouGet: {
         enabled: true,
+        heading: "One engagement. Systems that talk to each other reliably.",
         items: [
-          { icon: "🗺️", title: "Integration Architecture", description: "Design of the integration topology — event-driven, ETL, API gateway, or middleware — for your needs." },
-          { icon: "🔗", title: "API Development", description: "Custom APIs, webhooks, and connectors built to production standards with auth and rate limiting." },
-          { icon: "🔄", title: "Data Sync & ETL", description: "Bidirectional sync and ETL pipelines with conflict resolution, deduplication, and error handling." },
-          { icon: "📊", title: "Data Mapping", description: "Schema mapping and transformation logic between systems with different data models." },
-          { icon: "👁️", title: "Monitoring & Alerting", description: "Real-time visibility into sync status, error rates, and data volume — with immediate alerting on failures." },
-          { icon: "📋", title: "Documentation", description: "Full technical documentation of every integration so your team can maintain and extend it." },
+          {
+            icon: "icon:audit-arch",
+            title: "Audit and Architecture",
+            description: "",
+            subtitle: "We map what you have before we build anything new.",
+            bullets: [
+              "System inventory and data flow mapping",
+              "Integration architecture design",
+              "Risk assessment on existing integrations",
+              "Recommended approach before any build begins",
+            ],
+          },
+          {
+            icon: "icon:pipeline-design",
+            title: "Build and Integration",
+            description: "",
+            subtitle: "Production-grade connectors, not fragile scripts.",
+            bullets: [
+              "Connector development and API integration",
+              "Data mapping and transformation logic",
+              "Error handling and retry logic on every integration path",
+              "Authentication and security controls per system",
+            ],
+          },
+          {
+            icon: "icon:quality-assurance",
+            title: "Testing and Validation",
+            description: "",
+            subtitle: "Data accuracy verified before go-live.",
+            bullets: [
+              "Integration testing across all connected systems",
+              "Data validation and reconciliation checks",
+              "Load testing at production data volumes",
+              "UAT with your team before cutover",
+            ],
+          },
+          {
+            icon: "icon:go-live",
+            title: "Go-Live and Monitoring",
+            description: "",
+            subtitle: "Every sync monitored. Every failure surfaced immediately.",
+            bullets: [
+              "Production cutover with rollback plan",
+              "Monitoring and alerting on all integration paths",
+              "Team training and runbook documentation",
+              "30-day post-launch support included",
+            ],
+          },
         ],
       },
       process: {
         enabled: true,
+        heading: "From System Audit to Reliable Integration",
+        subtitle: "A structured delivery process designed for integrations that need to hold up under production load, not just pass a demo.",
         steps: [
-          { phase: "Audit & Design", duration: "Week 1", description: "", includes: ["System inventory", "Data flow mapping", "Architecture design", "Risk assessment"] },
-          { phase: "Development", duration: "Week 2–6", description: "", includes: ["Connector build", "Data mapping", "Error handling", "Unit testing"] },
-          { phase: "Testing & Validation", duration: "Week 5–7", description: "", includes: ["Integration testing", "Data validation", "Load testing", "UAT"] },
-          { phase: "Go-live & Monitor", duration: "Ongoing", description: "", includes: ["Production cutover", "Monitoring setup", "Team training", "Ongoing support"] },
+          { phase: "Audit and Design", duration: "Week 1", description: "", includes: ["System inventory", "Data flow mapping", "Architecture design", "Risk assessment"] },
+          { phase: "Development", duration: "Week 2 to 6", description: "", includes: ["Connector build", "Data mapping", "Error handling", "Unit testing"] },
+          { phase: "Testing and Validation", duration: "Week 5 to 7", description: "", includes: ["Integration testing", "Data validation", "Load testing", "UAT"] },
+          { phase: "Go-Live and Monitor", duration: "Week 7 plus 30-day support", description: "", includes: ["Production cutover", "Monitoring and alerting setup", "Team training", "30-day post-launch support"] },
         ],
       },
       teamStructure: {
@@ -1697,28 +2105,30 @@ export const services: ServiceData[] = [
           { icon: "🧪", title: "QA Engineer", responsibility: "Tests data accuracy, sync reliability, and edge cases across all integration paths." },
           { icon: "📋", title: "Project Manager", responsibility: "Coordinates delivery and manages stakeholder communication." },
         ],
-        note: "Simple point-to-point integrations run with 1–2 engineers. Complex multi-system middleware layers require 3–5 specialists.",
+        subtitle: "Every System Integration engagement is staffed with a named specialist team. Not generalist engineers who will learn your systems mid-project.",
+        note: "Simple point-to-point integrations run with 1 to 2 engineers. Complex multi-system middleware layers require 3 to 5 specialists.",
       },
       qualityVetting: {
         enabled: true,
+        subtitle: "Only 3% of applicants pass all four stages. Here is what the other 97% do not clear.",
         stages: [
-          { stage: 'Live Coding & System Design', description: 'Real-world coding challenge, System design interview, Code quality & problem solving' },
-          { stage: 'Communication & English', description: 'Technical communication, Client-facing scenario, Written & spoken English' },
-          { stage: 'Agile Collaboration & Ownership', description: 'Agile mindset & teamwork, Ownership & accountability, Adaptability & growth mindset' },
-          { stage: 'Final Review & Reference Check', description: 'Technical panel interview, Reference & background check, Culture & values alignment' },
+          { stage: 'Live Coding and System Design', description: 'Real-world coding challenge, System design interview, Code quality and problem solving' },
+          { stage: 'Communication and English', description: 'Technical communication, Client-facing scenario, Written and spoken English' },
+          { stage: 'Agile Collaboration and Ownership', description: 'Agile mindset and teamwork, Ownership and accountability, Adaptability and growth mindset' },
+          { stage: 'Final Review and Reference Check', description: 'Technical panel interview, Reference and background check, Culture and values alignment' },
         ],
         metrics: [
-          { value: "3%", label: "Pass rate" },
-          { value: "4", label: "Vetting stages" },
+          { value: "3%", label: "Accept rate" },
+          { value: "4", label: "Stages of vetting" },
           { value: "97%", label: "Client satisfaction" },
-          { value: "2wk", label: "Avg. time to team ready" },
+          { value: "2 wks", label: "to team ready" },
         ],
       },
       caseStudy: {
         enabled: true,
         items: [
-          { client: "Retail Group", industry: "Retail", title: "ERP–e-commerce sync — zero manual orders", description: "Integrated Shopify with SAP ERP for real-time inventory, order, and customer data sync, eliminating 40 hours/week of manual data entry.", link: "/case-study", stats: [{ value: "40h/wk", label: "Manual work eliminated" }, { value: "99.8%", label: "Sync accuracy" }] },
-          { client: "Healthcare Network", industry: "Healthcare", title: "EHR integration — patient data unified across 5 systems", description: "Built an HL7 FHIR integration layer connecting 5 separate EHR and billing systems, creating a single patient record view.", link: "/case-study", stats: [{ value: "5", label: "Systems unified" }, { value: "60%", label: "Admin time saved" }] },
+          { client: "Retail Group", industry: "Retail", title: "ERP and e-commerce sync: zero manual order entry", description: "Integrated Shopify with SAP ERP for real-time inventory, order, and customer data sync. Eliminated 40 hours per week of manual data entry with 99.8% sync accuracy.", link: "/case-study", image: "/Media/Image/case 6.png", altText: "ERP and e-commerce system integration for retail - InApps Technology", stats: [{ value: "40h/wk", label: "Manual work eliminated" }, { value: "99.8%", label: "Sync accuracy" }] },
+          { client: "Healthcare Network", industry: "Healthcare", title: "EHR integration: patient data unified across 5 systems", description: "Built an HL7 FHIR integration layer connecting 5 separate EHR and billing systems, creating a single patient record view.", link: "/case-study", stats: [{ value: "5", label: "Systems unified" }, { value: "60%", label: "Admin time saved" }] },
         ],
       },
       comparison: {
@@ -1734,15 +2144,149 @@ export const services: ServiceData[] = [
       },
       faq: {
         enabled: true,
+        heading: "Common questions about system integration",
         items: [
-          { label: "Approach", question: "When should I use custom integration vs. an iPaaS tool like Zapier?", answer: "Zapier and Make are great for simple, low-volume automations. When you need complex transformation logic, high data volume, custom auth, or production-grade reliability, custom integration is the right call." },
-          { label: "Legacy Systems", question: "Can you integrate with legacy systems that don't have a modern API?", answer: "Yes. We've integrated with systems that only have SOAP APIs, database-level access, SFTP file drops, and even screen-scraping when nothing else is available." },
-          { label: "Timeline", question: "How long does an integration project take?", answer: "Simple webhook or API integration: 2–3 weeks. Complex bidirectional ERP sync: 6–10 weeks. Multi-system middleware layer: 10–16 weeks." },
-          { label: "Reliability", question: "What happens when an integration fails?", answer: "We build retry logic, dead letter queues, and alerting into every integration. You get notified immediately and data is never silently lost." },
-          { label: "Maintenance", question: "What if the connected system's API changes?", answer: "We document all integration dependencies and monitor for breaking changes. API versioning strategy is part of every integration we build." },
+          { label: "Approach", question: "When should I use custom integration vs. an iPaaS tool like Zapier?", answer: "Zapier and Make are good choices for simple, low-volume automations with standard connectors. When you need complex transformation logic, high data volumes, custom authentication, production-grade reliability, or integrations between systems that do not have native iPaaS connectors, custom integration is the right call. If you are not sure which applies to your situation, describe your use case and we will give you an honest recommendation." },
+          { label: "Legacy Systems", question: "Can you integrate with legacy systems that do not have a modern API?", answer: "Yes. We have integrated with legacy ERP systems, mainframe databases, SFTP-based data exchanges, and flat-file batch exports. Where no API exists, we connect via direct database access, file-based exchange, or by building a lightweight API layer in front of the legacy system. We assess feasibility during the audit phase and will tell you upfront if a system is genuinely not integrable." },
+          { label: "Timeline", question: "How long does an integration project take?", answer: "A single point-to-point integration with standard APIs typically takes 3 to 4 weeks including testing and go-live. Complex multi-system projects with bidirectional syncs, custom transformation logic, and high data volumes take 6 to 10 weeks. We scope the timeline during the audit phase in week one and do not start the build until you have approved the plan." },
+          { label: "Reliability", question: "What happens when an integration fails?", answer: "Every integration we build includes error handling, retry logic, and alerting. When a sync fails, the monitoring system surfaces it immediately with full context: which record failed, at which step, and why. Failures do not proceed silently. Your team gets notified before the error compounds into a data discrepancy. All failures are logged with enough detail to debug and replay the affected records." },
+          { label: "Maintenance", question: "What if the connected system's API changes?", answer: "API changes by third-party vendors are a normal part of integration maintenance. Every engagement includes a 30-day post-launch support period that covers changes introduced during that window. After that period, we offer structured maintenance retainers that include monitoring for API deprecations, version upgrades, and schema changes. We will notify you before a breaking change affects your data flows." },
         ],
       },
     },
+    cta: {
+      heading: "Tell us which systems need to talk to each other.",
+      subtitle: "Describe the integration. We will come back with an architecture recommendation and scoped proposal within 48 hours. One call. No commitment.",
+      ctaLabel: "Book a Discovery Call",
+    },
+  },
+  {
+    slug: "managed-services",
+    name: "Managed Services",
+    category: "Engagement Models",
+    categoryIcon: "🏢",
+    heroTagline: "Managed Software Development. Without the Overhead.",
+    heroDescription: "InApps monitors your system, fixes issues before your users notice, and delivers structured reports every week and every month. You stay informed. You stay out of the weeds.",
+    heroIllo: "/services/offshore-dev-center.svg",
+    showTrustBadge: true,
+    sections: {
+      buyerProblems: {
+        enabled: true,
+        heading: "Why Engineering Oversight\nBreaks Down at Scale",
+        subtitle: "You did not hire engineers to manage engineers. But without a system actively watching your stack, bugs reach users first, tech debt compounds quietly, and your best people spend weekends firefighting instead of shipping.",
+        problems: [
+          { title: "Bugs discovered by customers, not your team", description: "" },
+          { title: "No visibility into system health until something breaks", description: "" },
+          { title: "Tech debt grows every sprint but nobody owns the backlog", description: "" },
+          { title: "Engineers pulled from product work to handle production fires", description: "" },
+          { title: "Incident reports written after the fact with no root cause documented", description: "" },
+          { title: "Post-launch support costs never scoped into the original budget", description: "" },
+        ],
+      },
+      serviceOverview: {
+        enabled: true,
+        image: "/Media/Image/case 6.png",
+        title: "What Is a Managed Software Development Service?",
+        body: "InApps takes full ownership of your engineering layer. We configure automated monitoring across your infrastructure, application, and API stack, detect and resolve issues before they reach users, and deliver a written weekly digest and monthly health report on a fixed cadence. You get full visibility without attending a single daily standup. No ticket queue for you to manage. No incident triage on your end. Just a system that runs, and a team that keeps it that way.",
+        stats: [
+          { value: "750+", label: "Projects delivered" },
+          { value: "10+", label: "Years in business" },
+          { value: "85%+", label: "Multi-year retention" },
+          { value: "15+", label: "Countries served" },
+        ],
+      },
+      isRightForYou: {
+        enabled: true,
+        sectionLabel: "IS THIS RIGHT FOR YOU?",
+        heading: "Managed service works well if:",
+        checklist: [],
+        items: [
+          { tag: "No Engineering Overhead", title: "You want engineering output without managing engineers day to day", desc: "You have a product in production. You need it maintained, kept stable, and extended over time. You do not want another internal hire, another daily standup, or another tool to monitor." },
+          { tag: "Visibility Without the Noise", title: "You need to know what is happening without being pulled into it", desc: "Weekly digest. Monthly health report. You are escalated to only when your decision is actually required." },
+          { tag: "Proactive, Not Reactive", title: "You want issues found before your users find them", desc: "Automated monitoring catches anomalies early. Our team investigates, resolves, and logs every fix. You get the summary in your next report." },
+        ],
+      },
+      whatYouGet: {
+        enabled: true,
+        heading: "One retainer. Everything included.",
+        items: [
+          { icon: "icon:workflow-map", title: "Monitoring and Detection", description: "", subtitle: "Continuous oversight across your full stack.", bullets: ["Automated monitoring across infrastructure, application, and API layers", "Anomaly detection with threshold alerting calibrated to your system", "Error tracking with root cause classification per incident", "On-call response during your business hours (US, UK, AU time zones covered)"] },
+          { icon: "icon:build-launch-mvp", title: "Issue Resolution", description: "", subtitle: "Fixes deployed without you raising a ticket.", bullets: ["Bugs triaged by severity and impact within agreed SLA", "Critical issues fixed same day; non-critical on weekly cadence", "No manual ticket creation required from your side", "Full change log maintained per resolved issue"] },
+          { icon: "icon:handover-support", title: "Reporting Loop", description: "", subtitle: "Structured visibility on a fixed schedule.", bullets: ["Weekly digest every Monday: what happened, what was fixed, what is in progress", "Monthly health report: system stability score, trend analysis, forward recommendations", "Delivered via Slack, email, or shared dashboard. Your preference.", "Escalation channel open for priority items between reports"] },
+          { icon: "icon:design-proto-mvp", title: "Continuous Improvement", description: "", subtitle: "Your system improves over time, not just stays alive.", bullets: ["Sprint-based enhancements scoped on request", "Tech debt backlog maintained and prioritised jointly", "Architecture recommendations as your system scales", "Quarterly roadmap review included in retainer"] },
+        ],
+      },
+      process: {
+        enabled: true,
+        heading: "From Onboarding to Ongoing: How the Managed Loop Works",
+        steps: [
+          { phase: "Onboard and Baseline", duration: "Week 1 to 2", description: "", includes: ["Codebase review and environment access setup", "Monitoring tools configured to your stack", "Severity matrix and escalation path agreed in writing", "First system health baseline report delivered"] },
+          { phase: "Continuous Monitoring", duration: "Ongoing", description: "", includes: ["Automated scanning active across all layers", "Error logs reviewed daily by your assigned engineering team", "Threshold alerts tuned to your system's normal behaviour", "On-call rotation active during your core business hours"] },
+          { phase: "Detect, Triage, and Fix", duration: "Ongoing", description: "", includes: ["Anomalies flagged and classified by severity", "Root cause investigated within agreed SLA windows", "Fix applied, validated in staging, deployed to production", "Every resolution logged with impact summary"] },
+          { phase: "Report and Review", duration: "Weekly and Monthly", description: "", includes: ["Weekly digest delivered every Monday morning", "Monthly health report with trend data and forward recommendations", "Escalation to your team only when your input is required", "Quarterly review call available on request"] },
+        ],
+      },
+      teamStructure: {
+        enabled: true,
+        subtitle: "Every managed account is staffed with a named, fixed team. Not an anonymous support queue that rotates each quarter.",
+        roles: [
+          { icon: "📋", title: "Engagement Lead", responsibility: "Single point of escalation. Owns incident response, reporting, and communication between your team and ours." },
+          { icon: "🛠️", title: "Engineering Maintainers (2 to 4 engineers)", responsibility: "Sized to your stack complexity. Own the detection, triage, and fix cycle end to end." },
+          { icon: "🧪", title: "QA Engineer", responsibility: "Validates every fix before it reaches production. No untested change goes live." },
+          { icon: "📊", title: "Reporting Analyst", responsibility: "Compiles weekly and monthly structured reports. Tracks trends and flags patterns across sprint cycles." },
+        ],
+        note: "Team size reviewed at quarterly check-in based on system complexity and activity volume.",
+      },
+      qualityVetting: {
+        enabled: true,
+        eyebrow: "HOW WE STAFF YOUR ACCOUNT",
+        heading: "Every engineer passes 4 stages before joining a managed account",
+        stages: [
+          { stage: 'Technical Depth', description: 'Real codebase debugging exercise, system design under constraints, code review assessment' },
+          { stage: 'Communication and English', description: 'Written reporting quality, async update standards, escalation communication clarity' },
+          { stage: 'Ownership and Accountability', description: 'Proactive incident posture, on-call readiness, comfort with accountability under pressure' },
+          { stage: 'Final Review', description: 'Technical panel interview, reference and background check, culture and values alignment' },
+        ],
+        metrics: [
+          { value: "3%", label: "Pass rate" },
+          { value: "4", label: "Vetting stages" },
+          { value: "92%", label: "12-month retention" },
+          { value: "2–4wk", label: "Time to first engineer" },
+        ],
+      },
+      caseStudy: {
+        enabled: true,
+        items: [
+          { client: "Australian SaaS", industry: "SaaS", title: "ODC of 8 engineers: product shipped 2x faster", description: "Established an 8-person ODC in Vietnam for an Australian HR SaaS, reducing their cost per engineer by 58% while doubling feature output.", link: "/case-study", stats: [{ value: "58%", label: "Cost reduction" }, { value: "2x", label: "Feature velocity" }] },
+          { client: "US Fintech", industry: "Fintech", title: "12-person ODC running for 4 years", description: "Long-running ODC partnership where the Vietnam team now leads architecture decisions and has shipped 3 major product versions.", link: "/case-study", stats: [{ value: "4yr", label: "Partnership" }, { value: "95%", label: "Team retention" }] },
+        ],
+      },
+      comparison: {
+        enabled: true,
+        competitorLabel: "Typical Maintenance Vendor",
+        rows: [
+          { criterion: "Proactive monitoring included", inApps: true, inHouse: "Varies", typical: false },
+          { criterion: "Fixes deployed without manual ticket from client", inApps: true, inHouse: false, typical: false },
+          { criterion: "Weekly and monthly structured reports", inApps: true, inHouse: "Rarely", typical: false },
+          { criterion: "Single named point of escalation", inApps: true, inHouse: "Varies", typical: false },
+          { criterion: "AI-assisted anomaly detection", inApps: true, inHouse: false, typical: false },
+          { criterion: "Fixed monthly retainer, no hidden extras", inApps: true, inHouse: "N/A", typical: false },
+        ],
+      },
+      faq: {
+        enabled: true,
+        heading: "Everything you need to know",
+        items: [
+          { label: "Accountability", question: "Who is accountable when an incident occurs?", answer: "Your Engagement Lead owns incident response. They coordinate the investigation, manage the fix timeline, and deliver a written incident summary within 24 hours of resolution. One contact. Not a rotating support queue." },
+          { label: "Weekly Report", question: "What does the weekly report include?", answer: "Issues detected this week, issues resolved, issues still in progress, current system stability status, and any items requiring your input. Delivered every Monday. One structured page." },
+          { label: "Direct Access", question: "Can I talk directly to the engineer working on my system?", answer: "Yes. Your engineers are named and available for direct async communication via Slack or your preferred channel. For critical incidents, your Engagement Lead has the engineer on a call within the hour." },
+          { label: "SLA", question: "How fast are critical issues fixed?", answer: "Severity 1 (system down or data at risk): response within 1 hour, target resolution within 4 hours. Severity 2 (functional degradation affecting users): acknowledged within 2 hours, resolved within 24 hours. Exact SLAs are agreed in your service contract before onboarding." },
+          { label: "Visibility", question: "How do I know what your team is doing day to day?", answer: "You get a shared project board with real-time task status, a weekly written digest, and a monthly health report. If you want more detail, a monthly review call is included in the retainer at no additional cost." },
+        ],
+      },
+    },
+    metaTitle: "Managed Software Development Services | InApps",
+    metaDescription: "InApps monitors, fixes, and reports on your engineering layer continuously. Proactive bug fixing. Weekly reports. Book a discovery call.",
   },
   {
     slug: "custom-software-development",
@@ -1758,12 +2302,12 @@ export const services: ServiceData[] = [
         heading: "Why Off-the-Shelf Software\nHolds Businesses Back",
         subtitle: "Generic tools are built for the average business. Yours isn't average.",
         problems: [
-          { title: "Paying for features you don't need while missing the ones you do", description: "" },
-          { title: "Workarounds and manual steps because the software doesn't fit your process", description: "" },
-          { title: "Data locked in silos because systems weren't built to work together", description: "" },
-          { title: "Scaling blocked by software limits, seat pricing, or vendor lock-in", description: "" },
-          { title: "Security risks from sharing sensitive data with third-party SaaS platforms", description: "" },
-          { title: "Growing technical debt from patching together tools that were never meant to connect", description: "" },
+          { title: "Paying $80K a year for a platform where you use 20% of the features and work around 40% of them", description: "" },
+          { title: "A critical business process forced to fit around software logic that was never designed for your workflow", description: "" },
+          { title: "Customer and operational data spread across tools that were never meant to work together", description: "" },
+          { title: "A feature your business needs blocked by the vendor's roadmap, pricing tier, or deliberate product decision", description: "" },
+          { title: "Sensitive business data held in a third-party SaaS under terms you don't fully control", description: "" },
+          { title: "A stack of tools duct-taped together with Zapier and custom scripts that the next engineer won't understand", description: "" },
         ],
       },
       serviceOverview: {
@@ -1858,7 +2402,7 @@ export const services: ServiceData[] = [
           {
             client: "Techcombank",
             industry: "Fintech",
-            title: "Custom loan management platform — 3× faster processing",
+            title: "Custom loan management platform: 3× faster processing",
             description: "We built a bespoke loan origination and management system replacing a fragmented mix of spreadsheets and legacy tools, cutting processing time from 3 days to under 8 hours.",
             link: "/case-study",
             image: "/Media/Image/prd 1.jpg",
@@ -1886,7 +2430,7 @@ export const services: ServiceData[] = [
           {
             client: "Workpac",
             industry: "Workforce",
-            title: "Workforce management portal — 60% less admin overhead",
+            title: "Workforce management portal: 60% less admin overhead",
             description: "We built a custom workforce portal handling contractor onboarding, timesheet approval, compliance tracking, and payroll integration for 30K+ workers across Australia.",
             link: "/case-study",
             image: "/Media/Image/prd 3.jpg",
@@ -1900,8 +2444,8 @@ export const services: ServiceData[] = [
           {
             client: "Prudential",
             industry: "Insurance",
-            title: "Claims management system — 50% reduction in resolution time",
-            description: "We delivered a fully custom claims intake and case management system with automated routing, document handling, and compliance reporting — replacing a decade-old legacy platform.",
+            title: "Claims management system: 50% reduction in resolution time",
+            description: "We delivered a fully custom claims intake and case management system with automated routing, document handling, and compliance reporting, replacing a decade-old legacy platform.",
             link: "/case-study",
             image: "/Media/Image/prd 4.jpg",
             model: "Fixed-Price Model",

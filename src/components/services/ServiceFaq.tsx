@@ -5,9 +5,10 @@ import { FaqItem } from "@/data/services";
 
 interface Props {
   items: FaqItem[];
+  heading?: string;
 }
 
-export default function ServiceFaq({ items }: Props) {
+export default function ServiceFaq({ items, heading }: Props) {
   const [faqIndex, setFaqIndex] = useState(0);
 
   return (
@@ -19,7 +20,7 @@ export default function ServiceFaq({ items }: Props) {
           <div className="flex flex-col gap-[10px]">
             <p className="text-[#ef5023] text-[11px] font-bold tracking-[2px] uppercase">COMMON QUESTIONS</p>
             <h2 className="font-black text-[#0a0a0a] text-[36px] leading-[44px] tracking-[-1.5px]">
-              Everything you need <span className="text-[#ef5023]">to know</span>
+              {heading ?? <>Everything you need <span className="text-[#ef5023]">to know</span></>}
             </h2>
           </div>
         </div>

@@ -8,18 +8,22 @@ interface Props {
   heading?: string;
   subtitle?: string;
   eyebrow?: string;
+  insightText?: string;
+  hideTrustBadge?: boolean;
 }
 
 const DEFAULT_HEADING = "Why Most AI Agent\nProjects Fail";
 const DEFAULT_SUBTITLE = "These are the patterns we see again and again before teams come to us.";
 const DEFAULT_EYEBROW = "Common Challenges";
+const DEFAULT_INSIGHT = "Sound familiar? These are the exact problems we were built to solve.";
 
-export default function ServiceBuyerProblems({ problems, heading, subtitle, eyebrow }: Props) {
+export default function ServiceBuyerProblems({ problems, heading, subtitle, eyebrow, insightText, hideTrustBadge }: Props) {
   if (!problems.length) return null;
 
   const headingLines = (heading ?? DEFAULT_HEADING).split("\n");
   const subtitleText = subtitle ?? DEFAULT_SUBTITLE;
   const eyebrowText = eyebrow ?? DEFAULT_EYEBROW;
+  const insightCardText = insightText ?? DEFAULT_INSIGHT;
 
   return (
     <section className="px-[16px] md:px-[40px] py-[48px] md:py-[70px]" style={{ background: "#ffffff", borderTop: "1px solid #e8e8e8" }}>
@@ -51,31 +55,33 @@ export default function ServiceBuyerProblems({ problems, heading, subtitle, eyeb
               style={{ background: "#fff", border: "1px solid #e0e0e0", boxShadow: "0 8px 24px rgba(0,0,0,0.08)" }}
             >
               <p className="text-[#111] text-[13px] leading-[1.65] font-medium">
-                Sound familiar? These are the exact problems we were built to solve.
+                {insightCardText}
               </p>
-              <div className="flex items-center gap-[10px]">
-                <div className="flex -space-x-2">
-                  {[
-                    { src: "/Media/Image/prd 1.jpg", pos: "50% 20%" },
-                    { src: "/Media/Image/prd 2.jpg", pos: "50% 20%" },
-                    { src: "/Media/Image/prd 3.jpg", pos: "50% 20%" },
-                  ].map((avatar, i) => (
-                    <div
-                      key={i}
-                      className="w-[28px] h-[28px] rounded-full border-2 border-white overflow-hidden"
-                    >
-                      <img
-                        src={avatar.src}
-                        alt=""
-                        aria-hidden="true"
-                        className="w-full h-full object-cover"
-                        style={{ objectPosition: avatar.pos }}
-                      />
-                    </div>
-                  ))}
+              {!hideTrustBadge && (
+                <div className="flex items-center gap-[10px]">
+                  <div className="flex -space-x-2">
+                    {[
+                      { src: "/Media/Image/prd 1.jpg", pos: "50% 20%" },
+                      { src: "/Media/Image/prd 2.jpg", pos: "50% 20%" },
+                      { src: "/Media/Image/prd 3.jpg", pos: "50% 20%" },
+                    ].map((avatar, i) => (
+                      <div
+                        key={i}
+                        className="w-[28px] h-[28px] rounded-full border-2 border-white overflow-hidden"
+                      >
+                        <img
+                          src={avatar.src}
+                          alt=""
+                          aria-hidden="true"
+                          className="w-full h-full object-cover"
+                          style={{ objectPosition: avatar.pos }}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                  <span className="text-[#888] text-[12px]">Trusted by 40+ product teams</span>
                 </div>
-                <span className="text-[#888] text-[12px]">Trusted by 40+ product teams</span>
-              </div>
+              )}
             </div>
 
           </div>

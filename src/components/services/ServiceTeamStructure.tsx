@@ -7,6 +7,7 @@ interface TeamRole {
 interface Props {
   roles: TeamRole[];
   note?: string;
+  subtitle?: string;
 }
 
 const AVATARS: Record<string, { initials: string; bg: string; name: string }> = {
@@ -18,7 +19,7 @@ const AVATARS: Record<string, { initials: string; bg: string; name: string }> = 
   "📋": { initials: "VT", bg: "#1f3d2a", name: "Van Thanh" },
 };
 
-export default function ServiceTeamStructure({ roles, note }: Props) {
+export default function ServiceTeamStructure({ roles, note, subtitle }: Props) {
   return (
     <section className="px-[16px] md:px-[40px] py-[48px] md:py-[70px]" style={{ background: "#ffffff", borderTop: "1px solid #e8e8e8" }}>
       <div className="max-w-[1320px] mx-auto">
@@ -30,7 +31,7 @@ export default function ServiceTeamStructure({ roles, note }: Props) {
             Who works on your project
           </h2>
           <p className="text-[#888] text-[14px] leading-[1.75] max-w-[520px]">
-            Every engagement comes with a dedicated cross-functional team, not a pool of contractors. You work with real people, not an anonymous pool.
+            {subtitle ?? "Every engagement comes with a dedicated cross-functional team, not a pool of contractors. You work with real people, not an anonymous pool."}
           </p>
         </div>
 
