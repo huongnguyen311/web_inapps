@@ -1,235 +1,189 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 
 import Link from "next/link";
+import Script from "next/script";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ServiceTrustedLogos from "@/components/services/ServiceTrustedLogos";
 
-function AnimatedNumber({ value, suffix = "", duration = 1800 }: { value: number; suffix?: string; duration?: number }) {
-  const [display, setDisplay] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const hasAnimated = useRef(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated.current) {
-          hasAnimated.current = true;
-          const start = performance.now();
-          const animate = (now: number) => {
-            const progress = Math.min((now - start) / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3);
-            setDisplay(Math.round(eased * value));
-            if (progress < 1) requestAnimationFrame(animate);
-          };
-          requestAnimationFrame(animate);
-        }
-      },
-      { threshold: 0.3 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [value, duration]);
-
-  return <span ref={ref}>{display}{suffix}</span>;
-}
-
+// All quotes below are verbatim from InApps Technology's public Clutch.co profile:
+// https://clutch.co/profile/inapps-technology (36 reviews, 4.9/5 overall)
 const reviews = [
   {
     id: 1,
-    country: "GB",
-    industry: "HEALTHCARE",
-    result: "100K consultations in year 1",
+    country: "US",
+    industry: "SOFTWARE",
+    result: "Ongoing partnership since 2021",
     quote:
-      "The InApps team delivered exactly what we needed, a stable telemedicine app our doctors and patients actually love. They understood HIPAA constraints and HL7 FHIR integration from day one with minimal handholding. 100,000 consultations completed in year one. Genuinely one of the best engineering partnerships we have had.",
+      "They've gone above and beyond with little touches to not only make the result usable, but visually appealing as well.",
     rating: 5,
-    name: "Marcus Webb",
-    title: "CTO, DR.NEE Healthcare",
-    project: "Telemedicine App",
-    avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=80&h=80&fit=crop&crop=face&auto=format",
+    name: "James Fitzgerald",
+    title: "CTO, Stremium",
+    project: "Web Dashboard Development",
   },
   {
     id: 2,
-    country: "SG",
-    industry: "BLOCKCHAIN & SECURITY",
-    result: "30K+ enterprise users, 0 security incidents",
+    country: "PL",
+    industry: "IT SERVICES",
+    result: "14-month recruiting engagement",
     quote:
-      "We chose InApps because they were one of the few teams that could hold a serious technical conversation about both blockchain architecture and mobile performance. They delivered on every dimension \u2014 WebRTC end-to-end encryption, Ethereum consortium chain, and TSS key management \u2014 all production-grade within 8 months.",
+      "We chose them because they were a great culture fit.",
     rating: 5,
-    name: "Alexei Morozov",
-    title: "CEO & Co-founder, Sotoria Encrypted Communications",
-    project: "Encrypted Communications Platform",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face&auto=format",
+    name: "Karolina Kwa\u015Bniewska",
+    title: "External Resourcing Manager, Future Processing",
+    project: "IT Recruitment Services",
   },
   {
     id: 3,
     country: "VN",
-    industry: "E-COMMERCE & HEALTHCARE",
-    result: "+280% order volume",
+    industry: "FINTECH",
+    result: "6-10 person team, ongoing since 2024",
     quote:
-      "We went from zero online presence to a fully operational e-commerce platform serving 30+ pharmacy branches in 5 months. The InApps team handled medication compliance regulations without us having to explain it twice. Orders are up 280% versus pre-digital. Remarkable execution.",
+      "They were responsive, proactive, and adapted quickly to our needs.",
     rating: 5,
-    name: "Minh Tran",
-    title: "CEO, PharmaGo",
-    project: "Pharmacy E-Commerce Platform",
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face&auto=format",
+    name: "Nancy D.",
+    title: "Business Director, FinTech Company",
+    project: "Digital Financial Platform",
   },
   {
     id: 4,
-    country: "AU",
-    industry: "FINTECH",
-    result: "2 days \u2192 4 hours loan approval",
+    country: "VN",
+    industry: "LOGISTICS",
+    result: "Maritime app shipped in 8 months",
     quote:
-      "InApps didn\u2019t just deliver code \u2014 they became a genuine extension of our product team. The dedication and technical depth we got from their engineers matched anything we\u2019d seen from in-house hires.",
+      "The team was responsive and flexible in addressing our requirements.",
     rating: 5,
-    name: "Michael Tan",
-    title: "CTO, Techcombank Digital",
-    project: "Loan Processing System",
-    avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=80&h=80&fit=crop&crop=face&auto=format",
+    name: "Th\u00E0nh Trung Nguy\u1EC5n",
+    title: "Multimedia, Haivan Shipping-Services",
+    project: "Mobile App Development",
   },
   {
     id: 5,
-    country: "DE",
-    industry: "SAAS",
-    result: "3x faster feature delivery",
+    country: "VN",
+    industry: "IT SERVICES",
+    result: "Ongoing staff augmentation since 2025",
     quote:
-      "We\u2019ve worked with offshore teams before \u2014 InApps is in a different league. Senior engineers, honest timelines, and a team that genuinely cares about outcomes.",
+      "They provide high-quality talent at a good price.",
     rating: 5,
-    name: "David M\u00fcller",
-    title: "Product Lead, SaaSCore GmbH",
-    project: "Analytics Dashboard",
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=face&auto=format",
+    name: "Bui Kelly",
+    title: "CEO, vitX",
+    project: "IT Staff Augmentation",
   },
   {
     id: 6,
-    country: "US",
-    industry: "INSURANCE",
-    result: "Manual sorting eliminated",
+    country: "VN",
+    industry: "TRAVEL",
+    result: "Tour booking app, 5.0 on all categories",
     quote:
-      "We needed a partner who could move at startup speed but had the discipline of an enterprise vendor. InApps hit both. The AI triage system they built has completely transformed how we handle claims.",
+      "They provided a lot of new ideas to improve the app.",
     rating: 5,
-    name: "Sarah Nguyen",
-    title: "VP Engineering, Prudential Vietnam",
-    project: "AI Claims Triage System",
-    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face&auto=format",
+    name: "Emrah Erk",
+    title: "General Manager, Pegas Vietnam Travel",
+    project: "Mobile App Development",
   },
   {
     id: 7,
-    country: "GB",
-    industry: "LOGISTICS",
-    result: "35% fewer stockout incidents",
+    country: "VN",
+    industry: "SOFTWARE",
+    result: "Ongoing partnership since 2020",
     quote:
-      "The supply chain visibility platform they built reduced our stockout incidents by 35% in the first quarter alone. The ROI was immediate and measurable.",
+      "We are most impressed with their proactiveness, which saved us a lot of time and effort.",
     rating: 5,
-    name: "Linda Park",
-    title: "Head of Operations, LogiFlow Asia",
-    project: "Supply Chain Platform",
-    avatar: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=80&h=80&fit=crop&crop=face&auto=format",
+    name: "Ken Heini",
+    title: "CEO, EZtek",
+    project: "Web Development",
   },
   {
     id: 8,
-    country: "SG",
-    industry: "RETAIL",
-    result: "+22% conversion rate",
+    country: "CA",
+    industry: "IT SERVICES",
+    result: "Delivered in 3 months",
     quote:
-      "InApps understood our omnichannel complexity from the first discovery call. Their team delivered a unified platform that boosted our conversion rate by 22% across three brands.",
+      "They were always there for us if we have any questions or concerns.",
     rating: 5,
-    name: "Chris Lam",
-    title: "Director of Digital, FashionGroup SEA",
-    project: "Omnichannel Commerce",
-    avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&h=80&fit=crop&crop=face&auto=format",
+    name: "Nathan Bui",
+    title: "CEO & Founder, Tech Page Inc.",
+    project: "Mobile App Development",
   },
   {
     id: 9,
     country: "VN",
-    industry: "HEALTHCARE",
-    result: "MVP shipped in 8 weeks",
+    industry: "EDUCATION",
+    result: "10-person dedicated team, ongoing",
     quote:
-      "From day one, the communication was transparent and the engineers were proactive. We shipped our MVP in 8 weeks \u2014 something our previous agency couldn\u2019t do in 6 months.",
+      "I am most impressed with the responsibility and the initiative in work.",
     rating: 5,
-    name: "James Whitfield",
-    title: "Founder & CEO, HealthNow",
-    project: "Patient Portal MVP",
-    avatar: "https://images.unsplash.com/photo-1463453091185-61582044d556?w=80&h=80&fit=crop&crop=face&auto=format",
+    name: "Verified Client",
+    title: "Co-Founder, E-Learning Startup",
+    project: "Custom Software Development",
   },
   {
     id: 10,
-    country: "AU",
-    industry: "FINTECH",
-    result: "50% reduction in processing time",
+    country: "ID",
+    industry: "GAMING",
+    result: "12-month engagement, 5.0 rating",
     quote:
-      "Their team integrated seamlessly with ours. The payment gateway they built processes thousands of transactions daily without a single hiccup. Truly impressive engineering.",
+      "They are proactive to solve almost every problem we faced.",
     rating: 5,
-    name: "Tom Henderson",
-    title: "Engineering Manager, PayStream AU",
-    project: "Payment Gateway",
-    avatar: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=80&h=80&fit=crop&crop=face&auto=format",
+    name: "Verified Client",
+    title: "CEO & Founder, Gaming Studio",
+    project: "Mobile App Development",
   },
   {
     id: 11,
-    country: "DE",
-    industry: "E-COMMERCE",
-    result: "+45% mobile conversion",
+    country: "AU",
+    industry: "LOGISTICS",
+    result: "Ongoing partnership since 2019",
     quote:
-      "InApps rebuilt our mobile experience from scratch. The new app is faster, more intuitive, and our customers love it. Mobile conversions jumped 45% in the first month.",
+      "Whenever we had some feedback the team would take that onboard and provide a solution promptly.",
     rating: 5,
-    name: "Anna Becker",
-    title: "Head of Product, ShopWell Europe",
-    project: "Mobile Commerce App",
-    avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&h=80&fit=crop&crop=face&auto=format",
-  },
-  {
-    id: 12,
-    country: "US",
-    industry: "BLOCKCHAIN & SECURITY",
-    result: "Zero downtime migration",
-    quote:
-      "Migrating our entire infrastructure to a new blockchain protocol was daunting. InApps handled it with zero downtime. Their expertise in distributed systems is world-class.",
-    rating: 5,
-    name: "Ryan Cooper",
-    title: "CTO, ChainBridge Labs",
-    project: "Blockchain Migration",
-    avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=80&h=80&fit=crop&crop=face&auto=format",
+    name: "Verified Client",
+    title: "Project Lead, Logistics Company",
+    project: "Web App Development",
   },
 ];
 
 const countryFlags: Record<string, string> = {
-  GB: "\uD83C\uDDEC\uD83C\uDDE7",
-  SG: "\uD83C\uDDF8\uD83C\uDDEC",
+  PL: "\uD83C\uDDF5\uD83C\uDDF1",
   VN: "\uD83C\uDDFB\uD83C\uDDF3",
   AU: "\uD83C\uDDE6\uD83C\uDDFA",
-  DE: "\uD83C\uDDE9\uD83C\uDDEA",
+  CA: "\uD83C\uDDE8\uD83C\uDDE6",
+  ID: "\uD83C\uDDEE\uD83C\uDDE9",
   US: "\uD83C\uDDFA\uD83C\uDDF8",
 };
 
 const countryNames: Record<string, string> = {
-  GB: "United Kingdom",
-  SG: "Singapore",
+  PL: "Poland",
   VN: "Vietnam",
   AU: "Australia",
-  DE: "Germany",
+  CA: "Canada",
+  ID: "Indonesia",
   US: "United States",
 };
 
 const industries = ["All", ...Array.from(new Set(reviews.map((r) => r.industry)))];
 
 const industryColors: Record<string, { bg: string; text: string; border: string; dot: string }> = {
-  "HEALTHCARE":              { bg: "#f0fdfa", text: "#0f766e", border: "#99f6e4", dot: "#14b8a6" },
-  "E-COMMERCE & HEALTHCARE": { bg: "#f0fdf4", text: "#15803d", border: "#86efac", dot: "#22c55e" },
-  "FINTECH":                 { bg: "#eff6ff", text: "#1d4ed8", border: "#bfdbfe", dot: "#3b82f6" },
-  "BLOCKCHAIN & SECURITY":   { bg: "#f5f3ff", text: "#6d28d9", border: "#ddd6fe", dot: "#8b5cf6" },
-  "SAAS":                    { bg: "#eef2ff", text: "#4338ca", border: "#c7d2fe", dot: "#6366f1" },
-  "INSURANCE":               { bg: "#f8fafc", text: "#475569", border: "#cbd5e1", dot: "#64748b" },
-  "LOGISTICS":               { bg: "#fefce8", text: "#a16207", border: "#fde047", dot: "#eab308" },
-  "RETAIL":                  { bg: "#fff1f2", text: "#be123c", border: "#fecdd3", dot: "#f43f5e" },
-  "E-COMMERCE":              { bg: "#fdf4ff", text: "#7e22ce", border: "#e9d5ff", dot: "#a855f7" },
+  "SOFTWARE":    { bg: "#eef2ff", text: "#4338ca", border: "#c7d2fe", dot: "#6366f1" },
+  "IT SERVICES": { bg: "#f0fdfa", text: "#0f766e", border: "#99f6e4", dot: "#14b8a6" },
+  "FINTECH":     { bg: "#eff6ff", text: "#1d4ed8", border: "#bfdbfe", dot: "#3b82f6" },
+  "LOGISTICS":   { bg: "#fefce8", text: "#a16207", border: "#fde047", dot: "#eab308" },
+  "TRAVEL":      { bg: "#fff1f2", text: "#be123c", border: "#fecdd3", dot: "#f43f5e" },
+  "EDUCATION":   { bg: "#f0fdf4", text: "#15803d", border: "#86efac", dot: "#22c55e" },
+  "GAMING":      { bg: "#f5f3ff", text: "#6d28d9", border: "#ddd6fe", dot: "#8b5cf6" },
 };
 
-const QUOTE_LIMIT = 220;
+function nameInitials(name: string) {
+  return name
+    .split(" ")
+    .filter(Boolean)
+    .map((w) => w[0])
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
+}
 
 export default function ClientStoriesPage() {
   const [activeIndustry, setActiveIndustry] = useState("All");
@@ -265,7 +219,7 @@ export default function ClientStoriesPage() {
               </h1>
 
               <p className="text-[rgba(255,255,255,0.75)] text-[16px] leading-[28px]" style={{ marginTop: "-8px" }}>
-                Every word is from a real client at a real company: CTOs, founders, and VPs Engineering who trusted InApps to build their products across ODC, staff augmentation, and project engagements.
+                Every quote on this page is taken verbatim from our public Clutch.co profile: CTOs, CEOs, and founders who trusted InApps to build their products across ODC, staff augmentation, and project engagements.
               </p>
 
               <div className="flex flex-wrap items-center gap-[12px] pt-[4px]">
@@ -288,9 +242,9 @@ export default function ClientStoriesPage() {
               {/* Rating badges */}
               <div className="flex flex-wrap items-center gap-[12px] pt-[12px]">
                 {[
-                  { score: "4.9/5", platform: "Clutch.co", reviews: "48+ reviews" },
-                  { score: "4.8/5", platform: "GoodFirms", reviews: "32+ reviews" },
-                  { score: "4.7/5", platform: "Google", reviews: "60+ reviews" },
+                  { score: "4.9/5", platform: "Overall on Clutch.co", reviews: "36 reviews" },
+                  { score: "4.9/5", platform: "Quality", reviews: "Clutch rating" },
+                  { score: "4.9/5", platform: "Willing to refer", reviews: "Clutch rating" },
                 ].map((r) => (
                   <div
                     key={r.platform}
@@ -335,33 +289,54 @@ export default function ClientStoriesPage() {
           <div className="absolute left-0 top-0 bottom-0 pointer-events-none" style={{ width: "3px", background: "linear-gradient(to bottom, transparent, #ef5023, transparent)" }} />
           <div className="relative max-w-[1320px] mx-auto flex flex-wrap items-center justify-between gap-[24px]">
 
-            {/* Clutch badge + Rating */}
-            <div className="flex items-center gap-[20px]">
-              <div className="flex-shrink-0 flex flex-col items-center justify-center rounded-[10px] px-[16px] py-[10px]" style={{ background: "#ef4223" }}>
-                <span className="text-[7px] font-bold tracking-[1px] uppercase text-white/80 leading-[1]">Top Development Company</span>
-                <span className="text-[18px] font-black text-white leading-[1.1] mt-[1px]" style={{ fontFamily: "Georgia, serif" }}>clutch</span>
-                <span className="text-[7px] font-semibold tracking-[0.5px] uppercase text-white/60 leading-[1] mt-[1px]">Vietnam 2024</span>
-              </div>
-              <div className="flex flex-col gap-[3px]">
-                <span className="font-black text-[#1a1a2e] text-[26px] leading-[1]" style={{ letterSpacing: "-0.5px" }}>4.9 / 5.0</span>
-                <div className="flex gap-[2px]">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <span key={i} className="text-[14px]" style={{ color: "#f59e0b" }}>{"\u2605"}</span>
-                  ))}
+            {/* Clutch rating: official live widget, hand-made block as fallback */}
+            <style>{`
+              /* official Clutch widget stays hidden until its iframe actually loads;
+                 if it never loads (ad-blocker, offline), the fallback block remains */
+              .cw-stack .clutch-widget { display: none; }
+              .cw-stack:has(.clutch-widget iframe) .clutch-widget { display: block; }
+              .cw-stack:has(.clutch-widget iframe) .cw-fallback { display: none; }
+            `}</style>
+            <div className="cw-stack">
+              <div
+                className="clutch-widget"
+                data-url="https://widget.clutch.co"
+                data-widget-type="2"
+                data-height="50"
+                data-nofollow="true"
+                data-expandifr="true"
+                data-scale="100"
+                data-clutchcompany-id="141271"
+              />
+              <div className="cw-fallback flex items-center gap-[20px]">
+                <img
+                  src="/Media/Partners/clutch.svg"
+                  alt="Clutch logo"
+                  className="flex-shrink-0"
+                  style={{ height: "34px", width: "auto", display: "block" }}
+                />
+                <div className="w-[1px] self-stretch flex-shrink-0" style={{ background: "#e8e8e8" }} />
+                <div className="flex flex-col gap-[3px]">
+                  <span className="font-black text-[#1a1a2e] text-[26px] leading-[1]" style={{ letterSpacing: "-0.5px" }}>4.9 / 5.0</span>
+                  <div className="flex gap-[2px]">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <span key={i} className="text-[14px]" style={{ color: "#f59e0b" }}>{"\u2605"}</span>
+                    ))}
+                  </div>
+                  <span className="text-[13px]" style={{ color: "#888" }}>36 client reviews on Clutch.co {"\u00b7"} Premier Verified since 2016</span>
                 </div>
-                <span className="text-[13px]" style={{ color: "#888" }}>48+ verified reviews on Clutch.co</span>
               </div>
             </div>
 
             {/* Top badges + CTA */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-[10px]">
               <div className="flex flex-col items-center justify-center rounded-[12px] px-[32px] py-[16px] text-center" style={{ background: "#f3f3f3" }}>
-                <span className="font-black text-[#1a1a2e] text-[20px] leading-[1]">Top 1000</span>
-                <span className="text-[12px] mt-[3px]" style={{ color: "#666" }}>Global Service Providers</span>
+                <span className="font-black text-[#1a1a2e] text-[20px] leading-[1]">13×</span>
+                <span className="text-[12px] mt-[3px]" style={{ color: "#666" }}>Cited as &ldquo;Communicative&rdquo;</span>
               </div>
               <div className="flex flex-col items-center justify-center rounded-[12px] px-[32px] py-[16px] text-center" style={{ background: "#f3f3f3" }}>
-                <span className="font-black text-[#1a1a2e] text-[20px] leading-[1]">Top 25</span>
-                <span className="text-[12px] mt-[3px]" style={{ color: "#666" }}>Vietnam IT Companies</span>
+                <span className="font-black text-[#1a1a2e] text-[20px] leading-[1]">13×</span>
+                <span className="text-[12px] mt-[3px]" style={{ color: "#666" }}>Cited as &ldquo;Timely&rdquo;</span>
               </div>
               <a
                 href="https://clutch.co/profile/inapps-technology"
@@ -431,10 +406,10 @@ export default function ClientStoriesPage() {
             <div className="flex flex-col gap-[12px] max-w-[700px]">
               <p className="text-[#ef5023] text-[11px] font-bold tracking-[2px] uppercase">CLIENT REVIEWS</p>
               <h2 className="font-black text-[#0a0a0a] text-[36px] leading-[44px] tracking-[-1.5px]">
-                12 Verified <span className="text-[#ef5023]">Client Reviews</span>
+                Verified <span className="text-[#ef5023]">Client Reviews</span>
               </h2>
               <p className="text-[16px] leading-[1.7]" style={{ color: "#666" }}>
-                Clients from 48+ verified Clutch reviews. Representatives from the UK, US, Singapore, Australia, Germany, and Vietnam.
+                A selection from 36 reviews on our Clutch.co profile, quoted word for word. Reviewers from the US, Poland, Canada, Australia, Indonesia, and Vietnam.
               </p>
             </div>
 
@@ -547,7 +522,13 @@ export default function ClientStoriesPage() {
                     {/* Footer */}
                     <div className="flex items-center justify-between gap-[10px] px-[28px] pl-[34px] py-[16px]" style={{ borderTop: "1px solid #f0ebe4", background: "#faf8f6" }}>
                       <div className="flex items-center gap-[10px] min-w-0">
-                        <img src={r.avatar} alt={r.name} className="w-[38px] h-[38px] rounded-full object-cover flex-shrink-0" style={{ border: "2px solid rgba(239,80,35,0.2)" }} />
+                        <div
+                          className="w-[38px] h-[38px] rounded-full flex items-center justify-center flex-shrink-0 font-black text-[12px] text-white"
+                          style={{ background: "linear-gradient(135deg, #ef5023, #ff8c42)", border: "2px solid rgba(239,80,35,0.2)" }}
+                          aria-hidden="true"
+                        >
+                          {nameInitials(r.name)}
+                        </div>
                         <div className="flex flex-col min-w-0">
                           <span className="font-bold text-[13px] truncate" style={{ color: "#111" }}>{r.name}</span>
                           <span className="text-[11px] truncate" style={{ color: "#999" }}>{r.title}</span>
@@ -658,7 +639,7 @@ export default function ClientStoriesPage() {
                 <rect width="100%" height="100%" fill="url(#join-grid)"/>
               </svg>
               <h3 className="relative font-black text-white leading-[1.2] tracking-[-0.5px]" style={{ fontSize: "clamp(22px, 3vw, 30px)" }}>
-                Join 300+ companies who trust InApps
+                Work with a team clients rate 4.9/5
               </h3>
               <p className="relative text-[15px] leading-[1.6]" style={{ color: "rgba(255,255,255,0.85)" }}>
                 Start with a free 30-minute discovery call. No commitment required.
@@ -686,6 +667,7 @@ export default function ClientStoriesPage() {
 
       </main>
       <Footer />
+      <Script src="https://widget.clutch.co/static/js/widget.js" strategy="lazyOnload" />
     </div>
   );
 }

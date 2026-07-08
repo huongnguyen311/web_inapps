@@ -608,7 +608,7 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
         <div className="hidden md:flex justify-end">
           <Link
             href="/contact"
-            className="bg-[#ef5023] text-white text-[15px] font-bold px-6 h-[44px] rounded-lg hover:bg-[#e63d1f] transition-colors inline-flex items-center"
+            className="bg-[#ef5023] text-white text-[15px] font-bold px-6 h-[44px] rounded-lg hover:bg-[#e63d1f] transition-colors inline-flex items-center whitespace-nowrap"
             style={{ boxShadow: "0 10px 15px -3px rgba(255,73,41,0.2),0 4px 6px -4px rgba(255,73,41,0.2)", textDecoration: "none" }}
           >
             Talk to us

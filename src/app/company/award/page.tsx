@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Script from "next/script";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ServiceTrustedLogos from "@/components/services/ServiceTrustedLogos";
@@ -36,8 +37,27 @@ export default function AwardPage() {
               </h1>
 
               <p className="text-[rgba(255,255,255,0.75)] text-[16px] leading-[28px]" style={{ marginTop: "-8px" }}>
-                External validation of what our clients already know. InApps is ISO certified, award-winning, and a certified partner of the platforms we build on. Trust should be earned, not asserted.
+                External validation of what our clients already know. InApps is independently certified, recognised on Clutch.co, and a partner of the platforms we build on. Trust should be earned, not asserted.
               </p>
+
+              <div className="flex flex-wrap items-center gap-[12px] pt-[4px]">
+                <a
+                  href="#certifications"
+                  className="bg-[#ef5023] hover:bg-[#d94010] text-white font-bold text-[16px] px-[28px] h-[55px] rounded-[10px] inline-flex items-center transition-colors"
+                  style={{ boxShadow: "0 8px 32px rgba(239,80,35,0.35)", textDecoration: "none" }}
+                >
+                  View Credentials ↓
+                </a>
+                <a
+                  href="https://clutch.co/profile/inapps-technology"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-transparent font-semibold text-[16px] px-[28px] h-[55px] rounded-[10px] border border-white/30 hover:border-white/60 transition-colors inline-flex items-center text-white"
+                  style={{ textDecoration: "none" }}
+                >
+                  Verify on Clutch.co →
+                </a>
+              </div>
 
             </div>
           </div>
@@ -46,8 +66,31 @@ export default function AwardPage() {
         {/* ── Client & Review Logos ── */}
         <ServiceTrustedLogos />
 
-        {/* ── S2: ISO Certifications ── */}
-        <section className="relative px-[16px] md:px-[40px] py-[70px] overflow-hidden" style={{ background: "#ffffff", borderTop: "1px solid #e8e8e8" }}>
+        {/* ── Scorecard strip ── */}
+        <section className="relative px-[16px] md:px-[40px] py-[40px] overflow-hidden" style={{ background: "#ffffff", borderTop: "1px solid #e8e8e8" }}>
+          <div className="relative max-w-[1320px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-[14px]">
+            {[
+              { value: "4.9/5", label: "Clutch Rating · 36 Reviews" },
+              { value: "3", label: "Security & Process Certifications" },
+              { value: "4", label: "Technology Partnerships" },
+              { value: "10", label: "Years in Operation, Since 2016" },
+            ].map(({ value, label }) => (
+              <div
+                key={label}
+                className="flex flex-col gap-[8px] rounded-[12px] px-[20px] py-[20px] items-center text-center"
+                style={{ background: "#ffffff", border: "1px solid #e8e8e8", boxShadow: "0 4px 20px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.05)" }}
+              >
+                <span className="font-black leading-[1] text-[32px] tracking-[-1px]" style={{ color: "#ef5023" }}>
+                  {value}
+                </span>
+                <span className="text-[#0a0a0a] text-[13px] font-semibold">{label}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── S2: Certifications ── */}
+        <section id="certifications" className="relative px-[16px] md:px-[40px] py-[70px] overflow-hidden" style={{ background: "#ffffff", borderTop: "1px solid #e8e8e8" }}>
 
           {/* fingerprint arc field — biometric verification motif, radiates from top-right */}
           <svg width="100%" height="100%" viewBox="0 0 1440 560" preserveAspectRatio="xMidYMid slice" style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }} xmlns="http://www.w3.org/2000/svg">
@@ -84,7 +127,10 @@ export default function AwardPage() {
                 Independently audited. Globally recognised.
               </h2>
               <p className="text-[16px] leading-[1.7] max-w-[700px]" style={{ color: "rgba(0,0,0,0.55)" }}>
-                Certified to the highest international standards for security, quality management, and engineering process maturity.
+                Certified to international standards for security, operational controls, and engineering process maturity. All three certifications are cross-listed on our{" "}
+                <a href="https://clutch.co/profile/inapps-technology" target="_blank" rel="noopener noreferrer" className="font-semibold underline" style={{ color: "#ef5023" }}>
+                  verified Clutch.co profile
+                </a>.
               </p>
             </div>
 
@@ -109,13 +155,13 @@ export default function AwardPage() {
                 },
                 {
                   tag: "CORE",
-                  title: "ISO 9001:2015",
-                  subtitle: "Quality Management Systems",
-                  issuer: "Bureau Veritas · 2021",
-                  desc: "Certified quality management across all service delivery processes. ISO 9001 ensures consistent, measurable quality in project delivery, team management, and client communication, from a 2-engineer staff aug engagement to a 50-person ODC.",
+                  title: "SOC 2 Type II",
+                  subtitle: "Security, Availability & Confidentiality Controls",
+                  issuer: "Independent annual audit",
+                  desc: "SOC 2 Type II attests that our security, availability, and confidentiality controls do not just exist on paper, they have been observed operating effectively over an extended audit period. This is the assurance report US and Australian enterprise clients ask for first.",
                   icon: (
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="12" cy="8" r="5"/><path d="M8 13l-2 9 6-4 6 4-2-9"/>
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>
                     </svg>
                   ),
                 },
@@ -182,10 +228,30 @@ export default function AwardPage() {
                 </div>
               ))}
             </div>
+
+            {/* compliance documentation CTA */}
+            <div className="mt-[24px] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-[16px] rounded-[16px] px-[24px] md:px-[32px] py-[20px] md:ml-[80px]" style={{ background: "#fafafa", border: "1px solid #ececec" }}>
+              <p className="text-[14px] leading-[1.6] max-w-[560px]" style={{ color: "#555" }}>
+                <strong style={{ color: "#0a0a0a" }}>Running vendor due diligence?</strong> We share certificate copies, audit scope, and security documentation with qualified prospects under NDA, usually within one business day.
+              </p>
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center gap-[6px] px-[22px] h-[44px] rounded-[10px] font-bold text-[13px] text-white transition-all hover:brightness-110 flex-shrink-0 whitespace-nowrap"
+                style={{ background: "#ef5023", textDecoration: "none" }}
+              >
+                Request compliance documentation →
+              </Link>
+            </div>
           </div>
         </section>
 
         {/* ── S3: Industry Awards ── */}
+        <style>{`
+          /* GoodFirms widget wrapper: invisible while the third-party script
+             has not injected anything, so no empty white box ever shows */
+          .gf-widget-wrap { display: none; }
+          .gf-widget-wrap:has(.goodfirm-widget > *) { display: block; background: #fff; min-height: 61px; }
+        `}</style>
         <section id="awards" className="relative px-[16px] md:px-[40px] py-[70px] overflow-hidden" style={{ background: "#080808", borderTop: "1px solid #1a1a1a" }}>
 
           {/* constellation network — từ careers page */}
@@ -223,42 +289,94 @@ export default function AwardPage() {
             <div className="flex flex-col gap-[12px]">
               <p className="text-[#ef5023] text-[11px] font-bold tracking-[2px] uppercase">RECOGNITION</p>
               <h2 className="font-black text-white text-[36px] leading-[44px] tracking-[-1.5px]">
-                Industry Awards
+                Industry Awards & Recognition
               </h2>
               <p className="text-[16px] leading-[1.7] max-w-[700px]" style={{ color: "rgba(255,255,255,0.55)" }}>
-                Recognised by industry bodies and review platforms for engineering excellence and client outcomes.
+                Clutch recognition is earned by InApps directly, from verified client reviews. Product and partner awards below are credited to the products our teams engineered and the partner companies we build alongside.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-[16px]">
+            {/* Featured: Clutch recognition (InApps direct) */}
+            <div
+              className="relative flex flex-col md:flex-row md:items-center gap-[24px] md:gap-[40px] rounded-[20px] p-[28px] md:p-[36px] overflow-hidden"
+              style={{
+                background: "rgba(239,80,35,0.08)",
+                border: "1px solid rgba(239,80,35,0.28)",
+                boxShadow: "0 4px 24px rgba(0,0,0,0.5), 0 0 32px rgba(239,80,35,0.10), inset 0 1px 0 rgba(255,255,255,0.10)",
+              }}
+            >
+              <div className="absolute top-0 left-0 right-0 h-[1px]" style={{ background: "linear-gradient(to right, transparent, rgba(239,80,35,0.7) 30%, rgba(239,80,35,0.7) 70%, transparent)" }} />
+              <div className="flex items-start gap-[16px] flex-1">
+                <div className="w-[48px] h-[48px] rounded-[12px] flex items-center justify-center flex-shrink-0" style={{ background: "rgba(239,80,35,0.16)", boxShadow: "0 0 16px rgba(239,80,35,0.18)" }}>
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ef5023" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
+                  </svg>
+                </div>
+                <div className="flex flex-col gap-[8px]">
+                  <span className="inline-flex items-center self-start px-[10px] py-[4px] rounded-[6px] text-[10px] font-bold uppercase tracking-[1px]" style={{ background: "#ef5023", color: "#fff" }}>Awarded to InApps</span>
+                  <h3 className="font-black text-white text-[22px] leading-[30px] tracking-[-0.5px]">Top Software Developers in Vietnam</h3>
+                  <span className="text-[#ef5023] text-[13px] font-bold">Clutch.co · 2021, 2022, 2023, 2024</span>
+                  <p className="text-[14px] leading-[1.8]" style={{ color: "rgba(255,255,255,0.6)" }}>
+                    Clutch.co ranks B2B service providers based on verified client reviews, market presence, and industry expertise. InApps has been consistently ranked in the Top 10 Software Development Companies in Vietnam across four consecutive years.
+                  </p>
+                  <div className="flex flex-wrap items-center gap-[8px] pt-[4px]">
+                    {["Premier Verified", "4.9/5 · 36 reviews", "Top Staff Augmentation Company 2026"].map((chip) => (
+                      <span key={chip} className="inline-flex items-center px-[10px] py-[4px] rounded-full text-[11px] font-semibold" style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)", color: "rgba(255,255,255,0.75)" }}>{chip}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div className="flex flex-col items-center gap-[14px] flex-shrink-0 self-start md:self-center">
+                <div className="rounded-[14px] overflow-hidden" style={{ width: "180px", height: "180px", background: "#fff" }}>
+                  <iframe
+                    width="360"
+                    height="360"
+                    src="https://clutch.co/share/badges/141271/10037?utm_source=clutch_top_company_badge&utm_medium=image_embed"
+                    title="Top Clutch Staff Augmentation Company 2026"
+                    loading="lazy"
+                    style={{ border: 0, transform: "scale(0.5)", transformOrigin: "top left", display: "block" }}
+                  />
+                </div>
+                <a
+                  href="https://clutch.co/profile/inapps-technology"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-[6px] px-[24px] h-[48px] rounded-[10px] font-bold text-[14px] text-white transition-all hover:brightness-110"
+                  style={{ background: "#ef5023", textDecoration: "none" }}
+                >
+                  Verify on Clutch.co →
+                </a>
+              </div>
+            </div>
+
+            {/* Sub-heading: product & partner recognition */}
+            <div className="flex flex-col gap-[8px] mt-[8px]">
+              <h3 className="font-black text-white text-[22px] leading-[30px] tracking-[-0.5px]">Product & Partner Recognition</h3>
+              <p className="text-[14px] leading-[1.7] max-w-[700px]" style={{ color: "rgba(255,255,255,0.5)" }}>
+                Awards earned by products InApps engineered and by partner companies we work with. We list them as shared recognition, with credit where it belongs.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-[16px]">
               {[
                 {
                   title: "Sao Khue Award",
-                  org: "Vietnam Software & IT Services Association (VINASA)",
-                  years: "2019, 2021, 2022, 2023",
-                  desc: "Sao Khue (The North Star) is Vietnam's most prestigious award for software and IT services excellence. InApps has been recognised four times for outstanding product quality, delivery track record, and contribution to Vietnam's technology ecosystem.",
-                  icon: (
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ef5023" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
-                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-                    </svg>
-                  ),
-                },
-                {
-                  title: "Top Software Developers in Vietnam",
-                  org: "Clutch.co",
-                  years: "2021, 2022, 2023, 2024",
-                  desc: "Clutch.co ranks B2B service providers based on verified client reviews, market presence, and industry expertise. InApps has been consistently ranked in the Top 10 Software Development Companies in Vietnam across four consecutive years.",
-                  icon: (
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ef5023" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
-                    </svg>
-                  ),
+                  org: "VINASA",
+                  years: "2019, 2021, 2022, 2023, 2026",
+                  desc: "Sao Khue (The North Star) is Vietnam's most prestigious award for software excellence. Won five times by products our engineering teams built and by partners we develop alongside.",
+                  logo: "/Media/Partners/saokhue.png",
+                  logoAlt: "Sao Khue Award medal",
+                  logoWide: false,
+                  icon: null as React.ReactNode,
                 },
                 {
                   title: "Top App Development Company",
                   org: "GoodFirms",
                   years: "2022, 2023",
-                  desc: "GoodFirms recognised InApps as a top mobile app development company in Vietnam based on verified client reviews, expertise, and quality standards. Particularly noted for React Native and cross-platform mobile engineering.",
+                  desc: "GoodFirms recognition for mobile app development quality, earned within our product and partner ecosystem. Particularly noted for React Native and cross-platform mobile engineering.",
+                  logo: "/Media/Partners/goodfirms.svg",
+                  logoAlt: "GoodFirms logo",
+                  logoWide: true,
                   icon: (
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ef5023" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
                       <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>
@@ -269,7 +387,10 @@ export default function AwardPage() {
                   title: "Best Software Outsourcing Company",
                   org: "Vietnam ICT Awards",
                   years: "2023",
-                  desc: "The Vietnam ICT Award recognises technology companies driving innovation and digital transformation in Vietnam. InApps was recognised for its contribution to the offshore development ecosystem and for bringing international-grade engineering practices to Vietnam.",
+                  desc: "The Vietnam ICT Award recognises technology companies driving innovation and digital transformation. Earned within our partner network for contribution to the offshore development ecosystem.",
+                  logo: null,
+                  logoAlt: "",
+                  logoWide: false,
                   icon: (
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ef5023" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
                       <path d="M6 9H4.5a2.5 2.5 0 010-5H6"/><path d="M18 9h1.5a2.5 2.5 0 000-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0012 0V2z"/>
@@ -292,18 +413,42 @@ export default function AwardPage() {
                   {/* orange top accent line */}
                   <div className="absolute top-0 left-0 right-0 h-[1px]" style={{ background: "linear-gradient(to right, transparent, rgba(239,80,35,0.55) 30%, rgba(239,80,35,0.55) 70%, transparent)" }} />
 
-                  {/* icon + meta */}
-                  <div className="flex items-start gap-[16px]">
-                    <div
-                      className="w-[48px] h-[48px] rounded-[12px] flex items-center justify-center flex-shrink-0"
-                      style={{ background: "rgba(239,80,35,0.16)", boxShadow: "0 0 16px rgba(239,80,35,0.18)" }}
-                    >
-                      {award.icon}
+                  {/* header row: logo slot left, chip right */}
+                  <div className="flex items-center justify-between gap-[12px]">
+                    <div className="h-[56px] flex items-center">
+                      {award.logo ? (
+                        <img
+                          src={award.logo}
+                          alt={award.logoAlt}
+                          style={{
+                            height: award.logoWide ? "24px" : "56px",
+                            width: "auto",
+                            maxWidth: "160px",
+                            objectFit: "contain",
+                            display: "block",
+                            filter: "drop-shadow(0 0 12px rgba(239,80,35,0.22))",
+                          }}
+                        />
+                      ) : (
+                        <div
+                          className="w-[48px] h-[48px] rounded-[12px] flex items-center justify-center"
+                          style={{ background: "rgba(239,80,35,0.16)", boxShadow: "0 0 16px rgba(239,80,35,0.18)" }}
+                        >
+                          {award.icon}
+                        </div>
+                      )}
                     </div>
-                    <div className="flex flex-col gap-[4px]">
-                      <h3 className="font-black text-white text-[20px] leading-[28px] tracking-[-0.5px]">{award.title}</h3>
+                    <span className="inline-flex items-center whitespace-nowrap flex-shrink-0 self-start px-[9px] py-[4px] rounded-full text-[9px] font-bold uppercase tracking-[1.5px]" style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.14)", color: "rgba(255,255,255,0.55)" }}>
+                      Product & Partner
+                    </span>
+                  </div>
+
+                  {/* title + meta, full width */}
+                  <div className="flex flex-col gap-[6px]">
+                    <h3 className="font-black text-white text-[20px] leading-[26px] tracking-[-0.5px] md:min-h-[52px]">{award.title}</h3>
+                    <div className="flex flex-wrap items-baseline gap-x-[8px] gap-y-[2px]">
                       <span className="text-[#ef5023] text-[13px] font-bold">{award.org}</span>
-                      <span className="text-[13px]" style={{ color: "rgba(255,255,255,0.55)" }}>{award.years}</span>
+                      <span className="text-[13px]" style={{ color: "rgba(255,255,255,0.5)" }}>{award.years}</span>
                     </div>
                   </div>
 
@@ -311,14 +456,28 @@ export default function AwardPage() {
                   <div className="w-full h-[1px]" style={{ background: "rgba(255,255,255,0.08)" }} />
 
                   {/* description */}
-                  <p className="text-[14px] leading-[1.8]" style={{ color: "rgba(255,255,255,0.55)" }}>
+                  <p className="flex-1 text-[14px] leading-[1.8]" style={{ color: "rgba(255,255,255,0.55)" }}>
                     {award.desc}
                   </p>
+
+                  {/* GoodFirms live rating widget: hidden until the script actually renders content */}
+                  {award.org === "GoodFirms" && (
+                    <div className="gf-widget-wrap rounded-[10px] px-[10px] py-[8px]">
+                      <div
+                        className="goodfirm-widget"
+                        data-widget-type="goodfirms-widget-t9"
+                        data-widget-pattern="horizontal-inline"
+                        data-height="61"
+                        data-company-id="16269"
+                      />
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
           </div>
         </section>
+        <Script src="https://assets.goodfirms.co/assets/js/widget.min.js" strategy="lazyOnload" />
 
         {/* ── S4: Technology Partnerships ── */}
         <section className="relative px-[16px] md:px-[40px] py-[70px] overflow-hidden" style={{ background: "#fafafa", borderTop: "1px solid #e8e8e8" }}>
@@ -361,44 +520,32 @@ export default function AwardPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-[16px]">
               {[
                 {
-                  title: "Microsoft Certified Partner",
-                  tier: "GOLD PARTNER",
-                  desc: "InApps is a Microsoft Certified Gold Partner, with active certifications in Azure cloud architecture, Microsoft 365 integration, and Dynamics CRM implementation. Our engineers hold individual Microsoft certifications in Azure, Power Platform, and DevOps.",
-                  icon: (
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ef5023" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
-                      <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
-                    </svg>
-                  ),
+                  title: "Microsoft Partner",
+                  tier: "PARTNER NETWORK",
+                  desc: "Our engineers hold active individual Microsoft certifications across Azure cloud architecture, Microsoft 365 integration, Power Platform, and DevOps. We design, build, and operate production workloads on Azure for enterprise clients.",
+                  logo: "/Media/Partners/microsoft.svg",
+                  logoAlt: "Microsoft logo",
                 },
                 {
                   title: "AWS Select Partner",
                   tier: "AWS PARTNER NETWORK",
                   desc: "As an AWS Select Partner, InApps engineers have demonstrated expertise in AWS cloud services including EC2, RDS, Lambda, ECS, CloudFront, and the full DevOps toolchain. We design and operate production systems on AWS for clients across the US, EU, and Asia-Pacific.",
-                  icon: (
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ef5023" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/>
-                    </svg>
-                  ),
+                  logo: "/Media/Partners/aws.svg",
+                  logoAlt: "Amazon Web Services logo",
                 },
                 {
                   title: "Google Cloud Partner",
                   tier: "PARTNER",
                   desc: "Certified Google Cloud engineers on our team bring expertise in GCP services including GKE, BigQuery, Cloud Run, and Firebase. We help clients migrate to or build natively on Google Cloud infrastructure.",
-                  icon: (
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ef5023" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
-                    </svg>
-                  ),
+                  logo: "/Media/Partners/googlecloud.svg",
+                  logoAlt: "Google Cloud logo",
                 },
                 {
                   title: "Atlassian Solution Partner",
                   tier: "PARTNER",
                   desc: "Our project management teams use Atlassian tools (Jira, Confluence, Bitbucket) natively and can configure and administer Atlassian environments for enterprise clients who standardise on the Atlassian ecosystem.",
-                  icon: (
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ef5023" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
-                      <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/><line x1="12" y1="22" x2="12" y2="15.5"/><polyline points="22 8.5 12 15.5 2 8.5"/>
-                    </svg>
-                  ),
+                  logo: "/Media/Partners/atlassian.svg",
+                  logoAlt: "Atlassian logo",
                 },
               ].map((partner) => (
                 <div
@@ -412,13 +559,17 @@ export default function AwardPage() {
                   onMouseEnter={e => { const el = e.currentTarget; el.style.transform = "translateY(-4px)"; el.style.borderColor = "rgba(239,80,35,0.4)"; el.style.boxShadow = "0 16px 40px rgba(0,0,0,0.1), 0 8px 24px rgba(239,80,35,0.08)"; }}
                   onMouseLeave={e => { const el = e.currentTarget; el.style.transform = "translateY(0)"; el.style.borderColor = "rgba(239,80,35,0.15)"; el.style.boxShadow = "0 2px 16px rgba(0,0,0,0.07)"; }}
                 >
-                  {/* icon + meta */}
+                  {/* logo + meta */}
                   <div className="flex items-start gap-[16px]">
                     <div
-                      className="w-[48px] h-[48px] rounded-[12px] flex items-center justify-center flex-shrink-0"
-                      style={{ background: "rgba(239,80,35,0.08)" }}
+                      className="h-[48px] min-w-[48px] px-[10px] rounded-[12px] flex items-center justify-center flex-shrink-0"
+                      style={{ background: "#fff", border: "1px solid #ececec" }}
                     >
-                      {partner.icon}
+                      <img
+                        src={partner.logo}
+                        alt={partner.logoAlt}
+                        style={{ maxHeight: "26px", maxWidth: "110px", objectFit: "contain", display: "block" }}
+                      />
                     </div>
                     <div className="flex flex-col gap-[4px]">
                       <h3 className="font-black text-[#0a0a0a] text-[20px] leading-[28px] tracking-[-0.5px]">{partner.title}</h3>
@@ -436,30 +587,6 @@ export default function AwardPage() {
                 </div>
               ))}
             </div>
-          </div>
-        </section>
-
-        {/* ── S5: Stats ── */}
-        <section className="relative px-[16px] md:px-[40px] py-[70px] overflow-hidden" style={{ background: "#ffffff" }}>
-
-          <div className="relative max-w-[1320px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-[14px]">
-            {[
-              { value: "3", label: "ISO Certifications" },
-              { value: "4×", label: "Sao Khue Award Winner" },
-              { value: "4", label: "Cloud Platform Partnerships" },
-              { value: "9+", label: "Years in Operation" },
-            ].map(({ value, label }) => (
-              <div
-                key={label}
-                className="flex flex-col gap-[8px] rounded-[12px] px-[20px] py-[20px] items-center text-center"
-                style={{ background: "#ffffff", border: "1px solid #e8e8e8", boxShadow: "0 4px 20px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.05)" }}
-              >
-                <span className="font-black leading-[1] text-[32px] tracking-[-1px]" style={{ color: "#ef5023" }}>
-                  {value}
-                </span>
-                <span className="text-[#0a0a0a] text-[13px] font-semibold">{label}</span>
-              </div>
-            ))}
           </div>
         </section>
 

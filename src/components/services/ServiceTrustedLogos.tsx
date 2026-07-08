@@ -15,10 +15,11 @@ export default function ServiceTrustedLogos() {
         {/* heading */}
         <div className="flex flex-col items-center gap-[6px]">
           <p className="text-center text-[#0a0a0a] text-[15px] font-semibold">
-            Trusted by engineering teams across{" "}
+            Engineering teams across{" "}
             <span className="text-[#ef5023] font-bold">15+ countries</span>
+            {" "}rely on InApps
           </p>
-          <p className="text-[#aaa] text-[12px]">From startups to Fortune 500 companies</p>
+          <p className="text-[#aaa] text-[12px]">From Series A startups to Fortune 500 enterprises</p>
         </div>
 
         {/* marquee */}
@@ -49,7 +50,7 @@ export default function ServiceTrustedLogos() {
                 </svg>
               ))}
             </div>
-            <span className="text-[#0a0a0a] text-[13px] font-semibold">Clutch <strong>4.9/5</strong> · 50+ reviews</span>
+            <span className="text-[#0a0a0a] text-[13px] font-semibold">Clutch <strong>4.9/5</strong> · 36 reviews</span>
           </div>
 
           {/* divider */}

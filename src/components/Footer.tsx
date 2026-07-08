@@ -292,10 +292,10 @@ export default function Footer() {
       <div className="relative z-10 border-t border-[#1a1a1a]">
         <div className="px-[20px] md:px-[40px] py-[20px]">
           <div className="max-w-[1320px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-[8px]">
-            <span className="text-[#666] text-[13px]">© 2025 InApps Technology. All rights reserved.</span>
+            <span className="text-[#666] text-[13px]">© 2026 InApps Technology. All rights reserved.</span>
             <div className="flex items-center gap-[4px]">
-              <span className="text-[#666] text-[13px]">Ranked</span>
-              <span className="text-[#ef5023] text-[13px] font-bold">#1 in Vietnam</span>
+              <span className="text-[#666] text-[13px]">Rated</span>
+              <span className="text-[#ef5023] text-[13px] font-bold">4.9/5</span>
               <span className="text-[#666] text-[13px]">on Clutch</span>
             </div>
           </div>

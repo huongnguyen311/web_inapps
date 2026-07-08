@@ -8,6 +8,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://inapps.net"),
   title: "InApps.net - Engineering Excellence",
   description:
     "A global leader in software engineering and digital transformation. Building the future, one line of code at a time.",
