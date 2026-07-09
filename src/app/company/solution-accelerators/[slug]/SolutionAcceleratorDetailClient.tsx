@@ -225,19 +225,19 @@ export default function SolutionAcceleratorDetailClient({
                     Why document processing <span className="text-[#ef5023]">breaks at scale</span>
                   </h2>
                   <p className="text-[16px] leading-[1.75]" style={{ color: "#666" }}>
-                    Enterprises spend 40–60% of operational bandwidth manually processing documents — while off-the-shelf tools fail when layouts change or schemas evolve.
+                    Enterprises spend 40-60% of operational bandwidth manually processing documents, while off-the-shelf tools fail when layouts change or schemas evolve.
                   </p>
                 </div>
 
-                {/* Diagnostic rows — one container, separated by hairlines */}
+                {/* Diagnostic rows - one container, separated by hairlines */}
                 <div className="rounded-[20px] overflow-hidden" style={{ background: "#fff", border: "1px solid #e8e1d9", boxShadow: "0 8px 32px rgba(0,0,0,0.08)" }}>
                   {[
                     {
-                      stat: "40–60%",
+                      stat: "40-60%",
                       label: "ops bandwidth",
                       icon: "clock",
                       title: "High processing overhead",
-                      desc: "Nearly half of enterprise operational bandwidth is consumed by manual document handling — invoices, contracts, forms — with zero automation.",
+                      desc: "Nearly half of enterprise operational bandwidth is consumed by manual document handling (invoices, contracts, forms) with zero automation.",
                     },
                     {
                       stat: "9–12 mo",
@@ -251,7 +251,7 @@ export default function SolutionAcceleratorDetailClient({
                       label: "tool fragmentation",
                       icon: "database",
                       title: "Knowledge silos",
-                      desc: "Teams maintain multiple disconnected tools for document handling. Each one breaks when layouts drift — and nobody owns the failure.",
+                      desc: "Teams maintain multiple disconnected tools for document handling. Each one breaks when layouts drift, and nobody owns the failure.",
                     },
                   ].map((c, i) => (
                     <div
@@ -285,7 +285,7 @@ export default function SolutionAcceleratorDetailClient({
               </div>
             </section>
 
-            {/* S-B: Solution Overview — full-width redesign */}
+            {/* S-B: Solution Overview - full-width redesign */}
             <section className="relative px-[16px] md:px-[40px] py-[70px] md:py-[96px] overflow-hidden" style={{ background: "#fff" }}>
               {/* Grid paper pattern */}
               <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ opacity: 0.09 }} xmlns="http://www.w3.org/2000/svg">
@@ -296,13 +296,13 @@ export default function SolutionAcceleratorDetailClient({
                 </defs>
                 <rect width="100%" height="100%" fill="url(#sa-ov-grid)" />
               </svg>
-              {/* Orange radial glow — top left */}
+              {/* Orange radial glow - top left */}
               <div className="absolute pointer-events-none" style={{ top: "-120px", left: "-80px", width: "520px", height: "520px", background: "radial-gradient(circle, rgba(239,80,35,0.07) 0%, transparent 65%)", borderRadius: "50%" }} />
               <div className="absolute right-0 top-0 bottom-0 pointer-events-none" style={{ width: "3px", background: "linear-gradient(to bottom, transparent, #ef5023, transparent)" }} />
 
               <div className="relative max-w-[1320px] mx-auto flex flex-col gap-[48px]">
 
-                {/* Header — full width */}
+                {/* Header - full width */}
                 <div className="flex flex-col gap-[12px] max-w-[580px]">
                   <p className="text-[#ef5023] text-[11px] font-bold tracking-[2px] uppercase">SOLUTION OVERVIEW</p>
                   <h2 className="font-black text-[#0a0a0a] text-[36px] leading-[44px] tracking-[-1.5px]">
@@ -313,7 +313,7 @@ export default function SolutionAcceleratorDetailClient({
                   </p>
                 </div>
 
-                {/* Feature grid + Built with footer — one container */}
+                {/* Feature grid + Built with footer - one container */}
                 <div
                   className="rounded-[20px] overflow-hidden"
                   style={{ border: "1px solid #e8e1d9", boxShadow: "0 16px 56px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06)" }}
@@ -339,7 +339,7 @@ export default function SolutionAcceleratorDetailClient({
                     ))}
                   </div>
 
-                  {/* Built with — full-width footer row */}
+                  {/* Built with - full-width footer row */}
                   <div
                     className="flex flex-wrap items-center gap-x-[20px] gap-y-[10px] px-[28px] py-[18px]"
                     style={{ borderTop: "1px solid #e8e1d9", background: "#fafafa" }}
@@ -386,7 +386,7 @@ export default function SolutionAcceleratorDetailClient({
           </section>
         )}
 
-        {/* ── Video Demo — ai-document-intelligence only ── */}
+        {/* ── Video Demo - ai-document-intelligence only ── */}
         {a.slug === "ai-document-intelligence" && (
           <section className="relative px-[16px] md:px-[40px] py-[70px] md:py-[96px] overflow-hidden" style={{ background: "#0a0a0a" }}>
             {/* Spotlight glow behind frame */}
@@ -411,7 +411,7 @@ export default function SolutionAcceleratorDetailClient({
                   See it <span style={{ color: "#ef5023" }}>in action</span>
                 </h2>
                 <p className="text-[16px] leading-[1.75]" style={{ color: "rgba(255,255,255,0.55)" }}>
-                  Watch the AI Document Intelligence Engine process a real document — from raw upload to structured output in seconds.
+                  Watch the AI Document Intelligence Engine process a real document, from raw upload to structured output in seconds.
                 </p>
               </div>
 
@@ -424,7 +424,7 @@ export default function SolutionAcceleratorDetailClient({
                   filter: "blur(12px)",
                 }} />
 
-                {/* Frame wrapper — elevated */}
+                {/* Frame wrapper - elevated */}
                 <div
                   style={{
                     borderRadius: "14px",
@@ -493,7 +493,7 @@ export default function SolutionAcceleratorDetailClient({
           </section>
         )}
 
-        {/* ── Idea → POC/MVP — ai-document-intelligence only ── */}
+        {/* ── Idea → POC/MVP - ai-document-intelligence only ── */}
         {a.slug === "ai-document-intelligence" && (
           <section className="relative px-[16px] md:px-[40px] py-[70px] md:py-[96px] overflow-hidden" style={{ background: "#fff" }}>
             <div className="relative max-w-[1320px] mx-auto flex flex-col md:flex-row gap-[48px] md:gap-[64px] md:items-start">
@@ -522,7 +522,7 @@ export default function SolutionAcceleratorDetailClient({
                     </span>
                   </h2>
                   <p className="text-[16px] leading-[1.7]" style={{ color: "#666" }}>
-                    We don't start with slide decks. We configure, connect, and ship a working prototype you can demo to stakeholders — in weeks, not quarters.
+                    We don't start with slide decks. We configure, connect, and ship a working prototype you can demo to stakeholders in weeks, not quarters.
                   </p>
                 </div>
 
@@ -534,7 +534,7 @@ export default function SolutionAcceleratorDetailClient({
                     boxShadow: "0 8px 32px rgba(239,80,35,0.12), 0 2px 8px rgba(0,0,0,0.08)",
                   }}
                 >
-                  {/* Orange left panel — the number */}
+                  {/* Orange left panel - the number */}
                   <div
                     className="flex flex-col items-center justify-center gap-[2px] px-[20px] py-[20px] flex-shrink-0"
                     style={{ background: "#ef5023", minWidth: "100px" }}
@@ -542,7 +542,7 @@ export default function SolutionAcceleratorDetailClient({
                     <span className="font-black leading-none tracking-[-2px] text-white" style={{ fontSize: "42px" }}>2–4</span>
                     <span className="font-bold text-[11px] tracking-[2px] uppercase text-white" style={{ opacity: 0.8 }}>weeks</span>
                   </div>
-                  {/* Dark right panel — context */}
+                  {/* Dark right panel - context */}
                   <div
                     className="flex flex-col justify-center gap-[5px] px-[18px] py-[18px] relative overflow-hidden flex-1"
                     style={{ background: "#0a0a0a" }}
@@ -591,7 +591,7 @@ export default function SolutionAcceleratorDetailClient({
                   {
                     week: "Week 1",
                     title: "Idea & Scoping",
-                    desc: "We map your document types, data targets, and integration endpoints. A working spec in 5 days — no slide decks.",
+                    desc: "We map your document types, data targets, and integration endpoints. A working spec in 5 days, no slide decks.",
                     final: false,
                   },
                   {
@@ -609,7 +609,7 @@ export default function SolutionAcceleratorDetailClient({
                   {
                     week: "Week 3–4",
                     title: "POC / MVP Live",
-                    desc: "A working deployment you can demo to stakeholders — or push directly into production.",
+                    desc: "A working deployment you can demo to stakeholders, or push directly into production.",
                     final: true,
                   },
                 ].map((step, i, arr) => (
@@ -667,7 +667,7 @@ export default function SolutionAcceleratorDetailClient({
                 What's <span className="text-[#ef5023]">included</span>
               </h2>
               <p className="text-[16px] leading-[1.75]" style={{ color: "#555" }}>
-                Six production-ready modules built for scale — activate selectively based on your document workflow and integration needs.
+                Six production-ready modules built for scale. Activate selectively based on your document workflow and integration needs.
               </p>
             </div>
 
@@ -798,7 +798,7 @@ export default function SolutionAcceleratorDetailClient({
             </defs>
             <rect width="100%" height="100%" fill="url(#sa-out-dots)" />
           </svg>
-          {/* Orange radial glow — bottom right */}
+          {/* Orange radial glow - bottom right */}
           <div className="absolute pointer-events-none" style={{ bottom: "-100px", right: "-80px", width: "480px", height: "480px", background: "radial-gradient(circle, rgba(239,80,35,0.07) 0%, transparent 65%)", borderRadius: "50%" }} />
 
           <div className="relative max-w-[1320px] mx-auto flex flex-col gap-[48px]">
@@ -1011,7 +1011,7 @@ export default function SolutionAcceleratorDetailClient({
                   Ready to accelerate your {a.category} project?
                 </h3>
                 <p className="text-[15px] leading-[1.65]" style={{ color: "rgba(255,255,255,0.85)" }}>
-                  Talk to an InApps engineer. We'll show you a live demo, scope your customisation needs, and give you a time-to-production estimate — no commitment required.
+                  Talk to an InApps engineer. We'll show you a live demo, scope your customisation needs, and give you a time-to-production estimate, no commitment required.
                 </p>
               </div>
 

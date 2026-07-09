@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 const slides = [
   "/Media/Image/case 5.png",
   "/Media/Image/case 11.png",
-  "/Media/Image/case 17.png",
+  "/Media/Image/case 17.jpg",
 ];
 
 export default function TeamSlider() {

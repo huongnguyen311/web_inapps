@@ -23,7 +23,7 @@ function AIHeroSection({ cs }: { cs: CaseStudy }) {
       <div className="absolute inset-0">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/Media/Image/case 17.png"
+          src="/Media/Image/case 17.jpg"
           alt=""
           className="absolute right-0 top-0 h-full object-cover"
           style={{ width: "68%" }}

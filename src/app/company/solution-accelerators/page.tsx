@@ -42,7 +42,7 @@ export default function SolutionAcceleratorsPage() {
         >
           <div className="absolute inset-0">
             <img
-              src="/Media/Image/case 16.png"
+              src="/Media/Image/case 16.jpg"
               alt=""
               className="absolute right-0 top-0 h-full"
               style={{ width: "65%", objectFit: "cover", objectPosition: "right center" }}
@@ -126,7 +126,7 @@ export default function SolutionAcceleratorsPage() {
                 Pre-built accelerators for <span className="text-[#ef5023]">every domain</span>
               </h2>
               <p className="text-[16px] leading-[1.7]" style={{ color: "#666" }}>
-                Each accelerator is a production-grade codebase you own entirely — configurable to your stack, brandable to your product, and deployable in weeks.
+                Each accelerator is a production-grade codebase you own entirely: configurable to your stack, brandable to your product, and deployable in weeks.
               </p>
             </div>
 
@@ -302,7 +302,7 @@ export default function SolutionAcceleratorsPage() {
                 Don&apos;t see your use case? We build custom accelerators too.
               </h3>
               <p className="relative text-[15px] leading-[1.65]" style={{ color: "rgba(255,255,255,0.85)", maxWidth: "560px" }}>
-                Tell us your domain and tech constraints. We&apos;ll scope an accelerator that fits — and show you a proof of concept before you commit.
+                Tell us your domain and tech constraints. We&apos;ll scope an accelerator that fits, and show you a proof of concept before you commit.
               </p>
               <div className="relative flex flex-wrap items-center gap-[12px] mt-[4px]">
                 <Link

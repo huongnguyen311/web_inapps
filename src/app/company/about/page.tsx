@@ -1,22 +1,60 @@
+import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ServiceTrustedLogos from "@/components/services/ServiceTrustedLogos";
 import TeamSlider from "@/components/TeamSlider";
 
+export const metadata: Metadata = {
+  title: "About InApps Technology: Offshore Engineering Teams Since 2016",
+  description:
+    "Founded in Ho Chi Minh City in 2016, InApps builds dedicated offshore engineering teams for companies across the US, EU, Australia, and Singapore. ISO 27001 and SOC 2 Type II certified, rated 4.9/5 on Clutch.",
+  alternates: {
+    canonical: "/company/about",
+  },
+  openGraph: {
+    title: "About InApps Technology",
+    description:
+      "Dedicated offshore engineering teams from Ho Chi Minh City since 2016. ISO 27001 and SOC 2 Type II certified, rated 4.9/5 on Clutch.",
+    type: "website",
+    url: "/company/about",
+    images: [{ url: "/Media/og-about.png", width: 1200, height: 630, alt: "About InApps Technology: offshore engineering teams since 2016" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About InApps Technology",
+    description: "Dedicated offshore engineering teams from Ho Chi Minh City since 2016.",
+    images: ["/Media/og-about.png"],
+  },
+};
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://inapps.net" },
+    { "@type": "ListItem", position: 2, name: "Company", item: "https://inapps.net/company" },
+    { "@type": "ListItem", position: 3, name: "About Us", item: "https://inapps.net/company/about" },
+  ],
+};
 
 export default function CompanyAboutPage() {
   return (
     <div className="min-h-screen flex flex-col" style={{ background: "#0d0d0d" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <Header />
       <main className="flex-1 flex flex-col">
 
         {/* ── S1: Hero ── */}
         <section className="relative px-[16px] md:px-[40px] overflow-hidden flex flex-col items-start gap-[28px] min-h-[600px] md:min-h-[850px] pt-[140px] md:pt-[228px]" style={{ paddingBottom: "100px" }}>
-          {/* Banner background — case-study style */}
+          {/* Banner background - case-study style */}
           <div className="absolute inset-0">
             <img
-              src="/Media/Image/case 18.png"
+              src="/Media/Image/case 18.jpg"
               alt=""
+              fetchPriority="high"
               className="absolute right-0 top-0 h-full"
               style={{ width: "65%", objectFit: "cover", objectPosition: "right center" }}
             />
@@ -39,7 +77,7 @@ export default function CompanyAboutPage() {
               With an engineering team that thinks like a partner.
             </p>
             <p className="text-[rgba(255,255,255,0.75)] text-[16px] leading-[28px]" style={{ marginTop: "-8px" }}>
-              InApps builds dedicated offshore engineering teams for growing companies — so you can move faster without sacrificing quality or ownership.
+              InApps builds dedicated offshore engineering teams for growing companies, so you can move faster without sacrificing quality or ownership.
             </p>
 
             {/* CTAs */}
@@ -74,7 +112,7 @@ export default function CompanyAboutPage() {
             {/* Left: padded image card with effects */}
             <div className="flex flex-col justify-between gap-[28px]" style={{ background: "#fff" }}>
 
-              {/* Image card — with ribbon deco + glow border */}
+              {/* Image card - with ribbon deco + glow border */}
               <div
                 className="relative overflow-hidden"
                 style={{
@@ -99,7 +137,7 @@ export default function CompanyAboutPage() {
                   Since 2016
                 </div>
                 <img
-                  src="/Media/Image/case 18.png"
+                  src="/Media/Image/case 18.jpg"
                   alt="InApps team"
                   className="w-full h-full object-cover"
                   style={{
@@ -142,7 +180,7 @@ export default function CompanyAboutPage() {
                   Before founding InApps, our founders spent years working with offshore software teams and noticed the same problem repeatedly. Projects were delivered, requirements were met, but many products failed to create real business value.
                 </p>
                 <p className="leading-[1.9]" style={{ fontSize: "16px", color: "#444" }}>
-                  The issue was not talent — it was a lack of ownership. Engineers were often measured by tasks completed rather than outcomes achieved.
+                  The issue was not talent. It was a lack of ownership. Engineers were often measured by tasks completed rather than outcomes achieved.
                 </p>
                 <p className="leading-[1.9]" style={{ fontSize: "16px", color: "#444" }}>
                   InApps was built on a different belief: great software comes from teams that think beyond execution, ask the right questions, and take responsibility for the product&apos;s success. Today, we aim to be a trusted technology partner genuinely invested in our clients&apos; long-term growth.
@@ -270,7 +308,7 @@ export default function CompanyAboutPage() {
                         }} />
                       </div>
                       <div className="flex flex-col gap-[4px]">
-                        <h4 className="font-black text-[16px] leading-[1.25]" style={{ color: m.isCurrent ? "#ef5023" : "#0a0a0a" }}>{m.title}</h4>
+                        <h3 className="font-black text-[16px] leading-[1.25]" style={{ color: m.isCurrent ? "#ef5023" : "#0a0a0a" }}>{m.title}</h3>
                         <p className="text-[13px] leading-[1.75]" style={{ color: "#888" }}>{m.body}</p>
                       </div>
                     </div>
@@ -288,7 +326,7 @@ export default function CompanyAboutPage() {
                     </h3>
                   </div>
 
-                  {/* Stats — 2×2 grid */}
+                  {/* Stats - 2×2 grid */}
                   <div className="grid grid-cols-2" style={{ background: "#f7f7f7" }}>
                     {[
                       { value: "2016", suffix: "", label: "Year Founded" },
@@ -595,7 +633,7 @@ export default function CompanyAboutPage() {
               <p className="text-[11px] font-bold tracking-[2px] uppercase" style={{ color: "#ef5023" }}>THE TEAM</p>
               <h2 className="font-black text-[#0a0a0a] text-[36px] leading-[44px]" style={{ letterSpacing: "-1.5px" }}>Leadership &amp; Team</h2>
               <p className="text-[15px] max-w-2xl leading-[1.75]" style={{ color: "#666" }}>
-                Led by experienced technologists and delivery managers, our teams combine Vietnamese engineering talent with Western business culture to deliver outcomes you can measure.
+                Led by experienced technologists and delivery managers, our teams combine Vietnamese engineering talent with Western business culture to deliver outcomes you can measure. Want to build with us? <a href="/company/careers" style={{ color: "#ef5023", fontWeight: 600, textDecoration: "none" }}>See open roles</a> or read <a href="/company/client-stories" style={{ color: "#ef5023", fontWeight: 600, textDecoration: "none" }}>what clients say</a>.
               </p>
             </div>
 
@@ -655,7 +693,7 @@ export default function CompanyAboutPage() {
                     className="team-photo-ring w-[120px] h-[120px] rounded-full overflow-hidden flex-shrink-0"
                     style={{ border: "3px solid #f0ede8", transition: "border-color 0.3s ease" }}
                   >
-                    <img alt={member.name} src={member.img} className="w-full h-full object-cover object-top" />
+                    <img alt={`${member.name}, ${member.role}, InApps Technology`} src={member.img} className="w-full h-full object-cover object-top" />
                   </div>
 
                   <div className="flex flex-col gap-[4px]">

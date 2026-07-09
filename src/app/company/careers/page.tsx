@@ -1,100 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { JOBS } from "@/data/careersJobs";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ServiceTrustedLogos from "@/components/services/ServiceTrustedLogos";
 
-const JOBS = [
-  {
-    title: "Technical Project Manager",
-    department: "Operations",
-    level: "Senior",
-    location: "Ho Chi Minh City",
-    mode: "Hybrid",
-    type: "Full-time",
-    salary: "$2,800\u2013$4,500/mo",
-    desc: "Managing 3\u20135 concurrent ODC engagements across AU/UK/SG clients. English-first communication, daily client standups, sprint planning, escalation management. PMP or SAFe a plus. You will be the primary day-to-day relationship manager for enterprise clients.",
-    skills: ["Jira", "Linear", "Confluence", "Agile/Scrum", "Risk Management", "Client Reporting"],
-  },
-  {
-    title: "Solution Architect",
-    department: "Engineering",
-    level: "Lead / Principal",
-    location: "Ho Chi Minh City",
-    mode: "Hybrid",
-    type: "Full-time",
-    salary: "$4,500\u2013$7,000/mo",
-    desc: "Client-facing pre-sales and delivery architecture role. Lead technical discovery calls, produce architecture proposals, and oversee complex multi-service ODC builds across multiple clients. This is a high-visibility role with direct exposure to C-suite stakeholders at US, EU, and AU clients.",
-    skills: ["AWS", "System Design", "TypeScript", "Node.js", "PostgreSQL", "Kafka"],
-  },
-  {
-    title: "AI / ML Engineer",
-    department: "AI & Machine Learning",
-    level: "Mid-Level",
-    location: "Ho Chi Minh City",
-    mode: "Hybrid",
-    type: "Full-time",
-    salary: "$2,800\u2013$4,500/mo",
-    desc: "AI team building RAG-powered enterprise knowledge agents and agentic workflows for clients in healthcare, legal, and fintech. LLM orchestration, vector search, and production ML deployment. You will work on real-world AI products used by enterprise clients across US and EU markets.",
-    skills: ["Python", "LangChain", "LangGraph", "FastAPI", "OpenAI", "Pinecone"],
-  },
-  {
-    title: "Senior DevOps / Cloud Engineer",
-    department: "Engineering",
-    level: "Senior",
-    location: "Ho Chi Minh City",
-    mode: "Hybrid",
-    type: "Full-time",
-    salary: "$2,500\u2013$4,500/mo",
-    desc: "Platform engineer for a multi-client infrastructure pod supporting 8+ active ODC engagements. Building shared CI/CD platform, GitOps workflows, and cost optimisation tooling. You will own the infrastructure layer across multiple AWS accounts and have high autonomy.",
-    skills: ["AWS", "Kubernetes", "Terraform", "ArgoCD", "GitHub Actions", "Datadog"],
-  },
-  {
-    title: "Senior QA Automation Engineer",
-    department: "Engineering",
-    level: "Senior",
-    location: "Ho Chi Minh City",
-    mode: "Hybrid",
-    type: "Full-time",
-    salary: "$2,000\u2013$3,500/mo",
-    desc: "QA lead for a German gaming client \u2014 building automated regression suites that run 5,000+ scenarios per nightly build. Performance testing with k6 for live multiplayer APIs. You will design the full test strategy and mentor 2 junior QA engineers.",
-    skills: ["Playwright", "TypeScript", "Cypress", "Jest", "k6", "GitHub Actions"],
-  },
-  {
-    title: "Lead Node.js Backend Engineer",
-    department: "Engineering",
-    level: "Lead / Principal",
-    location: "Ho Chi Minh City",
-    mode: "Hybrid",
-    type: "Full-time",
-    salary: "$3,500\u2013$5,500/mo",
-    desc: "Technical lead for a US logistics startup ODC. Microservices architecture, event-driven design, real-time fleet tracking APIs. Own architecture decisions and mentor 3 mid-senior engineers. You will be the primary technical point of contact for the client CTO.",
-    skills: ["Node.js", "TypeScript", "PostgreSQL", "Redis", "Kafka", "Docker"],
-  },
-  {
-    title: "Senior React Native Developer",
-    department: "Engineering",
-    level: "Senior",
-    location: "Ho Chi Minh City",
-    mode: "Hybrid",
-    type: "Full-time",
-    salary: "$2,500\u2013$4,200/mo",
-    desc: "Embedded in an Australian fintech ODC team building a cross-platform mobile banking app. 60fps UI standards, Detox E2E automation. You will work on the consumer-facing banking app used by 500K+ Australians, with direct access to the client product team in AU business hours.",
-    skills: ["React Native", "TypeScript", "Expo", "Redux Toolkit", "Detox", "Firebase"],
-  },
-  {
-    title: "Senior React Engineer",
-    department: "Engineering",
-    level: "Senior",
-    location: "Ho Chi Minh City",
-    mode: "Hybrid",
-    type: "Full-time",
-    salary: "$2,500\u2013$4,000/mo",
-    desc: "Working with a UK SaaS client on a B2B analytics dashboard \u2014 React 18 + Next.js 15, TypeScript-strict, component-driven design system. You will own multiple feature squads, contribute to architecture decisions, and work directly with the client engineering team in UK business hours overlap.",
-    skills: ["React 18+", "TypeScript", "Next.js", "GraphQL", "Jest", "Storybook"],
-  },
-];
 
 const DEPARTMENTS = ["All", "Operations", "Engineering", "AI & Machine Learning"];
 
@@ -114,8 +25,9 @@ export default function CareersPage() {
         <section className="relative px-[16px] md:px-[40px] overflow-hidden flex flex-col items-start gap-[28px] min-h-[600px] md:min-h-[850px] pt-[140px] md:pt-[228px]" style={{ paddingBottom: "100px" }}>
           <div className="absolute inset-0">
             <img
-              src="/Media/Image/case 16.png"
+              src="/Media/Image/case 16.jpg"
               alt=""
+              fetchPriority="high"
               className="absolute right-0 top-0 h-full"
               style={{ width: "65%", objectFit: "cover", objectPosition: "right center" }}
             />
@@ -125,7 +37,7 @@ export default function CareersPage() {
             />
             <div className="absolute inset-0 block md:hidden" style={{ background: "rgba(13,13,13,0.35)" }} />
           </div>
-          {/* Halftone dot matrix — masked to dark left zone */}
+          {/* Halftone dot matrix - masked to dark left zone */}
           <div className="absolute inset-0 pointer-events-none" style={{
             backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.12) 1px, transparent 1px)",
             backgroundSize: "28px 28px",
@@ -174,7 +86,7 @@ export default function CareersPage() {
 
         {/* ── Life at InApps ── */}
         <section className="relative px-[16px] md:px-[40px] overflow-hidden" style={{ background: "#080808", borderTop: "1px solid #1a1a1a" }}>
-          {/* L-grid lines + crosshair accents — dark-inverted from home "AI-Native" section */}
+          {/* L-grid lines + crosshair accents - dark-inverted from home "AI-Native" section */}
           <svg className="absolute inset-0 pointer-events-none w-full h-full" preserveAspectRatio="xMidYMid slice">
             <defs>
               <pattern id="life-grid" width="48" height="48" patternUnits="userSpaceOnUse">
@@ -494,7 +406,7 @@ export default function CareersPage() {
               </p>
             </div>
 
-            {/* Filter tabs — underline style */}
+            {/* Filter tabs - underline style */}
             <div className="flex items-center gap-[4px] mb-[36px] pb-[1px] overflow-x-auto" style={{ borderBottom: "1px solid #e0e0e0" }}>
               {DEPARTMENTS.map((dept) => (
                 <button
@@ -639,20 +551,20 @@ export default function CareersPage() {
           </div>
         </section>
         <section className="relative px-[16px] md:px-[40px] overflow-hidden" style={{ background: "#080808", borderTop: "1px solid #1a1a1a" }}>
-          {/* Concentric rings top-right — adapted from ServiceAIOverview for dark bg */}
+          {/* Concentric rings top-right - adapted from ServiceAIOverview for dark bg */}
           <svg className="absolute -right-[100px] -top-[100px] pointer-events-none" width="580" height="580" viewBox="0 0 580 580" fill="none" style={{ opacity: 0.09 }}>
             {[60, 110, 160, 210, 260, 310, 360].map((r, i) => (
               <circle key={i} cx="290" cy="290" r={r} stroke="#ef5023" strokeWidth="1" />
             ))}
             <circle cx="290" cy="290" r="9" fill="#ef5023" opacity="0.45" />
           </svg>
-          {/* Concentric rings bottom-left — white, from ServiceAIOverview */}
+          {/* Concentric rings bottom-left - white, from ServiceAIOverview */}
           <svg className="absolute -left-[60px] -bottom-[60px] pointer-events-none" width="360" height="360" viewBox="0 0 360 360" fill="none" style={{ opacity: 0.04 }}>
             {[45, 85, 125, 165].map((r, i) => (
               <circle key={i} cx="180" cy="180" r={r} stroke="white" strokeWidth="1" />
             ))}
           </svg>
-          {/* Bracket accent corner — top right */}
+          {/* Bracket accent corner - top right */}
           <svg className="absolute top-[40px] right-[40px] pointer-events-none" width="48" height="48" viewBox="0 0 48 48" fill="none" style={{ opacity: 0.22 }}>
             <path d="M48 0 L48 48 L0 48" stroke="#ef5023" strokeWidth="2" fill="none" />
           </svg>
@@ -791,11 +703,11 @@ export default function CareersPage() {
 
               <div className="relative flex flex-wrap items-center gap-[12px]" style={{ zIndex: 1 }}>
                 <a
-                  href="mailto:careers@inapps.net"
+                  href="mailto:sales@inapps.net"
                   className="inline-flex items-center gap-[10px] px-[28px] h-[44px] rounded-[10px] font-bold text-[13px] hover:bg-[#f5f5f5] transition-colors"
                   style={{ background: "#ffffff", color: "#ef5023", textDecoration: "none", whiteSpace: "nowrap" }}
                 >
-                  careers@inapps.net
+                  sales@inapps.net
                 </a>
                 <a
                   href="/company/about"

@@ -17,8 +17,9 @@ export default function AwardPage() {
         <section className="relative px-[16px] md:px-[40px] overflow-hidden flex flex-col items-start gap-[28px] min-h-[600px] md:min-h-[850px] pt-[140px] md:pt-[228px]" style={{ paddingBottom: "100px" }}>
           <div className="absolute inset-0">
             <img
-              src="/Media/Image/case 16.png"
+              src="/Media/Image/award-hero.jpg"
               alt=""
+              fetchPriority="high"
               className="absolute right-0 top-0 h-full"
               style={{ width: "65%", objectFit: "cover", objectPosition: "right center" }}
             />
@@ -87,12 +88,20 @@ export default function AwardPage() {
               </div>
             ))}
           </div>
+          <div className="relative max-w-[1320px] mx-auto pt-[16px] text-center">
+            <a href="/company/client-stories" className="inline-flex items-center gap-[6px] text-[13px] font-semibold" style={{ color: "#ef5023", textDecoration: "none" }}>
+              Read the reviews behind these numbers
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </a>
+          </div>
         </section>
 
         {/* ── S2: Certifications ── */}
         <section id="certifications" className="relative px-[16px] md:px-[40px] py-[70px] overflow-hidden" style={{ background: "#ffffff", borderTop: "1px solid #e8e8e8" }}>
 
-          {/* fingerprint arc field — biometric verification motif, radiates from top-right */}
+          {/* fingerprint arc field - biometric verification motif, radiates from top-right */}
           <svg width="100%" height="100%" viewBox="0 0 1440 560" preserveAspectRatio="xMidYMid slice" style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }} xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern id="cert-dots" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
@@ -134,7 +143,7 @@ export default function AwardPage() {
               </p>
             </div>
 
-            {/* cards — horizontal rows with timeline */}
+            {/* cards - horizontal rows with timeline */}
             <div className="flex flex-col gap-[0px] relative">
 
               {/* vertical timeline line */}
@@ -197,7 +206,7 @@ export default function AwardPage() {
                   >
                     {/* title column */}
                     <div className="flex flex-col gap-[8px] md:w-[280px] flex-shrink-0">
-                      {/* mobile icon — shown only below md */}
+                      {/* mobile icon - shown only below md */}
                       <div className="flex md:hidden w-[40px] h-[40px] rounded-full items-center justify-center flex-shrink-0 mb-[4px]"
                         style={{ background: "#ef5023", boxShadow: "0 4px 12px rgba(239,80,35,0.3)" }}>
                         {cert.icon}
@@ -254,7 +263,7 @@ export default function AwardPage() {
         `}</style>
         <section id="awards" className="relative px-[16px] md:px-[40px] py-[70px] overflow-hidden" style={{ background: "#080808", borderTop: "1px solid #1a1a1a" }}>
 
-          {/* constellation network — từ careers page */}
+          {/* constellation network - từ careers page */}
           <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ opacity: 0.07, zIndex: 0 }}>
             <defs>
               <pattern id="s3-constellation" x="0" y="0" width="240" height="200" patternUnits="userSpaceOnUse">
@@ -279,7 +288,7 @@ export default function AwardPage() {
             <rect width="100%" height="100%" fill="url(#s3-constellation)"/>
           </svg>
 
-          {/* blurred orange glow — từ careers page */}
+          {/* blurred orange glow - từ careers page */}
           <div className="absolute top-0 right-0 w-[500px] h-[500px] pointer-events-none" style={{ background: "radial-gradient(circle, rgba(239,80,35,0.10) 0%, transparent 65%)", filter: "blur(80px)", zIndex: 0 }} />
           <div className="absolute bottom-0 left-0 w-[420px] h-[420px] pointer-events-none" style={{ background: "radial-gradient(circle, rgba(239,80,35,0.07) 0%, transparent 65%)", filter: "blur(80px)", zIndex: 0 }} />
 
@@ -341,7 +350,7 @@ export default function AwardPage() {
                   href="https://clutch.co/profile/inapps-technology"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-[6px] px-[24px] h-[48px] rounded-[10px] font-bold text-[14px] text-white transition-all hover:brightness-110"
+                  className="inline-flex items-center justify-center gap-[6px] px-[24px] h-[48px] rounded-[10px] font-bold text-[14px] text-white transition-all hover:brightness-110 whitespace-nowrap"
                   style={{ background: "#ef5023", textDecoration: "none" }}
                 >
                   Verify on Clutch.co →
@@ -482,7 +491,7 @@ export default function AwardPage() {
         {/* ── S4: Technology Partnerships ── */}
         <section className="relative px-[16px] md:px-[40px] py-[70px] overflow-hidden" style={{ background: "#fafafa", borderTop: "1px solid #e8e8e8" }}>
 
-          {/* graph paper grid — từ about page */}
+          {/* graph paper grid - từ about page */}
           <div className="absolute inset-0 pointer-events-none" style={{
             backgroundImage: "repeating-linear-gradient(0deg, rgba(0,0,0,0.045) 0px, rgba(0,0,0,0.045) 1px, transparent 1px, transparent 40px), repeating-linear-gradient(90deg, rgba(0,0,0,0.045) 0px, rgba(0,0,0,0.045) 1px, transparent 1px, transparent 40px)",
             zIndex: 0,
@@ -593,12 +602,12 @@ export default function AwardPage() {
         {/* ── S6: CTA Banner ── */}
         <section className="relative px-[16px] md:px-[40px] py-[70px] overflow-hidden" style={{ background: "#0a0a0a", borderTop: "1px solid #1a1a1a" }}>
 
-          {/* blurred radial glows — từ careers page */}
+          {/* blurred radial glows - từ careers page */}
           <div className="absolute top-0 right-0 w-[500px] h-[500px] pointer-events-none" style={{ background: "radial-gradient(circle, rgba(239,80,35,0.10) 0%, transparent 65%)", filter: "blur(80px)", zIndex: 0 }} />
           <div className="absolute bottom-0 left-0 w-[440px] h-[440px] pointer-events-none" style={{ background: "radial-gradient(circle, rgba(239,80,35,0.08) 0%, transparent 65%)", filter: "blur(80px)", zIndex: 0 }} />
           <div className="absolute top-[40%] left-[50%] -translate-x-1/2 w-[700px] h-[320px] pointer-events-none" style={{ background: "radial-gradient(ellipse, rgba(239,80,35,0.06) 0%, transparent 70%)", filter: "blur(100px)", zIndex: 0 }} />
 
-          {/* concentric ripple rings — từ partner page */}
+          {/* concentric ripple rings - từ partner page */}
           <svg width="100%" height="100%" viewBox="0 0 1440 280" preserveAspectRatio="xMidYMid slice" style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }} xmlns="http://www.w3.org/2000/svg">
             <ellipse cx="80"  cy="280" rx="160" ry="100" fill="none" stroke="#ef5023" strokeWidth="1"   strokeOpacity="0.08"/>
             <ellipse cx="80"  cy="280" rx="300" ry="190" fill="none" stroke="#ef5023" strokeWidth="0.8" strokeOpacity="0.055"/>
@@ -636,7 +645,7 @@ export default function AwardPage() {
               <div className="relative flex flex-col sm:flex-row items-stretch sm:items-center gap-[10px]">
                 <Link
                   href="/contact"
-                  className="h-[44px] px-[28px] rounded-[10px] font-bold text-[#ef5023] text-[13px] inline-flex items-center justify-center gap-[7px] transition-all duration-200 hover:bg-[#f5f5f5]"
+                  className="h-[44px] px-[28px] rounded-[10px] font-bold text-[#ef5023] text-[13px] inline-flex items-center justify-center gap-[7px] transition-all duration-200 hover:bg-[#f5f5f5] whitespace-nowrap"
                   style={{ background: "#ffffff", textDecoration: "none" }}
                 >
                   Start a Project
@@ -644,7 +653,7 @@ export default function AwardPage() {
                 </Link>
                 <Link
                   href="/company/about"
-                  className="h-[44px] px-[24px] rounded-[10px] font-semibold text-white/80 text-[13px] inline-flex items-center transition-all duration-200 hover:text-white hover:bg-white/10"
+                  className="h-[44px] px-[24px] rounded-[10px] font-semibold text-white/80 text-[13px] inline-flex items-center transition-all duration-200 hover:text-white hover:bg-white/10 whitespace-nowrap"
                   style={{ textDecoration: "none", border: "1px solid rgba(255,255,255,0.3)" }}
                 >
                   About InApps

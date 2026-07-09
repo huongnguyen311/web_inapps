@@ -24,7 +24,7 @@ export const solutionAccelerators: SolutionAccelerator[] = [
     name: "AI Document Intelligence Engine",
     tagline: "From raw documents to structured data in minutes, not months.",
     shortDescription:
-      "A pre-built AI pipeline that ingests PDFs, invoices, contracts, and forms — then extracts, classifies, and routes structured data to any downstream system.",
+      "A pre-built AI pipeline that ingests PDFs, invoices, contracts, and forms, then extracts, classifies, and routes structured data to any downstream system.",
     category: "AI & Automation",
     categoryColor: "#8b5cf6",
     image: "https://images.unsplash.com/photo-1655720031554-a929595ffad7?w=800&q=80",
@@ -33,9 +33,9 @@ export const solutionAccelerators: SolutionAccelerator[] = [
     techCount: "18",
     clientsUsing: "14",
     overview:
-      "The AI Document Intelligence Engine is a battle-tested accelerator built on transformer-based OCR, named-entity recognition, and LLM-powered validation. It handles the full lifecycle — document intake, classification, extraction, confidence scoring, and human-in-the-loop review — so your team ships in weeks instead of quarters.",
+      "The AI Document Intelligence Engine is a battle-tested accelerator built on transformer-based OCR, named-entity recognition, and LLM-powered validation. It handles the full lifecycle, document intake, classification, extraction, confidence scoring, and human-in-the-loop review, so your team ships in weeks instead of quarters.",
     problemStatement:
-      "Enterprises spend 40–60% of operational bandwidth manually processing documents. Handcrafted OCR pipelines break on layout variation; generic SaaS tools can't be fine-tuned to industry schemas. InApps built this accelerator after solving the same problem for banks, insurers, and logistics companies — distilled into a drop-in module you own entirely.",
+      "Enterprises spend 40–60% of operational bandwidth manually processing documents. Handcrafted OCR pipelines break on layout variation; generic SaaS tools can't be fine-tuned to industry schemas. InApps built this accelerator after solving the same problem for banks, insurers, and logistics companies, distilled into a drop-in module you own entirely.",
     features: [
       { icon: "brain", title: "Multi-Modal Ingestion", description: "Accepts scanned PDFs, native PDFs, images, Word docs, and emails. Auto-detects document type on arrival." },
       { icon: "layers", title: "Schema-Driven Extraction", description: "Define your target schema once. The engine aligns extracted fields to it, with confidence scores per field." },
@@ -63,7 +63,7 @@ export const solutionAccelerators: SolutionAccelerator[] = [
     name: "Healthcare Patient Portal",
     tagline: "HIPAA-compliant patient portal, ready to brand and deploy.",
     shortDescription:
-      "A full-stack patient portal with appointment scheduling, teleconsultation, lab results, HL7 FHIR integration, and role-based access — designed for compliance from day one.",
+      "A full-stack patient portal with appointment scheduling, teleconsultation, lab results, HL7 FHIR integration, and role-based access, designed for compliance from day one.",
     category: "Healthcare",
     categoryColor: "#14b8a6",
     image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80",
@@ -72,13 +72,13 @@ export const solutionAccelerators: SolutionAccelerator[] = [
     techCount: "22",
     clientsUsing: "8",
     overview:
-      "Built atop the HL7 FHIR R4 standard with HIPAA-compliant data handling baked in, this portal accelerator gives healthcare providers a production-ready foundation: patient registration, appointment booking, teleconsultation via WebRTC, lab result delivery, prescription management, and EHR sync — all white-labeled and extensible.",
+      "Built atop the HL7 FHIR R4 standard with HIPAA-compliant data handling baked in, this portal accelerator gives healthcare providers a production-ready foundation: patient registration, appointment booking, teleconsultation via WebRTC, lab result delivery, prescription management, and EHR sync, all white-labeled and extensible.",
     problemStatement:
       "Healthcare software projects fail 70% of the time due to compliance overhead and EHR integration complexity. Most teams spend the first 6 months navigating HIPAA controls and FHIR mapping before writing a single line of business logic. This accelerator collapses that ramp to weeks.",
     features: [
       { icon: "user", title: "Patient Registration & Auth", description: "MFA-enabled registration with ID verification hooks. Role-based access for patients, doctors, and admins." },
       { icon: "calendar", title: "Appointment Scheduling", description: "Smart booking engine with provider availability, specialty routing, and automated reminders via SMS/email." },
-      { icon: "video", title: "WebRTC Teleconsultation", description: "End-to-end encrypted video calls, screen sharing, and in-session notes — no third-party dependency." },
+      { icon: "video", title: "WebRTC Teleconsultation", description: "End-to-end encrypted video calls, screen sharing, and in-session notes, no third-party dependency." },
       { icon: "file-text", title: "Lab Results & Records", description: "Structured delivery of lab results with FHIR Observation resources, trend charts, and doctor annotations." },
       { icon: "link", title: "HL7 FHIR Integration", description: "Pre-built adapters for Epic, Cerner, and Meditech. Bi-directional FHIR R4 sync out of the box." },
       { icon: "lock", title: "HIPAA Compliance Layer", description: "Audit logging, PHI encryption at rest and in transit, consent management, and breach notification hooks." },
@@ -100,7 +100,7 @@ export const solutionAccelerators: SolutionAccelerator[] = [
   {
     slug: "fintech-kyc-aml-suite",
     name: "Fintech KYC/AML Compliance Suite",
-    tagline: "Identity verification and transaction monitoring — pre-integrated.",
+    tagline: "Identity verification and transaction monitoring, pre-integrated.",
     shortDescription:
       "A modular compliance accelerator covering KYC document verification, liveness detection, AML transaction screening, risk scoring, and regulatory reporting for fintechs and banks.",
     category: "Fintech",
@@ -111,14 +111,14 @@ export const solutionAccelerators: SolutionAccelerator[] = [
     techCount: "16",
     clientsUsing: "6",
     overview:
-      "Regulatory compliance is the #1 cause of fintech project delays. This accelerator ships with a complete KYC pipeline (document scan → OCR → liveness check → sanctions screening) and an AML engine (transaction graph analysis, typology rules, SAR generation) — integrated with the most common banking-grade data sources out of the box.",
+      "Regulatory compliance is the #1 cause of fintech project delays. This accelerator ships with a complete KYC pipeline (document scan → OCR → liveness check → sanctions screening) and an AML engine (transaction graph analysis, typology rules, SAR generation), integrated with the most common banking-grade data sources out of the box.",
     problemStatement:
       "Building KYC/AML from scratch requires partnerships with 4–6 vendors, legal review across jurisdictions, and 12+ months of integration work. Fintechs routinely spend $1M+ before serving their first customer. This accelerator provides a single codebase you own, extensible to any jurisdiction.",
     features: [
       { icon: "user-check", title: "Document KYC", description: "Passport, ID card, and driving licence verification with AI-powered authenticity checks and data extraction." },
       { icon: "eye", title: "Liveness Detection", description: "Passive and active liveness with anti-spoofing. ISO 30107-3 Level 2 compliant." },
       { icon: "activity", title: "AML Transaction Screening", description: "Real-time screening against OFAC, UN, EU, and PEP lists with configurable risk thresholds." },
-      { icon: "trending-up", title: "Risk Scoring Engine", description: "Composite risk scores from 40+ signals. Fully explainable — every decision is traceable to its inputs." },
+      { icon: "trending-up", title: "Risk Scoring Engine", description: "Composite risk scores from 40+ signals. Fully explainable, every decision is traceable to its inputs." },
       { icon: "file", title: "SAR & Regulatory Reporting", description: "Auto-generated Suspicious Activity Reports in FinCEN, FINTRAC, and FCA formats." },
       { icon: "settings", title: "Case Management", description: "Analyst workspace for reviewing flagged entities, adding notes, escalating, and closing cases with audit trail." },
     ],
@@ -141,7 +141,7 @@ export const solutionAccelerators: SolutionAccelerator[] = [
     name: "Headless Commerce Platform",
     tagline: "Omnichannel commerce infrastructure, production-ready.",
     shortDescription:
-      "A composable, API-first commerce accelerator with product catalog, cart, checkout, payments, inventory, and order management — built for multi-brand and multi-channel deployments.",
+      "A composable, API-first commerce accelerator with product catalog, cart, checkout, payments, inventory, and order management, built for multi-brand and multi-channel deployments.",
     category: "E-Commerce",
     categoryColor: "#a855f7",
     image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80",
@@ -150,16 +150,16 @@ export const solutionAccelerators: SolutionAccelerator[] = [
     techCount: "20",
     clientsUsing: "11",
     overview:
-      "This headless accelerator ships every commerce domain as an independent microservice: catalog, pricing, cart, checkout, payments, fulfilment, and notifications — each independently scalable, all sharing a unified GraphQL API gateway. Own every line of code, scale every bottleneck independently.",
+      "This headless accelerator ships every commerce domain as an independent microservice: catalog, pricing, cart, checkout, payments, fulfilment, and notifications, each independently scalable, all sharing a unified GraphQL API gateway. Own every line of code, scale every bottleneck independently.",
     problemStatement:
       "Off-the-shelf platforms impose architectural ceilings that surface at $10M+ GMV: plugin lock-in, inflexible checkout, inability to handle multi-warehouse inventory or multi-currency pricing natively. Custom builds take 12–18 months. This accelerator gets you to production in 14 weeks, fully owning the code.",
     features: [
       { icon: "package", title: "Product Catalog Service", description: "Hierarchical categories, variants, bundles, dynamic pricing rules, and multi-language support." },
       { icon: "shopping-cart", title: "Cart & Checkout Engine", description: "Persistent cart, guest checkout, promo code engine, and A/B-testable checkout flows." },
-      { icon: "credit-card", title: "Payment Orchestration", description: "Pre-integrated with Stripe, PayPal, VNPAY, MoMo, and bank transfer — with fallback routing." },
+      { icon: "credit-card", title: "Payment Orchestration", description: "Pre-integrated with Stripe, PayPal, VNPAY, MoMo, and bank transfer, with fallback routing." },
       { icon: "map-pin", title: "Multi-Warehouse Inventory", description: "Real-time stock sync across warehouses, fulfilment centers, and dropship suppliers." },
       { icon: "truck", title: "Order Management System", description: "Order splitting, partial fulfilment, returns and refunds, and carrier integration." },
-      { icon: "bell", title: "Notification Hub", description: "Transactional emails, SMS, and push via configurable templates — triggered by order lifecycle events." },
+      { icon: "bell", title: "Notification Hub", description: "Transactional emails, SMS, and push via configurable templates, triggered by order lifecycle events." },
     ],
     techCategories: [
       { label: "API", items: ["GraphQL", "REST", "gRPC", "WebSocket"] },
@@ -180,7 +180,7 @@ export const solutionAccelerators: SolutionAccelerator[] = [
     name: "Supply Chain Visibility Platform",
     tagline: "End-to-end supply chain transparency, from PO to proof of delivery.",
     shortDescription:
-      "A real-time supply chain visibility platform with IoT sensor integration, predictive ETD, exception management, and supplier collaboration — reducing stockouts and expediting costs.",
+      "A real-time supply chain visibility platform with IoT sensor integration, predictive ETD, exception management, and supplier collaboration, reducing stockouts and expediting costs.",
     category: "Logistics",
     categoryColor: "#eab308",
     image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80",
@@ -189,14 +189,14 @@ export const solutionAccelerators: SolutionAccelerator[] = [
     techCount: "19",
     clientsUsing: "7",
     overview:
-      "This accelerator provides a unified visibility layer across your supplier network — ingesting EDI, IoT, carrier APIs, and ERP events into a single operational picture with predictive alerting before exceptions become crises. It sits in front of your existing stack without a rip-and-replace.",
+      "This accelerator provides a unified visibility layer across your supplier network, ingesting EDI, IoT, carrier APIs, and ERP events into a single operational picture with predictive alerting before exceptions become crises. It sits in front of your existing stack without a rip-and-replace.",
     problemStatement:
-      "Most visibility initiatives fail because they try to replace ERP systems. This accelerator normalises events from 200+ carrier APIs, EDI suppliers, and IoT devices into a single timeline — complementing your existing stack rather than competing with it.",
+      "Most visibility initiatives fail because they try to replace ERP systems. This accelerator normalises events from 200+ carrier APIs, EDI suppliers, and IoT devices into a single timeline, complementing your existing stack rather than competing with it.",
     features: [
       { icon: "map", title: "Live Shipment Tracking", description: "Real-time geolocation for air, sea, and road shipments. Unified map view across all carriers." },
       { icon: "alert-triangle", title: "Predictive Exception Management", description: "ML models flag delays 48–72 hours before they become customer-visible. Automated escalation rules." },
       { icon: "cpu", title: "IoT Sensor Integration", description: "Temperature, humidity, shock, and tamper sensors via MQTT. Condition-breach alerts in real time." },
-      { icon: "users", title: "Supplier Collaboration Portal", description: "Suppliers update PO status, share ASNs, and respond to exceptions — without email threads." },
+      { icon: "users", title: "Supplier Collaboration Portal", description: "Suppliers update PO status, share ASNs, and respond to exceptions, without email threads." },
       { icon: "database", title: "ERP & EDI Integration", description: "Pre-built connectors for SAP, Oracle NetSuite, EDI X12/EDIFACT, and custom REST APIs." },
       { icon: "pie-chart", title: "Analytics & KPI Dashboard", description: "OTIF, lead time variance, supplier scorecards, and carbon footprint reporting." },
     ],
@@ -219,7 +219,7 @@ export const solutionAccelerators: SolutionAccelerator[] = [
     name: "Multi-Tenant SaaS Boilerplate",
     tagline: "Ship your SaaS foundation in weeks, not quarters.",
     shortDescription:
-      "A production-grade SaaS starter with multi-tenancy, subscription billing, team management, SSO, feature flags, audit logs, and a full admin console — everything except your core product logic.",
+      "A production-grade SaaS starter with multi-tenancy, subscription billing, team management, SSO, feature flags, audit logs, and a full admin console, everything except your core product logic.",
     category: "SaaS",
     categoryColor: "#6366f1",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",

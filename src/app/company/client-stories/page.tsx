@@ -199,8 +199,9 @@ export default function ClientStoriesPage() {
         <section className="relative px-[16px] md:px-[40px] overflow-hidden flex flex-col items-start gap-[28px] min-h-[600px] md:min-h-[850px] pt-[140px] md:pt-[228px]" style={{ paddingBottom: "100px" }}>
           <div className="absolute inset-0">
             <img
-              src="/Media/Image/case 16.png"
+              src="/Media/Image/client-stories-hero.jpg"
               alt=""
+              fetchPriority="high"
               className="absolute right-0 top-0 h-full"
               style={{ width: "65%", objectFit: "cover", objectPosition: "right center" }}
             />
@@ -219,7 +220,7 @@ export default function ClientStoriesPage() {
               </h1>
 
               <p className="text-[rgba(255,255,255,0.75)] text-[16px] leading-[28px]" style={{ marginTop: "-8px" }}>
-                Every quote on this page is taken verbatim from our public Clutch.co profile: CTOs, CEOs, and founders who trusted InApps to build their products across ODC, staff augmentation, and project engagements.
+                Every quote on this page is taken verbatim from our public Clutch.co profile: CTOs, CEOs, and founders who trusted InApps to build their products across ODC, staff augmentation, and project engagements. The delivery behind these reviews is backed by <a href="/company/award" style={{ color: "#ff7340", fontWeight: 600, textDecoration: "none" }}>ISO 27001, SOC 2 Type II, and CMMI Level 3</a>.
               </p>
 
               <div className="flex flex-wrap items-center gap-[12px] pt-[4px]">
@@ -342,7 +343,7 @@ export default function ClientStoriesPage() {
                 href="https://clutch.co/profile/inapps-technology"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-[6px] px-[24px] h-[48px] rounded-[10px] font-bold text-[14px] text-white transition-all hover:brightness-110"
+                className="inline-flex items-center justify-center gap-[6px] px-[24px] h-[48px] rounded-[10px] font-bold text-[14px] text-white transition-all hover:brightness-110 whitespace-nowrap"
                 style={{ background: "#ef5023", textDecoration: "none" }}
               >
                 Read all reviews on Clutch →
@@ -587,12 +588,12 @@ export default function ClientStoriesPage() {
                   Our full review history is available on Clutch.co and GoodFirms, independently verified, unedited reviews from verified clients.
                 </p>
               </div>
-              <div className="relative flex flex-col sm:flex-row items-stretch sm:items-center gap-[10px]">
+              <div className="relative flex flex-col sm:flex-row items-stretch sm:items-center gap-[10px] flex-shrink-0">
                 <a
                   href="https://clutch.co/profile/inapps-technology"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-[6px] px-[20px] h-[42px] rounded-[10px] font-bold text-[13px] text-white transition-all hover:brightness-110"
+                  className="inline-flex items-center justify-center gap-[6px] px-[20px] h-[42px] rounded-[10px] font-bold text-[13px] text-white transition-all hover:brightness-110 whitespace-nowrap flex-shrink-0"
                   style={{ background: "#ef5023", textDecoration: "none" }}
                 >
                   View on Clutch.co →
@@ -601,7 +602,7 @@ export default function ClientStoriesPage() {
                   href="https://www.goodfirms.co/company/inapps-technology"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-[6px] px-[20px] h-[42px] rounded-[10px] font-bold text-[13px] transition-all hover:bg-[#f0f0f0]"
+                  className="inline-flex items-center justify-center gap-[6px] px-[20px] h-[42px] rounded-[10px] font-bold text-[13px] transition-all hover:bg-[#f0f0f0] whitespace-nowrap flex-shrink-0"
                   style={{ background: "#fff", border: "1px solid #d0d0d0", color: "#333", textDecoration: "none" }}
                 >
                   View on GoodFirms →
@@ -647,14 +648,14 @@ export default function ClientStoriesPage() {
               <div className="relative flex flex-wrap items-center gap-[12px] mt-[4px]">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-[6px] px-[24px] h-[44px] rounded-[10px] font-bold text-[14px] text-[#ef5023] transition-all hover:brightness-95"
+                  className="inline-flex items-center gap-[6px] px-[24px] h-[44px] rounded-[10px] font-bold text-[14px] text-[#ef5023] transition-all hover:brightness-95 whitespace-nowrap"
                   style={{ background: "#fff", textDecoration: "none" }}
                 >
                   Start a Conversation
                 </Link>
                 <Link
                   href="/case-study"
-                  className="inline-flex items-center gap-[6px] px-[24px] h-[44px] rounded-[10px] font-bold text-[14px] text-white transition-all hover:bg-white/10"
+                  className="inline-flex items-center gap-[6px] px-[24px] h-[44px] rounded-[10px] font-bold text-[14px] text-white transition-all hover:bg-white/10 whitespace-nowrap"
                   style={{ border: "1px solid rgba(255,255,255,0.4)", textDecoration: "none" }}
                 >
                   View Case Studies
