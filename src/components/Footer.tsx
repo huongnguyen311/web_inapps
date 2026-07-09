@@ -27,7 +27,7 @@ const locations = [
       company: "INAPPS TECHNOLOGY CO., LTD",
       address: "Floor 6, Saigon Trade Center, 37 Ton Duc Thang, Ben Nghe Ward, District 1, Ho Chi Minh City",
       phone: "+84 28 3911 1886",
-      email: "hello@inapps.net",
+      email: "sales@inapps.net",
     },
   },
   {
@@ -38,7 +38,7 @@ const locations = [
       company: "INAPPS TECHNOLOGY USA INC.",
       address: "1309 Coffeen Avenue STE 1200, Sheridan, Wyoming 82801, USA",
       phone: "+1 (307) 429-0673",
-      email: "us@inapps.net",
+      email: "sales@inapps.net",
     },
   },
   {
@@ -49,7 +49,7 @@ const locations = [
       company: "INAPPS TECHNOLOGY AUSTRALIA",
       address: "Level 45, 680 George Street, Sydney, NSW 2000, Australia",
       phone: "+61285272436",
-      email: "australia@inapps.net",
+      email: "sales@inapps.net",
     },
   },
   {
@@ -60,7 +60,7 @@ const locations = [
       company: "INAPPS TECHNOLOGY PTE. LTD.",
       address: "68 Circular Road, #02-01, Singapore 049422",
       phone: "+65 6929 8806",
-      email: "sg@inapps.net",
+      email: "sales@inapps.net",
     },
   },
 ];
@@ -167,16 +167,8 @@ function ContactColumn() {
       <span className="text-white text-[11px] font-bold tracking-[2px] uppercase">Contact Us</span>
       <div className="flex flex-col gap-[14px]">
         <div className="flex flex-col gap-[4px]">
-          <span className="text-[#555] text-[11px] font-semibold tracking-[1px] uppercase">General</span>
-          <a href="mailto:hello@inapps.net" className="text-[#888] text-[14px] hover:text-white transition-colors">hello@inapps.net</a>
-        </div>
-        <div className="flex flex-col gap-[4px]">
-          <span className="text-[#555] text-[11px] font-semibold tracking-[1px] uppercase">Business</span>
-          <a href="mailto:business@inapps.net" className="text-[#888] text-[14px] hover:text-white transition-colors">business@inapps.net</a>
-        </div>
-        <div className="flex flex-col gap-[4px]">
-          <span className="text-[#555] text-[11px] font-semibold tracking-[1px] uppercase">Careers</span>
-          <a href="mailto:careers@inapps.net" className="text-[#888] text-[14px] hover:text-white transition-colors">careers@inapps.net</a>
+          <span className="text-[#555] text-[11px] font-semibold tracking-[1px] uppercase">Email</span>
+          <a href="mailto:sales@inapps.net" className="text-[#888] text-[14px] hover:text-white transition-colors">sales@inapps.net</a>
         </div>
         <a
           href="/contact"
@@ -246,7 +238,7 @@ export default function Footer() {
 
             {/* Brand + tagline */}
             <div className="flex flex-col gap-[24px] max-w-[320px]">
-              <Image src="/logo_white.svg" alt="InApps" width={140} height={40} />
+              <Image src="/logo_white.svg" alt="InApps" width={200} height={58} style={{ height: "40px", width: "auto" }} />
               <p className="text-[#888] text-[14px] leading-[1.8]">
                 Vietnam's leading software engineering partner for high-growth companies and global enterprises. Senior talent, enterprise quality.
               </p>

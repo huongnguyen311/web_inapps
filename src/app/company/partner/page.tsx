@@ -5,7 +5,6 @@ import Footer from "@/components/Footer";
 import ServiceTrustedLogos from "@/components/services/ServiceTrustedLogos";
 import FaqSection from "@/components/FaqSection";
 
-
 export default function AboutPartnerPage() {
   return (
     <div className="min-h-screen flex flex-col" style={{ background: "#0d0d0d" }}>
@@ -14,11 +13,12 @@ export default function AboutPartnerPage() {
 
         {/* ── S1: Hero ── */}
         <section className="relative px-[16px] md:px-[40px] overflow-hidden flex flex-col items-start gap-[28px] min-h-[600px] md:min-h-[850px] pt-[140px] md:pt-[228px]" style={{ paddingBottom: "100px" }}>
-          {/* Banner background — case-study style */}
+          {/* Banner background - case-study style */}
           <div className="absolute inset-0">
             <img
-              src="/Media/Image/case 18.png"
+              src="/Media/Image/case 18.jpg"
               alt=""
+              fetchPriority="high"
               className="absolute right-0 top-0 h-full"
               style={{ width: "65%", objectFit: "cover", objectPosition: "right center" }}
             />
@@ -32,15 +32,12 @@ export default function AboutPartnerPage() {
           <div className="relative flex flex-col items-start gap-[24px] max-w-[860px]">
             {/* Heading */}
             <h1 className="font-black text-white text-[40px] leading-[48px] sm:text-[52px] sm:leading-[60px] md:text-[68px] md:leading-[76px] tracking-[-2px]">
-              Grow Revenue. <span className="text-[#ef5023]">Partner</span> with InApps.
+              Sell Bigger. Deliver More. <span className="text-[#ef5023]">Keep Your Client.</span>
             </h1>
 
             {/* Subtext */}
-            <p className="text-[#ffffff] text-[20px] leading-[32px]">
-              Co-sell, co-deliver, and earn with a proven offshore engineering team.
-            </p>
-            <p className="text-[rgba(255,255,255,0.75)] text-[16px] leading-[28px]" style={{ marginTop: "-8px" }}>
-              The InApps Partner Program is built for agencies, software firms, venture builders, and talent providers ready to scale their business and unlock new revenue streams.
+            <p className="text-[rgba(255,255,255,0.85)] text-[20px] leading-[32px] max-w-[640px]">
+              White-label delivery, up to 20% commission, and non-solicitation written into every agreement.
             </p>
 
             {/* CTAs */}
@@ -50,7 +47,7 @@ export default function AboutPartnerPage() {
                 className="bg-[#ef5023] hover:bg-[#d94010] text-white font-bold text-[16px] px-[28px] h-[55px] rounded-[10px] inline-flex items-center transition-colors"
                 style={{ boxShadow: "0 8px 32px rgba(239,80,35,0.35)", textDecoration: "none" }}
               >
-                Become a Partner →
+                Apply to Partner →
               </a>
               <a
                 href="#partners"
@@ -59,6 +56,19 @@ export default function AboutPartnerPage() {
               >
                 Explore the Program ↓
               </a>
+            </div>
+
+            {/* Trust chips */}
+            <div className="flex flex-wrap items-center gap-[10px] pt-[8px]">
+              {["★ 4.9/5 on Clutch · 36 reviews", "ISO 27001 · SOC 2 Type II · CMMI L3", "Delivering since 2016"].map((chip) => (
+                <span
+                  key={chip}
+                  className="inline-flex items-center px-[12px] py-[6px] rounded-full text-[12px] font-semibold"
+                  style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.14)", color: "rgba(255,255,255,0.75)" }}
+                >
+                  {chip}
+                </span>
+              ))}
             </div>
           </div>
           </div>
@@ -116,7 +126,7 @@ export default function AboutPartnerPage() {
                 Why Partner with <span style={{ color: "#ef5023" }}>InApps</span>
               </h2>
               <p className="text-[16px] leading-[1.75]" style={{ color: "#666", marginTop: "4px" }}>
-                Join a proven ecosystem that delivers quality, scale, and mutual success.
+                The same team clients rate <a href="/company/client-stories" style={{ color: "#ef5023", fontWeight: 600, textDecoration: "none" }}>4.9/5 on Clutch</a>, working behind your brand instead of ours.
               </p>
             </div>
 
@@ -131,8 +141,8 @@ export default function AboutPartnerPage() {
                       <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="#ef5023" strokeWidth="1.8"/>
                     </svg>
                   ),
-                  title: "Global Delivery",
-                  desc: "Proven delivery coverage across EU, US, AU, and SG time zones — your clients stay covered.",
+                  title: "Follow-the-Sun Coverage",
+                  desc: "Teams aligned to EU, US, AU, and SG working hours, so your clients get real overlap and you keep your SLAs.",
                 },
                 {
                   icon: (
@@ -141,8 +151,8 @@ export default function AboutPartnerPage() {
                       <polyline points="8.5 12 11 14.5 15.5 9.5" stroke="#ef5023" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   ),
-                  title: "Agile & Secure",
-                  desc: "ISO-aligned processes and IP-safe engagement models protect you and your clients.",
+                  title: "Certified, Audit-Ready Delivery",
+                  desc: "ISO 27001, SOC 2 Type II, and CMMI Level 3. Put our compliance documentation straight into your proposals.",
                 },
                 {
                   icon: (
@@ -152,8 +162,8 @@ export default function AboutPartnerPage() {
                       <path d="M7 10l2 2 4-4" stroke="#ef5023" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   ),
-                  title: "Flexible Models",
-                  desc: "ODC, Project-Based, and Staff Augmentation — structure deals the way your clients need them.",
+                  title: "Deal-Shaped Engagement Models",
+                  desc: "ODC, project-based, or staff augmentation. Structure the deal around your client's procurement, not around ours.",
                 },
                 {
                   icon: (
@@ -164,7 +174,7 @@ export default function AboutPartnerPage() {
                     </svg>
                   ),
                   title: "Co-selling Support",
-                  desc: "We join your sales calls, co-brand proposals, and handle technical scoping — so you close bigger deals.",
+                  desc: "We join your sales calls, co-brand proposals, and handle technical scoping, so you can pitch work you couldn't staff alone.",
                 },
                 {
                   icon: (
@@ -174,7 +184,7 @@ export default function AboutPartnerPage() {
                     </svg>
                   ),
                   title: "Clear Commercials",
-                  desc: "Tiered commissions up to 20%, paid monthly — full transparency with zero hidden deductions.",
+                  desc: "Tiered commissions up to 20%, paid monthly. The rate card is written into the partner agreement, not negotiated after the deal.",
                 },
                 {
                   icon: (
@@ -184,8 +194,8 @@ export default function AboutPartnerPage() {
                       <path d="M19 3l1.5 1.5L17 8" stroke="#ef5023" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   ),
-                  title: "Vetted Talent Pool",
-                  desc: "500+ pre-screened engineers across 10+ tech stacks, ready to deploy on your next deal.",
+                  title: "Vetted Senior Engineers",
+                  desc: "Pre-screened engineers across 10+ tech stacks, NDA-bound and B2+ English. You interview them before they ever bill your client.",
                 },
               ].map((item) => (
                 <div
@@ -232,7 +242,7 @@ export default function AboutPartnerPage() {
                 Choose Your <span style={{ color: "#ef5023" }}>Track</span>
               </h2>
               <p className="text-[15px] leading-[1.75]" style={{ color: "#888" }}>
-                Two distinct paths — one for revenue partners, one for talent suppliers.
+                Two paths: sell and deliver with us (IGA), or supply engineers into our pipeline (TPN). Pick the one that matches your business.
               </p>
             </div>
 
@@ -273,7 +283,7 @@ export default function AboutPartnerPage() {
                 <div className="mt-auto pt-[8px]">
                   <a
                     href="#iga-detail"
-                    className="inline-flex items-center gap-[8px] font-bold text-[14px] text-white px-[24px] h-[44px] rounded-[10px]"
+                    className="inline-flex items-center gap-[8px] font-bold text-[14px] text-white px-[24px] h-[44px] rounded-[10px] whitespace-nowrap"
                     style={{ background: "#ef5023", textDecoration: "none", boxShadow: "0 4px 16px rgba(239,80,35,0.35)", transition: "background 0.2s" }}
                     onMouseEnter={e => (e.currentTarget.style.background = "#d94010")}
                     onMouseLeave={e => (e.currentTarget.style.background = "#ef5023")}
@@ -322,7 +332,7 @@ export default function AboutPartnerPage() {
                 <div className="mt-auto pt-[8px]">
                   <a
                     href="#tpn-detail"
-                    className="inline-flex items-center gap-[8px] font-bold text-[14px] text-white px-[24px] h-[44px] rounded-[10px]"
+                    className="inline-flex items-center gap-[8px] font-bold text-[14px] text-white px-[24px] h-[44px] rounded-[10px] whitespace-nowrap"
                     style={{ background: "#ef5023", textDecoration: "none", boxShadow: "0 4px 16px rgba(239,80,35,0.35)", transition: "background 0.2s" }}
                     onMouseEnter={e => (e.currentTarget.style.background = "#d94010")}
                     onMouseLeave={e => (e.currentTarget.style.background = "#ef5023")}
@@ -339,7 +349,7 @@ export default function AboutPartnerPage() {
 
         {/* ── IGA Detail ── */}
         <section id="iga-detail" className="relative px-[16px] md:px-[40px] py-[70px] overflow-hidden" style={{ background: "#fff", borderTop: "1px solid #e8e8e8" }}>
-          {/* BG — orange geometric shards */}
+          {/* BG - orange geometric shards */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
             <div style={{ position: "absolute", top: "-100px", left: "-100px", width: "500px", height: "500px", background: "radial-gradient(circle, rgba(239,80,35,0.08) 0%, transparent 62%)", borderRadius: "50%" }} />
             <svg width="100%" height="100%" viewBox="0 0 1440 560" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" style={{ position: "absolute", inset: 0 }}>
@@ -412,7 +422,7 @@ export default function AboutPartnerPage() {
 
               </div>
 
-              {/* Right column — Use Cases card */}
+              {/* Right column - Use Cases card */}
               <div
                 className="flex flex-col rounded-[18px] overflow-hidden self-start lg:sticky top-[100px]"
                 style={{ background: "#fff", border: "1px solid #e8e8e8", boxShadow: "0 8px 32px rgba(0,0,0,0.08)" }}
@@ -475,7 +485,7 @@ export default function AboutPartnerPage() {
 
         {/* ── TPN Detail ── */}
         <section id="tpn-detail" className="relative px-[16px] md:px-[40px] py-[70px] overflow-hidden" style={{ background: "#fafafa", borderTop: "1px solid #e8e8e8" }}>
-          {/* BG — concentric ripple rings */}
+          {/* BG - concentric ripple rings */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
             <div style={{ position: "absolute", top: "-80px", right: "-80px", width: "480px", height: "480px", background: "radial-gradient(circle, rgba(239,80,35,0.08) 0%, transparent 60%)", borderRadius: "50%" }} />
             <div style={{ position: "absolute", bottom: "-60px", left: "-60px", width: "380px", height: "380px", background: "radial-gradient(circle, rgba(255,115,64,0.07) 0%, transparent 62%)", borderRadius: "50%" }} />
@@ -498,12 +508,12 @@ export default function AboutPartnerPage() {
           <div className="relative max-w-[1320px] mx-auto" style={{ zIndex: 1 }}>
             <div className="grid grid-cols-1 lg:grid-cols-[460px_1fr] gap-[56px] items-start">
 
-              {/* Left column — Tech Stacks card */}
+              {/* Left column - Tech Stacks card */}
               <div
                 className="flex flex-col rounded-[18px] overflow-hidden self-start lg:sticky top-[100px]"
                 style={{ background: "#fff", border: "1px solid #e8e8e8", boxShadow: "0 8px 32px rgba(0,0,0,0.08)" }}
               >
-                {/* Card header — orange gradient */}
+                {/* Card header - orange gradient */}
                 <div className="px-[28px] pt-[28px] pb-[20px] flex items-center gap-[12px]" style={{ borderBottom: "1px solid rgba(239,80,35,0.15)", background: "linear-gradient(135deg, #ef5023 0%, #ff7340 100%)" }}>
                   <div className="w-[36px] h-[36px] rounded-[10px] flex items-center justify-center flex-shrink-0" style={{ background: "rgba(255,255,255,0.18)" }}>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
@@ -594,9 +604,9 @@ export default function AboutPartnerPage() {
 
         {/* ── Program Tiers & Benefits ── */}
         <section className="relative px-[16px] md:px-[40px] py-[70px] overflow-hidden" style={{ background: "#0a0a0a", borderTop: "1px solid #1a1a1a" }}>
-          {/* BG — photo with dark overlay */}
+          {/* BG - photo with dark overlay */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            <img src="/Media/Image/case 17.png" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "right center", opacity: 0.15 }} />
+            <img src="/Media/Image/case 17.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "right center", opacity: 0.15 }} />
             <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, #0a0a0a 0%, rgba(10,10,10,0.6) 30%, rgba(10,10,10,0.6) 70%, #0a0a0a 100%)" }} />
             <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, #0a0a0a 0%, transparent 20%, transparent 80%, #0a0a0a 100%)" }} />
           </div>
@@ -608,7 +618,7 @@ export default function AboutPartnerPage() {
               <h2 className="font-black text-white leading-[1.1]" style={{ fontSize: "clamp(30px, 3vw, 46px)", letterSpacing: "-1.5px" }}>
                 Program Tiers &amp; <span style={{ color: "#ef5023" }}>Benefits</span>
               </h2>
-              <p className="text-[15px] leading-[1.75]" style={{ color: "#888" }}>Grow with us and unlock exclusive benefits</p>
+              <p className="text-[15px] leading-[1.75]" style={{ color: "#888" }}>Every partner starts at Registered. Commission rate and support deepen as your closed deals and placements grow.</p>
             </div>
 
             {/* Progression diagram + Table */}
@@ -626,7 +636,8 @@ export default function AboutPartnerPage() {
                   badge: "Starter", badgeColor: "#aaa", badgeBg: "rgba(255,255,255,0.07)",
                   tierName: "Registered", accent: "#ef5023",
                   step: "01",
-                  qual: "New partners",
+                  qual: "Signed agreement, first deal registered",
+                  commission: "10%",
                   benefits: ["Deal registration", "Enablement kit"],
                   extras: null,
                   iconPaths: (<><rect x="12" y="5" width="12" height="8" rx="3" stroke="#ef5023" strokeWidth="1.6"/><rect x="15" y="13" width="6" height="5" stroke="#ef5023" strokeWidth="1.4"/><rect x="8" y="18" width="20" height="6" rx="2" stroke="#ef5023" strokeWidth="1.6"/><line x1="6" y1="30" x2="30" y2="30" stroke="#ef5023" strokeWidth="1.6" strokeLinecap="round"/></>),
@@ -644,8 +655,9 @@ export default function AboutPartnerPage() {
                   badge: "Growth", badgeColor: "#bbb", badgeBg: "rgba(255,255,255,0.08)",
                   tierName: "Select", accent: "#e03d10",
                   step: "02",
-                  qual: "2–3 deals / steady supply",
-                  benefits: ["Higher margin", "Case study", "Priority reviews"],
+                  qual: "2 to 3 closed deals, or steady placements",
+                  commission: "15%",
+                  benefits: ["Higher commission", "Case study", "Priority reviews"],
                   extras: "Webinars, pipeline clinics",
                   iconPaths: (<><path d="M18 5 C14 9 12 15 12 21 h12 C24 15 22 9 18 5 Z" stroke="#ef5023" strokeWidth="1.6" strokeLinejoin="round"/><circle cx="18" cy="17" r="2.5" stroke="#ef5023" strokeWidth="1.3"/><path d="M12 21 L8 27 L12 27 Z" stroke="#ef5023" strokeWidth="1.4" strokeLinejoin="round"/><path d="M24 21 L28 27 L24 27 Z" stroke="#ef5023" strokeWidth="1.4" strokeLinejoin="round"/><path d="M15 27 Q16 31 18 29 Q20 31 21 27" stroke="#ef5023" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/></>),
                 },
@@ -662,8 +674,9 @@ export default function AboutPartnerPage() {
                   badge: "Elite", badgeColor: "#d0d0d0", badgeBg: "rgba(255,255,255,0.10)",
                   tierName: "Premier", accent: "#ff7340",
                   step: "03",
-                  qual: "Strategic contributors",
-                  benefits: ["Top commission", "Executive sponsor", "Roadmap access"],
+                  qual: "Multi-deal track record, joint roadmap",
+                  commission: "Up to 20%",
+                  benefits: ["Executive sponsor", "Roadmap access", "Joint GTM"],
                   extras: "MDF support, BOT/JV eligibility",
                   iconPaths: (<><rect x="9" y="17" width="18" height="13" rx="3" stroke="#ef5023" strokeWidth="1.6"/><circle cx="14.5" cy="23" r="2" stroke="#ef5023" strokeWidth="1.3"/><circle cx="21.5" cy="23" r="2" stroke="#ef5023" strokeWidth="1.3"/><path d="M14 28 h8" stroke="#ef5023" strokeWidth="1.3" strokeLinecap="round"/><path d="M9 17 L9 10 L13 13.5 L18 9 L23 13.5 L27 10 L27 17" stroke="#ef5023" strokeWidth="1.5" strokeLinejoin="round" strokeLinecap="round"/></>),
                 },
@@ -681,6 +694,7 @@ export default function AboutPartnerPage() {
                           </div>
                           <span className="text-[11px] font-bold px-[12px] py-[4px] rounded-full" style={{ background: tier.badgeBg, color: tier.badgeColor }}>{tier.badge}</span>
                           <span className="font-bold text-[14px] text-white">{tier.tierName}</span>
+                          <span className="font-black text-[13px]" style={{ color: "#ff7340", marginTop: "-8px" }}>{tier.commission} commission</span>
                         </div>
                         {i < tiers.length - 1 && (
                           <div className="hidden md:block" style={{ flexShrink: 0, marginBottom: "52px" }}>
@@ -713,14 +727,14 @@ export default function AboutPartnerPage() {
                   <div style={{ minWidth: "480px" }}>
                   <div className="rounded-[16px] overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.18)", boxShadow: "0 8px 16px rgba(0,0,0,0.6), 0 24px 64px rgba(0,0,0,0.7), 0 0 0 1px rgba(239,80,35,0.08), 0 32px 80px rgba(239,80,35,0.07)", backdropFilter: "blur(12px)", background: "rgba(10,10,10,0.5)" }}>
                     {/* Header */}
-                    <div className="grid px-[28px] py-[16px]" style={{ gridTemplateColumns: "minmax(120px, 220px) 1fr 2fr 1fr", background: "rgba(255,255,255,0.92)", borderBottom: "2px solid rgba(255,255,255,0.18)" }}>
-                      {["Tier", "Fit", "Benefits", "Extras"].map((h) => (
+                    <div className="grid px-[28px] py-[16px]" style={{ gridTemplateColumns: "minmax(120px, 200px) 0.8fr 1.2fr 1.8fr 1fr", background: "rgba(255,255,255,0.92)", borderBottom: "2px solid rgba(255,255,255,0.18)" }}>
+                      {["Tier", "Commission", "Fit", "Benefits", "Extras"].map((h) => (
                         <span key={h} className="font-bold text-[15px]" style={{ color: "#0a0a0a" }}>{h}</span>
                       ))}
                     </div>
                     {/* Rows */}
                     {tiers.map((tier, i) => (
-                      <div key={tier.tierName} className="grid items-center px-[28px] py-[22px]" style={{ gridTemplateColumns: "minmax(120px, 220px) 1fr 2fr 1fr", background: i % 2 === 0 ? "rgba(255,255,255,0.02)" : "transparent", borderTop: i === 0 ? "none" : "1px solid rgba(255,255,255,0.07)" }}>
+                      <div key={tier.tierName} className="grid items-center px-[28px] py-[22px]" style={{ gridTemplateColumns: "minmax(120px, 200px) 0.8fr 1.2fr 1.8fr 1fr", background: i % 2 === 0 ? "rgba(255,255,255,0.02)" : "transparent", borderTop: i === 0 ? "none" : "1px solid rgba(255,255,255,0.07)" }}>
                         {/* Tier cell */}
                         <div className="flex items-center gap-[12px]">
                           <div className="flex-shrink-0 flex items-center justify-center" style={{ width: "36px", height: "36px", borderRadius: "10px", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}>
@@ -733,6 +747,7 @@ export default function AboutPartnerPage() {
                             <span className="text-[10px] font-bold px-[8px] py-[2px] rounded-full self-start" style={{ background: tier.badgeBg, color: tier.badgeColor }}>{tier.badge}</span>
                           </div>
                         </div>
+                        <span className="font-black text-[16px]" style={{ color: "#ff7340" }}>{tier.commission}</span>
                         <span className="text-[13px]" style={{ color: "#aaa" }}>{tier.qual}</span>
                         <span className="text-[13px]" style={{ color: "#aaa" }}>{tier.benefits.join(", ")}</span>
                         <span className="text-[13px]" style={{ color: "#666" }}>{tier.extras ?? "–"}</span>
@@ -740,6 +755,19 @@ export default function AboutPartnerPage() {
                     ))}
                   </div>
                   </div>
+                  </div>
+
+                  {/* Example deal math */}
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-[14px] rounded-[14px] px-[24px] py-[18px]" style={{ background: "rgba(239,80,35,0.08)", border: "1px solid rgba(239,80,35,0.25)" }}>
+                    <div className="w-[40px] h-[40px] rounded-[10px] flex items-center justify-center flex-shrink-0" style={{ background: "rgba(239,80,35,0.15)" }}>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <line x1="12" y1="1" x2="12" y2="23" stroke="#ff7340" strokeWidth="1.8" strokeLinecap="round"/>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="#ff7340" strokeWidth="1.8" strokeLinecap="round"/>
+                      </svg>
+                    </div>
+                    <p className="text-[14px] leading-[1.7]" style={{ color: "rgba(255,255,255,0.8)" }}>
+                      <strong style={{ color: "#fff" }}>What that means in practice:</strong> refer a $120,000/year dedicated-team engagement at Select tier (15%) and you earn <strong style={{ color: "#ff7340" }}>$18,000 per year</strong> in commission, paid monthly for as long as the engagement runs.
+                    </p>
                   </div>
 
                 </div>
@@ -751,7 +779,7 @@ export default function AboutPartnerPage() {
 
         {/* ── How the Program Works ── */}
         <section className="relative px-[16px] md:px-[40px] py-[70px] overflow-hidden" style={{ background: "#fafafa", borderTop: "1px solid #e8e8e8" }}>
-          {/* BG — flowing wave lines */}
+          {/* BG - flowing wave lines */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
             <svg width="100%" height="100%" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" style={{ position: "absolute", inset: 0 }}>
               <g fill="none" stroke="#ef5023" strokeOpacity="0.055" strokeWidth="1.2" strokeLinecap="round">
@@ -780,12 +808,12 @@ export default function AboutPartnerPage() {
               <h2 className="font-black text-[#0a0a0a] leading-[1.1]" style={{ fontSize: "clamp(30px, 3vw, 46px)", letterSpacing: "-1.5px" }}>
                 How the Program <span style={{ color: "#ef5023" }}>Works</span>
               </h2>
-              <p className="text-[15px] leading-[1.75]" style={{ color: "#888" }}>Simple process, powerful results</p>
+              <p className="text-[15px] leading-[1.75]" style={{ color: "#888" }}>From application to your first registered deal in five steps. We review every application within two business days.</p>
             </div>
 
             {/* Steps timeline */}
             <div className="relative flex flex-col md:flex-row items-start md:items-start justify-between gap-[32px] md:gap-[0px]">
-              {/* Horizontal connector line — desktop only */}
+              {/* Horizontal connector line - desktop only */}
               <div className="absolute hidden md:block" style={{ top: "36px", left: "10%", right: "10%", height: "3px", background: "linear-gradient(90deg, #ef5023, #ff8c6b)", zIndex: 0 }} />
 
               {[
@@ -799,7 +827,7 @@ export default function AboutPartnerPage() {
                     </svg>
                   ),
                   title: "Apply Online",
-                  desc: "Submit application with company details",
+                  desc: "Tell us about your company and pick your track. Takes about 10 minutes.",
                 },
                 {
                   icon: (
@@ -810,7 +838,7 @@ export default function AboutPartnerPage() {
                     </svg>
                   ),
                   title: "Qualify & Sign",
-                  desc: "Complete NDA/MSA and qualification process",
+                  desc: "One qualification call, then NDA and MSA. Deal protection starts here.",
                 },
                 {
                   icon: (
@@ -821,7 +849,7 @@ export default function AboutPartnerPage() {
                     </svg>
                   ),
                   title: "Get Enabled",
-                  desc: "Access portal, templates, and pricing",
+                  desc: "Portal access, rate card, white-label templates, and co-selling playbooks.",
                 },
                 {
                   icon: (
@@ -916,7 +944,7 @@ export default function AboutPartnerPage() {
 
         {/* ── Success Snapshots ── */}
         <section className="relative px-[16px] md:px-[40px] py-[70px] overflow-hidden" style={{ background: "#0a0a0a", borderTop: "1px solid #1a1a1a" }}>
-          {/* BG — dot grid + scattered accents */}
+          {/* BG - dot grid + scattered accents */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
             <svg width="100%" height="100%" viewBox="0 0 1440 520" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" style={{ position: "absolute", inset: 0 }}>
               <g fill="white">
@@ -966,11 +994,11 @@ export default function AboutPartnerPage() {
 
             {/* Header */}
             <div className="flex flex-col gap-[10px]">
-              <p className="text-[11px] font-bold tracking-[2px] uppercase" style={{ color: "#ef5023" }}>SUCCESS SNAPSHOTS</p>
+              <p className="text-[11px] font-bold tracking-[2px] uppercase" style={{ color: "#ef5023" }}>ON THE RECORD</p>
               <h2 className="font-black text-white leading-[1.1]" style={{ fontSize: "clamp(30px, 3vw, 46px)", letterSpacing: "-1.5px" }}>
-                Success <span style={{ color: "#ef5023" }}>Snapshots</span>
+                IT Firms Already <span style={{ color: "#ef5023" }}>Build on InApps</span>
               </h2>
-              <p className="text-[15px] leading-[1.75]" style={{ color: "#888" }}>Real results from our partner network</p>
+              <p className="text-[15px] leading-[1.75]" style={{ color: "#888" }}>Software and IT services companies run delivery, resourcing, and staff augmentation through InApps today. Every quote below is verbatim from Clutch.co, where you can verify it. <a href="/company/client-stories" style={{ color: "#ff7340", fontWeight: 600, textDecoration: "none" }}>Read all 36 verified reviews →</a></p>
             </div>
 
             {/* Cards */}
@@ -987,25 +1015,25 @@ export default function AboutPartnerPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-[24px]">
               {[
                 {
-                  type: "IGA",
+                  label: "IT Services · Poland",
                   banner: "linear-gradient(135deg, #ef5023 0%, #ff7340 100%)",
-                  title: "Agency Enterprise Win",
-                  desc: "A UK digital agency white-labeled InApps delivery to win a £2M enterprise project — without hiring a single additional in-house engineer.",
-                  metric: "£2M deal closed",
+                  title: "Future Processing",
+                  desc: "“We chose them because they were a great culture fit.” Karolina Kwaśniewska, External Resourcing Manager, on running a 14-month recruiting engagement through InApps.",
+                  metric: "14-month engagement",
                 },
                 {
-                  type: "IGA",
+                  label: "Software Firm · Vietnam",
                   banner: "linear-gradient(135deg, #e03d10 0%, #ef5023 100%)",
-                  title: "Venture Builder MVP Scale",
-                  desc: "A US startup accelerator used the IGA co-delivery model to launch 5 MVPs simultaneously — cutting time-to-market by 60% vs. their prior approach.",
-                  metric: "60% faster time-to-market",
+                  title: "EZtek",
+                  desc: "“We are most impressed with their proactiveness, which saved us a lot of time and effort.” Ken Heini, CEO, on outsourcing web delivery to InApps since 2020.",
+                  metric: "Partner since 2020, ongoing",
                 },
                 {
-                  type: "TPN",
+                  label: "IT Services · Vietnam",
                   banner: "linear-gradient(135deg, #c94010 0%, #e03d10 100%)",
-                  title: "Supplier Doubled Placements",
-                  desc: "A Vietnamese engineering firm joined TPN and secured a 12-month preferred supplier agreement, doubling their active placement count within two quarters.",
-                  metric: "2× placement rate",
+                  title: "vitX",
+                  desc: "“They provide high-quality talent at a good price.” Bui Kelly, CEO, on sourcing engineers through InApps staff augmentation for client work.",
+                  metric: "Ongoing staff augmentation",
                 },
               ].map((card) => (
                 <div
@@ -1025,7 +1053,7 @@ export default function AboutPartnerPage() {
                         <line x1="9" y1="15" x2="12" y2="15" stroke="white" strokeWidth="1.6" strokeLinecap="round"/>
                       </svg>
                     </div>
-                    <span className="font-bold text-white text-[13px]">{card.type === "TPN" ? "Talent Partner Success" : "Growth Partner Success"}</span>
+                    <span className="font-bold text-white text-[13px]">{card.label}</span>
                   </div>
 
                   <div className="flex flex-col gap-[16px] px-[24px] py-[24px]">
@@ -1051,8 +1079,8 @@ export default function AboutPartnerPage() {
                         </svg>
                         {card.metric}
                       </span>
-                      <a href="/contact" style={{ fontSize: "13px", color: "#fff", textDecoration: "none", fontWeight: 600 }}>
-                        Success Story
+                      <a href="https://clutch.co/profile/inapps-technology" target="_blank" rel="noopener noreferrer" style={{ fontSize: "13px", color: "#fff", textDecoration: "none", fontWeight: 600 }}>
+                        Verify on Clutch →
                       </a>
                     </div>
                   </div>
@@ -1071,9 +1099,9 @@ export default function AboutPartnerPage() {
 
           {/* Decorative background */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            {/* p3 pattern — bottom-right */}
+            {/* p3 pattern - bottom-right */}
             <img src="/Media/Pattern/p3.png" alt="" style={{ position: "absolute", bottom: "-40px", right: "-40px", width: "406px", opacity: 0.18, mixBlendMode: "screen" }} />
-            {/* p3 pattern — top-left, mirrored */}
+            {/* p3 pattern - top-left, mirrored */}
             <img src="/Media/Pattern/p3.png" alt="" style={{ position: "absolute", top: "-30px", left: "-30px", width: "352px", opacity: 0.16, mixBlendMode: "screen", transform: "scaleX(-1) scaleY(-1)" }} />
             {/* Triangle accents */}
             <svg style={{ position: "absolute", top: "18%", right: "12%", opacity: 0.13 }} width="18" height="18" viewBox="0 0 18 18" fill="none">
@@ -1101,7 +1129,7 @@ export default function AboutPartnerPage() {
                 Ready to Partner with InApps?
               </h2>
               <p className="text-[17px]" style={{ color: "rgba(255,255,255,0.82)", lineHeight: 1.6 }}>
-                Choose your partnership path and start growing together
+                Apply in 10 minutes. We review every application within two business days.
               </p>
             </div>
 
@@ -1112,10 +1140,10 @@ export default function AboutPartnerPage() {
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-[12px] px-[24px] py-[20px]" style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
                 <div className="flex flex-col gap-[2px] text-left">
                   <span className="font-black text-white text-[15px]">Growth Partner <span style={{ color: "#ef5023", fontSize: "12px", fontWeight: 700 }}>· IGA</span></span>
-                  <span className="text-[13px]" style={{ color: "#888" }}>Co-sell, co-deliver, scale fast · EU US AU SG</span>
+                  <span className="text-[13px]" style={{ color: "#888" }}>White-label delivery, up to 20% commission · EU US AU SG</span>
                 </div>
                 <a href="/contact" className="shrink-0 inline-flex items-center justify-center font-bold text-[13px] px-[20px] h-[40px] rounded-[8px]" style={{ background: "#ef5023", color: "#fff", textDecoration: "none", whiteSpace: "nowrap", boxShadow: "0 4px 16px rgba(239,80,35,0.4)" }}>
-                  Register Your Opportunities
+                  Apply as a Growth Partner
                 </a>
               </div>
 
@@ -1123,23 +1151,30 @@ export default function AboutPartnerPage() {
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-[12px] px-[24px] py-[20px]">
                 <div className="flex flex-col gap-[2px] text-left">
                   <span className="font-black text-white text-[15px]">Talent Provider <span style={{ color: "#ef5023", fontSize: "12px", fontWeight: 700 }}>· TPN</span></span>
-                  <span className="text-[13px]" style={{ color: "#888" }}>Supply vetted talent. Secure demand. · VN PH</span>
+                  <span className="text-[13px]" style={{ color: "#888" }}>Supply vetted engineers into steady demand · VN PH</span>
                 </div>
                 <a href="/contact" className="shrink-0 inline-flex items-center justify-center font-bold text-[13px] px-[20px] h-[40px] rounded-[8px]" style={{ border: "1.5px solid rgba(239,80,35,0.55)", color: "#ef5023", textDecoration: "none", whiteSpace: "nowrap", background: "transparent" }}>
-                  Become a Preferred Supplier
+                  Apply as a Talent Partner
                 </a>
               </div>
 
             </div>
 
             {/* Request Partner Pack */}
-            <a href="/contact" className="inline-flex items-center gap-[8px] font-semibold text-[14px]" style={{ color: "#888", textDecoration: "none" }}>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                <polyline points="22,6 12,13 2,6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              Request the Partner Pack
-            </a>
+            <div className="flex flex-col items-center gap-[8px]">
+              <a
+                href="mailto:sales@inapps.net?subject=Partner%20Pack%20request"
+                className="inline-flex items-center gap-[8px] font-bold text-[14px] px-[24px] h-[46px] rounded-[10px] transition-colors"
+                style={{ color: "#fff", border: "1px solid rgba(255,255,255,0.35)", textDecoration: "none", background: "rgba(255,255,255,0.04)" }}
+              >
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                  <polyline points="22,6 12,13 2,6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                Not ready to apply? Request the Partner Pack
+              </a>
+              <span className="text-[12px]" style={{ color: "#777" }}>Rate card, program guide, and sample agreements in one PDF.</span>
+            </div>
 
           </div>
         </section>
