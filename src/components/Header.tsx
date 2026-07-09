@@ -190,21 +190,21 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
         {/* Logo */}
         <div className="flex items-center">
           <Link href="/" style={{ textDecoration: "none" }}>
-            <div className="relative h-[40px] md:h-[52px]" style={{ width: "auto" }}>
+            <div className="relative h-[32px] md:h-[36px]" style={{ width: "auto" }}>
               <img
                 src="/logo_white.svg"
                 alt="InApps.net"
-                className="h-[40px] md:h-[52px] w-auto absolute top-0 left-0 transition-opacity duration-500"
-                style={{ opacity: dark ? 0 : 1 }}
+                className="h-[32px] md:h-[36px] w-auto absolute top-0 left-0 transition-opacity duration-500"
+                style={{ opacity: dark ? 0 : 1, aspectRatio: "200 / 58" }}
               />
               <img
                 src="/Media/inapps-logo_black.svg"
                 alt="InApps.net"
-                className="h-[40px] md:h-[52px] w-auto absolute top-0 left-0 transition-opacity duration-500"
-                style={{ opacity: dark ? 1 : 0 }}
+                className="h-[32px] md:h-[36px] w-auto absolute top-0 left-0 transition-opacity duration-500"
+                style={{ opacity: dark ? 1 : 0, aspectRatio: "200 / 58" }}
               />
               {/* invisible placeholder to maintain width */}
-              <img src="/logo_white.svg" alt="" className="h-[40px] md:h-[52px] w-auto invisible" aria-hidden="true" />
+              <img src="/logo_white.svg" alt="" className="h-[32px] md:h-[36px] w-auto invisible" aria-hidden="true" style={{ aspectRatio: "200 / 58" }} />
             </div>
           </Link>
         </div>
@@ -448,12 +448,6 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
             )}
           </div>
 
-          {/* Case Studies - plain link */}
-          <a href="/case-study" className="text-[17px] font-semibold hover:text-[#ef5023] transition-colors px-3 py-2 rounded-lg whitespace-nowrap" style={{ color: pathname.startsWith("/case-study") ? "#ef5023" : (dark ? "#111" : "#ffffff"), textDecoration: "none", position: "relative" }}>
-            Case Studies
-            {pathname.startsWith("/case-study") && <span style={{ position: "absolute", bottom: 2, left: 12, right: 12, height: 2, background: "#ef5023", borderRadius: 2 }} />}
-          </a>
-
           {/* Technology - has mega menu */}
           <div
             className="relative"
@@ -466,7 +460,7 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
               onClick={() => router.push("/technology")}
             >
               <span style={{ position: "relative" }}>
-                Technology
+                Technologies
                 {pathname.startsWith("/technology") && <span style={{ position: "absolute", bottom: -6, left: 0, right: 0, height: 2, background: "#ef5023", borderRadius: 2 }} />}
               </span>
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style={{ transition: "transform 0.2s", transform: activeMenu === "technology" ? "rotate(180deg)" : "rotate(0deg)", flexShrink: 0 }}><path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -534,6 +528,12 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
               </div>
             )}
           </div>
+
+          {/* Case Studies - plain link */}
+          <a href="/case-study" className="text-[17px] font-semibold hover:text-[#ef5023] transition-colors px-3 py-2 rounded-lg whitespace-nowrap" style={{ color: pathname.startsWith("/case-study") ? "#ef5023" : (dark ? "#111" : "#ffffff"), textDecoration: "none", position: "relative" }}>
+            Case Studies
+            {pathname.startsWith("/case-study") && <span style={{ position: "absolute", bottom: 2, left: 12, right: 12, height: 2, background: "#ef5023", borderRadius: 2 }} />}
+          </a>
 
           {/* Blog - plain link */}
           <a href="/blog" className="text-[17px] font-semibold hover:text-[#ef5023] transition-colors px-3 py-2 rounded-lg whitespace-nowrap" style={{ color: pathname.startsWith("/blog") ? "#ef5023" : (dark ? "#111" : "#ffffff"), textDecoration: "none", position: "relative" }}>
@@ -741,16 +741,6 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
               )}
             </div>
 
-            {/* Case Studies */}
-            <a
-              href="/case-study"
-              onClick={() => setMobileOpen(false)}
-              className="px-[20px] py-[14px] text-[16px] font-semibold"
-              style={{ color: pathname.startsWith("/case-study") ? "#ef5023" : "#111", textDecoration: "none" }}
-            >
-              Case Studies
-            </a>
-
             {/* Technology */}
             <div>
               <div className="flex items-center px-[20px]" style={{ gap: 0 }}>
@@ -759,7 +749,7 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
                   onClick={(e) => { e.stopPropagation(); setMobileOpen(false); }}
                   style={{ flex: 1, display: "block", padding: "14px 0", fontSize: 16, fontWeight: 600, color: pathname.startsWith("/technology") ? "#ef5023" : "#111", textDecoration: "none" }}
                 >
-                  Technology
+                  Technologies
                 </a>
                 <button
                   onClick={(e) => { e.stopPropagation(); setMobileSubmenu(mobileSubmenu === "technology" ? null : "technology"); }}
@@ -789,6 +779,16 @@ export default function Header({ forceDark = false }: { forceDark?: boolean }) {
                 </div>
               )}
             </div>
+
+            {/* Case Studies */}
+            <a
+              href="/case-study"
+              onClick={() => setMobileOpen(false)}
+              className="px-[20px] py-[14px] text-[16px] font-semibold"
+              style={{ color: pathname.startsWith("/case-study") ? "#ef5023" : "#111", textDecoration: "none" }}
+            >
+              Case Studies
+            </a>
 
             {/* Blog */}
             <a
